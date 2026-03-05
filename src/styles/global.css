@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--boulder-font-family);
+  color: var(--boulder-color-text);
+}

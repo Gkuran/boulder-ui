@@ -1,0 +1,16 @@
+.button {
+  border: none;
+  padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
+  border-radius: var(--boulder-radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.primary {
+  background: var(--boulder-color-primary);
+  color: white;
+}
+
+.primary:hover {
+  background: var(--boulder-color-primary-hover);
+}

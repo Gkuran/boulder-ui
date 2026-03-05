@@ -1,0 +1,30 @@
+:root {
+  /* Core palette */
+  --boulder-color-1: #afc3b7;
+  --boulder-color-2: #c3d2c9;
+  --boulder-color-3: #d7e1db;
+  --boulder-color-4: #ebf0ed;
+  --boulder-color-5: #ffffff;
+
+  /* Semantic tokens (recomendado) */
+  --boulder-color-primary: var(--boulder-color-1);
+  --boulder-color-primary-hover: var(--boulder-color-2);
+  --boulder-color-surface: var(--boulder-color-4);
+  --boulder-color-background: var(--boulder-color-5);
+
+  --boulder-color-border: var(--boulder-color-3);
+  --boulder-color-muted: var(--boulder-color-2);
+
+  /* Spacing */
+  --boulder-spacing-xs: 4px;
+  --boulder-spacing-sm: 8px;
+  --boulder-spacing-md: 16px;
+  --boulder-spacing-lg: 24px;
+
+  /* Radius */
+  --boulder-radius-sm: 4px;
+  --boulder-radius-md: 8px;
+
+  /* Font */
+  --boulder-font-family: system-ui, sans-serif;
+}
