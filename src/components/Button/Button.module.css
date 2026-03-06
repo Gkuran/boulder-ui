@@ -3,14 +3,94 @@
   padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
   border-radius: var(--boulder-radius-sm);
   cursor: pointer;
+  font-size: var(--boulder-font-size-md);
+  font-family: var(--boulder-font-family);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--boulder-spacing-xs);
+
+  transition: background 0.2s ease;
+}
+
+/* SIZES */
+
+.sm {
+  padding: var(--boulder-spacing-xs) var(--boulder-spacing-sm);
+  font-size: 12px;
+}
+
+.md {
+  padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
   font-size: 14px;
 }
 
+.lg {
+  padding: var(--boulder-spacing-md) var(--boulder-spacing-lg);
+  font-size: 16px;
+}
+
+/* PRIMARY */
+
 .primary {
   background: var(--boulder-color-primary);
-  color: white;
+  color: var(--boulder-color-text-inverse);
 }
 
 .primary:hover {
   background: var(--boulder-color-primary-hover);
+}
+
+/* SECONDARY */
+
+.secondary {
+  background: var(--boulder-color-surface);
+  border: 1px solid var(--boulder-color-border);
+  color: var(--boulder-color-text);
+}
+
+.secondary:hover {
+  background: var(--boulder-color-3);
+}
+
+/* DANGER */
+
+.danger {
+  background: var(--boulder-color-danger);
+  color: var(--boulder-color-text-inverse);
+}
+
+.danger:hover {
+  background: var(--boulder-color-danger-hover);
+}
+
+/* DISABLED */
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* SPINNER */
+
+.spinner {
+  width: var(--boulder-spinner-size);
+  height: var(--boulder-spinner-size);
+
+  border: var(--boulder-spinner-border-width) solid rgba(255, 255, 255, 0.4);
+  border-top-color: var(--boulder-color-text-inverse);
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

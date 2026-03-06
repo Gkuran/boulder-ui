@@ -27,4 +27,25 @@
 
   /* Font */
   --boulder-font-family: system-ui, sans-serif;
+
+  /* Font sizes */
+
+  --boulder-font-size-sm: 12px;
+  --boulder-font-size-md: 14px;
+  --boulder-font-size-lg: 16px;
+
+  /* Text colors */
+
+  --boulder-color-text: #1a1a1a;
+  --boulder-color-text-inverse: #ffffff;
+
+  /* Danger */
+
+  --boulder-color-danger: #e5484d;
+  --boulder-color-danger-hover: #d13438;
+
+  /* Spinner */
+
+  --boulder-spinner-size: 14px;
+  --boulder-spinner-border-width: 2px;
 }
