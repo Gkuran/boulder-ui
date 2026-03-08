@@ -4,6 +4,7 @@ import { Button } from "./";
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -40,7 +41,7 @@ export const Disabled: Story = {
 
 export const Loading: Story = {
   args: {
-    children: "Loading Button",
+    children: "Loading",
     variant: "primary",
     isLoading: true,
   },
