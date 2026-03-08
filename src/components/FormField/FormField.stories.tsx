@@ -11,14 +11,54 @@ const meta: Meta<typeof FormField> = {
     docs: {
       description: {
         component: `
-Componente responsável por estruturar campos de formulário.
+The **FormField** component is a versatile wrapper designed to structure and enhance form inputs by combining multiple elements into a cohesive unit.
 
-Ele combina:
+## Overview
+This component integrates:
+- **Label**: Provides accessible labeling for the input field
+- **Input**: The actual form control (passed as children)
+- **Description**: Optional helper text to guide users
+- **Error Message**: Displays validation errors when needed
 
-- Label
-- Input
-- Descrição
-- Mensagem de erro
+## Installation
+\`\`\`bash
+npm install boulder-ui
+\`\`\`
+
+## Import
+\`\`\`tsx
+import { FormField } from 'boulder-ui';
+\`\`\`
+
+## Props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`label\` | \`string\` | - | The label text for the form field |
+| \`description\` | \`string\` | - | Optional helper text displayed below the label |
+| \`error\` | \`string\` | - | Error message displayed when validation fails |
+| \`htmlFor\` | \`string\` | - | Associates the label with an input element |
+| \`id\` | \`string\` | - | Unique identifier for the form field |
+| \`children\` | \`ReactElement\` | - | The input component(s) to be wrapped |
+
+## Usage Examples
+### Basic Usage
+\`\`\`tsx
+<FormField label="Email" htmlFor="email">
+  <Input id="email" placeholder="Enter your email" />
+</FormField>
+\`\`\`
+
+### With Description and Error
+\`\`\`tsx
+<FormField
+  label="Username"
+  description="This will be visible to other users"
+  error="Username is required"
+  htmlFor="username"
+>
+  <Input id="username" />
+</FormField>
+\`\`\`
 `,
       },
     },
