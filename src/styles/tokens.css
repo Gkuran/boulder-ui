@@ -1,9 +1,9 @@
 :root {
   /* Core palette */
-  --boulder-color-1: #afc3b7;
-  --boulder-color-2: #c3d2c9;
-  --boulder-color-3: #d7e1db;
-  --boulder-color-4: #ebf0ed;
+  --boulder-color-1: #8a7650;
+  --boulder-color-2: #8e977d;
+  --boulder-color-3: #ece7d1;
+  --boulder-color-4: #dbcea5;
   --boulder-color-5: #ffffff;
 
   /* Semantic tokens (recomendado) */
