@@ -1,0 +1,59 @@
+.textarea {
+  width: 100%;
+
+  border-radius: var(--radius-md);
+
+  font-family: inherit;
+
+  resize: vertical;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+/* variants */
+
+.outline {
+  border: 1px solid var(--color-border-default);
+  background: var(--color-background-default);
+}
+
+.outline:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-soft);
+}
+
+.filled {
+  border: 1px solid transparent;
+  background: var(--color-background-subtle);
+}
+
+.filled:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* sizes */
+
+.sm {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--font-size-sm);
+}
+
+.md {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--font-size-md);
+}
+
+.lg {
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: var(--font-size-lg);
+}
+
+.textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
