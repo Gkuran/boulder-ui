@@ -38,14 +38,60 @@
   transition: transform 0.2s ease;
 }
 
+/* Sizes */
+
+.sm .track {
+  width: 32px;
+  height: 18px;
+}
+
+.sm .thumb {
+  width: 14px;
+  height: 14px;
+  top: 2px;
+  left: 2px;
+}
+
+.md .track {
+  width: 40px;
+  height: 22px;
+}
+
+.md .thumb {
+  width: 18px;
+  height: 18px;
+  top: 2px;
+  left: 2px;
+}
+
+.lg .track {
+  width: 48px;
+  height: 26px;
+}
+
+.lg .thumb {
+  width: 22px;
+  height: 22px;
+  top: 2px;
+  left: 2px;
+}
+
 /* Checked state */
 
 .input:checked + .track {
   background-color: var(--color-primary);
 }
 
-.input:checked + .track .thumb {
+.sm .input:checked + .track .thumb {
+  transform: translateX(14px);
+}
+
+.md .input:checked + .track .thumb {
   transform: translateX(18px);
+}
+
+.lg .input:checked + .track .thumb {
+  transform: translateX(22px);
 }
 
 /* Focus */
