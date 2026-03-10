@@ -1,8 +1,15 @@
 {
   "name": "boulder-ui",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "A lightweight React component library for building consistent interfaces",
   "type": "module",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -11,10 +18,11 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
   },
+  "dependencies": {},
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",
     "@eslint/js": "^9.39.1",
@@ -40,5 +48,12 @@
     "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.0.18"
-  }
+  },
+  "keywords": [
+    "react",
+    "design-system",
+    "ui",
+    "components",
+    "storybook"
+  ]
 }
