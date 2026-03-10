@@ -34,10 +34,11 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(dirname, "src/index.ts"),
-      name: "boulder-ui",
+      name: "boulderUI",
       fileName: "index",
       formats: ["es", "cjs"],
     },
+    sourcemap: true,
 
     rollupOptions: {
       external: ["react", "react-dom"],

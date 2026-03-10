@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A lightweight React component library for building consistent interfaces",
   "type": "module",
+  "sideEffects": false,
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
