@@ -1,82 +1,82 @@
 :root {
-  /* Core palette */
+  /* ─── Paleta base ─────────────────────────────────────────────────────────── */
   --boulder-color-1: #8a7650;
   --boulder-color-2: #8e977d;
   --boulder-color-3: #ece7d1;
   --boulder-color-4: #dbcea5;
   --boulder-color-5: #ffffff;
 
-  /* Semantic tokens (recomendado) */
+  /* ─── Cores semânticas ────────────────────────────────────────────────────── */
   --boulder-color-primary: var(--boulder-color-1);
   --boulder-color-primary-hover: var(--boulder-color-2);
+  --boulder-color-primary-soft: var(--boulder-color-4);
+
   --boulder-color-surface: var(--boulder-color-4);
   --boulder-color-background: var(--boulder-color-5);
+  --boulder-color-background-subtle: var(--boulder-color-4);
 
   --boulder-color-border: var(--boulder-color-3);
   --boulder-color-muted: var(--boulder-color-2);
 
-  /* Spacing */
+  /* ─── Cores de texto ──────────────────────────────────────────────────────── */
+  --boulder-color-text: #1a1a1a;
+  --boulder-color-text-secondary: #666666;
+  --boulder-color-text-inverse: #ffffff;
+
+  /* ─── Cores de estado ─────────────────────────────────────────────────────── */
+  --boulder-color-danger: #e5484d;
+  --boulder-color-danger-hover: #d13438;
+
+  /* ─── Espaçamento ─────────────────────────────────────────────────────────── */
   --boulder-spacing-xs: 4px;
   --boulder-spacing-sm: 8px;
   --boulder-spacing-md: 16px;
   --boulder-spacing-lg: 24px;
 
-  /* Radius */
+  /* ─── Raios de borda ──────────────────────────────────────────────────────── */
   --boulder-radius-sm: 4px;
   --boulder-radius-md: 8px;
 
-  /* Font */
+  /* ─── Tipografia ──────────────────────────────────────────────────────────── */
   --boulder-font-family: system-ui, sans-serif;
 
-  /* Font weights */
+  --boulder-font-size-xs: 11px;
+  --boulder-font-size-sm: 12px;
+  --boulder-font-size-md: 14px;
+  --boulder-font-size-lg: 16px;
+
+  --boulder-line-height-sm: 1.4;
+  --boulder-line-height-md: 1.5;
+
   --boulder-font-weight-regular: 400;
   --boulder-font-weight-medium: 500;
   --boulder-font-weight-semibold: 600;
   --boulder-font-weight-bold: 700;
 
-  /* Font sizes */
-
-  --boulder-font-size-sm: 12px;
-  --boulder-font-size-md: 14px;
-  --boulder-font-size-lg: 16px;
-
-  /* Text colors */
-
-  --boulder-color-text: #1a1a1a;
-  --boulder-color-text-inverse: #ffffff;
-
-  /* Danger */
-
-  --boulder-color-danger: #e5484d;
-  --boulder-color-danger-hover: #d13438;
-
-  /* Spinner */
-
+  /* ─── Spinner ─────────────────────────────────────────────────────────────── */
   --boulder-spinner-size: 14px;
   --boulder-spinner-border-width: 2px;
+  --boulder-spinner-color-track: rgba(255, 255, 255, 0.4);
 
-  /* Semantic aliases (without boulder prefix) */
-  --spacing-1: var(--boulder-spacing-xs);
-  --spacing-2: var(--boulder-spacing-sm);
-  --spacing-3: var(--boulder-spacing-md);
-  --spacing-4: var(--boulder-spacing-lg);
+  /* ─── Switch ──────────────────────────────────────────────────────────────── */
+  --boulder-switch-track-width-sm: 32px;
+  --boulder-switch-track-height-sm: 18px;
+  --boulder-switch-thumb-size-sm: 14px;
+  --boulder-switch-translate-sm: 14px;
 
-  --color-primary: var(--boulder-color-primary);
-  --color-primary-soft: var(--boulder-color-surface);
-  --color-border-default: var(--boulder-color-border);
-  --color-background-default: var(--boulder-color-background);
-  --color-background-subtle: var(--boulder-color-surface);
-  --color-text-primary: var(--boulder-color-text);
-  --color-danger: var(--boulder-color-danger);
+  --boulder-switch-track-width-md: 40px;
+  --boulder-switch-track-height-md: 22px;
+  --boulder-switch-thumb-size-md: 18px;
+  --boulder-switch-translate-md: 18px;
 
-  --font-size-sm: var(--boulder-font-size-sm);
-  --font-size-md: var(--boulder-font-size-md);
-  --font-size-lg: var(--boulder-font-size-lg);
+  --boulder-switch-track-width-lg: 48px;
+  --boulder-switch-track-height-lg: 26px;
+  --boulder-switch-thumb-size-lg: 22px;
+  --boulder-switch-translate-lg: 22px;
 
-  --font-weight-regular: var(--boulder-font-weight-regular);
-  --font-weight-medium: var(--boulder-font-weight-medium);
-  --font-weight-semibold: var(--boulder-font-weight-semibold);
-  --font-weight-bold: var(--boulder-font-weight-bold);
+  --boulder-switch-thumb-offset: 2px;
 
-  --radius-md: var(--boulder-radius-md);
+  /* ─── Checkbox ────────────────────────────────────────────────────────────── */
+  --boulder-checkbox-size: 16px;
+  --boulder-checkbox-checkmark-size: 10px;
 }

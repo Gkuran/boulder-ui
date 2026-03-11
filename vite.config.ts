@@ -20,8 +20,11 @@ export default defineConfig({
     react(),
 
     dts({
-      insertTypesEntry: true,
+      tsconfigPath: "./tsconfig.app.json",
       include: ["src"],
+      exclude: ["src/**/*.stories.tsx", "src/**/*.stories.ts"],
+      rollupTypes: true,
+      insertTypesEntry: true,
     }),
   ],
 
@@ -35,19 +38,44 @@ export default defineConfig({
     lib: {
       entry: path.resolve(dirname, "src/index.ts"),
       name: "boulderUI",
-      fileName: "index",
       formats: ["es", "cjs"],
     },
+
     sourcemap: true,
 
+    // Não copiar arquivos de public/ para dist (assets do Storybook)
+    copyPublicDir: false,
+
     rollupOptions: {
-      external: ["react", "react-dom"],
-      output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
+      external: ["react", "react-dom", "react/jsx-runtime"],
+
+      output: [
+        {
+          format: "es",
+          // Preserva a estrutura de módulos para tree-shaking granular
+          preserveModules: true,
+          preserveModulesRoot: "src",
+          entryFileNames: "[name].js",
+          exports: "named",
+          globals: {
+            react: "React",
+            "react-dom": "ReactDOM",
+            "react/jsx-runtime": "jsxRuntime",
+          },
         },
-      },
+        {
+          format: "cjs",
+          preserveModules: true,
+          preserveModulesRoot: "src",
+          entryFileNames: "[name].cjs",
+          exports: "named",
+          globals: {
+            react: "React",
+            "react-dom": "ReactDOM",
+            "react/jsx-runtime": "jsxRuntime",
+          },
+        },
+      ],
     },
   },
 

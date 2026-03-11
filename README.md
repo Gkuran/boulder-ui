@@ -1,73 +1,121 @@
-# React + TypeScript + Vite
+# boulder-ui
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![npm version](https://img.shields.io/npm/v/boulder-ui)](https://www.npmjs.com/package/boulder-ui)
+[![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-green)]()
+[![license](https://img.shields.io/npm/l/boulder-ui)]()
 
-Currently, two official plugins are available:
+A **lightweight React component library** designed to build **consistent, accessible and composable interfaces**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Minimal and composable components
+- Accessibility-first (ARIA, keyboard navigation, semantic HTML)
+- Design tokens via CSS custom properties (`--boulder-*`)
+- Fully typed with TypeScript
+- Tree-shakeable (ESM + CJS, `preserveModules`)
+- No runtime dependencies beyond React
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install boulder-ui
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Setup
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Import the design tokens (CSS variables) once in your application entry point:
+
+```tsx
+import "boulder-ui/styles";
 ```
+
+Then import components as needed:
+
+```tsx
+import { Button, Input, FormField } from "boulder-ui";
+```
+
+---
+
+## Components
+
+| Component | Description |
+|---|---|
+| `Button` | Action button with variants (primary, secondary, danger) and loading state |
+| `Input` | Text input with outline/filled variants and error state |
+| `Textarea` | Multi-line text input with outline/filled variants |
+| `Checkbox` | Accessible checkbox with custom visual control |
+| `Switch` | Toggle switch built on a native checkbox |
+| `Label` | Accessible label for form controls |
+| `FormField` | Composable wrapper combining Label, input, description and ErrorMessage |
+| `ErrorMessage` | Accessible error message with `role="alert"` |
+
+---
+
+## Usage Examples
+
+### Button
+
+```tsx
+import { Button } from "boulder-ui";
+
+<Button variant="primary" size="md">Save</Button>
+<Button variant="secondary">Cancel</Button>
+<Button variant="danger" isLoading>Deleting...</Button>
+```
+
+### FormField + Input
+
+```tsx
+import { FormField, Input } from "boulder-ui";
+
+<FormField label="Email" description="We'll never share your email.">
+  <Input placeholder="you@example.com" />
+</FormField>
+
+<FormField label="Username" error="Username is already taken">
+  <Input />
+</FormField>
+```
+
+### Checkbox
+
+```tsx
+import { Checkbox } from "boulder-ui";
+
+<Checkbox label="Accept terms and conditions" />
+```
+
+### Switch
+
+```tsx
+import { Switch } from "boulder-ui";
+
+<Switch id="notifications" label="Enable notifications" size="md" />
+```
+
+---
+
+## Design Tokens
+
+All styling is driven by CSS custom properties prefixed with `--boulder-`. You can override them in your application:
+
+```css
+:root {
+  --boulder-color-primary: #0070f3;
+  --boulder-font-family: "Inter", sans-serif;
+  --boulder-radius-md: 6px;
+}
+```
+
+---
+
+## License
+
+MIT

@@ -4,7 +4,7 @@ export interface FormFieldProps {
   label?: string;
   description?: string;
   error?: string;
-  htmlFor?: string;
+  /** ID do campo — gerado automaticamente via useId() se omitido */
   id?: string;
   children: ReactElement;
 }

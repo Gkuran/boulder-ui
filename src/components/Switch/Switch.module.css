@@ -1,15 +1,17 @@
 .container {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: var(--boulder-spacing-sm);
   cursor: pointer;
   font-family: var(--boulder-font-family);
 }
 
+/* O .switch herda o tamanho do container via variáveis locais */
+
 .switch {
   position: relative;
-  width: 40px;
-  height: 22px;
+  width: var(--_track-width, var(--boulder-switch-track-width-md));
+  height: var(--_track-height, var(--boulder-switch-track-height-md));
 }
 
 .input {
@@ -22,94 +24,73 @@
 .track {
   position: absolute;
   inset: 0;
-  background-color: var(--color-border-default);
+  background-color: var(--boulder-color-border);
   border-radius: 999px;
   transition: background-color 0.2s ease;
 }
 
 .thumb {
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 18px;
-  height: 18px;
+  top: var(--boulder-switch-thumb-offset);
+  left: var(--boulder-switch-thumb-offset);
+  width: var(--_thumb-size, var(--boulder-switch-thumb-size-md));
+  height: var(--_thumb-size, var(--boulder-switch-thumb-size-md));
   border-radius: 999px;
-  background-color: var(--color-background-default);
+  background-color: var(--boulder-color-background);
   transition: transform 0.2s ease;
 }
 
-/* Sizes */
+/* ─── Tamanhos — definem variáveis locais no container ────────────────────── */
 
-.sm .track {
-  width: 32px;
-  height: 18px;
+.sm {
+  --_track-width: var(--boulder-switch-track-width-sm);
+  --_track-height: var(--boulder-switch-track-height-sm);
+  --_thumb-size: var(--boulder-switch-thumb-size-sm);
+  --_translate: var(--boulder-switch-translate-sm);
 }
 
-.sm .thumb {
-  width: 14px;
-  height: 14px;
-  top: 2px;
-  left: 2px;
+.md {
+  --_track-width: var(--boulder-switch-track-width-md);
+  --_track-height: var(--boulder-switch-track-height-md);
+  --_thumb-size: var(--boulder-switch-thumb-size-md);
+  --_translate: var(--boulder-switch-translate-md);
 }
 
-.md .track {
-  width: 40px;
-  height: 22px;
+.lg {
+  --_track-width: var(--boulder-switch-track-width-lg);
+  --_track-height: var(--boulder-switch-track-height-lg);
+  --_thumb-size: var(--boulder-switch-thumb-size-lg);
+  --_translate: var(--boulder-switch-translate-lg);
 }
 
-.md .thumb {
-  width: 18px;
-  height: 18px;
-  top: 2px;
-  left: 2px;
-}
-
-.lg .track {
-  width: 48px;
-  height: 26px;
-}
-
-.lg .thumb {
-  width: 22px;
-  height: 22px;
-  top: 2px;
-  left: 2px;
-}
-
-/* Checked state */
+/* ─── Estado checked ──────────────────────────────────────────────────────── */
 
 .input:checked + .track {
-  background-color: var(--color-primary);
+  background-color: var(--boulder-color-primary);
 }
 
-.sm .input:checked + .track .thumb {
-  transform: translateX(14px);
+.input:checked + .track .thumb {
+  transform: translateX(var(--_translate, var(--boulder-switch-translate-md)));
 }
 
-.md .input:checked + .track .thumb {
-  transform: translateX(18px);
-}
-
-.lg .input:checked + .track .thumb {
-  transform: translateX(22px);
-}
-
-/* Focus */
+/* ─── Focus ───────────────────────────────────────────────────────────────── */
 
 .input:focus-visible + .track {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--boulder-color-primary);
   outline-offset: 2px;
 }
 
-/* Disabled */
+/* ─── Disabled ────────────────────────────────────────────────────────────── */
 
 .input:disabled + .track {
-  background-color: var(--color-background-subtle);
+  background-color: var(--boulder-color-background-subtle);
   cursor: not-allowed;
 }
 
+/* ─── Label ───────────────────────────────────────────────────────────────── */
+
 .label {
-  font-size: var(--font-size-md);
-  color: var(--color-text-primary);
+  font-size: var(--boulder-font-size-md);
+  color: var(--boulder-color-text);
   user-select: none;
 }

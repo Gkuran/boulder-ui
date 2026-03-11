@@ -1,7 +1,7 @@
 .wrapper {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-2);
+  gap: var(--boulder-spacing-sm);
 
   cursor: pointer;
 }
@@ -13,14 +13,14 @@
 }
 
 .control {
-  width: 16px;
-  height: 16px;
+  width: var(--boulder-checkbox-size);
+  height: var(--boulder-checkbox-size);
 
-  border-radius: var(--radius-sm);
+  border-radius: var(--boulder-radius-sm);
 
-  border: 1px solid var(--color-border-default);
+  border: 1px solid var(--boulder-color-border);
 
-  background: var(--color-background-default);
+  background: var(--boulder-color-background);
 
   display: flex;
   align-items: center;
@@ -32,18 +32,18 @@
 }
 
 .input:checked + .control {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
+  background: var(--boulder-color-primary);
+  border-color: var(--boulder-color-primary);
 }
 
 .checkmark {
-  width: 10px;
-  height: 10px;
+  width: var(--boulder-checkbox-checkmark-size);
+  height: var(--boulder-checkbox-checkmark-size);
 
-  color: white;
+  color: var(--boulder-color-text-inverse);
 }
 
 .label {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-primary);
+  font-size: var(--boulder-font-size-sm);
+  color: var(--boulder-color-text);
 }

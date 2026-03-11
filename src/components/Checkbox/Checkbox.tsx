@@ -1,15 +1,15 @@
 import { forwardRef } from "react";
 import type { CheckboxProps } from "./Checkbox.types";
 import styles from "./Checkbox.module.css";
-import { cx } from "@/utils/cx";
+import { cx } from "@/utils";
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ label, className, ...props }, ref) => {
     return (
-      <label className={styles.wrapper}>
+      <label className={cx(styles.wrapper, className)}>
         <input ref={ref} type="checkbox" className={styles.input} {...props} />
 
-        <span className={styles.control}>
+        <span className={styles.control} aria-hidden="true">
           <svg
             className={styles.checkmark}
             viewBox="0 0 24 24"
@@ -21,7 +21,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           </svg>
         </span>
 
-        {label && <span className={cx(styles.label, className)}>{label}</span>}
+        {label && <span className={styles.label}>{label}</span>}
       </label>
     );
   },

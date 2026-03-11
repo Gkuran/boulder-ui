@@ -1,6 +1,6 @@
 .error {
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-sm);
-  margin-top: var(--spacing-1);
-  color: var(--color-danger);
+  font-weight: var(--boulder-font-weight-medium);
+  font-size: var(--boulder-font-size-sm);
+  margin-top: var(--boulder-spacing-xs);
+  color: var(--boulder-color-danger);
 }

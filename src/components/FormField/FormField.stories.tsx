@@ -18,7 +18,9 @@ This component integrates:
 - **Label**: Provides accessible labeling for the input field
 - **Input**: The actual form control (passed as children)
 - **Description**: Optional helper text to guide users
-- **Error Message**: Displays validation errors when needed
+- **ErrorMessage**: Displays validation errors when needed
+
+The field ID is generated automatically via \`useId()\` and propagated to the child input via \`cloneElement\`. You can override it by passing the \`id\` prop.
 
 ## Installation
 \`\`\`bash
@@ -34,17 +36,16 @@ import { FormField } from 'boulder-ui';
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | \`label\` | \`string\` | - | The label text for the form field |
-| \`description\` | \`string\` | - | Optional helper text displayed below the label |
+| \`description\` | \`string\` | - | Optional helper text displayed below the input |
 | \`error\` | \`string\` | - | Error message displayed when validation fails |
-| \`htmlFor\` | \`string\` | - | Associates the label with an input element |
-| \`id\` | \`string\` | - | Unique identifier for the form field |
-| \`children\` | \`ReactElement\` | - | The input component(s) to be wrapped |
+| \`id\` | \`string\` | auto | Overrides the auto-generated field ID |
+| \`children\` | \`ReactElement\` | - | The input component to be wrapped |
 
 ## Usage Examples
 ### Basic Usage
 \`\`\`tsx
-<FormField label="Email" htmlFor="email">
-  <Input id="email" placeholder="Enter your email" />
+<FormField label="Email">
+  <Input placeholder="Enter your email" />
 </FormField>
 \`\`\`
 
@@ -54,9 +55,8 @@ import { FormField } from 'boulder-ui';
   label="Username"
   description="This will be visible to other users"
   error="Username is required"
-  htmlFor="username"
 >
-  <Input id="username" />
+  <Input />
 </FormField>
 \`\`\`
 `,
@@ -71,8 +71,8 @@ type Story = StoryObj<typeof FormField>;
 
 export const Default: Story = {
   render: () => (
-    <FormField label="Email" htmlFor="email">
-      <Input id="email" placeholder="Enter your email" />
+    <FormField label="Email">
+      <Input placeholder="Enter your email" />
     </FormField>
   ),
 };
@@ -82,16 +82,15 @@ export const WithDescription: Story = {
     <FormField
       label="Username"
       description="This will be visible to other users"
-      htmlFor="username"
     >
-      <Input id="username" />
+      <Input />
     </FormField>
   ),
 };
 
 export const WithError: Story = {
   render: () => (
-    <FormField label="Email" error="Invalid email address" htmlFor="email">
+    <FormField label="Email" error="Invalid email address">
       <Input />
     </FormField>
   ),
@@ -100,12 +99,12 @@ export const WithError: Story = {
 export const FullFormExample: Story = {
   render: () => (
     <form style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-      <FormField label="Email" htmlFor="email">
-        <Input id="email" />
+      <FormField label="Email">
+        <Input />
       </FormField>
 
-      <FormField label="Password" htmlFor="password">
-        <Input id="password" type="password" />
+      <FormField label="Password">
+        <Input type="password" />
       </FormField>
 
       <Button type="submit">Submit</Button>

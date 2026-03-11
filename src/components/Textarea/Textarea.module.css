@@ -1,7 +1,7 @@
 .textarea {
   width: 100%;
 
-  border-radius: var(--radius-md);
+  border-radius: var(--boulder-radius-md);
 
   font-family: inherit;
 
@@ -13,45 +13,47 @@
     box-shadow 0.15s ease;
 }
 
-/* variants */
+/* ─── Variantes ───────────────────────────────────────────────────────────── */
 
 .outline {
-  border: 1px solid var(--color-border-default);
-  background: var(--color-background-default);
+  border: 1px solid var(--boulder-color-border);
+  background: var(--boulder-color-background);
 }
 
 .outline:focus {
   outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px var(--color-primary-soft);
+  border-color: var(--boulder-color-primary);
+  box-shadow: 0 0 0 2px var(--boulder-color-primary-soft);
 }
 
 .filled {
   border: 1px solid transparent;
-  background: var(--color-background-subtle);
+  background: var(--boulder-color-background-subtle);
 }
 
 .filled:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--boulder-color-primary);
 }
 
-/* sizes */
+/* ─── Tamanhos ────────────────────────────────────────────────────────────── */
 
 .sm {
-  padding: var(--spacing-1) var(--spacing-2);
-  font-size: var(--font-size-sm);
+  padding: var(--boulder-spacing-xs) var(--boulder-spacing-sm);
+  font-size: var(--boulder-font-size-sm);
 }
 
 .md {
-  padding: var(--spacing-2) var(--spacing-3);
-  font-size: var(--font-size-md);
+  padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
+  font-size: var(--boulder-font-size-md);
 }
 
 .lg {
-  padding: var(--spacing-3) var(--spacing-4);
-  font-size: var(--font-size-lg);
+  padding: var(--boulder-spacing-md) var(--boulder-spacing-lg);
+  font-size: var(--boulder-font-size-lg);
 }
+
+/* ─── Estados ─────────────────────────────────────────────────────────────── */
 
 .textarea:disabled {
   opacity: 0.6;

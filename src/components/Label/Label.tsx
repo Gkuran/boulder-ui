@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import type { LabelProps } from "./Label.types";
 import styles from "./Label.module.css";
-import { cx } from "@/utils/cx";
+import { cx } from "@/utils";
 
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(
   ({ className, ...props }, ref) => {

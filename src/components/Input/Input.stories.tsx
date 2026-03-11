@@ -8,14 +8,14 @@ const meta: Meta<typeof Input> = {
   args: {
     placeholder: "Type something...",
     variant: "outline",
-    sizeVariant: "md",
+    size: "md",
   },
   argTypes: {
     variant: {
       control: "radio",
       options: ["outline", "filled"],
     },
-    sizeVariant: {
+    size: {
       control: "radio",
       options: ["sm", "md", "lg"],
     },
@@ -43,7 +43,7 @@ import { Input } from 'boulder-ui';
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | \`variant\` | \`'outline' \\| 'filled'\` | \`'outline'\` | Defines the visual style of the input |
-| \`sizeVariant\` | \`'sm' \\| 'md' \\| 'lg'\` | \`'md'\` | Controls the input's size |
+| \`size\` | \`'sm' \\| 'md' \\| 'lg'\` | \`'md'\` | Controls the input's size |
 | \`error\` | \`string\` | - | Error message for validation feedback |
 | \`placeholder\` | \`string\` | - | Placeholder text displayed when input is empty |
 
@@ -75,9 +75,9 @@ import { Input } from 'boulder-ui';
 
 ### Different Sizes
 \`\`\`tsx
-<Input sizeVariant="sm" placeholder="Small" />
-<Input sizeVariant="md" placeholder="Medium" />
-<Input sizeVariant="lg" placeholder="Large" />
+<Input size="sm" placeholder="Small" />
+<Input size="md" placeholder="Medium" />
+<Input size="lg" placeholder="Large" />
 \`\`\`
 `,
       },
@@ -99,13 +99,13 @@ export const Filled: Story = {
 
 export const Small: Story = {
   args: {
-    sizeVariant: "sm",
+    size: "sm",
   },
 };
 
 export const Large: Story = {
   args: {
-    sizeVariant: "lg",
+    size: "lg",
   },
 };
 

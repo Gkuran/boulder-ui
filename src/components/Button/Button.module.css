@@ -25,17 +25,17 @@
 
 .sm {
   padding: var(--boulder-spacing-xs) var(--boulder-spacing-sm);
-  font-size: 12px;
+  font-size: var(--boulder-font-size-sm);
 }
 
 .md {
   padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
-  font-size: 14px;
+  font-size: var(--boulder-font-size-md);
 }
 
 .lg {
   padding: var(--boulder-spacing-md) var(--boulder-spacing-lg);
-  font-size: 16px;
+  font-size: var(--boulder-font-size-lg);
 }
 
 /* PRIMARY */
@@ -85,7 +85,7 @@
   width: var(--boulder-spinner-size);
   height: var(--boulder-spinner-size);
 
-  border: var(--boulder-spinner-border-width) solid rgba(255, 255, 255, 0.4);
+  border: var(--boulder-spinner-border-width) solid var(--boulder-spinner-color-track);
   border-top-color: var(--boulder-color-text-inverse);
 
   border-radius: 50%;

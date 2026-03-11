@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { cx } from "../../utils";
+import { cx } from "@/utils";
 import styles from "./Switch.module.css";
 import type { SwitchProps } from "./Switch.types";
 
@@ -17,13 +17,10 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
     },
     ref,
   ) => {
-    const isChecked = checked ?? defaultChecked ?? false;
-
     return (
       <label
         htmlFor={id}
         className={cx(styles.container, styles[size], className)}
-        data-state={isChecked ? "checked" : "unchecked"}
         aria-disabled={disabled || undefined}
       >
         <span className={styles.switch}>
@@ -32,7 +29,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             id={id}
             type="checkbox"
             role="switch"
-            aria-checked={isChecked}
             checked={checked}
             defaultChecked={defaultChecked}
             disabled={disabled}

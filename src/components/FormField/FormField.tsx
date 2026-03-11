@@ -1,7 +1,8 @@
-import { cloneElement } from "react";
+import { cloneElement, useId } from "react";
 import type { FormFieldProps } from "./FormField.types";
 import styles from "./FormField.module.css";
 import { Label } from "../Label";
+import { ErrorMessage } from "../ErrorMessage";
 
 export function FormField({
   label,
@@ -10,16 +11,17 @@ export function FormField({
   id,
   children,
 }: FormFieldProps) {
-  const fieldId = id || `field-${Math.random().toString(36).slice(2, 9)}`;
+  const generatedId = useId();
+  const fieldId = id ?? generatedId;
 
   const descriptionId = `${fieldId}-description`;
   const errorId = `${fieldId}-error`;
 
   const describedBy = error ? errorId : description ? descriptionId : undefined;
 
-  const child = cloneElement(children as any, {
+  const child = cloneElement(children as React.ReactElement<Record<string, unknown>>, {
     id: fieldId,
-    "aria-invalid": !!error,
+    "aria-invalid": error ? true : undefined,
     "aria-describedby": describedBy,
   });
 
@@ -36,9 +38,7 @@ export function FormField({
       )}
 
       {error && (
-        <span id={errorId} className={styles.error}>
-          {error}
-        </span>
+        <ErrorMessage id={errorId}>{error}</ErrorMessage>
       )}
     </div>
   );
