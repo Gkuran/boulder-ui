@@ -1,6 +1,6 @@
 {
   "name": "boulder-ui",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A lightweight React component library for building consistent, accessible and composable interfaces",
   "type": "module",
   "sideEffects": false,
@@ -10,11 +10,12 @@
   "types": "dist/index.d.ts",
   "style": "dist/boulder-ui.css",
   "exports": {
-    ".":  {
+    ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    },    "./styles": "./dist/boulder-ui.css"
+    },
+    "./styles": "./dist/boulder-ui.css"
   },
   "files": [
     "dist",
