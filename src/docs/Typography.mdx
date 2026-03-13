@@ -1,0 +1,78 @@
+
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundation/Typography" />
+
+# Typography
+
+Boulder UI provides a flexible and scalable typography system through CSS custom properties. This system ensures visual consistency while allowing consumers to easily integrate their preferred fonts and adjust text properties to match their brand guidelines.
+
+All typography tokens are prefixed with `--boulder-`.
+
+## Font Family (Agnostic Approach)
+
+Boulder UI is **font-agnostic**. We do not enforce a specific font family. By default, the library uses `system-ui, sans-serif`, which leverages the native fonts of the user's operating system, providing fast loading times and a familiar feel.
+
+```css
+:root {
+  --boulder-font-family: system-ui, sans-serif;
+}
+```
+
+### Customization
+
+You can easily override the font family to integrate your own brand font. Simply declare your desired font in your application's CSS:
+
+```css
+:root {
+  --boulder-font-family: "Inter", sans-serif; /* Example: Using the Inter font */
+}
+```
+
+This approach ensures that all components using `--boulder-font-family` will automatically adopt your chosen font, maintaining consistency across your application.
+
+## Font Sizes
+
+Our font size scale is designed to create a clear visual hierarchy and improve readability. Sizes are defined in `px` for consistency and ease of use.
+
+| Token | Value | Example |
+|---|---|---|
+| `--boulder-font-size-xs` | `11px` | <span style={{ fontSize: 'var(--boulder-font-size-xs)', fontFamily: 'var(--boulder-font-family)' }}>The quick brown fox jumps over the lazy dog.</span> |
+| `--boulder-font-size-sm` | `12px` | <span style={{ fontSize: 'var(--boulder-font-size-sm)', fontFamily: 'var(--boulder-font-family)' }}>The quick brown fox jumps over the lazy dog.</span> |
+| `--boulder-font-size-md` | `14px` | <span style={{ fontSize: 'var(--boulder-font-size-md)', fontFamily: 'var(--boulder-font-family)' }}>The quick brown fox jumps over the lazy dog.</span> |
+| `--boulder-font-size-lg` | `16px` | <span style={{ fontSize: 'var(--boulder-font-size-lg)', fontFamily: 'var(--boulder-font-family)' }}>The quick brown fox jumps over the lazy dog.</span> |
+
+## Line Heights
+
+Consistent line heights improve readability and visual rhythm. Our line heights are unitless, providing better scalability with different font sizes.
+
+| Token | Value | Example |
+|---|---|---|
+| `--boulder-line-height-sm` | `1.4` | <p style={{ lineHeight: 'var(--boulder-line-height-sm)', fontFamily: 'var(--boulder-font-family)' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> |
+| `--boulder-line-height-md` | `1.5` | <p style={{ lineHeight: 'var(--boulder-line-height-md)', fontFamily: 'var(--boulder-font-family)' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> |
+
+## Font Weights
+
+Boulder UI defines a set of common font weights to support various typographic needs, from subtle text to bold headlines.
+
+| Token | Value | Example |
+|---|---|---|
+| `--boulder-font-weight-regular` | `400` | <span style={{ fontWeight: 'var(--boulder-font-weight-regular)', fontFamily: 'var(--boulder-font-family)' }}>Regular text</span> |
+| `--boulder-font-weight-medium` | `500` | <span style={{ fontWeight: 'var(--boulder-font-weight-medium)', fontFamily: 'var(--boulder-font-family)' }}>Medium text</span> |
+| `--boulder-font-weight-semibold` | `600` | <span style={{ fontWeight: 'var(--boulder-font-weight-semibold)', fontFamily: 'var(--boulder-font-family)' }}>Semibold text</span> |
+| `--boulder-font-weight-bold` | `700` | <span style={{ fontWeight: 'var(--boulder-font-weight-bold)', fontFamily: 'var(--boulder-font-family)' }}>Bold text</span> |
+
+## Usage
+
+To apply these typography tokens in your CSS, reference them as CSS custom properties:
+
+```css
+.my-heading {
+  font-family: var(--boulder-font-family);
+  font-size: var(--boulder-font-size-lg);
+  font-weight: var(--boulder-font-weight-bold);
+  line-height: var(--boulder-line-height-sm);
+}
+```
+
+By consistently using these tokens, you ensure a cohesive and maintainable typographic scale across your product.

@@ -1,0 +1,49 @@
+
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundation/Spacing" />
+
+# Spacing & Radius
+
+Boulder UI utilizes a consistent spacing and border-radius system, defined through CSS custom properties, to ensure visual harmony and predictability across all components and layouts. This system helps maintain a clean and organized interface, making it easier for users to scan and understand content.
+
+All spacing and radius tokens are prefixed with `--boulder-`.
+
+## Spacing Scale
+
+Our spacing scale is designed to provide a clear hierarchy for layout and component separation. These tokens should be used for margins, paddings, and gaps between elements.
+
+| Token | Value | Visual Representation |
+|---|---|---|
+| `--boulder-spacing-xs` | `4px` | <div style={{ width: '4px', height: '4px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-sm)' }}></div> |
+| `--boulder-spacing-sm` | `8px` | <div style={{ width: '8px', height: '8px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-sm)' }}></div> |
+| `--boulder-spacing-md` | `16px` | <div style={{ width: '16px', height: '16px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-sm)' }}></div> |
+| `--boulder-spacing-lg` | `24px` | <div style={{ width: '24px', height: '24px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-sm)' }}></div> |
+
+## Border Radius
+
+Our border-radius tokens provide consistent rounding for UI elements, contributing to a softer and more modern aesthetic. These tokens should be applied to elements that require rounded corners.
+
+| Token | Value | Visual Representation |
+|---|---|---|
+| `--boulder-radius-sm` | `4px` | <div style={{ width: '48px', height: '24px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-sm)' }}></div> |
+| `--boulder-radius-md` | `8px` | <div style={{ width: '48px', height: '24px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-md)' }}></div> |
+
+## Usage
+
+To apply these spacing and radius tokens in your CSS, reference them as CSS custom properties:
+
+```css
+.my-card {
+  padding: var(--boulder-spacing-md);
+  margin-bottom: var(--boulder-spacing-lg);
+  border-radius: var(--boulder-radius-md);
+}
+
+.my-button {
+  padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
+  border-radius: var(--boulder-radius-sm);
+}
+```
+
+By consistently using these tokens, you ensure a cohesive and maintainable visual rhythm across your product.
