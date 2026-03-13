@@ -9,27 +9,34 @@
 
 .root {
   font-family: var(--boulder-font-family);
-  /* box-sizing garante que padding e border não aumentam a largura declarada */
   box-sizing: border-box;
-  /* min-width evita que o conteúdo interno "empurre" o componente para fora */
-  min-width: 0;
+  /* display: block garante que o elemento ocupe a largura declarada
+     independentemente do conteúdo — evita o comportamento inline/shrink-to-fit */
+  display: block;
 }
 
 /* ─── Largura ─────────────────────────────────────────────────────────────── */
 
+/* A largura é declarada no root e todos os filhos herdam via width:100%.
+   Isso garante que o tamanho seja SEMPRE o mesmo, aberto ou fechado. */
+
 .root.width-sm {
   width: var(--_accordion-width-sm);
-  /* overflow: hidden impede que conteúdo interno ultrapasse a largura definida */
+  max-width: var(--_accordion-width-sm);
   overflow-x: hidden;
 }
 
 .root.width-md {
   width: var(--_accordion-width-md);
+  max-width: var(--_accordion-width-md);
   overflow-x: hidden;
 }
 
 .root.width-full {
+  /* width + max-width 100% garantem que o root preencha o container pai
+     tanto no estado fechado (sem painel) quanto no aberto (com painel) */
   width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
@@ -38,8 +45,6 @@
 .root.default {
   border: 1px solid var(--boulder-color-border);
   border-radius: var(--boulder-radius-md);
-  /* overflow: hidden já declarado nas classes de width;
-     aqui garante o arredondamento dos cantos nos filhos */
   overflow: hidden;
 }
 
@@ -51,8 +56,7 @@
 /* ─── Item ────────────────────────────────────────────────────────────────── */
 
 .item {
-  /* width: 100% garante que o item sempre ocupe toda a largura do root,
-     independente do conteúdo aberto ou fechado */
+  display: block;
   width: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid var(--boulder-color-border);
@@ -73,8 +77,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* width: 100% é a chave: o trigger sempre ocupa a largura total do item,
-     que por sua vez ocupa a largura total do root */
   width: 100%;
   box-sizing: border-box;
   padding: var(--boulder-spacing-md);
@@ -106,7 +108,6 @@
 
 .triggerLabel {
   flex: 1;
-  /* Evita que texto longo quebre o layout — trunca com ellipsis */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -130,7 +131,7 @@
 /* ─── Content ─────────────────────────────────────────────────────────────── */
 
 .content {
-  /* width: 100% garante que o painel nunca ultrapasse a largura do root */
+  display: block;
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
@@ -145,6 +146,5 @@
   color: var(--boulder-color-text-secondary);
   font-size: var(--boulder-font-size-md);
   line-height: var(--boulder-line-height-md);
-  /* word-break evita que URLs ou palavras longas quebrem o layout */
   word-break: break-word;
 }

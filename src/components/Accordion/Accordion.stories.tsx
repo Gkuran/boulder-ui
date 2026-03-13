@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
+import { Button } from "../Button";
 import {
   Accordion,
   AccordionItem,
@@ -398,20 +399,12 @@ export const Controlled: Story = {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         <div style={{ display: "flex", gap: "8px" }}>
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            style={{ padding: "6px 12px", cursor: "pointer" }}
-          >
+          <Button size="sm" variant="primary" onClick={() => setOpen(true)}>
             Open
-          </button>
-          <button
-            type="button"
-            onClick={() => setOpen(false)}
-            style={{ padding: "6px 12px", cursor: "pointer" }}
-          >
+          </Button>
+          <Button size="sm" variant="secondary" onClick={() => setOpen(false)}>
             Close
-          </button>
+          </Button>
         </div>
         <Accordion {...args}>
           <AccordionItem open={open} onOpenChange={setOpen}>
