@@ -41,11 +41,16 @@ function useAccordionItem(componentName: string): AccordionItemContextValue {
 // ─── AccordionRoot ────────────────────────────────────────────────────────────
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  ({ variant = "default", className, children, ...props }, ref) => {
+  ({ variant = "default", width = "full", className, children, ...props }, ref) => {
     return (
       <div
         ref={ref}
-        className={cx(styles.root, styles[variant], className)}
+        className={cx(
+          styles.root,
+          styles[variant],
+          styles[`width-${width}`],
+          className,
+        )}
         {...props}
       >
         {children}

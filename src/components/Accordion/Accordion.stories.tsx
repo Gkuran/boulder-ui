@@ -23,7 +23,7 @@ The **Accordion** component is a composable, accessible disclosure widget that a
 
 The Accordion is built from four composable sub-components that work together through a shared React context:
 
-- **\`Accordion\`** — The root container. Defines the visual variant.
+- **\`Accordion\`** — The root container. Defines the visual variant and fixed width.
 - **\`AccordionItem\`** — A single collapsible section. Manages its own open/closed state.
 - **\`AccordionTrigger\`** — The button that toggles the item. Renders a chevron icon automatically.
 - **\`AccordionContent\`** — The panel that is shown or hidden. Linked to the trigger via ARIA attributes.
@@ -52,6 +52,7 @@ import {
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | \`variant\` | \`"default" \\| "flush"\` | \`"default"\` | Visual style of the root container |
+| \`width\` | \`"sm" \\| "md" \\| "full"\` | \`"full"\` | Fixed width of the accordion. Ensures consistent size whether open or closed |
 | \`className\` | \`string\` | — | Additional CSS class |
 
 ### AccordionItem
@@ -70,6 +71,16 @@ Accepts all native \`<button>\` attributes except \`type\` (always \`"button"\`)
 ### AccordionContent
 
 Accepts all native \`<div>\` attributes.
+
+## Width
+
+The \`width\` prop sets a **fixed width** on the root container, ensuring the accordion maintains the same size whether its items are open or closed.
+
+| Value | Width | Use case |
+|---|---|---|
+| \`sm\` | \`280px\` | Sidebars, narrow panels, navigation drawers |
+| \`md\` | \`480px\` | Content areas, forms, modals |
+| \`full\` | \`100%\` | Full-width layouts, cards, page sections |
 
 ## Accessibility
 
@@ -90,35 +101,25 @@ Accepts all native \`<div>\` attributes.
 ### Default (uncontrolled)
 
 \`\`\`tsx
-<Accordion>
+<Accordion width="md">
   <AccordionItem>
     <AccordionTrigger>What is Boulder UI?</AccordionTrigger>
     <AccordionContent>
-      Boulder UI is a lightweight, accessible React component library
-      focused on consistency and composability.
-    </AccordionContent>
-  </AccordionItem>
-  <AccordionItem>
-    <AccordionTrigger>How do I install it?</AccordionTrigger>
-    <AccordionContent>
-      Run <code>npm install boulder-ui</code> and import the styles
-      via <code>import "boulder-ui/styles"</code>.
+      Boulder UI is a lightweight, accessible React component library.
     </AccordionContent>
   </AccordionItem>
 </Accordion>
 \`\`\`
 
-### Flush variant
+### Sidebar (sm width)
 
 \`\`\`tsx
-<Accordion variant="flush">
+<Accordion variant="flush" width="sm">
   <AccordionItem>
-    <AccordionTrigger>Section one</AccordionTrigger>
-    <AccordionContent>Content for section one.</AccordionContent>
-  </AccordionItem>
-  <AccordionItem>
-    <AccordionTrigger>Section two</AccordionTrigger>
-    <AccordionContent>Content for section two.</AccordionContent>
+    <AccordionTrigger>Navigation</AccordionTrigger>
+    <AccordionContent>
+      <nav>...</nav>
+    </AccordionContent>
   </AccordionItem>
 </Accordion>
 \`\`\`
@@ -128,23 +129,12 @@ Accepts all native \`<div>\` attributes.
 \`\`\`tsx
 const [open, setOpen] = useState(false);
 
-<Accordion>
+<Accordion width="md">
   <AccordionItem open={open} onOpenChange={setOpen}>
     <AccordionTrigger>Controlled item</AccordionTrigger>
     <AccordionContent>
       This item's state is managed externally.
     </AccordionContent>
-  </AccordionItem>
-</Accordion>
-\`\`\`
-
-### Disabled item
-
-\`\`\`tsx
-<Accordion>
-  <AccordionItem disabled>
-    <AccordionTrigger>Unavailable section</AccordionTrigger>
-    <AccordionContent>This content cannot be accessed.</AccordionContent>
   </AccordionItem>
 </Accordion>
 \`\`\`
@@ -157,9 +147,14 @@ const [open, setOpen] = useState(false);
       control: "select",
       options: ["default", "flush"],
       description: "Visual style of the accordion root container.",
-      table: {
-        defaultValue: { summary: "default" },
-      },
+      table: { defaultValue: { summary: "default" } },
+    },
+    width: {
+      control: "select",
+      options: ["sm", "md", "full"],
+      description:
+        "Fixed width of the accordion. Ensures consistent size whether open or closed.",
+      table: { defaultValue: { summary: "full" } },
     },
   },
 };
@@ -201,19 +196,122 @@ export const Default: Story = {
   ),
   args: {
     variant: "default",
+    width: "full",
+  },
+};
+
+export const WidthSm: Story = {
+  name: "Width — Small (280px)",
+  render: (args) => (
+    <Accordion {...args}>
+      <AccordionItem>
+        <AccordionTrigger>Navigation</AccordionTrigger>
+        <AccordionContent>
+          Ideal for sidebars, drawers, and narrow panels. The accordion
+          maintains 280px whether open or closed.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionTrigger>Settings</AccordionTrigger>
+        <AccordionContent>
+          Use the <code>flush</code> variant combined with <code>sm</code>{" "}
+          width for a clean sidebar navigation pattern.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+  args: {
+    variant: "default",
+    width: "sm",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Fixed at 280px. Suitable for sidebars, navigation drawers, or any narrow panel layout.",
+      },
+    },
+  },
+};
+
+export const WidthMd: Story = {
+  name: "Width — Medium (480px)",
+  render: (args) => (
+    <Accordion {...args}>
+      <AccordionItem>
+        <AccordionTrigger>What is Boulder UI?</AccordionTrigger>
+        <AccordionContent>
+          Boulder UI is a lightweight, accessible React component library
+          focused on building consistent, composable interfaces.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionTrigger>How do I install it?</AccordionTrigger>
+        <AccordionContent>
+          Run <code>npm install boulder-ui</code> and import the styles via{" "}
+          <code>import &quot;boulder-ui/styles&quot;</code>.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+  args: {
+    variant: "default",
+    width: "md",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Fixed at 480px. Suitable for content areas, forms, and modals.",
+      },
+    },
+  },
+};
+
+export const WidthFull: Story = {
+  name: "Width — Full (100%)",
+  render: (args) => (
+    <Accordion {...args}>
+      <AccordionItem>
+        <AccordionTrigger>Full-width section</AccordionTrigger>
+        <AccordionContent>
+          Stretches to fill the parent container. Use this for page-level
+          sections, cards, or any layout where the accordion should adapt to
+          its context.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionTrigger>Another full-width section</AccordionTrigger>
+        <AccordionContent>
+          The <code>full</code> value is the default behavior — no fixed width
+          is applied, so the component adapts naturally to its container.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+  args: {
+    variant: "default",
+    width: "full",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Stretches to 100% of the parent container. Default behavior — use for full-width layouts.",
+      },
+    },
   },
 };
 
 export const Flush: Story = {
-  name: "Flush",
+  name: "Flush Variant",
   render: (args) => (
     <Accordion {...args}>
       <AccordionItem>
         <AccordionTrigger>Design tokens</AccordionTrigger>
         <AccordionContent>
           All spacing, color, typography, and radius values are defined as CSS
-          custom properties, ensuring a single source of truth for visual
-          decisions.
+          custom properties, ensuring a single source of truth.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem>
@@ -235,6 +333,7 @@ export const Flush: Story = {
   ),
   args: {
     variant: "flush",
+    width: "md",
   },
 };
 
@@ -260,6 +359,7 @@ export const DefaultOpen: Story = {
   ),
   args: {
     variant: "default",
+    width: "md",
   },
 };
 
@@ -279,12 +379,15 @@ export const WithDisabledItem: Story = {
       </AccordionItem>
       <AccordionItem>
         <AccordionTrigger>Another available section</AccordionTrigger>
-        <AccordionContent>This section can also be toggled normally.</AccordionContent>
+        <AccordionContent>
+          This section can also be toggled normally.
+        </AccordionContent>
       </AccordionItem>
     </Accordion>
   ),
   args: {
     variant: "default",
+    width: "md",
   },
 };
 
@@ -325,6 +428,7 @@ export const Controlled: Story = {
   },
   args: {
     variant: "default",
+    width: "md",
   },
   parameters: {
     docs: {

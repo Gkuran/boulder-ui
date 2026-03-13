@@ -4,6 +4,14 @@ import type { HTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
 export type AccordionVariant = "default" | "flush";
 
+/**
+ * Controls the fixed width of the Accordion.
+ * - `sm`   — 280px. Suitable for sidebars or narrow panels.
+ * - `md`   — 480px. Suitable for content areas and forms.
+ * - `full` — 100% of the parent container. Default behavior.
+ */
+export type AccordionWidth = "sm" | "md" | "full";
+
 // ─── AccordionRoot ────────────────────────────────────────────────────────────
 
 export interface AccordionProps extends HTMLAttributes<HTMLDivElement> {
@@ -14,6 +22,15 @@ export interface AccordionProps extends HTMLAttributes<HTMLDivElement> {
    * @default "default"
    */
   variant?: AccordionVariant;
+  /**
+   * Fixed width of the accordion root.
+   * Ensures the component maintains the same width whether open or closed.
+   * - `sm`   — 280px. Suitable for sidebars or narrow panels.
+   * - `md`   — 480px. Suitable for content areas and forms.
+   * - `full` — 100% of the parent container.
+   * @default "full"
+   */
+  width?: AccordionWidth;
 }
 
 // ─── AccordionItem ────────────────────────────────────────────────────────────
@@ -43,9 +60,8 @@ export interface AccordionItemProps extends HTMLAttributes<HTMLDivElement> {
 // ─── AccordionTrigger ─────────────────────────────────────────────────────────
 
 /**
- * `open` is intentionally omitted from ButtonHTMLAttributes because it is not
- * a valid attribute on <button> and would conflict with the internal open state
- * passed down from AccordionItem.
+ * `type` is intentionally omitted from ButtonHTMLAttributes — it is always
+ * set to `"button"` internally to prevent accidental form submission.
  */
 export interface AccordionTriggerProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
