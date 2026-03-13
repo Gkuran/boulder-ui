@@ -1,0 +1,110 @@
+/* ─── Root ────────────────────────────────────────────────────────────────── */
+
+.root {
+  font-family: var(--boulder-font-family);
+  width: 100%;
+}
+
+.root.default {
+  border: 1px solid var(--boulder-color-border);
+  border-radius: var(--boulder-radius-md);
+  overflow: hidden;
+}
+
+.root.flush {
+  border: none;
+  border-radius: 0;
+}
+
+/* ─── Item ────────────────────────────────────────────────────────────────── */
+
+.item {
+  border-bottom: 1px solid var(--boulder-color-border);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.root.flush .item {
+  border-bottom: 1px solid var(--boulder-color-border);
+}
+
+.root.flush .item:last-child {
+  border-bottom: none;
+}
+
+.itemDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── Trigger ─────────────────────────────────────────────────────────────── */
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--boulder-spacing-md);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--boulder-color-text);
+  font-family: var(--boulder-font-family);
+  font-size: var(--boulder-font-size-md);
+  font-weight: var(--boulder-font-weight-medium);
+  line-height: var(--boulder-line-height-sm);
+  transition: background-color 150ms ease, color 150ms ease;
+  gap: var(--boulder-spacing-sm);
+}
+
+.trigger:hover:not(:disabled) {
+  background-color: var(--boulder-color-background-subtle);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--boulder-color-primary);
+  outline-offset: -2px;
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+}
+
+.triggerLabel {
+  flex: 1;
+}
+
+/* ─── Icon (chevron) ──────────────────────────────────────────────────────── */
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--boulder-color-muted);
+  transition: transform 200ms ease;
+}
+
+.triggerOpen .icon {
+  transform: rotate(180deg);
+}
+
+/* ─── Content ─────────────────────────────────────────────────────────────── */
+
+.content {
+  overflow: hidden;
+}
+
+.content[hidden] {
+  display: none;
+}
+
+.contentInner {
+  padding: 0 var(--boulder-spacing-md) var(--boulder-spacing-md);
+  color: var(--boulder-color-text-secondary);
+  font-size: var(--boulder-font-size-md);
+  line-height: var(--boulder-line-height-md);
+}
