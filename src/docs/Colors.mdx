@@ -1,6 +1,5 @@
-
-import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
-import * as Tokens from '../styles/tokens.css';
+import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
+import * as Tokens from "../styles/tokens.css";
 
 <Meta title="Foundation/Colors" />
 
@@ -15,11 +14,31 @@ All color tokens are prefixed with `--boulder-color-`.
 These are the foundational colors from which the semantic palette is derived. They offer a neutral base for building more specific color roles.
 
 <ColorPalette>
-  <ColorItem title="Boulder Color 1" subtitle="--boulder-color-1" colors={{ 'Hex': '#8a7650' }} />
-  <ColorItem title="Boulder Color 2" subtitle="--boulder-color-2" colors={{ 'Hex': '#8e977d' }} />
-  <ColorItem title="Boulder Color 3" subtitle="--boulder-color-3" colors={{ 'Hex': '#ece7d1' }} />
-  <ColorItem title="Boulder Color 4" subtitle="--boulder-color-4" colors={{ 'Hex': '#dbcea5' }} />
-  <ColorItem title="Boulder Color 5" subtitle="--boulder-color-5" colors={{ 'Hex': '#ffffff' }} />
+  <ColorItem
+    title="Boulder Color 1"
+    subtitle="--boulder-color-1"
+    colors={{ Hex: "#8a7650" }}
+  />
+  <ColorItem
+    title="Boulder Color 2"
+    subtitle="--boulder-color-2"
+    colors={{ Hex: "#8e977d" }}
+  />
+  <ColorItem
+    title="Boulder Color 3"
+    subtitle="--boulder-color-3"
+    colors={{ Hex: "#ece7d1" }}
+  />
+  <ColorItem
+    title="Boulder Color 4"
+    subtitle="--boulder-color-4"
+    colors={{ Hex: "#dbcea5" }}
+  />
+  <ColorItem
+    title="Boulder Color 5"
+    subtitle="--boulder-color-5"
+    colors={{ Hex: "#ffffff" }}
+  />
 </ColorPalette>
 
 ## Semantic Colors
@@ -31,16 +50,48 @@ Semantic colors are used for specific purposes within the UI, such as primary ac
   <ColorItem title="Primary Hover" subtitle="--boulder-color-primary-hover" colors={{ 'Hex': 'var(--boulder-color-2)' }} />
   <ColorItem title="Primary Soft" subtitle="--boulder-color-primary-soft" colors={{ 'Hex': 'var(--boulder-color-4)' }} />
 
-  <ColorItem title="Surface" subtitle="--boulder-color-surface" colors={{ 'Hex': 'var(--boulder-color-4)' }} />
-  <ColorItem title="Background" subtitle="--boulder-color-background" colors={{ 'Hex': 'var(--boulder-color-5)' }} />
-  <ColorItem title="Background Subtle" subtitle="--boulder-color-background-subtle" colors={{ 'Hex': 'var(--boulder-color-4)' }} />
+<ColorItem
+  title="Surface"
+  subtitle="--boulder-color-surface"
+  colors={{ Hex: "var(--boulder-color-4)" }}
+/>
+<ColorItem
+  title="Background"
+  subtitle="--boulder-color-background"
+  colors={{ Hex: "var(--boulder-color-5)" }}
+/>
+<ColorItem
+  title="Background Subtle"
+  subtitle="--boulder-color-background-subtle"
+  colors={{ Hex: "var(--boulder-color-4)" }}
+/>
 
-  <ColorItem title="Border" subtitle="--boulder-color-border" colors={{ 'Hex': 'var(--boulder-color-3)' }} />
-  <ColorItem title="Muted" subtitle="--boulder-color-muted" colors={{ 'Hex': 'var(--boulder-color-2)' }} />
+<ColorItem
+  title="Border"
+  subtitle="--boulder-color-border"
+  colors={{ Hex: "var(--boulder-color-3)" }}
+/>
+<ColorItem
+  title="Muted"
+  subtitle="--boulder-color-muted"
+  colors={{ Hex: "var(--boulder-color-2)" }}
+/>
 
-  <ColorItem title="Text" subtitle="--boulder-color-text" colors={{ 'Hex': '#1a1a1a' }} />
-  <ColorItem title="Text Secondary" subtitle="--boulder-color-text-secondary" colors={{ 'Hex': '#666666' }} />
-  <ColorItem title="Text Inverse" subtitle="--boulder-color-text-inverse" colors={{ 'Hex': '#ffffff' }} />
+<ColorItem
+  title="Text"
+  subtitle="--boulder-color-text"
+  colors={{ Hex: "#1a1a1a" }}
+/>
+<ColorItem
+  title="Text Secondary"
+  subtitle="--boulder-color-text-secondary"
+  colors={{ Hex: "#666666" }}
+/>
+<ColorItem
+  title="Text Inverse"
+  subtitle="--boulder-color-text-inverse"
+  colors={{ Hex: "#ffffff" }}
+/>
 
   <ColorItem title="Danger" subtitle="--boulder-color-danger" colors={{ 'Hex': '#e5484d' }} />
   <ColorItem title="Danger Hover" subtitle="--boulder-color-danger-hover" colors={{ 'Hex': '#d13438' }} />
