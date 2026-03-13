@@ -4,45 +4,78 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 # Spacing & Radius
 
-Boulder UI utilizes a consistent spacing and border-radius system, defined through CSS custom properties, to ensure visual harmony and predictability across all components and layouts. This system helps maintain a clean and organized interface, making it easier for users to scan and understand content.
+Boulder UI uses a deliberate spacing and border-radius system built on CSS custom properties. Every component in the library uses these tokens exclusively — no hardcoded pixel values. This guarantees visual consistency across your product and makes global layout adjustments trivial.
 
-All spacing and radius tokens are prefixed with `--boulder-`.
+All tokens are prefixed with `--boulder-`.
+
+---
 
 ## Spacing Scale
 
-Our spacing scale is designed to provide a clear hierarchy for layout and component separation. These tokens should be used for margins, paddings, and gaps between elements.
+The spacing scale follows a base-4 progression, providing a predictable rhythm for margins, paddings, and gaps. Use these tokens whenever you need to position or separate elements.
 
-| Token                  | Value  | Visual Representation                                                                                                                            |
-| ---------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `--boulder-spacing-xs` | `4px`  | <div style={{ width: '4px', height: '4px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-sm)' }}></div>   |
-| `--boulder-spacing-sm` | `8px`  | <div style={{ width: '8px', height: '8px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-sm)' }}></div>   |
-| `--boulder-spacing-md` | `16px` | <div style={{ width: '16px', height: '16px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-sm)' }}></div> |
-| `--boulder-spacing-lg` | `24px` | <div style={{ width: '24px', height: '24px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-sm)' }}></div> |
+<div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "24px 0" }}>
+  {[
+    { token: "--boulder-spacing-xs", value: "4px",  px: 4  },
+    { token: "--boulder-spacing-sm", value: "8px",  px: 8  },
+    { token: "--boulder-spacing-md", value: "16px", px: 16 },
+    { token: "--boulder-spacing-lg", value: "24px", px: 24 },
+  ].map(({ token, value, px }) => (
+    <div key={token} style={{ display: "grid", gridTemplateColumns: "220px 60px 1fr", alignItems: "center", gap: "16px", padding: "12px 16px", borderRadius: "6px", background: "#f9f9f9", border: "1px solid #ececec" }}>
+      <code style={{ fontSize: "12px", color: "#555" }}>{token}</code>
+      <span style={{ fontSize: "12px", color: "#999", fontVariantNumeric: "tabular-nums" }}>{value}</span>
+      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <div style={{ width: `${px * 4}px`, height: "20px", background: "#8a7650", borderRadius: "3px", flexShrink: 0 }} />
+        <span style={{ fontSize: "11px", color: "#aaa" }}>{px * 4}px visual bar (4×)</span>
+      </div>
+    </div>
+  ))}
+</div>
+
+---
 
 ## Border Radius
 
-Our border-radius tokens provide consistent rounding for UI elements, contributing to a softer and more modern aesthetic. These tokens should be applied to elements that require rounded corners.
+Border-radius tokens define the rounding applied to interactive elements such as buttons, inputs, and cards. Consistent rounding contributes to a cohesive and polished visual identity.
 
-| Token                 | Value | Visual Representation                                                                                                                            |
-| --------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `--boulder-radius-sm` | `4px` | <div style={{ width: '48px', height: '24px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-sm)' }}></div> |
-| `--boulder-radius-md` | `8px` | <div style={{ width: '48px', height: '24px', backgroundColor: 'var(--boulder-color-primary)', borderRadius: 'var(--boulder-radius-md)' }}></div> |
+<div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "24px 0" }}>
+  {[
+    { token: "--boulder-radius-sm", value: "4px", radius: "4px" },
+    { token: "--boulder-radius-md", value: "8px", radius: "8px" },
+  ].map(({ token, value, radius }) => (
+    <div key={token} style={{ display: "grid", gridTemplateColumns: "200px 60px 1fr", alignItems: "center", gap: "16px", padding: "12px 16px", borderRadius: "6px", background: "#f9f9f9", border: "1px solid #ececec" }}>
+      <code style={{ fontSize: "12px", color: "#555" }}>{token}</code>
+      <span style={{ fontSize: "12px", color: "#999", fontVariantNumeric: "tabular-nums" }}>{value}</span>
+      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+        <div style={{ width: "80px", height: "32px", background: "#8a7650", borderRadius: radius }} />
+        <div style={{ width: "32px", height: "32px", background: "#dbcea5", border: "2px solid #8a7650", borderRadius: radius }} />
+      </div>
+    </div>
+  ))}
+</div>
+
+---
 
 ## Usage
 
-To apply these spacing and radius tokens in your CSS, reference them as CSS custom properties:
-
 ```css
-.my-card {
+/* Card */
+.card {
   padding: var(--boulder-spacing-md);
-  margin-bottom: var(--boulder-spacing-lg);
   border-radius: var(--boulder-radius-md);
+  border: 1px solid var(--boulder-color-border);
 }
 
-.my-button {
+/* Form field gap */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--boulder-spacing-sm);
+}
+
+/* Button padding */
+.button {
   padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
   border-radius: var(--boulder-radius-sm);
 }
 ```
-
-By consistently using these tokens, you ensure a cohesive and maintainable visual rhythm across your product.

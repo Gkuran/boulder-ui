@@ -8,9 +8,11 @@ Boulder UI provides a flexible and scalable typography system through CSS custom
 
 All typography tokens are prefixed with `--boulder-`.
 
-## Font Family (Agnostic Approach)
+---
 
-Boulder UI is **font-agnostic**. We do not enforce a specific font family. By default, the library uses `system-ui, sans-serif`, which leverages the native fonts of the user's operating system, providing fast loading times and a familiar feel.
+## Font Family — Agnostic Approach
+
+Boulder UI is **font-agnostic**. The library does not enforce or bundle any specific typeface. By default, `--boulder-font-family` resolves to `system-ui, sans-serif`, which leverages the native font stack of the user's operating system — providing zero-latency rendering and a familiar feel without any additional loading cost.
 
 ```css
 :root {
@@ -18,61 +20,100 @@ Boulder UI is **font-agnostic**. We do not enforce a specific font family. By de
 }
 ```
 
-### Customization
+### Bringing your own font
 
-You can easily override the font family to integrate your own brand font. Simply declare your desired font in your application's CSS:
+To integrate your brand's typeface, override the token once in your application's global CSS. Every Boulder UI component that renders text will automatically adopt the new value.
 
 ```css
+/* Example: Google Fonts — Inter */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
 :root {
-  --boulder-font-family:
-    "Inter", sans-serif; /* Example: Using the Inter font */
+  --boulder-font-family: "Inter", sans-serif;
 }
 ```
 
-This approach ensures that all components using `--boulder-font-family` will automatically adopt your chosen font, maintaining consistency across your application.
+No component-level changes are required. The single token override propagates through the entire system.
 
-## Font Sizes
+---
 
-Our font size scale is designed to create a clear visual hierarchy and improve readability. Sizes are defined in `px` for consistency and ease of use.
+## Font Size Scale
 
-| Token                    | Value  | Example                                                                                                                                                 |
-| ------------------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--boulder-font-size-xs` | `11px` | <span style={{ fontSize: 'var(--boulder-font-size-xs)', fontFamily: 'var(--boulder-font-family)' }}>The quick brown fox jumps over the lazy dog.</span> |
-| `--boulder-font-size-sm` | `12px` | <span style={{ fontSize: 'var(--boulder-font-size-sm)', fontFamily: 'var(--boulder-font-family)' }}>The quick brown fox jumps over the lazy dog.</span> |
-| `--boulder-font-size-md` | `14px` | <span style={{ fontSize: 'var(--boulder-font-size-md)', fontFamily: 'var(--boulder-font-family)' }}>The quick brown fox jumps over the lazy dog.</span> |
-| `--boulder-font-size-lg` | `16px` | <span style={{ fontSize: 'var(--boulder-font-size-lg)', fontFamily: 'var(--boulder-font-family)' }}>The quick brown fox jumps over the lazy dog.</span> |
+<div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "24px 0" }}>
+  {[
+    { token: "--boulder-font-size-xs", value: "11px", size: "11px", label: "Extra Small" },
+    { token: "--boulder-font-size-sm", value: "12px", size: "12px", label: "Small" },
+    { token: "--boulder-font-size-md", value: "14px", size: "14px", label: "Medium (base)" },
+    { token: "--boulder-font-size-lg", value: "16px", size: "16px", label: "Large" },
+  ].map(({ token, value, size, label }) => (
+    <div key={token} style={{ display: "grid", gridTemplateColumns: "220px 60px 1fr", alignItems: "center", gap: "16px", padding: "12px 16px", borderRadius: "6px", background: "#f9f9f9", border: "1px solid #ececec" }}>
+      <code style={{ fontSize: "12px", color: "#555" }}>{token}</code>
+      <span style={{ fontSize: "12px", color: "#999", fontVariantNumeric: "tabular-nums" }}>{value}</span>
+      <span style={{ fontSize: size, fontFamily: "var(--boulder-font-family)", color: "#1a1a1a", lineHeight: 1.4 }}>
+        {label} — The quick brown fox jumps over the lazy dog.
+      </span>
+    </div>
+  ))}
+</div>
 
-## Line Heights
+---
 
-Consistent line heights improve readability and visual rhythm. Our line heights are unitless, providing better scalability with different font sizes.
+## Font Weight Scale
 
-| Token                      | Value | Example                                                                                                                                                                                                                              |
-| -------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `--boulder-line-height-sm` | `1.4` | <p style={{ lineHeight: 'var(--boulder-line-height-sm)', fontFamily: 'var(--boulder-font-family)' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> |
-| `--boulder-line-height-md` | `1.5` | <p style={{ lineHeight: 'var(--boulder-line-height-md)', fontFamily: 'var(--boulder-font-family)' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> |
+<div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "24px 0" }}>
+  {[
+    { token: "--boulder-font-weight-regular",  value: "400", label: "Regular"  },
+    { token: "--boulder-font-weight-medium",   value: "500", label: "Medium"   },
+    { token: "--boulder-font-weight-semibold", value: "600", label: "Semibold" },
+    { token: "--boulder-font-weight-bold",     value: "700", label: "Bold"     },
+  ].map(({ token, value, label }) => (
+    <div key={token} style={{ display: "grid", gridTemplateColumns: "260px 60px 1fr", alignItems: "center", gap: "16px", padding: "12px 16px", borderRadius: "6px", background: "#f9f9f9", border: "1px solid #ececec" }}>
+      <code style={{ fontSize: "12px", color: "#555" }}>{token}</code>
+      <span style={{ fontSize: "12px", color: "#999", fontVariantNumeric: "tabular-nums" }}>{value}</span>
+      <span style={{ fontSize: "15px", fontWeight: value, fontFamily: "var(--boulder-font-family)", color: "#1a1a1a" }}>
+        {label} — The quick brown fox.
+      </span>
+    </div>
+  ))}
+</div>
 
-## Font Weights
+---
 
-Boulder UI defines a set of common font weights to support various typographic needs, from subtle text to bold headlines.
+## Line Height Scale
 
-| Token                            | Value | Example                                                                                                                            |
-| -------------------------------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `--boulder-font-weight-regular`  | `400` | <span style={{ fontWeight: 'var(--boulder-font-weight-regular)', fontFamily: 'var(--boulder-font-family)' }}>Regular text</span>   |
-| `--boulder-font-weight-medium`   | `500` | <span style={{ fontWeight: 'var(--boulder-font-weight-medium)', fontFamily: 'var(--boulder-font-family)' }}>Medium text</span>     |
-| `--boulder-font-weight-semibold` | `600` | <span style={{ fontWeight: 'var(--boulder-font-weight-semibold)', fontFamily: 'var(--boulder-font-family)' }}>Semibold text</span> |
-| `--boulder-font-weight-bold`     | `700` | <span style={{ fontWeight: 'var(--boulder-font-weight-bold)', fontFamily: 'var(--boulder-font-family)' }}>Bold text</span>         |
+<div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "24px 0" }}>
+  {[
+    { token: "--boulder-line-height-sm", value: "1.4", label: "Tight"        },
+    { token: "--boulder-line-height-md", value: "1.5", label: "Comfortable"  },
+  ].map(({ token, value, label }) => (
+    <div key={token} style={{ display: "grid", gridTemplateColumns: "240px 60px 1fr", alignItems: "start", gap: "16px", padding: "12px 16px", borderRadius: "6px", background: "#f9f9f9", border: "1px solid #ececec" }}>
+      <code style={{ fontSize: "12px", color: "#555", paddingTop: "2px" }}>{token}</code>
+      <span style={{ fontSize: "12px", color: "#999", fontVariantNumeric: "tabular-nums", paddingTop: "2px" }}>{value}</span>
+      <p style={{ margin: 0, fontSize: "14px", lineHeight: value, fontFamily: "var(--boulder-font-family)", color: "#1a1a1a" }}>
+        <strong>{label}</strong> — Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+      </p>
+    </div>
+  ))}
+</div>
+
+---
 
 ## Usage
 
-To apply these typography tokens in your CSS, reference them as CSS custom properties:
-
 ```css
-.my-heading {
+.heading {
   font-family: var(--boulder-font-family);
   font-size: var(--boulder-font-size-lg);
   font-weight: var(--boulder-font-weight-bold);
   line-height: var(--boulder-line-height-sm);
+  color: var(--boulder-color-text);
+}
+
+.body {
+  font-family: var(--boulder-font-family);
+  font-size: var(--boulder-font-size-md);
+  font-weight: var(--boulder-font-weight-regular);
+  line-height: var(--boulder-line-height-md);
+  color: var(--boulder-color-text-secondary);
 }
 ```
-
-By consistently using these tokens, you ensure a cohesive and maintainable typographic scale across your product.

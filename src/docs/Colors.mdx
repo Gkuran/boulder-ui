@@ -1,122 +1,77 @@
 import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
-import * as Tokens from "../styles/tokens.css";
 
 <Meta title="Foundation/Colors" />
 
 # Colors
 
-The Boulder UI color palette is designed to provide a consistent and accessible visual experience across all applications. Our colors are defined as CSS custom properties (design tokens) to ensure easy customization and maintainability.
+The Boulder UI color palette is designed to provide a consistent and accessible visual experience. Colors are defined as CSS custom properties so that consumers can override any value to match their brand without touching component source code.
 
 All color tokens are prefixed with `--boulder-color-`.
 
+---
+
 ## Base Palette
 
-These are the foundational colors from which the semantic palette is derived. They offer a neutral base for building more specific color roles.
+These are the raw, foundational colors from which all semantic roles are derived. They are intentionally neutral and earthy, reflecting the Boulder identity.
 
 <ColorPalette>
-  <ColorItem
-    title="Boulder Color 1"
-    subtitle="--boulder-color-1"
-    colors={{ Hex: "#8a7650" }}
-  />
-  <ColorItem
-    title="Boulder Color 2"
-    subtitle="--boulder-color-2"
-    colors={{ Hex: "#8e977d" }}
-  />
-  <ColorItem
-    title="Boulder Color 3"
-    subtitle="--boulder-color-3"
-    colors={{ Hex: "#ece7d1" }}
-  />
-  <ColorItem
-    title="Boulder Color 4"
-    subtitle="--boulder-color-4"
-    colors={{ Hex: "#dbcea5" }}
-  />
-  <ColorItem
-    title="Boulder Color 5"
-    subtitle="--boulder-color-5"
-    colors={{ Hex: "#ffffff" }}
-  />
+  <ColorItem title="Color 1" subtitle="--boulder-color-1" colors={{ "Warm Brown": "#8a7650" }} />
+  <ColorItem title="Color 2" subtitle="--boulder-color-2" colors={{ "Sage Green": "#8e977d" }} />
+  <ColorItem title="Color 3" subtitle="--boulder-color-3" colors={{ "Pale Sand": "#ece7d1" }} />
+  <ColorItem title="Color 4" subtitle="--boulder-color-4" colors={{ "Warm Sand": "#dbcea5" }} />
+  <ColorItem title="Color 5" subtitle="--boulder-color-5" colors={{ "White": "#ffffff" }} />
 </ColorPalette>
+
+---
 
 ## Semantic Colors
 
-Semantic colors are used for specific purposes within the UI, such as primary actions, backgrounds, text, and status indicators. These colors often reference the base palette, ensuring consistency.
+Semantic colors map the base palette to specific roles in the UI. Always prefer semantic tokens over raw base tokens in component styles — this ensures that a single override in the consumer's `:root` propagates correctly through the entire system.
+
+### Brand & Surface
 
 <ColorPalette>
-  <ColorItem title="Primary" subtitle="--boulder-color-primary" colors={{ 'Hex': 'var(--boulder-color-1)' }} />
-  <ColorItem title="Primary Hover" subtitle="--boulder-color-primary-hover" colors={{ 'Hex': 'var(--boulder-color-2)' }} />
-  <ColorItem title="Primary Soft" subtitle="--boulder-color-primary-soft" colors={{ 'Hex': 'var(--boulder-color-4)' }} />
-
-<ColorItem
-  title="Surface"
-  subtitle="--boulder-color-surface"
-  colors={{ Hex: "var(--boulder-color-4)" }}
-/>
-<ColorItem
-  title="Background"
-  subtitle="--boulder-color-background"
-  colors={{ Hex: "var(--boulder-color-5)" }}
-/>
-<ColorItem
-  title="Background Subtle"
-  subtitle="--boulder-color-background-subtle"
-  colors={{ Hex: "var(--boulder-color-4)" }}
-/>
-
-<ColorItem
-  title="Border"
-  subtitle="--boulder-color-border"
-  colors={{ Hex: "var(--boulder-color-3)" }}
-/>
-<ColorItem
-  title="Muted"
-  subtitle="--boulder-color-muted"
-  colors={{ Hex: "var(--boulder-color-2)" }}
-/>
-
-<ColorItem
-  title="Text"
-  subtitle="--boulder-color-text"
-  colors={{ Hex: "#1a1a1a" }}
-/>
-<ColorItem
-  title="Text Secondary"
-  subtitle="--boulder-color-text-secondary"
-  colors={{ Hex: "#666666" }}
-/>
-<ColorItem
-  title="Text Inverse"
-  subtitle="--boulder-color-text-inverse"
-  colors={{ Hex: "#ffffff" }}
-/>
-
-  <ColorItem title="Danger" subtitle="--boulder-color-danger" colors={{ 'Hex': '#e5484d' }} />
-  <ColorItem title="Danger Hover" subtitle="--boulder-color-danger-hover" colors={{ 'Hex': '#d13438' }} />
+  <ColorItem title="Primary"            subtitle="--boulder-color-primary"            colors={{ "Action / CTA":        "#8a7650" }} />
+  <ColorItem title="Primary Hover"      subtitle="--boulder-color-primary-hover"      colors={{ "Hover state":          "#8e977d" }} />
+  <ColorItem title="Primary Soft"       subtitle="--boulder-color-primary-soft"       colors={{ "Tinted background":    "#dbcea5" }} />
+  <ColorItem title="Surface"            subtitle="--boulder-color-surface"            colors={{ "Component background": "#dbcea5" }} />
+  <ColorItem title="Background"         subtitle="--boulder-color-background"         colors={{ "Page background":      "#ffffff" }} />
+  <ColorItem title="Background Subtle"  subtitle="--boulder-color-background-subtle"  colors={{ "Subtle fill":          "#dbcea5" }} />
+  <ColorItem title="Border"             subtitle="--boulder-color-border"             colors={{ "Dividers / outlines":  "#ece7d1" }} />
+  <ColorItem title="Muted"              subtitle="--boulder-color-muted"              colors={{ "Disabled / secondary": "#8e977d" }} />
 </ColorPalette>
 
-## Usage
+### Text
 
-To use these colors in your CSS, reference them as CSS custom properties:
+<ColorPalette>
+  <ColorItem title="Text"          subtitle="--boulder-color-text"          colors={{ "Primary text":       "#1a1a1a" }} />
+  <ColorItem title="Text Secondary" subtitle="--boulder-color-text-secondary" colors={{ "Captions / hints":  "#666666" }} />
+  <ColorItem title="Text Inverse"  subtitle="--boulder-color-text-inverse"  colors={{ "On dark backgrounds": "#ffffff" }} />
+</ColorPalette>
 
-```css
-.my-component {
-  background-color: var(--boulder-color-primary);
-  color: var(--boulder-color-text-inverse);
-  border: 1px solid var(--boulder-color-border);
-}
-```
+### State
+
+<ColorPalette>
+  <ColorItem title="Danger"       subtitle="--boulder-color-danger"       colors={{ "Errors / destructive": "#e5484d" }} />
+  <ColorItem title="Danger Hover" subtitle="--boulder-color-danger-hover" colors={{ "Danger hover state":   "#d13438" }} />
+</ColorPalette>
+
+---
 
 ## Customization
 
-You can easily override any of these color tokens in your application's CSS. For example, to change the primary color:
+Override any token once in your application's `:root` to retheme the entire library:
 
 ```css
 :root {
-  --boulder-color-primary: #007bff; /* A new blue primary color */
+  /* Swap the primary brand color */
+  --boulder-color-primary: #0070f3;
+  --boulder-color-primary-hover: #005cc5;
+
+  /* Adjust text contrast */
+  --boulder-color-text: #111111;
+  --boulder-color-text-secondary: #555555;
 }
 ```
 
-This allows for flexible theming and ensures that your application's visual identity can be adapted without modifying the library's source code.
+No component-level changes are needed. All components that reference these tokens will reflect the new values automatically.
