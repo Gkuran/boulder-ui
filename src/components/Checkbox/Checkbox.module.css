@@ -1,7 +1,7 @@
 .wrapper {
   display: inline-flex;
   align-items: center;
-  gap: var(--boulder-spacing-sm);
+  gap: var(--virtu-spacing-sm);
 
   cursor: pointer;
 }
@@ -13,37 +13,37 @@
 }
 
 .control {
-  width: var(--boulder-checkbox-size);
-  height: var(--boulder-checkbox-size);
+  width: var(--virtu-checkbox-size);
+  height: var(--virtu-checkbox-size);
 
-  border-radius: var(--boulder-radius-sm);
+  border-radius: var(--virtu-radius-sm);
 
-  border: 1px solid var(--boulder-color-border);
+  border: 1px solid var(--virtu-color-border);
 
-  background: var(--boulder-color-background);
+  background: rgba(255, 255, 255, 0.04);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   transition:
-    background 0.15s ease,
-    border-color 0.15s ease;
+    background var(--virtu-transition-fast),
+    border-color var(--virtu-transition-fast);
 }
 
 .input:checked + .control {
-  background: var(--boulder-color-primary);
-  border-color: var(--boulder-color-primary);
+  background: var(--virtu-color-primary);
+  border-color: var(--virtu-color-primary);
 }
 
 .checkmark {
-  width: var(--boulder-checkbox-checkmark-size);
-  height: var(--boulder-checkbox-checkmark-size);
+  width: var(--virtu-checkbox-checkmark-size);
+  height: var(--virtu-checkbox-checkmark-size);
 
-  color: var(--boulder-color-text-inverse);
+  color: var(--virtu-color-text-inverse);
 }
 
 .label {
-  font-size: var(--boulder-font-size-sm);
-  color: var(--boulder-color-text);
+  font-size: var(--virtu-font-size-sm);
+  color: var(--virtu-color-text);
 }

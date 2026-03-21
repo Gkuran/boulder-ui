@@ -1,4 +1,4 @@
 export * from "./components";
 
-// Tokens e estilos globais — importar no entry point da aplicação consumidora:
-// import "boulder-ui/styles"
+// Tokens and global styles — import in the consumer app entry point:
+// import "virtu-ui/styles"

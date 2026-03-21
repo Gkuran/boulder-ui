@@ -1,82 +1,104 @@
 :root {
-  /* ─── Paleta base ─────────────────────────────────────────────────────────── */
-  --boulder-color-1: #8a7650;
-  --boulder-color-2: #8e977d;
-  --boulder-color-3: #ece7d1;
-  --boulder-color-4: #dbcea5;
-  --boulder-color-5: #ffffff;
+  /* ─── Base palette ─────────────────────────────────────────────────────────── */
+  --virtu-color-1: #1a1a1a;
+  --virtu-color-2: #2a2a2a;
+  --virtu-color-3: #3a3a3a;
+  --virtu-color-4: #4a4a4a;
+  --virtu-color-5: #f5f5f5;
 
-  /* ─── Cores semânticas ────────────────────────────────────────────────────── */
-  --boulder-color-primary: var(--boulder-color-1);
-  --boulder-color-primary-hover: var(--boulder-color-2);
-  --boulder-color-primary-soft: var(--boulder-color-4);
+  /* ─── Semantic colors ──────────────────────────────────────────────────────── */
+  --virtu-color-primary: #FF7F72;
+  --virtu-color-primary-hover: #ff6b5c;
+  --virtu-color-primary-soft: rgba(255, 127, 114, 0.25);
 
-  --boulder-color-surface: var(--boulder-color-4);
-  --boulder-color-background: var(--boulder-color-5);
-  --boulder-color-background-subtle: var(--boulder-color-4);
+  --virtu-color-surface: rgba(255, 255, 255, 0.06);
+  --virtu-color-background: #1a1a1a;
+  --virtu-color-background-subtle: rgba(255, 255, 255, 0.04);
 
-  --boulder-color-border: var(--boulder-color-3);
-  --boulder-color-muted: var(--boulder-color-2);
+  --virtu-color-border: rgba(255, 255, 255, 0.12);
+  --virtu-color-muted: rgba(255, 255, 255, 0.4);
 
-  /* ─── Cores de texto ──────────────────────────────────────────────────────── */
-  --boulder-color-text: #1a1a1a;
-  --boulder-color-text-secondary: #666666;
-  --boulder-color-text-inverse: #ffffff;
+  /* ─── Text colors ──────────────────────────────────────────────────────────── */
+  --virtu-color-text: #f5f5f5;
+  --virtu-color-text-secondary: rgba(255, 255, 255, 0.6);
+  --virtu-color-text-inverse: #1a1a1a;
 
-  /* ─── Cores de estado ─────────────────────────────────────────────────────── */
-  --boulder-color-danger: #e5484d;
-  --boulder-color-danger-hover: #d13438;
+  /* ─── State colors ─────────────────────────────────────────────────────────── */
+  --virtu-color-danger: #e5484d;
+  --virtu-color-danger-hover: #d13438;
+  --virtu-color-success: #30a46c;
+  --virtu-color-success-soft: rgba(48, 164, 108, 0.2);
+  --virtu-color-warning: #f5a623;
+  --virtu-color-warning-soft: rgba(245, 166, 35, 0.2);
 
-  /* ─── Espaçamento ─────────────────────────────────────────────────────────── */
-  --boulder-spacing-xs: 4px;
-  --boulder-spacing-sm: 8px;
-  --boulder-spacing-md: 16px;
-  --boulder-spacing-lg: 24px;
+  /* ─── Glass effect ─────────────────────────────────────────────────────────── */
+  --virtu-glass-gradient: linear-gradient(
+    135deg,
+    rgba(172, 172, 172, 0.19) 0%,
+    rgba(70, 70, 70, 0.19) 100%
+  );
+  --virtu-glass-blur: 24px;
+  --virtu-glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --virtu-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 
-  /* ─── Raios de borda ──────────────────────────────────────────────────────── */
-  --boulder-radius-sm: 4px;
-  --boulder-radius-md: 8px;
+  /* ─── Spacing ──────────────────────────────────────────────────────────────── */
+  --virtu-spacing-xs: 4px;
+  --virtu-spacing-sm: 8px;
+  --virtu-spacing-md: 16px;
+  --virtu-spacing-lg: 24px;
+  --virtu-spacing-xl: 32px;
 
-  /* ─── Tipografia ──────────────────────────────────────────────────────────── */
-  --boulder-font-family: system-ui, sans-serif;
+  /* ─── Border radius ────────────────────────────────────────────────────────── */
+  --virtu-radius-sm: 6px;
+  --virtu-radius-md: 10px;
+  --virtu-radius-lg: 15px;
 
-  --boulder-font-size-xs: 11px;
-  --boulder-font-size-sm: 12px;
-  --boulder-font-size-md: 14px;
-  --boulder-font-size-lg: 16px;
+  /* ─── Typography ───────────────────────────────────────────────────────────── */
+  --virtu-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
 
-  --boulder-line-height-sm: 1.4;
-  --boulder-line-height-md: 1.5;
+  --virtu-font-size-xs: 11px;
+  --virtu-font-size-sm: 12px;
+  --virtu-font-size-md: 14px;
+  --virtu-font-size-lg: 16px;
+  --virtu-font-size-xl: 20px;
 
-  --boulder-font-weight-regular: 400;
-  --boulder-font-weight-medium: 500;
-  --boulder-font-weight-semibold: 600;
-  --boulder-font-weight-bold: 700;
+  --virtu-line-height-sm: 1.4;
+  --virtu-line-height-md: 1.5;
 
-  /* ─── Spinner ─────────────────────────────────────────────────────────────── */
-  --boulder-spinner-size: 14px;
-  --boulder-spinner-border-width: 2px;
-  --boulder-spinner-color-track: rgba(255, 255, 255, 0.4);
+  --virtu-font-weight-regular: 400;
+  --virtu-font-weight-medium: 500;
+  --virtu-font-weight-semibold: 600;
+  --virtu-font-weight-bold: 700;
 
-  /* ─── Switch ──────────────────────────────────────────────────────────────── */
-  --boulder-switch-track-width-sm: 32px;
-  --boulder-switch-track-height-sm: 18px;
-  --boulder-switch-thumb-size-sm: 14px;
-  --boulder-switch-translate-sm: 14px;
+  /* ─── Spinner ──────────────────────────────────────────────────────────────── */
+  --virtu-spinner-size: 14px;
+  --virtu-spinner-border-width: 2px;
+  --virtu-spinner-color-track: rgba(255, 255, 255, 0.2);
 
-  --boulder-switch-track-width-md: 40px;
-  --boulder-switch-track-height-md: 22px;
-  --boulder-switch-thumb-size-md: 18px;
-  --boulder-switch-translate-md: 18px;
+  /* ─── Switch ───────────────────────────────────────────────────────────────── */
+  --virtu-switch-track-width-sm: 32px;
+  --virtu-switch-track-height-sm: 18px;
+  --virtu-switch-thumb-size-sm: 14px;
+  --virtu-switch-translate-sm: 14px;
 
-  --boulder-switch-track-width-lg: 48px;
-  --boulder-switch-track-height-lg: 26px;
-  --boulder-switch-thumb-size-lg: 22px;
-  --boulder-switch-translate-lg: 22px;
+  --virtu-switch-track-width-md: 40px;
+  --virtu-switch-track-height-md: 22px;
+  --virtu-switch-thumb-size-md: 18px;
+  --virtu-switch-translate-md: 18px;
 
-  --boulder-switch-thumb-offset: 2px;
+  --virtu-switch-track-width-lg: 48px;
+  --virtu-switch-track-height-lg: 26px;
+  --virtu-switch-thumb-size-lg: 22px;
+  --virtu-switch-translate-lg: 22px;
 
-  /* ─── Checkbox ────────────────────────────────────────────────────────────── */
-  --boulder-checkbox-size: 16px;
-  --boulder-checkbox-checkmark-size: 10px;
+  --virtu-switch-thumb-offset: 2px;
+
+  /* ─── Checkbox ─────────────────────────────────────────────────────────────── */
+  --virtu-checkbox-size: 16px;
+  --virtu-checkbox-checkmark-size: 10px;
+
+  /* ─── Transition ───────────────────────────────────────────────────────────── */
+  --virtu-transition-fast: 150ms ease;
+  --virtu-transition-normal: 200ms ease;
 }

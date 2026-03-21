@@ -4,32 +4,33 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 # Typography
 
-Boulder UI provides a flexible and scalable typography system through CSS custom properties. This system ensures visual consistency while allowing consumers to easily integrate their preferred fonts and adjust text properties to match their brand guidelines.
+Virtu UI provides a flexible and scalable typography system through CSS custom properties. This system ensures visual consistency while allowing consumers to easily integrate their preferred fonts and adjust text properties to match their brand guidelines.
 
-All typography tokens are prefixed with `--boulder-`.
+All typography tokens are prefixed with `--virtu-`.
 
 ---
 
 ## Font Family — Agnostic Approach
 
-Boulder UI is **font-agnostic**. The library does not enforce or bundle any specific typeface. By default, `--boulder-font-family` resolves to `system-ui, sans-serif`, which leverages the native font stack of the user's operating system — providing zero-latency rendering and a familiar feel without any additional loading cost.
+Virtu UI is **font-agnostic**. The library does not enforce or bundle any specific typeface. By default, `--virtu-font-family` resolves to `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`, which leverages the native font stack of the user's operating system — providing zero-latency rendering and a familiar feel without any additional loading cost.
 
 ```css
 :root {
-  --boulder-font-family: system-ui, sans-serif;
+  --virtu-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
 }
 ```
 
 ### Bringing your own font
 
-To integrate your brand's typeface, override the token once in your application's global CSS. Every Boulder UI component that renders text will automatically adopt the new value.
+To integrate your brand's typeface, override the token once in your application's global CSS. Every Virtu UI component that renders text will automatically adopt the new value.
 
 ```css
 /* Example: Google Fonts — Inter */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-  --boulder-font-family: "Inter", sans-serif;
+  --virtu-font-family: "Inter", sans-serif;
 }
 ```
 
@@ -41,15 +42,16 @@ No component-level changes are required. The single token override propagates th
 
 <div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "24px 0" }}>
   {[
-    { token: "--boulder-font-size-xs", value: "11px", size: "11px", label: "Extra Small" },
-    { token: "--boulder-font-size-sm", value: "12px", size: "12px", label: "Small" },
-    { token: "--boulder-font-size-md", value: "14px", size: "14px", label: "Medium (base)" },
-    { token: "--boulder-font-size-lg", value: "16px", size: "16px", label: "Large" },
+    { token: "--virtu-font-size-xs", value: "11px", size: "11px", label: "Extra Small" },
+    { token: "--virtu-font-size-sm", value: "12px", size: "12px", label: "Small" },
+    { token: "--virtu-font-size-md", value: "14px", size: "14px", label: "Medium (base)" },
+    { token: "--virtu-font-size-lg", value: "16px", size: "16px", label: "Large" },
+    { token: "--virtu-font-size-xl", value: "20px", size: "20px", label: "Extra Large" },
   ].map(({ token, value, size, label }) => (
-    <div key={token} style={{ display: "grid", gridTemplateColumns: "220px 60px 1fr", alignItems: "center", gap: "16px", padding: "12px 16px", borderRadius: "6px", background: "#f9f9f9", border: "1px solid #ececec" }}>
-      <code style={{ fontSize: "12px", color: "#555" }}>{token}</code>
-      <span style={{ fontSize: "12px", color: "#999", fontVariantNumeric: "tabular-nums" }}>{value}</span>
-      <span style={{ fontSize: size, fontFamily: "var(--boulder-font-family)", color: "#1a1a1a", lineHeight: 1.4 }}>
+    <div key={token} style={{ display: "grid", gridTemplateColumns: "220px 60px 1fr", alignItems: "center", gap: "16px", padding: "12px 16px", borderRadius: "10px", background: "rgba(255, 255, 255, 0.06)", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+      <code style={{ fontSize: "12px", color: "rgba(255, 255, 255, 0.6)" }}>{token}</code>
+      <span style={{ fontSize: "12px", color: "rgba(255, 255, 255, 0.4)", fontVariantNumeric: "tabular-nums" }}>{value}</span>
+      <span style={{ fontSize: size, fontFamily: "var(--virtu-font-family)", color: "#f5f5f5", lineHeight: 1.4 }}>
         {label} — The quick brown fox jumps over the lazy dog.
       </span>
     </div>
@@ -62,15 +64,15 @@ No component-level changes are required. The single token override propagates th
 
 <div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "24px 0" }}>
   {[
-    { token: "--boulder-font-weight-regular",  value: "400", label: "Regular"  },
-    { token: "--boulder-font-weight-medium",   value: "500", label: "Medium"   },
-    { token: "--boulder-font-weight-semibold", value: "600", label: "Semibold" },
-    { token: "--boulder-font-weight-bold",     value: "700", label: "Bold"     },
+    { token: "--virtu-font-weight-regular",  value: "400", label: "Regular"  },
+    { token: "--virtu-font-weight-medium",   value: "500", label: "Medium"   },
+    { token: "--virtu-font-weight-semibold", value: "600", label: "Semibold" },
+    { token: "--virtu-font-weight-bold",     value: "700", label: "Bold"     },
   ].map(({ token, value, label }) => (
-    <div key={token} style={{ display: "grid", gridTemplateColumns: "260px 60px 1fr", alignItems: "center", gap: "16px", padding: "12px 16px", borderRadius: "6px", background: "#f9f9f9", border: "1px solid #ececec" }}>
-      <code style={{ fontSize: "12px", color: "#555" }}>{token}</code>
-      <span style={{ fontSize: "12px", color: "#999", fontVariantNumeric: "tabular-nums" }}>{value}</span>
-      <span style={{ fontSize: "15px", fontWeight: value, fontFamily: "var(--boulder-font-family)", color: "#1a1a1a" }}>
+    <div key={token} style={{ display: "grid", gridTemplateColumns: "260px 60px 1fr", alignItems: "center", gap: "16px", padding: "12px 16px", borderRadius: "10px", background: "rgba(255, 255, 255, 0.06)", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+      <code style={{ fontSize: "12px", color: "rgba(255, 255, 255, 0.6)" }}>{token}</code>
+      <span style={{ fontSize: "12px", color: "rgba(255, 255, 255, 0.4)", fontVariantNumeric: "tabular-nums" }}>{value}</span>
+      <span style={{ fontSize: "15px", fontWeight: value, fontFamily: "var(--virtu-font-family)", color: "#f5f5f5" }}>
         {label} — The quick brown fox.
       </span>
     </div>
@@ -83,13 +85,13 @@ No component-level changes are required. The single token override propagates th
 
 <div style={{ display: "flex", flexDirection: "column", gap: "12px", margin: "24px 0" }}>
   {[
-    { token: "--boulder-line-height-sm", value: "1.4", label: "Tight"        },
-    { token: "--boulder-line-height-md", value: "1.5", label: "Comfortable"  },
+    { token: "--virtu-line-height-sm", value: "1.4", label: "Tight"        },
+    { token: "--virtu-line-height-md", value: "1.5", label: "Comfortable"  },
   ].map(({ token, value, label }) => (
-    <div key={token} style={{ display: "grid", gridTemplateColumns: "240px 60px 1fr", alignItems: "start", gap: "16px", padding: "12px 16px", borderRadius: "6px", background: "#f9f9f9", border: "1px solid #ececec" }}>
-      <code style={{ fontSize: "12px", color: "#555", paddingTop: "2px" }}>{token}</code>
-      <span style={{ fontSize: "12px", color: "#999", fontVariantNumeric: "tabular-nums", paddingTop: "2px" }}>{value}</span>
-      <p style={{ margin: 0, fontSize: "14px", lineHeight: value, fontFamily: "var(--boulder-font-family)", color: "#1a1a1a" }}>
+    <div key={token} style={{ display: "grid", gridTemplateColumns: "240px 60px 1fr", alignItems: "start", gap: "16px", padding: "12px 16px", borderRadius: "10px", background: "rgba(255, 255, 255, 0.06)", border: "1px solid rgba(255, 255, 255, 0.08)" }}>
+      <code style={{ fontSize: "12px", color: "rgba(255, 255, 255, 0.6)", paddingTop: "2px" }}>{token}</code>
+      <span style={{ fontSize: "12px", color: "rgba(255, 255, 255, 0.4)", fontVariantNumeric: "tabular-nums", paddingTop: "2px" }}>{value}</span>
+      <p style={{ margin: 0, fontSize: "14px", lineHeight: value, fontFamily: "var(--virtu-font-family)", color: "#f5f5f5" }}>
         <strong>{label}</strong> — Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
       </p>
     </div>
@@ -102,18 +104,18 @@ No component-level changes are required. The single token override propagates th
 
 ```css
 .heading {
-  font-family: var(--boulder-font-family);
-  font-size: var(--boulder-font-size-lg);
-  font-weight: var(--boulder-font-weight-bold);
-  line-height: var(--boulder-line-height-sm);
-  color: var(--boulder-color-text);
+  font-family: var(--virtu-font-family);
+  font-size: var(--virtu-font-size-xl);
+  font-weight: var(--virtu-font-weight-bold);
+  line-height: var(--virtu-line-height-sm);
+  color: var(--virtu-color-text);
 }
 
 .body {
-  font-family: var(--boulder-font-family);
-  font-size: var(--boulder-font-size-md);
-  font-weight: var(--boulder-font-weight-regular);
-  line-height: var(--boulder-line-height-md);
-  color: var(--boulder-color-text-secondary);
+  font-family: var(--virtu-font-family);
+  font-size: var(--virtu-font-size-md);
+  font-weight: var(--virtu-font-weight-regular);
+  line-height: var(--virtu-line-height-md);
+  color: var(--virtu-color-text-secondary);
 }
 ```

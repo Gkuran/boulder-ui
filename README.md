@@ -1,8 +1,8 @@
-# boulder-ui
+# virtu-ui
 
-[![npm version](https://img.shields.io/npm/v/boulder-ui)](https://www.npmjs.com/package/boulder-ui)
+[![npm version](https://img.shields.io/npm/v/virtu-ui)](https://www.npmjs.com/package/virtu-ui)
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-green)]()
-[![license](https://img.shields.io/npm/l/boulder-ui)]()
+[![license](https://img.shields.io/npm/l/virtu-ui)]()
 
 A **lightweight React component library** designed to build **consistent, accessible and composable interfaces**.
 
@@ -12,7 +12,7 @@ A **lightweight React component library** designed to build **consistent, access
 
 - Minimal and composable components
 - Accessibility-first (ARIA, keyboard navigation, semantic HTML)
-- Design tokens via CSS custom properties (`--boulder-*`)
+- Design tokens via CSS custom properties (`--virtu-*`)
 - Fully typed with TypeScript
 - Tree-shakeable (ESM + CJS, `preserveModules`)
 - No runtime dependencies beyond React
@@ -22,7 +22,7 @@ A **lightweight React component library** designed to build **consistent, access
 ## Installation
 
 ```bash
-npm install boulder-ui
+npm install virtu-ui
 ```
 
 ---
@@ -32,13 +32,13 @@ npm install boulder-ui
 Import the design tokens (CSS variables) once in your application entry point:
 
 ```tsx
-import "boulder-ui/styles";
+import "virtu-ui/styles";
 ```
 
 Then import components as needed:
 
 ```tsx
-import { Button, Input, FormField } from "boulder-ui";
+import { Button, Input, FormField } from "virtu-ui";
 ```
 
 ---
@@ -63,7 +63,7 @@ import { Button, Input, FormField } from "boulder-ui";
 ### Button
 
 ```tsx
-import { Button } from "boulder-ui";
+import { Button } from "virtu-ui";
 
 <Button variant="primary" size="md">Save</Button>
 <Button variant="secondary">Cancel</Button>
@@ -73,7 +73,7 @@ import { Button } from "boulder-ui";
 ### FormField + Input
 
 ```tsx
-import { FormField, Input } from "boulder-ui";
+import { FormField, Input } from "virtu-ui";
 
 <FormField label="Email" description="We'll never share your email.">
   <Input placeholder="you@example.com" />
@@ -87,7 +87,7 @@ import { FormField, Input } from "boulder-ui";
 ### Checkbox
 
 ```tsx
-import { Checkbox } from "boulder-ui";
+import { Checkbox } from "virtu-ui";
 
 <Checkbox label="Accept terms and conditions" />
 ```
@@ -95,7 +95,7 @@ import { Checkbox } from "boulder-ui";
 ### Switch
 
 ```tsx
-import { Switch } from "boulder-ui";
+import { Switch } from "virtu-ui";
 
 <Switch id="notifications" label="Enable notifications" size="md" />
 ```
@@ -104,13 +104,13 @@ import { Switch } from "boulder-ui";
 
 ## Design Tokens
 
-All styling is driven by CSS custom properties prefixed with `--boulder-`. You can override them in your application:
+All styling is driven by CSS custom properties prefixed with `--virtu-`. You can override them in your application:
 
 ```css
 :root {
-  --boulder-color-primary: #0070f3;
-  --boulder-font-family: "Inter", sans-serif;
-  --boulder-radius-md: 6px;
+  --virtu-color-primary: #0070f3;
+  --virtu-font-family: "Inter", sans-serif;
+  --virtu-radius-md: 6px;
 }
 ```
 

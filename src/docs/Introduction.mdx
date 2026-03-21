@@ -2,29 +2,33 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Overview" />
 
-<div style={{ background: "#d3ba9b", padding: "40px", borderRadius: "8px" }}>
+<div style={{ background: "linear-gradient(135deg, rgba(172, 172, 172, 0.19) 0%, rgba(70, 70, 70, 0.19) 100%)", backdropFilter: "blur(24px)", padding: "40px", borderRadius: "15px", border: "1px solid rgba(255, 255, 255, 0.08)", color: "#f5f5f5" }}>
     <div style={{ textAlign: "center" }}>
 
-<img src="/boulder-logo.png" width="360" />
+<h1 style={{ fontSize: "48px", fontWeight: 700, margin: "0 0 8px" }}>Virtu UI</h1>
+<p style={{ color: "rgba(255, 255, 255, 0.6)", fontSize: "14px", margin: 0 }}>Glassmorphism Design System</p>
 
 <br />
 
 <div style={{ display: "flex", justifyContent: "center", gap: "8px" }}>
-  <img src="https://img.shields.io/npm/v/boulder-ui" />
+  <img src="https://img.shields.io/npm/v/virtu-ui" />
   <img src="https://img.shields.io/badge/tree--shakable-yes-green" />
+  <img src="https://img.shields.io/badge/glassmorphism-enabled-blueviolet" />
 </div>
 
 </div>
 
 <br />
 
-    A **lightweight React component library** designed to build **consistent, accessible and composable interfaces**.
+    A **lightweight React component library** built around the **glassmorphism** design language. Translucent surfaces, subtle gradients, and backdrop blur effects create modern, elegant interfaces inspired by iOS aesthetics.
+
+    Virtu UI is **font-agnostic** — it ships with `system-ui` as the default font stack, but consumers can freely override the typography tokens to use any font of their choice.
 
     ---
 
-    ### Simplicity
+    ### Glassmorphism
 
-    Components are **minimal and composable**, allowing developers to build complex interfaces with simple building blocks.
+    Components feature **translucent backgrounds with backdrop blur**, creating a layered depth effect that feels modern and immersive.
 
     ### Accessibility
 
@@ -32,11 +36,12 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
     ### Consistency
 
-    A set of **design tokens** ensures consistent styling across applications and components.
+    A set of **design tokens** ensures consistent styling across applications and components, with full support for dark interfaces.
 
     ---
 
     ## Available Components
+    - Box
     - Button
     - Input
     - Textarea
@@ -45,13 +50,20 @@ import { Meta } from "@storybook/addon-docs/blocks";
     - Label
     - FormField
     - ErrorMessage
+    - Accordion
+    - Badge
 
     ---
 
     ## Quick Start
 
     ```bash
-    npm install boulder-ui
+    npm install virtu-ui
+    ```
+
+    ```tsx
+    import "virtu-ui/styles";
+    import { Box, Button } from "virtu-ui";
     ```
 
 </div>

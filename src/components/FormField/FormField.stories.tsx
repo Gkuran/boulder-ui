@@ -24,12 +24,12 @@ The field ID is generated automatically via \`useId()\` and propagated to the ch
 
 ## Installation
 \`\`\`bash
-npm install boulder-ui
+npm install virtu-ui
 \`\`\`
 
 ## Import
 \`\`\`tsx
-import { FormField } from 'boulder-ui';
+import { FormField } from 'virtu-ui';
 \`\`\`
 
 ## Props

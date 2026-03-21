@@ -33,12 +33,12 @@ This component provides a flexible textarea element with support for different v
 
 ## Installation
 \`\`\`bash
-npm install boulder-ui
+npm install virtu-ui
 \`\`\`
 
 ## Import
 \`\`\`tsx
-import { Textarea } from 'boulder-ui';
+import { Textarea } from 'virtu-ui';
 \`\`\`
 
 ## Props

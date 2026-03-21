@@ -1,6 +1,6 @@
-# Boulder UI — Guia de Contribuição
+# Virtu UI — Guia de Contribuição
 
-Este documento é o **guia de referência** para criar e manter componentes no boulder-ui. Ele descreve as convenções, padrões e decisões de arquitetura que devem ser seguidos por qualquer pessoa (ou agente) que contribua com a biblioteca.
+Este documento é o **guia de referência** para criar e manter componentes no virtu-ui. Ele descreve as convenções, padrões e decisões de arquitetura que devem ser seguidos por qualquer pessoa (ou agente) que contribua com a biblioteca.
 
 Leia este guia integralmente antes de criar qualquer componente novo.
 
@@ -23,7 +23,7 @@ Leia este guia integralmente antes de criar qualquer componente novo.
 
 ## 1. Filosofia do projeto
 
-Boulder UI é uma biblioteca **minimal, composable e acessível**. Cada decisão de design deve ser guiada por três perguntas:
+Virtu UI é uma biblioteca **minimal, composable e acessível**. Cada decisão de design deve ser guiada por três perguntas:
 
 > **É necessário?** Adicione apenas o que resolve um problema real. Abstrações prematuras aumentam o custo de manutenção.
 >
@@ -140,19 +140,19 @@ Badge.displayName = "Badge";
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: var(--boulder-spacing-xs) var(--boulder-spacing-sm);
-  border-radius: var(--boulder-radius-sm);
-  font-size: var(--boulder-font-size-xs);
-  font-weight: var(--boulder-font-weight-medium);
-  font-family: var(--boulder-font-family);
-  line-height: var(--boulder-line-height-sm);
+  padding: var(--virtu-spacing-xs) var(--virtu-spacing-sm);
+  border-radius: var(--virtu-radius-sm);
+  font-size: var(--virtu-font-size-xs);
+  font-weight: var(--virtu-font-weight-medium);
+  font-family: var(--virtu-font-family);
+  line-height: var(--virtu-line-height-sm);
 }
 
 /* ─── Variantes ───────────────────────────────────────────────────────────── */
 
 .default {
-  background: var(--boulder-color-surface);
-  color: var(--boulder-color-text);
+  background: var(--virtu-color-surface);
+  color: var(--virtu-color-text);
 }
 
 .success {
@@ -166,8 +166,8 @@ Badge.displayName = "Badge";
 }
 
 .danger {
-  background: var(--boulder-color-danger);
-  color: var(--boulder-color-text-inverse);
+  background: var(--virtu-color-danger);
+  color: var(--virtu-color-text-inverse);
 }
 ```
 
@@ -273,7 +273,7 @@ Isso permite que o consumidor importe e reutilize os tipos auxiliares em seu pr�
 
 ### Princípio fundamental
 
-**Nenhum valor visual pode ser hardcoded.** Cores, espaçamentos, tamanhos de fonte, raios de borda e sombras devem sempre vir de um token `--boulder-*`.
+**Nenhum valor visual pode ser hardcoded.** Cores, espaçamentos, tamanhos de fonte, raios de borda e sombras devem sempre vir de um token `--virtu-*`.
 
 ```css
 /* ✗ Proibido */
@@ -283,10 +283,10 @@ font-size: 14px;
 border-radius: 4px;
 
 /* ✓ Correto */
-color: var(--boulder-color-text);
-padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
-font-size: var(--boulder-font-size-md);
-border-radius: var(--boulder-radius-sm);
+color: var(--virtu-color-text);
+padding: var(--virtu-spacing-sm) var(--virtu-spacing-md);
+font-size: var(--virtu-font-size-md);
+border-radius: var(--virtu-radius-sm);
 ```
 
 As únicas exceções aceitáveis são valores estruturais sem semântica visual, como `border-radius: 999px` (círculo perfeito), `border-radius: 50%`, `opacity: 0` e `inset: 0`.
@@ -296,17 +296,17 @@ As únicas exceções aceitáveis são valores estruturais sem semântica visual
 Todos os tokens seguem o padrão:
 
 ```
---boulder-{categoria}-{nome}
+--virtu-{categoria}-{nome}
 ```
 
 | Categoria | Exemplos |
 |---|---|
-| `color` | `--boulder-color-primary`, `--boulder-color-danger`, `--boulder-color-text` |
-| `spacing` | `--boulder-spacing-xs`, `--boulder-spacing-sm`, `--boulder-spacing-md`, `--boulder-spacing-lg` |
-| `font-size` | `--boulder-font-size-xs`, `--boulder-font-size-sm`, `--boulder-font-size-md`, `--boulder-font-size-lg` |
-| `font-weight` | `--boulder-font-weight-regular`, `--boulder-font-weight-medium`, `--boulder-font-weight-bold` |
-| `radius` | `--boulder-radius-sm`, `--boulder-radius-md` |
-| `line-height` | `--boulder-line-height-sm`, `--boulder-line-height-md` |
+| `color` | `--virtu-color-primary`, `--virtu-color-danger`, `--virtu-color-text` |
+| `spacing` | `--virtu-spacing-xs`, `--virtu-spacing-sm`, `--virtu-spacing-md`, `--virtu-spacing-lg` |
+| `font-size` | `--virtu-font-size-xs`, `--virtu-font-size-sm`, `--virtu-font-size-md`, `--virtu-font-size-lg` |
+| `font-weight` | `--virtu-font-weight-regular`, `--virtu-font-weight-medium`, `--virtu-font-weight-bold` |
+| `radius` | `--virtu-radius-sm`, `--virtu-radius-md` |
+| `line-height` | `--virtu-line-height-sm`, `--virtu-line-height-md` |
 
 ### Adicionando tokens para um novo componente
 
@@ -314,10 +314,10 @@ Se o componente precisar de valores que não existem nos tokens globais, adicion
 
 ```css
 /* ─── Badge ───────────────────────────────────────────────────────────────── */
---boulder-color-success: #065f46;
---boulder-color-success-bg: #d1fae5;
---boulder-color-warning: #92400e;
---boulder-color-warning-bg: #fef3c7;
+--virtu-color-success: #065f46;
+--virtu-color-success-bg: #d1fae5;
+--virtu-color-warning: #92400e;
+--virtu-color-warning-bg: #fef3c7;
 ```
 
 Nunca adicione tokens específicos de um componente sem antes verificar se um token global já resolve o problema.
@@ -329,18 +329,18 @@ Quando um componente tem múltiplas variações que alteram vários valores ao m
 ```css
 /* Define as variáveis locais por tamanho no container */
 .sm {
-  --_track-width: var(--boulder-switch-track-width-sm);
-  --_thumb-size: var(--boulder-switch-thumb-size-sm);
-  --_translate: var(--boulder-switch-translate-sm);
+  --_track-width: var(--virtu-switch-track-width-sm);
+  --_thumb-size: var(--virtu-switch-thumb-size-sm);
+  --_translate: var(--virtu-switch-translate-sm);
 }
 
 /* Usa as variáveis locais nos elementos filhos */
 .switch {
-  width: var(--_track-width, var(--boulder-switch-track-width-md));
+  width: var(--_track-width, var(--virtu-switch-track-width-md));
 }
 
 .thumb {
-  width: var(--_thumb-size, var(--boulder-switch-thumb-size-md));
+  width: var(--_thumb-size, var(--virtu-switch-thumb-size-md));
 }
 ```
 
@@ -399,7 +399,7 @@ Todo elemento interativo deve ter um estilo de foco visível. Use `:focus-visibl
 
 ```css
 .input:focus-visible {
-  outline: 2px solid var(--boulder-color-primary);
+  outline: 2px solid var(--virtu-color-primary);
   outline-offset: 2px;
 }
 ```
@@ -522,7 +522,7 @@ Descrição do componente em Markdown.
 
 ## Import
 \`\`\`tsx
-import { NomeDoComponente } from 'boulder-ui';
+import { NomeDoComponente } from 'virtu-ui';
 \`\`\`
 
 ## Props
@@ -624,11 +624,11 @@ O campo `"sideEffects": false` no `package.json` informa ao bundler que nenhum a
 
 ### Exportando estilos
 
-Os tokens CSS são distribuídos como um arquivo separado (`dist/boulder-ui.css`). O consumidor deve importá-lo uma vez no entry point da aplicação:
+Os tokens CSS são distribuídos como um arquivo separado (`dist/virtu-ui.css`). O consumidor deve importá-lo uma vez no entry point da aplicação:
 
 ```tsx
 // main.tsx ou App.tsx do projeto consumidor
-import "boulder-ui/styles";
+import "virtu-ui/styles";
 ```
 
 Não importe CSS diretamente nos componentes da biblioteca. Os CSS Modules são processados pelo Vite e injetados automaticamente no bundle.

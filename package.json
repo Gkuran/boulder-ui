@@ -1,5 +1,5 @@
 {
-  "name": "boulder-ui",
+  "name": "virtu-ui",
   "version": "0.1.0",
   "description": "A lightweight React component library for building consistent, accessible and composable interfaces",
   "type": "module",
@@ -8,14 +8,14 @@
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "style": "dist/boulder-ui.css",
+  "style": "dist/virtu-ui.css",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./styles": "./dist/boulder-ui.css"
+    "./styles": "./dist/virtu-ui.css"
   },
   "files": [
     "dist",

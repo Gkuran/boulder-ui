@@ -1,17 +1,17 @@
 .container {
   display: inline-flex;
   align-items: center;
-  gap: var(--boulder-spacing-sm);
+  gap: var(--virtu-spacing-sm);
   cursor: pointer;
-  font-family: var(--boulder-font-family);
+  font-family: var(--virtu-font-family);
 }
 
 /* O .switch herda o tamanho do container via variáveis locais */
 
 .switch {
   position: relative;
-  width: var(--_track-width, var(--boulder-switch-track-width-md));
-  height: var(--_track-height, var(--boulder-switch-track-height-md));
+  width: var(--_track-width, var(--virtu-switch-track-width-md));
+  height: var(--_track-height, var(--virtu-switch-track-height-md));
 }
 
 .input {
@@ -24,73 +24,74 @@
 .track {
   position: absolute;
   inset: 0;
-  background-color: var(--boulder-color-border);
+  background-color: rgba(255, 255, 255, 0.12);
   border-radius: 999px;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--virtu-transition-normal);
 }
 
 .thumb {
   position: absolute;
-  top: var(--boulder-switch-thumb-offset);
-  left: var(--boulder-switch-thumb-offset);
-  width: var(--_thumb-size, var(--boulder-switch-thumb-size-md));
-  height: var(--_thumb-size, var(--boulder-switch-thumb-size-md));
+  top: var(--virtu-switch-thumb-offset);
+  left: var(--virtu-switch-thumb-offset);
+  width: var(--_thumb-size, var(--virtu-switch-thumb-size-md));
+  height: var(--_thumb-size, var(--virtu-switch-thumb-size-md));
   border-radius: 999px;
-  background-color: var(--boulder-color-background);
-  transition: transform 0.2s ease;
+  background-color: #f5f5f5;
+  transition: transform var(--virtu-transition-normal);
 }
 
 /* ─── Tamanhos — definem variáveis locais no container ────────────────────── */
 
 .sm {
-  --_track-width: var(--boulder-switch-track-width-sm);
-  --_track-height: var(--boulder-switch-track-height-sm);
-  --_thumb-size: var(--boulder-switch-thumb-size-sm);
-  --_translate: var(--boulder-switch-translate-sm);
+  --_track-width: var(--virtu-switch-track-width-sm);
+  --_track-height: var(--virtu-switch-track-height-sm);
+  --_thumb-size: var(--virtu-switch-thumb-size-sm);
+  --_translate: var(--virtu-switch-translate-sm);
 }
 
 .md {
-  --_track-width: var(--boulder-switch-track-width-md);
-  --_track-height: var(--boulder-switch-track-height-md);
-  --_thumb-size: var(--boulder-switch-thumb-size-md);
-  --_translate: var(--boulder-switch-translate-md);
+  --_track-width: var(--virtu-switch-track-width-md);
+  --_track-height: var(--virtu-switch-track-height-md);
+  --_thumb-size: var(--virtu-switch-thumb-size-md);
+  --_translate: var(--virtu-switch-translate-md);
 }
 
 .lg {
-  --_track-width: var(--boulder-switch-track-width-lg);
-  --_track-height: var(--boulder-switch-track-height-lg);
-  --_thumb-size: var(--boulder-switch-thumb-size-lg);
-  --_translate: var(--boulder-switch-translate-lg);
+  --_track-width: var(--virtu-switch-track-width-lg);
+  --_track-height: var(--virtu-switch-track-height-lg);
+  --_thumb-size: var(--virtu-switch-thumb-size-lg);
+  --_translate: var(--virtu-switch-translate-lg);
 }
 
 /* ─── Estado checked ──────────────────────────────────────────────────────── */
 
 .input:checked + .track {
-  background-color: var(--boulder-color-primary);
+  background-color: var(--virtu-color-primary);
 }
 
 .input:checked + .track .thumb {
-  transform: translateX(var(--_translate, var(--boulder-switch-translate-md)));
+  transform: translateX(var(--_translate, var(--virtu-switch-translate-md)));
 }
 
 /* ─── Focus ───────────────────────────────────────────────────────────────── */
 
 .input:focus-visible + .track {
-  outline: 2px solid var(--boulder-color-primary);
+  outline: 2px solid var(--virtu-color-primary);
   outline-offset: 2px;
 }
 
 /* ─── Disabled ────────────────────────────────────────────────────────────── */
 
 .input:disabled + .track {
-  background-color: var(--boulder-color-background-subtle);
+  background-color: rgba(255, 255, 255, 0.06);
   cursor: not-allowed;
+  opacity: 0.4;
 }
 
 /* ─── Label ───────────────────────────────────────────────────────────────── */
 
 .label {
-  font-size: var(--boulder-font-size-md);
-  color: var(--boulder-color-text);
+  font-size: var(--virtu-font-size-md);
+  color: var(--virtu-color-text);
   user-select: none;
 }

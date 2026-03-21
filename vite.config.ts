@@ -37,13 +37,13 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(dirname, "src/index.ts"),
-      name: "boulderUI",
+      name: "virtuUI",
       formats: ["es", "cjs"],
     },
 
     sourcemap: true,
 
-    // Não copiar arquivos de public/ para dist (assets do Storybook)
+    // Do not copy public/ files to dist (Storybook assets only)
     copyPublicDir: false,
 
     rollupOptions: {
@@ -52,7 +52,6 @@ export default defineConfig({
       output: [
         {
           format: "es",
-          // Preserva a estrutura de módulos para tree-shaking granular
           preserveModules: true,
           preserveModulesRoot: "src",
           entryFileNames: "[name].js",

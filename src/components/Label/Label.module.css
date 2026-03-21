@@ -1,6 +1,6 @@
 .label {
-  font-size: var(--boulder-font-size-sm);
-  font-weight: var(--boulder-font-weight-medium);
-  color: var(--boulder-color-text);
+  font-size: var(--virtu-font-size-sm);
+  font-weight: var(--virtu-font-weight-medium);
+  color: var(--virtu-color-text);
   cursor: pointer;
 }

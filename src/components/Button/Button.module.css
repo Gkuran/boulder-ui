@@ -1,92 +1,98 @@
 .button {
   border: none;
-  padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
-  border-radius: var(--boulder-radius-sm);
+  padding: var(--virtu-spacing-sm) var(--virtu-spacing-md);
+  border-radius: var(--virtu-radius-md);
   cursor: pointer;
-  font-size: var(--boulder-font-size-md);
-  font-family: var(--boulder-font-family);
+  font-size: var(--virtu-font-size-md);
+  font-family: var(--virtu-font-family);
+  font-weight: var(--virtu-font-weight-medium);
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  gap: var(--boulder-spacing-xs);
+  gap: var(--virtu-spacing-xs);
 
   transition:
-    background 0.2s ease,
-    transform 0.1s ease;
+    background var(--virtu-transition-normal),
+    border-color var(--virtu-transition-normal),
+    transform 0.1s ease,
+    box-shadow var(--virtu-transition-normal);
 }
 
-.button:active {
-  transform: scale(0.95);
+.button:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
-/* SIZES */
+/* ─── Sizes ───────────────────────────────────────────────────────────────── */
 
 .sm {
-  padding: var(--boulder-spacing-xs) var(--boulder-spacing-sm);
-  font-size: var(--boulder-font-size-sm);
+  padding: var(--virtu-spacing-xs) var(--virtu-spacing-sm);
+  font-size: var(--virtu-font-size-sm);
+  border-radius: var(--virtu-radius-sm);
 }
 
 .md {
-  padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
-  font-size: var(--boulder-font-size-md);
+  padding: var(--virtu-spacing-sm) var(--virtu-spacing-md);
+  font-size: var(--virtu-font-size-md);
 }
 
 .lg {
-  padding: var(--boulder-spacing-md) var(--boulder-spacing-lg);
-  font-size: var(--boulder-font-size-lg);
+  padding: var(--virtu-spacing-md) var(--virtu-spacing-lg);
+  font-size: var(--virtu-font-size-lg);
 }
 
-/* PRIMARY */
+/* ─── Primary ─────────────────────────────────────────────────────────────── */
 
 .primary {
-  background: var(--boulder-color-primary);
-  color: var(--boulder-color-text-inverse);
+  background: var(--virtu-color-primary);
+  color: var(--virtu-color-text-inverse);
 }
 
-.primary:hover {
-  background: var(--boulder-color-primary-hover);
+.primary:hover:not(:disabled) {
+  background: var(--virtu-color-primary-hover);
+  box-shadow: 0 0 16px rgba(255, 127, 114, 0.3);
 }
 
-/* SECONDARY */
+/* ─── Secondary ───────────────────────────────────────────────────────────── */
 
 .secondary {
-  background: var(--boulder-color-surface);
-  border: 1px solid var(--boulder-color-border);
-  color: var(--boulder-color-text);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--virtu-color-border);
+  color: var(--virtu-color-text);
 }
 
-.secondary:hover {
-  background: var(--boulder-color-3);
+.secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* DANGER */
+/* ─── Danger ──────────────────────────────────────────────────────────────── */
 
 .danger {
-  background: var(--boulder-color-danger);
-  color: var(--boulder-color-text-inverse);
+  background: var(--virtu-color-danger);
+  color: var(--virtu-color-text-inverse);
 }
 
-.danger:hover {
-  background: var(--boulder-color-danger-hover);
+.danger:hover:not(:disabled) {
+  background: var(--virtu-color-danger-hover);
 }
 
-/* DISABLED */
+/* ─── Disabled ────────────────────────────────────────────────────────────── */
 
 .button:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
-/* SPINNER */
+/* ─── Spinner ─────────────────────────────────────────────────────────────── */
 
 .spinner {
-  width: var(--boulder-spinner-size);
-  height: var(--boulder-spinner-size);
+  width: var(--virtu-spinner-size);
+  height: var(--virtu-spinner-size);
 
-  border: var(--boulder-spinner-border-width) solid var(--boulder-spinner-color-track);
-  border-top-color: var(--boulder-color-text-inverse);
+  border: var(--virtu-spinner-border-width) solid var(--virtu-spinner-color-track);
+  border-top-color: currentColor;
 
   border-radius: 50%;
 

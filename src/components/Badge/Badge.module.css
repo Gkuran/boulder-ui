@@ -1,32 +1,32 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: var(--boulder-spacing-xs) var(--boulder-spacing-sm);
-  border-radius: var(--boulder-radius-sm);
-  font-size: var(--boulder-font-size-xs);
-  font-weight: var(--boulder-font-weight-medium);
-  font-family: var(--boulder-font-family);
-  line-height: var(--boulder-line-height-sm);
+  padding: var(--virtu-spacing-xs) var(--virtu-spacing-sm);
+  border-radius: var(--virtu-radius-sm);
+  font-size: var(--virtu-font-size-xs);
+  font-weight: var(--virtu-font-weight-medium);
+  font-family: var(--virtu-font-family);
+  line-height: var(--virtu-line-height-sm);
 }
 
 /* ─── Variantes ───────────────────────────────────────────────────────────── */
 
 .default {
-  background: var(--boulder-color-surface);
-  color: var(--boulder-color-text);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--virtu-color-text);
 }
 
 .success {
-  background: #d1fae5;
-  color: #065f46;
+  background: var(--virtu-color-success-soft);
+  color: var(--virtu-color-success);
 }
 
 .warning {
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--virtu-color-warning-soft);
+  color: var(--virtu-color-warning);
 }
 
 .danger {
-  background: var(--boulder-color-danger);
-  color: var(--boulder-color-text-inverse);
+  background: rgba(229, 72, 77, 0.2);
+  color: var(--virtu-color-danger);
 }

@@ -4,57 +4,72 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
 
 # Colors
 
-The Boulder UI color palette is designed to provide a consistent and accessible visual experience. Colors are defined as CSS custom properties so that consumers can override any value to match their brand without touching component source code.
+The Virtu UI color palette is designed around a **dark, glassmorphism-first** aesthetic. Colors are defined as CSS custom properties so that consumers can override any value to match their brand without touching component source code.
 
-All color tokens are prefixed with `--boulder-color-`.
+All color tokens are prefixed with `--virtu-color-`.
 
 ---
 
 ## Base Palette
 
-These are the raw, foundational colors from which all semantic roles are derived. They are intentionally neutral and earthy, reflecting the Boulder identity.
+These are the foundational dark tones from which all semantic roles are derived. They reflect the dark, immersive identity of Virtu UI.
 
 <ColorPalette>
-  <ColorItem title="Color 1" subtitle="--boulder-color-1" colors={{ "Warm Brown": "#8a7650" }} />
-  <ColorItem title="Color 2" subtitle="--boulder-color-2" colors={{ "Sage Green": "#8e977d" }} />
-  <ColorItem title="Color 3" subtitle="--boulder-color-3" colors={{ "Pale Sand": "#ece7d1" }} />
-  <ColorItem title="Color 4" subtitle="--boulder-color-4" colors={{ "Warm Sand": "#dbcea5" }} />
-  <ColorItem title="Color 5" subtitle="--boulder-color-5" colors={{ "White": "#ffffff" }} />
+  <ColorItem title="Color 1" subtitle="--virtu-color-1" colors={{ "Deep Black": "#1a1a1a" }} />
+  <ColorItem title="Color 2" subtitle="--virtu-color-2" colors={{ "Dark Gray": "#2a2a2a" }} />
+  <ColorItem title="Color 3" subtitle="--virtu-color-3" colors={{ "Medium Gray": "#3a3a3a" }} />
+  <ColorItem title="Color 4" subtitle="--virtu-color-4" colors={{ "Gray": "#4a4a4a" }} />
+  <ColorItem title="Color 5" subtitle="--virtu-color-5" colors={{ "Light Gray": "#f5f5f5" }} />
 </ColorPalette>
 
 ---
 
 ## Semantic Colors
 
-Semantic colors map the base palette to specific roles in the UI. Always prefer semantic tokens over raw base tokens in component styles — this ensures that a single override in the consumer's `:root` propagates correctly through the entire system.
+Semantic colors map the base palette to specific roles in the UI. Always prefer semantic tokens over raw base tokens in component styles.
 
 ### Brand & Surface
 
 <ColorPalette>
-  <ColorItem title="Primary"            subtitle="--boulder-color-primary"            colors={{ "Action / CTA":        "#8a7650" }} />
-  <ColorItem title="Primary Hover"      subtitle="--boulder-color-primary-hover"      colors={{ "Hover state":          "#8e977d" }} />
-  <ColorItem title="Primary Soft"       subtitle="--boulder-color-primary-soft"       colors={{ "Tinted background":    "#dbcea5" }} />
-  <ColorItem title="Surface"            subtitle="--boulder-color-surface"            colors={{ "Component background": "#dbcea5" }} />
-  <ColorItem title="Background"         subtitle="--boulder-color-background"         colors={{ "Page background":      "#ffffff" }} />
-  <ColorItem title="Background Subtle"  subtitle="--boulder-color-background-subtle"  colors={{ "Subtle fill":          "#dbcea5" }} />
-  <ColorItem title="Border"             subtitle="--boulder-color-border"             colors={{ "Dividers / outlines":  "#ece7d1" }} />
-  <ColorItem title="Muted"              subtitle="--boulder-color-muted"              colors={{ "Disabled / secondary": "#8e977d" }} />
+  <ColorItem title="Primary"            subtitle="--virtu-color-primary"            colors={{ "Accent / CTA":        "#FF7F72" }} />
+  <ColorItem title="Primary Hover"      subtitle="--virtu-color-primary-hover"      colors={{ "Hover state":          "#ff6b5c" }} />
+  <ColorItem title="Primary Soft"       subtitle="--virtu-color-primary-soft"       colors={{ "Tinted background":    "rgba(255, 127, 114, 0.25)" }} />
+  <ColorItem title="Surface"            subtitle="--virtu-color-surface"            colors={{ "Glass surface":        "rgba(255, 255, 255, 0.06)" }} />
+  <ColorItem title="Background"         subtitle="--virtu-color-background"         colors={{ "Page background":      "#1a1a1a" }} />
+  <ColorItem title="Background Subtle"  subtitle="--virtu-color-background-subtle"  colors={{ "Subtle fill":          "rgba(255, 255, 255, 0.04)" }} />
+  <ColorItem title="Border"             subtitle="--virtu-color-border"             colors={{ "Dividers / outlines":  "rgba(255, 255, 255, 0.12)" }} />
+  <ColorItem title="Muted"              subtitle="--virtu-color-muted"              colors={{ "Disabled / secondary": "rgba(255, 255, 255, 0.4)" }} />
 </ColorPalette>
 
 ### Text
 
 <ColorPalette>
-  <ColorItem title="Text"          subtitle="--boulder-color-text"          colors={{ "Primary text":       "#1a1a1a" }} />
-  <ColorItem title="Text Secondary" subtitle="--boulder-color-text-secondary" colors={{ "Captions / hints":  "#666666" }} />
-  <ColorItem title="Text Inverse"  subtitle="--boulder-color-text-inverse"  colors={{ "On dark backgrounds": "#ffffff" }} />
+  <ColorItem title="Text"          subtitle="--virtu-color-text"          colors={{ "Primary text":       "#f5f5f5" }} />
+  <ColorItem title="Text Secondary" subtitle="--virtu-color-text-secondary" colors={{ "Captions / hints":  "rgba(255, 255, 255, 0.6)" }} />
+  <ColorItem title="Text Inverse"  subtitle="--virtu-color-text-inverse"  colors={{ "On light backgrounds": "#1a1a1a" }} />
 </ColorPalette>
 
 ### State
 
 <ColorPalette>
-  <ColorItem title="Danger"       subtitle="--boulder-color-danger"       colors={{ "Errors / destructive": "#e5484d" }} />
-  <ColorItem title="Danger Hover" subtitle="--boulder-color-danger-hover" colors={{ "Danger hover state":   "#d13438" }} />
+  <ColorItem title="Danger"       subtitle="--virtu-color-danger"       colors={{ "Errors / destructive": "#e5484d" }} />
+  <ColorItem title="Danger Hover" subtitle="--virtu-color-danger-hover" colors={{ "Danger hover state":   "#d13438" }} />
+  <ColorItem title="Success"      subtitle="--virtu-color-success"      colors={{ "Success state":        "#30a46c" }} />
+  <ColorItem title="Warning"      subtitle="--virtu-color-warning"      colors={{ "Warning state":        "#f5a623" }} />
 </ColorPalette>
+
+---
+
+## Glass Effect Tokens
+
+Virtu UI provides dedicated tokens for the glassmorphism effect used by the `Box` component and other surfaces.
+
+| Token | Value | Description |
+|---|---|---|
+| `--virtu-glass-gradient` | `linear-gradient(135deg, rgba(172,172,172,0.19), rgba(70,70,70,0.19))` | Diagonal gradient from bottom-left to top-right |
+| `--virtu-glass-blur` | `24px` | Backdrop blur intensity |
+| `--virtu-glass-border` | `1px solid rgba(255,255,255,0.08)` | Subtle light border |
+| `--virtu-glass-shadow` | `0 8px 32px rgba(0,0,0,0.25)` | Soft drop shadow |
 
 ---
 
@@ -64,13 +79,12 @@ Override any token once in your application's `:root` to retheme the entire libr
 
 ```css
 :root {
-  /* Swap the primary brand color */
-  --boulder-color-primary: #0070f3;
-  --boulder-color-primary-hover: #005cc5;
+  /* Swap the primary accent color */
+  --virtu-color-primary: #6366f1;
+  --virtu-color-primary-hover: #4f46e5;
 
-  /* Adjust text contrast */
-  --boulder-color-text: #111111;
-  --boulder-color-text-secondary: #555555;
+  /* Adjust the glass intensity */
+  --virtu-glass-blur: 32px;
 }
 ```
 

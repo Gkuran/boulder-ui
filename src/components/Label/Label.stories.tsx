@@ -20,12 +20,12 @@ This component extends the native HTML \`label\` element with additional styling
 
 ## Installation
 \`\`\`bash
-npm install boulder-ui
+npm install virtu-ui
 \`\`\`
 
 ## Import
 \`\`\`tsx
-import { Label } from 'boulder-ui';
+import { Label } from 'virtu-ui';
 \`\`\`
 
 ## Props

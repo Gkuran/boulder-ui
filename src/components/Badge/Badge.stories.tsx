@@ -24,7 +24,7 @@ const meta: Meta<typeof Badge> = {
 
 ## Import
 \`\`\`tsx
-import { Badge } from 'boulder-ui';
+import { Badge } from 'virtu-ui';
 \`\`\`
 
 ## Props

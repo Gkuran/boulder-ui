@@ -4,6 +4,7 @@
 
 body {
   margin: 0;
-  font-family: var(--boulder-font-family);
-  color: var(--boulder-color-text);
+  font-family: var(--virtu-font-family);
+  color: var(--virtu-color-text);
+  background-color: var(--virtu-color-background);
 }

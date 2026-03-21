@@ -32,7 +32,7 @@ The Accordion is built from four composable sub-components that work together th
 ## Installation
 
 \`\`\`bash
-npm install boulder-ui
+npm install virtu-ui
 \`\`\`
 
 ## Import
@@ -43,7 +43,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "boulder-ui";
+} from "virtu-ui";
 \`\`\`
 
 ## Props
@@ -104,9 +104,9 @@ The \`width\` prop sets a **fixed width** on the root container, ensuring the ac
 \`\`\`tsx
 <Accordion width="md">
   <AccordionItem>
-    <AccordionTrigger>What is Boulder UI?</AccordionTrigger>
+    <AccordionTrigger>What is Virtu UI?</AccordionTrigger>
     <AccordionContent>
-      Boulder UI is a lightweight, accessible React component library.
+      Virtu UI is a lightweight, accessible React component library.
     </AccordionContent>
   </AccordionItem>
 </Accordion>
@@ -170,9 +170,9 @@ export const Default: Story = {
   render: (args) => (
     <Accordion {...args}>
       <AccordionItem>
-        <AccordionTrigger>What is Boulder UI?</AccordionTrigger>
+        <AccordionTrigger>What is Virtu UI?</AccordionTrigger>
         <AccordionContent>
-          Boulder UI is a lightweight, accessible React component library
+          Virtu UI is a lightweight, accessible React component library
           focused on building consistent, composable interfaces through design
           tokens and strong TypeScript types.
         </AccordionContent>
@@ -180,16 +180,16 @@ export const Default: Story = {
       <AccordionItem>
         <AccordionTrigger>How do I install it?</AccordionTrigger>
         <AccordionContent>
-          Run <code>npm install boulder-ui</code> in your project, then import
+          Run <code>npm install virtu-ui</code> in your project, then import
           the design tokens via{" "}
-          <code>import &quot;boulder-ui/styles&quot;</code> in your entry file.
+          <code>import &quot;virtu-ui/styles&quot;</code> in your entry file.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem>
         <AccordionTrigger>Can I customize the colors?</AccordionTrigger>
         <AccordionContent>
           Yes. All visual properties are driven by CSS custom properties
-          (design tokens). Override any <code>--boulder-*</code> token in your
+          (design tokens). Override any <code>--virtu-*</code> token in your
           application&apos;s <code>:root</code> to retheme the entire library.
         </AccordionContent>
       </AccordionItem>
@@ -240,17 +240,17 @@ export const WidthMd: Story = {
   render: (args) => (
     <Accordion {...args}>
       <AccordionItem>
-        <AccordionTrigger>What is Boulder UI?</AccordionTrigger>
+        <AccordionTrigger>What is Virtu UI?</AccordionTrigger>
         <AccordionContent>
-          Boulder UI is a lightweight, accessible React component library
+          Virtu UI is a lightweight, accessible React component library
           focused on building consistent, composable interfaces.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem>
         <AccordionTrigger>How do I install it?</AccordionTrigger>
         <AccordionContent>
-          Run <code>npm install boulder-ui</code> and import the styles via{" "}
-          <code>import &quot;boulder-ui/styles&quot;</code>.
+          Run <code>npm install virtu-ui</code> and import the styles via{" "}
+          <code>import &quot;virtu-ui/styles&quot;</code>.
         </AccordionContent>
       </AccordionItem>
     </Accordion>

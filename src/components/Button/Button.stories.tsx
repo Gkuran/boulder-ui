@@ -16,12 +16,12 @@ This component provides a consistent button experience with built-in support for
 
 ## Installation
 \`\`\`bash
-npm install boulder-ui
+npm install virtu-ui
 \`\`\`
 
 ## Import
 \`\`\`tsx
-import { Button } from 'boulder-ui';
+import { Button } from 'virtu-ui';
 \`\`\`
 
 ## Props

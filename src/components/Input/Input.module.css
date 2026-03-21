@@ -1,67 +1,73 @@
 /* base input */
 
 .input {
-  border-radius: var(--boulder-radius-md);
+  width: 100%;
+  border-radius: var(--virtu-radius-md);
   font-family: inherit;
+  color: var(--virtu-color-text);
 
   transition:
-    border-color 0.15s ease,
-    background 0.15s ease,
-    box-shadow 0.15s ease;
+    border-color var(--virtu-transition-fast),
+    background var(--virtu-transition-fast),
+    box-shadow var(--virtu-transition-fast);
+}
+
+.input::placeholder {
+  color: var(--virtu-color-muted);
 }
 
 /* ─── Variantes ───────────────────────────────────────────────────────────── */
 
 .outline {
-  border: 1px solid var(--boulder-color-border);
-  background: var(--boulder-color-background);
+  border: 1px solid var(--virtu-color-border);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .outline:focus {
   outline: none;
-  border-color: var(--boulder-color-primary);
-  box-shadow: 0 0 0 2px var(--boulder-color-primary-soft);
+  border-color: var(--virtu-color-primary);
+  box-shadow: 0 0 0 2px var(--virtu-color-primary-soft);
 }
 
 .filled {
   border: 1px solid transparent;
-  background: var(--boulder-color-background-subtle);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .filled:focus {
   outline: none;
-  border-color: var(--boulder-color-primary);
+  border-color: var(--virtu-color-primary);
 }
 
 /* ─── Tamanhos ────────────────────────────────────────────────────────────── */
 
 .sm {
-  padding: var(--boulder-spacing-xs) var(--boulder-spacing-sm);
-  font-size: var(--boulder-font-size-sm);
+  padding: var(--virtu-spacing-xs) var(--virtu-spacing-sm);
+  font-size: var(--virtu-font-size-sm);
 }
 
 .md {
-  padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
-  font-size: var(--boulder-font-size-md);
+  padding: var(--virtu-spacing-sm) var(--virtu-spacing-md);
+  font-size: var(--virtu-font-size-md);
 }
 
 .lg {
-  padding: var(--boulder-spacing-md) var(--boulder-spacing-lg);
-  font-size: var(--boulder-font-size-lg);
+  padding: var(--virtu-spacing-md) var(--virtu-spacing-lg);
+  font-size: var(--virtu-font-size-lg);
 }
 
 /* ─── Estados ─────────────────────────────────────────────────────────────── */
 
 .error {
-  border-color: var(--boulder-color-danger);
+  border-color: var(--virtu-color-danger);
 }
 
 .errorMessage {
-  font-size: var(--boulder-font-size-xs);
-  color: var(--boulder-color-danger);
+  font-size: var(--virtu-font-size-xs);
+  color: var(--virtu-color-danger);
 }
 
 .input:disabled {
-  opacity: 0.6;
+  opacity: 0.4;
   cursor: not-allowed;
 }

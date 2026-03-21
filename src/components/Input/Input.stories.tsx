@@ -31,12 +31,12 @@ This component provides a flexible input element with built-in error handling an
 
 ## Installation
 \`\`\`bash
-npm install boulder-ui
+npm install virtu-ui
 \`\`\`
 
 ## Import
 \`\`\`tsx
-import { Input } from 'boulder-ui';
+import { Input } from 'virtu-ui';
 \`\`\`
 
 ## Props

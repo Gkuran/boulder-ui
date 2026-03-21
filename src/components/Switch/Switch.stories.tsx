@@ -22,12 +22,12 @@ Switches are commonly used for **settings, preferences, and feature toggles**.
 
 ## Installation
 \`\`\`bash
-npm install boulder-ui
+npm install virtu-ui
 \`\`\`
 
 ## Import
 \`\`\`tsx
-import { Switch } from 'boulder-ui';
+import { Switch } from 'virtu-ui';
 \`\`\`
 
 ## Props

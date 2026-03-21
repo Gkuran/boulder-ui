@@ -19,12 +19,12 @@ This component wraps the native HTML checkbox input with custom styling and prov
 
 ## Installation
 \`\`\`bash
-npm install boulder-ui
+npm install virtu-ui
 \`\`\`
 
 ## Import
 \`\`\`tsx
-import { Checkbox } from 'boulder-ui';
+import { Checkbox } from 'virtu-ui';
 \`\`\`
 
 ## Props

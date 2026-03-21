@@ -21,12 +21,12 @@ It supports:
 
 ## Installation
 \`\`\`bash
-npm install boulder-ui
+npm install virtu-ui
 \`\`\`
 
 ## Import
 \`\`\`tsx
-import { ErrorMessage } from 'boulder-ui';
+import { ErrorMessage } from 'virtu-ui';
 \`\`\`
 
 ## Props
