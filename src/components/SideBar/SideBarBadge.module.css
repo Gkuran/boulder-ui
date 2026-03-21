@@ -1,0 +1,25 @@
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+
+  border-radius: 999px;
+
+  background: var(--virtu-color-primary);
+  color: var(--virtu-color-text-inverse);
+
+  font-family: var(--virtu-font-family);
+  font-size: 10px;
+  font-weight: var(--virtu-font-weight-bold);
+  line-height: 1;
+
+  pointer-events: none;
+}

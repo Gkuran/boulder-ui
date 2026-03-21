@@ -1,0 +1,53 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 80px;
+  width: 80px;
+
+  padding: var(--virtu-spacing-md) var(--virtu-spacing-sm);
+  gap: var(--virtu-spacing-xs);
+
+  background: #000000;
+  border-radius: var(--virtu-radius-lg);
+
+  /* Ensure the sidebar does not stretch to fill height — it sizes to content.
+     The consumer controls positioning (fixed, sticky, etc.) */
+  height: fit-content;
+
+  box-sizing: border-box;
+}
+
+/* ─── Logo slot ───────────────────────────────────────────────────────────── */
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  margin-bottom: var(--virtu-spacing-md);
+  flex-shrink: 0;
+}
+
+.logo > img,
+.logo > svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ─── Navigation area ─────────────────────────────────────────────────────── */
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--virtu-spacing-xs);
+  width: 100%;
+
+  flex: 1;
+}

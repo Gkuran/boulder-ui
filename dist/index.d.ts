@@ -167,6 +167,68 @@ export declare const Label: ForwardRefExoticComponent<LabelProps & RefAttributes
 export declare interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 }
 
+export declare const SideBar: ForwardRefExoticComponent<SideBarProps & RefAttributes<HTMLElement>>;
+
+export declare const SideBarBadge: ForwardRefExoticComponent<SideBarBadgeProps & RefAttributes<HTMLSpanElement>>;
+
+export declare interface SideBarBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+    /** The numeric value displayed inside the badge. */
+    count: number;
+    /**
+     * Maximum value before showing "max+".
+     * @default 99
+     */
+    max?: number;
+}
+
+export declare function SideBarItem({ icon, label, active, badge, badgeMax, asButton, className, ...rest }: SideBarItemProps): JSX.Element;
+
+export declare namespace SideBarItem {
+    var displayName: string;
+}
+
+export declare interface SideBarItemProps extends React.HTMLAttributes<HTMLElement> {
+    /** The icon to render. Accepts any ReactNode (SVG, img, icon component). */
+    icon: ReactNode;
+    /** Text label displayed below the icon. */
+    label: string;
+    /**
+     * Whether this item is currently active/selected.
+     * @default false
+     */
+    active?: boolean;
+    /**
+     * Optional badge count. When provided, a SideBarBadge is rendered
+     * overlaying the icon with this number.
+     */
+    badge?: number;
+    /**
+     * Maximum badge value before showing "max+".
+     * @default 99
+     */
+    badgeMax?: number;
+    /**
+     * Render as a `<button>` instead of `<a>`.
+     * Useful when the item triggers an action rather than navigation.
+     * @default false
+     */
+    asButton?: boolean;
+    /** Navigation URL. Only used when rendering as `<a>` (default). */
+    href?: string;
+}
+
+export declare interface SideBarProps extends React.HTMLAttributes<HTMLElement> {
+    /**
+     * Logo or brand element rendered at the top of the sidebar.
+     * Accepts any ReactNode (img, SVG, icon component).
+     */
+    logo?: ReactNode;
+    /**
+     * Navigation items. Should be SideBarItem components.
+     */
+    children: ReactNode;
+}
+
 export declare const Switch: ForwardRefExoticComponent<SwitchProps & RefAttributes<HTMLInputElement>>;
 
 export declare interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
