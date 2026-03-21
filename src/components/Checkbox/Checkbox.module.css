@@ -41,6 +41,17 @@
   height: var(--virtu-checkbox-checkmark-size);
 
   color: var(--virtu-color-text-inverse);
+
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity var(--virtu-transition-fast),
+    transform var(--virtu-transition-fast);
+}
+
+.input:checked + .control .checkmark {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .label {
