@@ -7,10 +7,9 @@ import { ErrorMessage as A } from "./components/ErrorMessage/ErrorMessage.js";
 import { FormField as S } from "./components/FormField/FormField.js";
 import { Input as h } from "./components/Input/Input.js";
 import { Label as s } from "./components/Label/Label.js";
-import { SideBar as C } from "./components/SideBar/SideBar.js";
-import { SideBarItem as T } from "./components/SideBar/SideBarItem.js";
-import { Switch as w } from "./components/Switch/Switch.js";
-import { Textarea as L } from "./components/Textarea/Textarea.js";
+import { SideBar as C, SideBarItem as F } from "./components/SideBar/SideBar.js";
+import { Switch as k } from "./components/Switch/Switch.js";
+import { Textarea as E } from "./components/Textarea/Textarea.js";
 export {
   e as Accordion,
   t as AccordionContent,
@@ -25,8 +24,8 @@ export {
   h as Input,
   s as Label,
   C as SideBar,
-  T as SideBarItem,
-  w as Switch,
-  L as Textarea
+  F as SideBarItem,
+  k as Switch,
+  E as Textarea
 };
 //# sourceMappingURL=index.js.map

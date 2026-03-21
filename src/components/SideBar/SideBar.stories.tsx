@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SideBar } from "./SideBar";
-import { SideBarItem } from "./SideBarItem";
+import { SideBar, SideBarItem } from "./SideBar";
 
 /* ─── Inline SVG icons for stories (consumers bring their own) ────────────── */
 

@@ -175,7 +175,7 @@ export declare namespace SideBarItem {
     var displayName: string;
 }
 
-export declare interface SideBarItemProps extends React.HTMLAttributes<HTMLElement> {
+export declare interface SideBarItemProps extends HTMLAttributes<HTMLElement> {
     /** The icon to render. Accepts any ReactNode (SVG, img, icon component). */
     icon: ReactNode;
     /** Text label displayed below the icon. */
@@ -186,8 +186,8 @@ export declare interface SideBarItemProps extends React.HTMLAttributes<HTMLEleme
      */
     active?: boolean;
     /**
-     * Optional badge count. When provided, a SideBarBadge is rendered
-     * overlaying the icon with this number.
+     * Optional badge count. When provided, a Badge with variant="count" is
+     * rendered overlaying the icon.
      */
     badge?: number;
     /**
@@ -205,7 +205,7 @@ export declare interface SideBarItemProps extends React.HTMLAttributes<HTMLEleme
     href?: string;
 }
 
-export declare interface SideBarProps extends React.HTMLAttributes<HTMLElement> {
+export declare interface SideBarProps extends HTMLAttributes<HTMLElement> {
     /**
      * Logo or brand element rendered at the top of the sidebar.
      * Accepts any ReactNode (img, SVG, icon component).
