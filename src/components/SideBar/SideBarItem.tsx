@@ -1,5 +1,5 @@
 import type { SideBarItemProps } from "./SideBarItem.types";
-import { SideBarBadge } from "./SideBarBadge";
+import { Badge } from "../Badge";
 import { cx } from "../../utils/cx";
 import styles from "./SideBarItem.module.css";
 
@@ -8,11 +8,18 @@ export function SideBarItem({
   label,
   active = false,
   badge,
-  badgeMax,
+  badgeMax = 99,
   asButton = false,
   className,
   ...rest
 }: SideBarItemProps) {
+  const badgeDisplay =
+    badge != null && badge > 0
+      ? badge > badgeMax
+        ? `${badgeMax}+`
+        : String(badge)
+      : null;
+
   const sharedProps = {
     className: cx(styles.item, active && styles.active, className),
     "aria-current": active ? ("page" as const) : undefined,
@@ -23,8 +30,14 @@ export function SideBarItem({
     <>
       <span className={styles.iconWrapper} aria-hidden="true">
         {icon}
-        {badge != null && badge > 0 && (
-          <SideBarBadge count={badge} max={badgeMax} />
+        {badgeDisplay && (
+          <Badge
+            variant="count"
+            className={styles.badge}
+            aria-label={`${badge} notifications`}
+          >
+            {badgeDisplay}
+          </Badge>
         )}
       </span>
       <span className={styles.label}>{label}</span>

@@ -30,3 +30,17 @@
   background: rgba(229, 72, 77, 0.2);
   color: var(--virtu-color-danger);
 }
+
+/* Circular numeric badge — intended for overlaying icons */
+.count {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: var(--virtu-font-weight-bold);
+  line-height: 1;
+  background: var(--virtu-color-primary);
+  color: var(--virtu-color-text-inverse);
+  justify-content: center;
+}

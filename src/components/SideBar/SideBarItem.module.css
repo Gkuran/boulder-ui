@@ -63,6 +63,14 @@
 
 /* ─── Label ───────────────────────────────────────────────────────────────── */
 
+/* Badge overlay — positions the Badge component over the icon */
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  pointer-events: none;
+}
+
 .label {
   font-size: 10px;
   font-weight: var(--virtu-font-weight-medium);

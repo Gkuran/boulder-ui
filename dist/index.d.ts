@@ -86,7 +86,7 @@ export declare interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
     variant?: BadgeVariant;
 }
 
-export declare type BadgeVariant = "default" | "success" | "warning" | "danger";
+export declare type BadgeVariant = "default" | "success" | "warning" | "danger" | "count";
 
 export declare const Box: ForwardRefExoticComponent<BoxProps & RefAttributes<HTMLDivElement>>;
 
@@ -168,18 +168,6 @@ export declare interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement
 }
 
 export declare const SideBar: ForwardRefExoticComponent<SideBarProps & RefAttributes<HTMLElement>>;
-
-export declare const SideBarBadge: ForwardRefExoticComponent<SideBarBadgeProps & RefAttributes<HTMLSpanElement>>;
-
-export declare interface SideBarBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-    /** The numeric value displayed inside the badge. */
-    count: number;
-    /**
-     * Maximum value before showing "max+".
-     * @default 99
-     */
-    max?: number;
-}
 
 export declare function SideBarItem({ icon, label, active, badge, badgeMax, asButton, className, ...rest }: SideBarItemProps): JSX.Element;
 
