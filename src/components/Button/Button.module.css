@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
 
-  gap: var(--virtu-spacing-xs);
+  gap: var(--virtu-spacing-sm);
 
   transition:
     background var(--virtu-transition-normal),
@@ -46,7 +46,7 @@
 
 .primary {
   background: var(--virtu-color-primary);
-  color: var(--virtu-color-text-inverse);
+  color: var(--virtu-color-text);
 }
 
 .primary:hover:not(:disabled) {
@@ -107,7 +107,8 @@
   width: var(--virtu-spinner-size);
   height: var(--virtu-spinner-size);
 
-  border: var(--virtu-spinner-border-width) solid var(--virtu-spinner-color-track);
+  border: var(--virtu-spinner-border-width) solid
+    var(--virtu-spinner-color-track);
   border-top-color: currentColor;
 
   border-radius: 50%;
