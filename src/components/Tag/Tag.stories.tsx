@@ -42,19 +42,19 @@ import { Tag } from 'virtu-ui';
 ### Display-only tag
 
 \`\`\`tsx
-<Tag label="Aprovados (5)" />
+<Tag label="Approved (5)" />
 \`\`\`
 
 ### Removable tag
 
 \`\`\`tsx
-<Tag label="Aprovados (5)" onRemove={() => removeFilter('aprovados')} />
+<Tag label="Approved (5)" onRemove={() => removeFilter('approved')} />
 \`\`\`
 
 ### Active/selected tag
 
 \`\`\`tsx
-<Tag label="Todos" active />
+<Tag label="All" active />
 \`\`\`
         `,
       },
@@ -68,20 +68,20 @@ type Story = StoryObj<typeof Tag>;
 
 export const Default: Story = {
   args: {
-    label: "Aprovados (5)",
+    label: "Approved (5)",
   },
 };
 
 export const Active: Story = {
   args: {
-    label: "Todos",
+    label: "All",
     active: true,
   },
 };
 
 export const Removable: Story = {
   args: {
-    label: "Aprovados (5)",
+    label: "Approved (5)",
     onRemove: () => {},
   },
 };
@@ -89,7 +89,7 @@ export const Removable: Story = {
 export const RemovableActive: Story = {
   name: "Removable + Active",
   args: {
-    label: "Pendentes (2)",
+    label: "Pending (2)",
     active: true,
     onRemove: () => {},
   },
@@ -99,14 +99,14 @@ export const FilterBar: Story = {
   name: "Filter Bar (Interactive)",
   render: function FilterBarStory() {
     const initialFilters = [
-      { id: "todos", label: "Todos" },
-      { id: "aprovados", label: "Aprovados (5)" },
-      { id: "pendentes", label: "Pendentes (2)" },
-      { id: "estornados", label: "Estornados (2)" },
+      { id: "all", label: "All" },
+      { id: "approved", label: "Approved (5)" },
+      { id: "pending", label: "Pending (2)" },
+      { id: "refunded", label: "Refunded (2)" },
     ];
 
     const [filters, setFilters] = useState(initialFilters);
-    const [active, setActive] = useState("todos");
+    const [active, setActive] = useState("all");
 
     const remove = (id: string) =>
       setFilters((prev) => prev.filter((f) => f.id !== id));
@@ -124,7 +124,7 @@ export const FilterBar: Story = {
             label={f.label}
             active={active === f.id}
             onClick={() => setActive(f.id)}
-            onRemove={f.id !== "todos" ? () => remove(f.id) : undefined}
+            onRemove={f.id !== "all" ? () => remove(f.id) : undefined}
           />
         ))}
       </div>

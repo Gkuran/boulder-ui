@@ -22,37 +22,37 @@ interface Order {
 const ORDERS: Order[] = [
   {
     id: "#30218",
-    client: "Instituto Aurora",
-    email: "financeiro@institutoaurora.com.br",
-    product: "Mentoria Scale Pro",
+    client: "Aurora Institute",
+    email: "finance@aurorainstitute.com",
+    product: "Scale Pro Mentorship",
     date: "09/03/2026",
-    gross: "R$ 3.490,00",
-    subtotal: "R$ 3.490,00",
-    net: "R$ 3.490,00",
+    gross: "$ 3,490.00",
+    subtotal: "$ 3,490.00",
+    net: "$ 3,490.00",
     status: "approved",
     method: "PIX",
   },
   {
     id: "#30219",
-    client: "Grupo Nexus",
-    email: "contato@gruponexus.com.br",
-    product: "Mentoria Scale Pro",
+    client: "Nexus Group",
+    email: "contact@nexusgroup.com",
+    product: "Scale Pro Mentorship",
     date: "10/03/2026",
-    gross: "R$ 3.490,00",
-    subtotal: "R$ 3.490,00",
-    net: "R$ 3.490,00",
+    gross: "$ 3,490.00",
+    subtotal: "$ 3,490.00",
+    net: "$ 3,490.00",
     status: "approved",
     method: "PIX",
   },
   {
     id: "#30220",
-    client: "Clínica Viva",
-    email: "admin@clinicaviva.com.br",
-    product: "Mentoria Scale Pro",
+    client: "Viva Clinic",
+    email: "admin@vivaclinic.com",
+    product: "Scale Pro Mentorship",
     date: "11/03/2026",
-    gross: "R$ 3.490,00",
-    subtotal: "R$ 3.490,00",
-    net: "R$ 3.490,00",
+    gross: "$ 3,490.00",
+    subtotal: "$ 3,490.00",
+    net: "$ 3,490.00",
     status: "pending",
     method: "Credit Card",
   },
@@ -60,35 +60,35 @@ const ORDERS: Order[] = [
     id: "#30221",
     client: "Tech Solutions",
     email: "hello@techsolutions.io",
-    product: "Mentoria Scale Pro",
+    product: "Scale Pro Mentorship",
     date: "12/03/2026",
-    gross: "R$ 3.490,00",
-    subtotal: "R$ 3.490,00",
-    net: "R$ 3.490,00",
+    gross: "$ 3,490.00",
+    subtotal: "$ 3,490.00",
+    net: "$ 3,490.00",
     status: "pending",
-    method: "Boleto",
+    method: "Bank Transfer",
   },
   {
     id: "#30222",
     client: "Aurora Digital",
-    email: "digital@aurora.com.br",
-    product: "Mentoria Scale Pro",
+    email: "digital@aurora.com",
+    product: "Scale Pro Mentorship",
     date: "13/03/2026",
-    gross: "R$ 3.490,00",
-    subtotal: "R$ 3.490,00",
-    net: "R$ 3.490,00",
+    gross: "$ 3,490.00",
+    subtotal: "$ 3,490.00",
+    net: "$ 3,490.00",
     status: "refunded",
     method: "PIX",
   },
   {
     id: "#30223",
-    client: "Studio Criativo",
-    email: "ola@studiocriativo.com.br",
-    product: "Mentoria Scale Pro",
+    client: "Creative Studio",
+    email: "hello@creativestudio.com",
+    product: "Scale Pro Mentorship",
     date: "14/03/2026",
-    gross: "R$ 3.490,00",
-    subtotal: "R$ 3.490,00",
-    net: "R$ 3.490,00",
+    gross: "$ 3,490.00",
+    subtotal: "$ 3,490.00",
+    net: "$ 3,490.00",
     status: "refunded",
     method: "Credit Card",
   },
@@ -101,16 +101,16 @@ const STATUS_VARIANT: Record<Order["status"], "success" | "warning" | "danger"> 
 };
 
 const STATUS_LABEL: Record<Order["status"], string> = {
-  approved: "APROVADO",
-  pending: "PENDENTE",
-  refunded: "ESTORNADO",
+  approved: "APPROVED",
+  pending: "PENDING",
+  refunded: "REFUNDED",
 };
 
 const columns: DataTableColumn<Order>[] = [
   { key: "id", header: "ID", width: "80px" },
   {
     key: "client",
-    header: "Cliente",
+    header: "Client",
     width: "200px",
     render: (row) => (
       <div>
@@ -129,11 +129,11 @@ const columns: DataTableColumn<Order>[] = [
       </div>
     ),
   },
-  { key: "product", header: "Produto" },
-  { key: "date", header: "Data", align: "center" },
-  { key: "gross", header: "Bruto", align: "right" },
+  { key: "product", header: "Product" },
+  { key: "date", header: "Date", align: "center" },
+  { key: "gross", header: "Gross", align: "right" },
   { key: "subtotal", header: "Subtotal", align: "right" },
-  { key: "net", header: "Líquido", align: "right" },
+  { key: "net", header: "Net", align: "right" },
   {
     key: "status",
     header: "Status",
@@ -144,7 +144,7 @@ const columns: DataTableColumn<Order>[] = [
       </Badge>
     ),
   },
-  { key: "method", header: "Método", align: "center" },
+  { key: "method", header: "Method", align: "center" },
 ];
 
 /* ─── Meta ────────────────────────────────────────────────────────────────── */
@@ -235,10 +235,10 @@ export const WithSearchAndFilters: Story = {
     const [activeFilter, setActiveFilter] = useState("all");
 
     const filters: DataTableFilter[] = [
-      { id: "all", label: "Todos", active: activeFilter === "all" },
-      { id: "approved", label: "Aprovados (5)", active: activeFilter === "approved" },
-      { id: "pending", label: "Pendentes (2)", active: activeFilter === "pending" },
-      { id: "refunded", label: "Estornados (2)", active: activeFilter === "refunded" },
+      { id: "all", label: "All", active: activeFilter === "all" },
+      { id: "approved", label: "Approved (5)", active: activeFilter === "approved" },
+      { id: "pending", label: "Pending (2)", active: activeFilter === "pending" },
+      { id: "refunded", label: "Refunded (2)", active: activeFilter === "refunded" },
     ];
 
     const filtered = useMemo(() => {
@@ -268,13 +268,13 @@ export const WithSearchAndFilters: Story = {
         data={filtered}
         rowKey={(row) => row.id}
         showSearch
-        searchPlaceholder="Buscar por ID, cliente, e-mail ou oferta..."
+        searchPlaceholder="Search by ID, client, e-mail or offer..."
         searchValue={search}
         onSearchChange={setSearch}
         onSearchClear={() => setSearch("")}
         filters={filters}
         onFilterClick={setActiveFilter}
-        emptyMessage="Nenhum pedido encontrado."
+        emptyMessage="No orders found."
       />
     );
   },
@@ -312,10 +312,10 @@ export const FullFeatured: Story = {
     const [page, setPage] = useState(1);
 
     const filters: DataTableFilter[] = [
-      { id: "all", label: "Todos", active: activeFilter === "all" },
-      { id: "approved", label: "Aprovados (5)", active: activeFilter === "approved" },
-      { id: "pending", label: "Pendentes (2)", active: activeFilter === "pending" },
-      { id: "refunded", label: "Estornados (2)", active: activeFilter === "refunded" },
+      { id: "all", label: "All", active: activeFilter === "all" },
+      { id: "approved", label: "Approved (5)", active: activeFilter === "approved" },
+      { id: "pending", label: "Pending (2)", active: activeFilter === "pending" },
+      { id: "refunded", label: "Refunded (2)", active: activeFilter === "refunded" },
     ];
 
     const filtered = useMemo(() => {
@@ -351,7 +351,7 @@ export const FullFeatured: Story = {
         data={pageData}
         rowKey={(row) => row.id}
         showSearch
-        searchPlaceholder="Buscar por ID, cliente, e-mail ou oferta..."
+        searchPlaceholder="Search by ID, client, e-mail or offer..."
         searchValue={search}
         onSearchChange={(v) => {
           setSearch(v);
@@ -370,7 +370,7 @@ export const FullFeatured: Story = {
         currentPage={safePage}
         totalPages={totalPages}
         onPageChange={setPage}
-        emptyMessage="Nenhum pedido encontrado."
+        emptyMessage="No orders found."
       />
     );
   },
@@ -384,8 +384,8 @@ export const EmptyState: Story = {
       data={[]}
       rowKey={(_, i) => i}
       showSearch
-      searchPlaceholder="Buscar..."
-      emptyMessage="Nenhum pedido encontrado."
+      searchPlaceholder="Search..."
+      emptyMessage="No orders found."
     />
   ),
 };

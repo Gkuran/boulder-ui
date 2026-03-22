@@ -100,13 +100,12 @@ import { SideBar, SideBarItem } from "virtu-ui";
 
 ## Composition
 
-The SideBar is composed of three parts:
+The SideBar is composed of two main parts:
 
 | Component | Role |
 |---|---|
 | \`SideBar\` | Root container (\`<nav>\`). Accepts a \`logo\` prop and \`SideBarItem\` children. |
 | \`SideBarItem\` | A single navigation entry with icon, label, active state, and optional badge. |
-| \`SideBarBadge\` | A small circular notification badge (used internally by \`SideBarItem\` via the \`badge\` prop). |
 
 ## SideBar Props
 
@@ -150,13 +149,13 @@ type Story = StoryObj<typeof SideBar>;
 export const Default: Story = {
   render: () => (
     <SideBar logo={<LogoIcon />}>
-      <SideBarItem icon={<HomeIcon />} label="Início" active badge={10} href="#" />
-      <SideBarItem icon={<WalletIcon />} label="Financeiro" href="#" />
-      <SideBarItem icon={<PackageIcon />} label="Produtos" href="#" />
+      <SideBarItem icon={<HomeIcon />} label="Home" active badge={10} href="#" />
+      <SideBarItem icon={<WalletIcon />} label="Finance" href="#" />
+      <SideBarItem icon={<PackageIcon />} label="Products" href="#" />
       <SideBarItem icon={<CartIcon />} label="Checkout" href="#" />
-      <SideBarItem icon={<UsersIcon />} label="Membros" href="#" />
-      <SideBarItem icon={<LinkIcon />} label="Integrações" href="#" />
-      <SideBarItem icon={<GridIcon />} label="Aplicativos" href="#" />
+      <SideBarItem icon={<UsersIcon />} label="Members" href="#" />
+      <SideBarItem icon={<LinkIcon />} label="Integrations" href="#" />
+      <SideBarItem icon={<GridIcon />} label="Apps" href="#" />
     </SideBar>
   ),
 };
@@ -165,9 +164,9 @@ export const WithBadge: Story = {
   name: "Item with Badge",
   render: () => (
     <SideBar logo={<LogoIcon />}>
-      <SideBarItem icon={<HomeIcon />} label="Início" active badge={10} href="#" />
-      <SideBarItem icon={<WalletIcon />} label="Financeiro" badge={3} href="#" />
-      <SideBarItem icon={<PackageIcon />} label="Produtos" href="#" />
+      <SideBarItem icon={<HomeIcon />} label="Home" active badge={10} href="#" />
+      <SideBarItem icon={<WalletIcon />} label="Finance" badge={3} href="#" />
+      <SideBarItem icon={<PackageIcon />} label="Products" href="#" />
     </SideBar>
   ),
 };
@@ -176,9 +175,9 @@ export const NoBadge: Story = {
   name: "Without Badges",
   render: () => (
     <SideBar logo={<LogoIcon />}>
-      <SideBarItem icon={<HomeIcon />} label="Início" href="#" />
-      <SideBarItem icon={<WalletIcon />} label="Financeiro" active href="#" />
-      <SideBarItem icon={<PackageIcon />} label="Produtos" href="#" />
+      <SideBarItem icon={<HomeIcon />} label="Home" href="#" />
+      <SideBarItem icon={<WalletIcon />} label="Finance" active href="#" />
+      <SideBarItem icon={<PackageIcon />} label="Products" href="#" />
       <SideBarItem icon={<CartIcon />} label="Checkout" href="#" />
     </SideBar>
   ),
@@ -188,8 +187,8 @@ export const HighBadgeCount: Story = {
   name: "Badge Overflow (99+)",
   render: () => (
     <SideBar logo={<LogoIcon />}>
-      <SideBarItem icon={<HomeIcon />} label="Início" active badge={150} href="#" />
-      <SideBarItem icon={<WalletIcon />} label="Financeiro" badge={42} href="#" />
+      <SideBarItem icon={<HomeIcon />} label="Home" active badge={150} href="#" />
+      <SideBarItem icon={<WalletIcon />} label="Finance" badge={42} href="#" />
     </SideBar>
   ),
 };
@@ -198,9 +197,9 @@ export const NoLogo: Story = {
   name: "Without Logo",
   render: () => (
     <SideBar>
-      <SideBarItem icon={<HomeIcon />} label="Início" active href="#" />
-      <SideBarItem icon={<WalletIcon />} label="Financeiro" href="#" />
-      <SideBarItem icon={<PackageIcon />} label="Produtos" href="#" />
+      <SideBarItem icon={<HomeIcon />} label="Home" active href="#" />
+      <SideBarItem icon={<WalletIcon />} label="Finance" href="#" />
+      <SideBarItem icon={<PackageIcon />} label="Products" href="#" />
     </SideBar>
   ),
 };
@@ -222,19 +221,19 @@ export const FloatingLayout: Story = {
       {/* Sidebar floating with margin */}
       <div style={{ padding: "16px 0 16px 16px" }}>
         <SideBar logo={<LogoIcon />}>
-          <SideBarItem icon={<HomeIcon />} label="Início" active badge={10} href="#" />
-          <SideBarItem icon={<WalletIcon />} label="Financeiro" href="#" />
-          <SideBarItem icon={<PackageIcon />} label="Produtos" href="#" />
+          <SideBarItem icon={<HomeIcon />} label="Home" active badge={10} href="#" />
+          <SideBarItem icon={<WalletIcon />} label="Finance" href="#" />
+          <SideBarItem icon={<PackageIcon />} label="Products" href="#" />
           <SideBarItem icon={<CartIcon />} label="Checkout" href="#" />
-          <SideBarItem icon={<UsersIcon />} label="Membros" href="#" />
-          <SideBarItem icon={<LinkIcon />} label="Integrações" href="#" />
-          <SideBarItem icon={<GridIcon />} label="Aplicativos" href="#" />
+          <SideBarItem icon={<UsersIcon />} label="Members" href="#" />
+          <SideBarItem icon={<LinkIcon />} label="Integrations" href="#" />
+          <SideBarItem icon={<GridIcon />} label="Apps" href="#" />
         </SideBar>
       </div>
 
       {/* Content area placeholder */}
       <div style={{ flex: 1, padding: "24px", display: "flex", flexDirection: "column", gap: "16px" }}>
-        <h1 style={{ margin: 0, color: "#f5f5f5", fontSize: "24px", fontWeight: 700 }}>Pedidos</h1>
+        <h1 style={{ margin: 0, color: "#f5f5f5", fontSize: "24px", fontWeight: 700 }}>Orders</h1>
         <div
           style={{
             flex: 1,

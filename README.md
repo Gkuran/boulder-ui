@@ -4,18 +4,19 @@
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-green)]()
 [![license](https://img.shields.io/npm/l/virtu-ui)]()
 
-A **lightweight React component library** designed to build **consistent, accessible and composable interfaces**.
+A **modern, glassmorphism-inspired React component library** designed to build **consistent, accessible, and high-performance interfaces**.
 
 ---
 
 ## Features
 
-- Minimal and composable components
-- Accessibility-first (ARIA, keyboard navigation, semantic HTML)
-- Design tokens via CSS custom properties (`--virtu-*`)
-- Fully typed with TypeScript
-- Tree-shakeable (ESM + CJS, `preserveModules`)
-- No runtime dependencies beyond React
+- **Glassmorphism Aesthetic** — Beautiful translucent surfaces with backdrop blur and saturation, inspired by modern OS design.
+- **Minimal & Composable** — Small, predictable components that work perfectly together.
+- **Accessibility-First** — Built with ARIA, keyboard navigation, and semantic HTML in mind.
+- **Design Tokens** — Fully controlled via CSS custom properties (`--virtu-*`).
+- **Font Agnostic** — While we provide typography tokens, the library does not enforce a specific font family, allowing you to bring your own brand's typography.
+- **Fully Typed** — Written in TypeScript with strict typing for an excellent developer experience.
+- **Tree-Shakeable** — Optimized for small bundle sizes (ESM + CJS).
 
 ---
 
@@ -29,7 +30,7 @@ npm install virtu-ui
 
 ## Setup
 
-Import the design tokens (CSS variables) once in your application entry point:
+Import the design tokens and global styles once in your application entry point:
 
 ```tsx
 import "virtu-ui/styles";
@@ -38,79 +39,68 @@ import "virtu-ui/styles";
 Then import components as needed:
 
 ```tsx
-import { Button, Input, FormField } from "virtu-ui";
+import { Box, Button, Header, SideBar } from "virtu-ui";
 ```
 
 ---
 
-## Components
+## Core Components
 
 | Component | Description |
 |---|---|
-| `Button` | Action button with variants (primary, secondary, danger) and loading state |
-| `Input` | Text input with outline/filled variants and error state |
-| `Textarea` | Multi-line text input with outline/filled variants |
-| `Checkbox` | Accessible checkbox with custom visual control |
-| `Switch` | Toggle switch built on a native checkbox |
-| `Label` | Accessible label for form controls |
-| `FormField` | Composable wrapper combining Label, input, description and ErrorMessage |
-| `ErrorMessage` | Accessible error message with `role="alert"` |
+| `Box` | The foundational glassmorphism container for cards and sections. |
+| `Header` | Sticky top navigation with glass blur and action slots. |
+| `SideBar` | Floating vertical navigation with support for icons and badges. |
+| `DataTable` | Complex data grid with search, filter tags, and pagination. |
+| `SearchField` | Specialized search input with clear button and icon support. |
+| `Tag` | Compact labels for filters and categories with removal support. |
+| `Button` | Action button with variants (primary, secondary, danger) and loading state. |
+| `Input` | Text input with glassmorphism styling and error states. |
+| `Badge` | Status indicators and numeric counters. |
 
 ---
 
 ## Usage Examples
 
-### Button
+### Glassmorphism Card (Box)
 
 ```tsx
-import { Button } from "virtu-ui";
+import { Box } from "virtu-ui";
 
-<Button variant="primary" size="md">Save</Button>
-<Button variant="secondary">Cancel</Button>
-<Button variant="danger" isLoading>Deleting...</Button>
+<Box variant="glass" padding="lg">
+  <h3>Revenue</h3>
+  <p>$ 24,000.00</p>
+</Box>
 ```
 
-### FormField + Input
+### Search & Filters
 
 ```tsx
-import { FormField, Input } from "virtu-ui";
+import { SearchField, Tag } from "virtu-ui";
 
-<FormField label="Email" description="We'll never share your email.">
-  <Input placeholder="you@example.com" />
-</FormField>
-
-<FormField label="Username" error="Username is already taken">
-  <Input />
-</FormField>
-```
-
-### Checkbox
-
-```tsx
-import { Checkbox } from "virtu-ui";
-
-<Checkbox label="Accept terms and conditions" />
-```
-
-### Switch
-
-```tsx
-import { Switch } from "virtu-ui";
-
-<Switch id="notifications" label="Enable notifications" size="md" />
+<SearchField placeholder="Search orders..." onSearchChange={handleSearch} />
+<div style={{ display: 'flex', gap: '8px' }}>
+  <Tag label="Approved" active />
+  <Tag label="Pending" onRemove={handleRemove} />
+</div>
 ```
 
 ---
 
-## Design Tokens
+## Design Tokens & Typography
 
-All styling is driven by CSS custom properties prefixed with `--virtu-`. You can override them in your application:
+Virtu UI is **font agnostic**. We provide tokens for font sizes, weights, and line heights, but we do not bundle or enforce a specific font file. You can easily integrate your own typography:
 
 ```css
 :root {
-  --virtu-color-primary: #0070f3;
-  --virtu-font-family: "Inter", sans-serif;
-  --virtu-radius-md: 6px;
+  /* Bring your own font */
+  --virtu-font-family: "Inter", system-ui, sans-serif;
+  
+  /* Override brand colors */
+  --virtu-color-primary: #FF7F72;
+  
+  /* Adjust glass intensity */
+  --virtu-glass-blur: 20px;
 }
 ```
 

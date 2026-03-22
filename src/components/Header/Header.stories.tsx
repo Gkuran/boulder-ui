@@ -52,7 +52,7 @@ const UserIcon = () => (
 );
 
 /* Avatar placeholder */
-const Avatar = ({ initials = "GK" }: { initials?: string }) => (
+const Avatar = ({ initials = "JD" }: { initials?: string }) => (
   <div
     aria-label="User avatar"
     style={{
@@ -102,16 +102,16 @@ import { Header, HeaderSection, HeaderAction } from 'virtu-ui';
 
 <Header sticky>
   <HeaderSection>
-    <h1>Pedidos</h1>
+    <h1>Orders</h1>
   </HeaderSection>
 
   <HeaderSection grow align="center">
-    <SearchField placeholder="Buscar..." />
+    <SearchField placeholder="Search..." />
   </HeaderSection>
 
   <HeaderSection align="right">
-    <HeaderAction icon={<BellIcon />} badge={3} aria-label="Notificações" />
-    <HeaderAction icon={<SettingsIcon />} aria-label="Configurações" />
+    <HeaderAction icon={<BellIcon />} badge={3} aria-label="Notifications" />
+    <HeaderAction icon={<SettingsIcon />} aria-label="Settings" />
     <Avatar />
   </HeaderSection>
 </Header>
@@ -155,15 +155,15 @@ export const Default: Story = {
     <Header>
       <HeaderSection>
         <span style={{ fontSize: "var(--virtu-font-size-xl)", fontWeight: 600, color: "var(--virtu-color-text)" }}>
-          Pedidos
+          Dashboard
         </span>
       </HeaderSection>
 
       <HeaderSection grow />
 
       <HeaderSection align="right">
-        <HeaderAction icon={<BellIcon />} badge={10} aria-label="Notificações" />
-        <HeaderAction icon={<SettingsIcon />} aria-label="Configurações" />
+        <HeaderAction icon={<BellIcon />} badge={10} aria-label="Notifications" />
+        <HeaderAction icon={<SettingsIcon />} aria-label="Settings" />
         <Avatar />
       </HeaderSection>
     </Header>
@@ -176,21 +176,21 @@ export const WithSearch: Story = {
     <Header>
       <HeaderSection>
         <span style={{ fontSize: "var(--virtu-font-size-xl)", fontWeight: 600, color: "var(--virtu-color-text)", whiteSpace: "nowrap" }}>
-          Pedidos
+          Orders
         </span>
       </HeaderSection>
 
       <HeaderSection grow align="center" style={{ padding: "0 var(--virtu-spacing-lg)" }}>
         <SearchField
-          placeholder="Buscar em todo o sistema..."
+          placeholder="Search system-wide..."
           leadingIcon={<SearchIcon />}
           style={{ width: "100%", maxWidth: 420 }}
         />
       </HeaderSection>
 
       <HeaderSection align="right">
-        <HeaderAction icon={<BellIcon />} badge={3} aria-label="Notificações" />
-        <HeaderAction icon={<SettingsIcon />} aria-label="Configurações" />
+        <HeaderAction icon={<BellIcon />} badge={3} aria-label="Notifications" />
+        <HeaderAction icon={<SettingsIcon />} aria-label="Settings" />
         <Avatar />
       </HeaderSection>
     </Header>
@@ -203,16 +203,16 @@ export const WithCTA: Story = {
     <Header>
       <HeaderSection>
         <span style={{ fontSize: "var(--virtu-font-size-xl)", fontWeight: 600, color: "var(--virtu-color-text)" }}>
-          Produtos
+          Products
         </span>
       </HeaderSection>
 
       <HeaderSection grow />
 
       <HeaderSection align="right">
-        <Button variant="secondary" size="sm">Exportar</Button>
-        <Button variant="primary" size="sm">+ Novo Produto</Button>
-        <HeaderAction icon={<BellIcon />} aria-label="Notificações" />
+        <Button variant="secondary" size="sm">Export</Button>
+        <Button variant="primary" size="sm">+ New Product</Button>
+        <HeaderAction icon={<BellIcon />} aria-label="Notifications" />
         <Avatar />
       </HeaderSection>
     </Header>
@@ -231,7 +231,7 @@ export const Transparent: Story = {
         </HeaderSection>
         <HeaderSection grow />
         <HeaderSection align="right">
-          <HeaderAction icon={<BellIcon />} badge={5} aria-label="Notificações" />
+          <HeaderAction icon={<BellIcon />} badge={5} aria-label="Notifications" />
           <Avatar />
         </HeaderSection>
       </Header>
@@ -264,9 +264,9 @@ export const PageLayout: Story = {
             </div>
           }
         >
-          <SideBarItem icon={<HomeIcon />} label="Início" active asButton />
-          <SideBarItem icon={<GridIcon />} label="Produtos" asButton />
-          <SideBarItem icon={<UserIcon />} label="Membros" badge={10} asButton />
+          <SideBarItem icon={<HomeIcon />} label="Home" active asButton />
+          <SideBarItem icon={<GridIcon />} label="Products" asButton />
+          <SideBarItem icon={<UserIcon />} label="Members" badge={10} asButton />
         </SideBar>
       </div>
 
@@ -276,21 +276,21 @@ export const PageLayout: Story = {
         <Header sticky>
           <HeaderSection>
             <span style={{ fontSize: "var(--virtu-font-size-xl)", fontWeight: 600, color: "var(--virtu-color-text)" }}>
-              Pedidos
+              Orders
             </span>
           </HeaderSection>
 
           <HeaderSection grow align="center" style={{ padding: "0 var(--virtu-spacing-lg)" }}>
             <SearchField
-              placeholder="Buscar em todo o sistema..."
+              placeholder="Search system-wide..."
               leadingIcon={<SearchIcon />}
               style={{ width: "100%", maxWidth: 380 }}
             />
           </HeaderSection>
 
           <HeaderSection align="right">
-            <HeaderAction icon={<BellIcon />} badge={10} aria-label="Notificações" />
-            <HeaderAction icon={<SettingsIcon />} aria-label="Configurações" />
+            <HeaderAction icon={<BellIcon />} badge={10} aria-label="Notifications" />
+            <HeaderAction icon={<SettingsIcon />} aria-label="Settings" />
             <Avatar />
           </HeaderSection>
         </Header>
@@ -300,9 +300,9 @@ export const PageLayout: Story = {
           {/* Metric cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "var(--virtu-spacing-md)", marginBottom: "var(--virtu-spacing-lg)" }}>
             {[
-              { label: "Pedidos liberados", value: "50" },
-              { label: "Aprovados", value: "R$ 24.000,00" },
-              { label: "Pendentes", value: "R$ 4.000,00" },
+              { label: "Released Orders", value: "50" },
+              { label: "Approved", value: "$ 24,000.00" },
+              { label: "Pending", value: "$ 4,000.00" },
             ].map((card) => (
               <Box key={card.label} variant="glass" padding="md">
                 <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "var(--virtu-font-size-sm)", marginBottom: 8 }}>
@@ -319,7 +319,7 @@ export const PageLayout: Story = {
           {Array.from({ length: 6 }).map((_, i) => (
             <Box key={i} variant="glass" padding="md" style={{ marginBottom: "var(--virtu-spacing-md)" }}>
               <div style={{ color: "rgba(255,255,255,0.4)", fontSize: "var(--virtu-font-size-sm)" }}>
-                Conteúdo da seção {i + 1} — role para cima para ver o efeito de blur do Header sobre este conteúdo.
+                Section content {i + 1} — scroll up to see the Header's blur effect over this content.
               </div>
             </Box>
           ))}

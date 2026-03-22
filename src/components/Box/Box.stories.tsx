@@ -73,7 +73,7 @@ type Story = StoryObj<typeof Box>;
 const sampleContent = (
   <div>
     <h3 style={{ margin: "0 0 8px", color: "#f5f5f5", fontSize: "16px" }}>
-      Pedidos liberados
+      Released Orders
     </h3>
     <p style={{ margin: 0, color: "#f5f5f5", fontSize: "28px", fontWeight: 700 }}>
       50
@@ -123,11 +123,12 @@ export const AsSection: Story = {
 };
 
 export const ComposedLayout: Story = {
+  name: "Metric Cards Example",
   render: () => (
     <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
       <Box variant="glass" padding="lg" style={{ flex: 1, minWidth: "200px" }}>
         <h3 style={{ margin: "0 0 8px", color: "rgba(255,255,255,0.6)", fontSize: "14px" }}>
-          Pedidos liberados
+          Released Orders
         </h3>
         <p style={{ margin: 0, color: "#f5f5f5", fontSize: "28px", fontWeight: 700 }}>
           50
@@ -135,18 +136,18 @@ export const ComposedLayout: Story = {
       </Box>
       <Box variant="glass" padding="lg" style={{ flex: 1, minWidth: "200px" }}>
         <h3 style={{ margin: "0 0 8px", color: "rgba(255,255,255,0.6)", fontSize: "14px" }}>
-          Aprovados
+          Approved
         </h3>
         <p style={{ margin: 0, color: "#f5f5f5", fontSize: "28px", fontWeight: 700 }}>
-          R$24.000,00
+          $24,000.00
         </p>
       </Box>
       <Box variant="glass" padding="lg" style={{ flex: 1, minWidth: "200px" }}>
         <h3 style={{ margin: "0 0 8px", color: "rgba(255,255,255,0.6)", fontSize: "14px" }}>
-          Pendentes
+          Pending
         </h3>
         <p style={{ margin: 0, color: "#f5f5f5", fontSize: "28px", fontWeight: 700 }}>
-          R$4.000,00
+          $4,000.00
         </p>
       </Box>
     </div>
