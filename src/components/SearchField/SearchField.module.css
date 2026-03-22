@@ -1,0 +1,185 @@
+/* ─── Wrapper ─────────────────────────────────────────────────────────────── */
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--virtu-radius-lg);
+
+  transition:
+    border-color var(--virtu-transition-fast),
+    background var(--virtu-transition-fast),
+    box-shadow var(--virtu-transition-fast);
+}
+
+.wrapper:focus-within {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
+}
+
+/* ─── Input ───────────────────────────────────────────────────────────────── */
+
+.input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: var(--virtu-color-text);
+  font-family: var(--virtu-font-family);
+  font-weight: var(--virtu-font-weight-regular);
+  line-height: var(--virtu-line-height-md);
+
+  /* Remove browser default search field decorations */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.wrapper:has(.input:disabled) {
+  opacity: 0.4;
+}
+
+/* ─── Sizes ───────────────────────────────────────────────────────────────── */
+
+.sm .input {
+  padding: var(--virtu-spacing-xs) var(--virtu-spacing-sm);
+  font-size: var(--virtu-font-size-sm);
+}
+
+.md .input {
+  padding: var(--virtu-spacing-sm) var(--virtu-spacing-md);
+  font-size: var(--virtu-font-size-md);
+}
+
+.lg .input {
+  padding: var(--virtu-spacing-md) var(--virtu-spacing-lg);
+  font-size: var(--virtu-font-size-lg);
+}
+
+/* Reduce horizontal padding when icons are present — handled via inline padding overrides */
+
+/* ─── Leading icon slot ───────────────────────────────────────────────────── */
+
+.leadingIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  color: rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+}
+
+.leadingIcon > svg {
+  display: block;
+}
+
+/* ─── Trailing icon / clear button slot ──────────────────────────────────── */
+
+.trailingIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  color: rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+}
+
+.trailingIcon > svg {
+  display: block;
+}
+
+.clearButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 2px;
+  cursor: pointer;
+
+  color: rgba(255, 255, 255, 0.35);
+
+  transition: color var(--virtu-transition-fast), background var(--virtu-transition-fast);
+}
+
+.clearButton:hover {
+  color: var(--virtu-color-text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.clearButton:focus-visible {
+  outline: 2px solid var(--virtu-color-primary);
+  outline-offset: 1px;
+}
+
+.clearButton > svg {
+  display: block;
+}
+
+/* ─── Size-aware icon sizing ──────────────────────────────────────────────── */
+
+.sm .leadingIcon,
+.sm .trailingIcon,
+.sm .clearButton {
+  width: 14px;
+  height: 14px;
+  margin: 0 var(--virtu-spacing-xs);
+}
+
+.sm .leadingIcon > svg,
+.sm .trailingIcon > svg,
+.sm .clearButton > svg {
+  width: 14px;
+  height: 14px;
+}
+
+.md .leadingIcon,
+.md .trailingIcon,
+.md .clearButton {
+  width: 16px;
+  height: 16px;
+  margin: 0 var(--virtu-spacing-sm);
+}
+
+.md .leadingIcon > svg,
+.md .trailingIcon > svg,
+.md .clearButton > svg {
+  width: 16px;
+  height: 16px;
+}
+
+.lg .leadingIcon,
+.lg .trailingIcon,
+.lg .clearButton {
+  width: 18px;
+  height: 18px;
+  margin: 0 var(--virtu-spacing-sm);
+}
+
+.lg .leadingIcon > svg,
+.lg .trailingIcon > svg,
+.lg .clearButton > svg {
+  width: 18px;
+  height: 18px;
+}

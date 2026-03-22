@@ -7,6 +7,7 @@ export * from "./ErrorMessage";
 export * from "./FormField";
 export * from "./Input";
 export * from "./Label";
+export * from "./SearchField";
 export * from "./SideBar";
 export * from "./Switch";
 export * from "./Tag";

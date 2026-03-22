@@ -4,13 +4,14 @@ import { Box as i } from "./components/Box/Box.js";
 import { Button as d } from "./components/Button/Button.js";
 import { Checkbox as g } from "./components/Checkbox/Checkbox.js";
 import { ErrorMessage as A } from "./components/ErrorMessage/ErrorMessage.js";
-import { FormField as S } from "./components/FormField/FormField.js";
-import { Input as b } from "./components/Input/Input.js";
-import { Label as l } from "./components/Label/Label.js";
-import { SideBar as u, SideBarItem as C } from "./components/SideBar/SideBar.js";
-import { Switch as k } from "./components/Switch/Switch.js";
-import { Tag as E } from "./components/Tag/Tag.js";
-import { Textarea as M } from "./components/Textarea/Textarea.js";
+import { FormField as h } from "./components/FormField/FormField.js";
+import { Input as F } from "./components/Input/Input.js";
+import { Label as T } from "./components/Label/Label.js";
+import { SearchField as s } from "./components/SearchField/SearchField.js";
+import { SideBar as C, SideBarItem as k } from "./components/SideBar/SideBar.js";
+import { Switch as E } from "./components/Switch/Switch.js";
+import { Tag as M } from "./components/Tag/Tag.js";
+import { Textarea as q } from "./components/Textarea/Textarea.js";
 export {
   e as Accordion,
   t as AccordionContent,
@@ -21,13 +22,14 @@ export {
   d as Button,
   g as Checkbox,
   A as ErrorMessage,
-  S as FormField,
-  b as Input,
-  l as Label,
-  u as SideBar,
-  C as SideBarItem,
-  k as Switch,
-  E as Tag,
-  M as Textarea
+  h as FormField,
+  F as Input,
+  T as Label,
+  s as SearchField,
+  C as SideBar,
+  k as SideBarItem,
+  E as Switch,
+  M as Tag,
+  q as Textarea
 };
 //# sourceMappingURL=index.js.map
