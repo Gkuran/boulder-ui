@@ -14,8 +14,19 @@
   background: #000000;
   border-radius: var(--virtu-radius-lg);
 
-  /* Occupy full height of the container */
-  height: 100%;
+  /*
+   * Full-height strategy:
+   * 1. align-self: stretch — fills the cross-axis of the flex parent
+   *    (works when the parent is display:flex with row direction)
+   * 2. position: sticky + top: 0 — keeps the sidebar visible while
+   *    the content area scrolls, and forces the browser to give it
+   *    at least the viewport height
+   * 3. min-height: 100vh — absolute fallback for non-flex contexts
+   */
+  align-self: stretch;
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
 
   box-sizing: border-box;
 }
