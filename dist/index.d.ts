@@ -7,7 +7,9 @@ import { LabelHTMLAttributes } from 'react';
 import { ReactElement } from 'react';
 import { ReactNode } from 'react';
 import { RefAttributes } from 'react';
+import { TdHTMLAttributes } from 'react';
 import { TextareaHTMLAttributes } from 'react';
+import { ThHTMLAttributes } from 'react';
 
 export declare const Accordion: ForwardRefExoticComponent<AccordionProps & RefAttributes<HTMLDivElement>>;
 
@@ -134,6 +136,141 @@ export declare const Checkbox: ForwardRefExoticComponent<CheckboxProps & RefAttr
 
 export declare interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
+}
+
+export declare function DataTable<T = unknown>({ columns, data, rowKey, showSearch, searchPlaceholder, searchValue, onSearchChange, onSearchClear, searchIcon, filters, onFilterClick, onFilterRemove, showPagination, currentPage, totalPages, onPageChange, emptyMessage, renderActions, className, ...rest }: DataTableProps<T>): JSX.Element;
+
+export declare namespace DataTable {
+    var displayName: string;
+}
+
+export declare const DataTableCell: ForwardRefExoticComponent<DataTableCellProps & RefAttributes<HTMLTableCellElement>>;
+
+export declare interface DataTableCellProps extends TdHTMLAttributes<HTMLTableCellElement> {
+    /** Column text alignment. */
+    align?: "left" | "center" | "right";
+}
+
+export declare interface DataTableColumn<T = unknown> {
+    /** Unique key matching a property in the row data, or a custom string. */
+    key: string;
+    /** Header label displayed in the column head. */
+    header: string;
+    /**
+     * Optional custom cell renderer.
+     * When omitted, the cell displays `row[key]` as a string.
+     */
+    render?: (row: T, rowIndex: number) => ReactNode;
+    /**
+     * Column text alignment.
+     * @default "left"
+     */
+    align?: "left" | "center" | "right";
+    /**
+     * Optional fixed or min width for the column (CSS value).
+     * Example: "120px", "10%"
+     */
+    width?: string;
+}
+
+export declare interface DataTableFilter {
+    /** Unique identifier for the filter. */
+    id: string;
+    /** Display label, e.g. "Aprovados (5)". */
+    label: string;
+    /** Whether this filter is currently active/selected. */
+    active?: boolean;
+}
+
+export declare const DataTableHead: ForwardRefExoticComponent<DataTableHeadProps & RefAttributes<HTMLTableCellElement>>;
+
+export declare interface DataTableHeadProps extends ThHTMLAttributes<HTMLTableCellElement> {
+    /** Column text alignment. */
+    align?: "left" | "center" | "right";
+}
+
+export declare const DataTablePaginator: ForwardRefExoticComponent<DataTablePaginatorProps & RefAttributes<HTMLDivElement>>;
+
+export declare interface DataTablePaginatorProps extends HTMLAttributes<HTMLDivElement> {
+    /** Current page (1-indexed). */
+    currentPage: number;
+    /** Total number of pages. */
+    totalPages: number;
+    /** Callback fired when the page changes. */
+    onPageChange: (page: number) => void;
+    /**
+     * Accessible label for the pagination nav.
+     * @default "Table pagination"
+     */
+    ariaLabel?: string;
+}
+
+export declare interface DataTableProps<T = unknown> extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
+    /**
+     * Column definitions describing the table structure.
+     */
+    columns: DataTableColumn<T>[];
+    /**
+     * Array of row data objects.
+     */
+    data: T[];
+    /**
+     * Unique key extractor for each row.
+     * Receives the row data and its index; must return a unique string or number.
+     */
+    rowKey: (row: T, index: number) => string | number;
+    /**
+     * Whether to show the search field in the header area.
+     * @default false
+     */
+    showSearch?: boolean;
+    /** Placeholder text for the search field. */
+    searchPlaceholder?: string;
+    /** Controlled search value. */
+    searchValue?: string;
+    /** Callback fired when the search value changes. */
+    onSearchChange?: (value: string) => void;
+    /** Callback fired when the search field is cleared. */
+    onSearchClear?: () => void;
+    /**
+     * Leading icon for the search field.
+     * Defaults to a magnifying glass when `showSearch` is true.
+     */
+    searchIcon?: ReactNode;
+    /**
+     * Filter tag definitions rendered below the search field.
+     * Uses the Tag component internally.
+     */
+    filters?: DataTableFilter[];
+    /** Callback fired when a filter tag is clicked. */
+    onFilterClick?: (filterId: string) => void;
+    /** Callback fired when a filter tag is removed. */
+    onFilterRemove?: (filterId: string) => void;
+    /**
+     * Whether to show the paginator.
+     * @default false
+     */
+    showPagination?: boolean;
+    /** Current page number (1-indexed). */
+    currentPage?: number;
+    /** Total number of pages. */
+    totalPages?: number;
+    /** Callback fired when the page changes. */
+    onPageChange?: (page: number) => void;
+    /**
+     * Content displayed when `data` is empty.
+     * @default "No data available."
+     */
+    emptyMessage?: ReactNode;
+    /**
+     * Optional slot rendered at the end of each row for action buttons.
+     */
+    renderActions?: (row: T, rowIndex: number) => ReactNode;
+}
+
+export declare const DataTableRow: ForwardRefExoticComponent<DataTableRowProps & RefAttributes<HTMLTableRowElement>>;
+
+export declare interface DataTableRowProps extends HTMLAttributes<HTMLTableRowElement> {
 }
 
 export declare const ErrorMessage: ForwardRefExoticComponent<ErrorMessageProps & RefAttributes<HTMLParagraphElement>>;

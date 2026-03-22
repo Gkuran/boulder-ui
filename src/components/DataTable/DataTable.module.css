@@ -1,0 +1,199 @@
+/* ─── Root container ──────────────────────────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--virtu-spacing-md);
+  width: 100%;
+}
+
+/* ─── Header area (search + filters) ─────────────────────────────────────── */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--virtu-spacing-sm);
+}
+
+.filters {
+  display: flex;
+  gap: var(--virtu-spacing-xs);
+  flex-wrap: wrap;
+}
+
+/* ─── Table wrapper ──────────────────────────────────────────────────────── */
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--virtu-radius-lg);
+}
+
+/* ─── Table ──────────────────────────────────────────────────────────────── */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-family: var(--virtu-font-family);
+}
+
+/* ─── Head cell ──────────────────────────────────────────────────────────── */
+
+.headCell {
+  padding: var(--virtu-spacing-sm) var(--virtu-spacing-md);
+
+  color: rgba(255, 255, 255, 0.4);
+  font-size: var(--virtu-font-size-xs);
+  font-weight: var(--virtu-font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: var(--virtu-line-height-md);
+
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.headCell.alignLeft {
+  text-align: left;
+}
+
+.headCell.alignCenter {
+  text-align: center;
+}
+
+.headCell.alignRight {
+  text-align: right;
+}
+
+/* ─── Body row ───────────────────────────────────────────────────────────── */
+
+.row {
+  background: var(--virtu-glass-gradient);
+  backdrop-filter: blur(var(--virtu-glass-blur));
+  -webkit-backdrop-filter: blur(var(--virtu-glass-blur));
+
+  transition: background var(--virtu-transition-fast);
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.row + .row {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ─── Body cell ──────────────────────────────────────────────────────────── */
+
+.cell {
+  padding: var(--virtu-spacing-md) var(--virtu-spacing-md);
+
+  color: var(--virtu-color-text);
+  font-size: var(--virtu-font-size-sm);
+  font-weight: var(--virtu-font-weight-regular);
+  line-height: var(--virtu-line-height-md);
+
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.cell.alignLeft {
+  text-align: left;
+}
+
+.cell.alignCenter {
+  text-align: center;
+}
+
+.cell.alignRight {
+  text-align: right;
+}
+
+/* ─── Empty state ────────────────────────────────────────────────────────── */
+
+.emptyRow {
+  background: transparent;
+}
+
+.emptyCell {
+  padding: var(--virtu-spacing-xl) var(--virtu-spacing-md);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: var(--virtu-font-size-sm);
+}
+
+/* ─── Paginator ──────────────────────────────────────────────────────────── */
+
+.paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--virtu-spacing-xs);
+  padding: var(--virtu-spacing-sm) 0;
+}
+
+.pageButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 32px;
+  height: 32px;
+  padding: 0 var(--virtu-spacing-xs);
+
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--virtu-radius-sm);
+
+  color: var(--virtu-color-text-secondary);
+  font-family: var(--virtu-font-family);
+  font-size: var(--virtu-font-size-sm);
+  font-weight: var(--virtu-font-weight-medium);
+
+  cursor: pointer;
+
+  transition:
+    background var(--virtu-transition-fast),
+    border-color var(--virtu-transition-fast),
+    color var(--virtu-transition-fast);
+}
+
+.pageButton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--virtu-color-text);
+}
+
+.pageButton:focus-visible {
+  outline: 2px solid var(--virtu-color-primary);
+  outline-offset: 1px;
+}
+
+.pageButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pageButtonActive {
+  background: var(--virtu-color-primary);
+  border-color: var(--virtu-color-primary);
+  color: var(--virtu-color-text-inverse);
+}
+
+.pageButtonActive:hover:not(:disabled) {
+  background: var(--virtu-color-primary-hover);
+  border-color: var(--virtu-color-primary-hover);
+  color: var(--virtu-color-text-inverse);
+}
+
+.pageEllipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: var(--virtu-font-size-sm);
+  user-select: none;
+}

@@ -3,6 +3,7 @@ export * from "./Badge";
 export * from "./Box";
 export * from "./Button";
 export * from "./Checkbox";
+export * from "./DataTable";
 export * from "./ErrorMessage";
 export * from "./FormField";
 export * from "./Input";
