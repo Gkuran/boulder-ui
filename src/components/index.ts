@@ -6,6 +6,7 @@ export * from "./Checkbox";
 export * from "./DataTable";
 export * from "./ErrorMessage";
 export * from "./FormField";
+export * from "./Header";
 export * from "./Input";
 export * from "./Label";
 export * from "./SearchField";
