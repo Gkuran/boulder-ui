@@ -1,5 +1,6 @@
 .box {
   border-radius: var(--virtu-radius-lg);
+  position: relative;
   transition:
     background var(--virtu-transition-normal),
     border-color var(--virtu-transition-normal),
@@ -9,13 +10,31 @@
 /* ─── Variants ────────────────────────────────────────────────────────────── */
 
 .glass {
-  background: var(--virtu-glass-gradient);
-  backdrop-filter: blur(var(--virtu-glass-blur)) var(--virtu-glass-saturate)
-    var(--virtu-glass-contrast);
+  background: var(--virtu-glass-bg);
+  backdrop-filter: blur(var(--virtu-glass-blur)) var(--virtu-glass-saturate);
   -webkit-backdrop-filter: blur(var(--virtu-glass-blur))
-    var(--virtu-glass-saturate) var(--virtu-glass-contrast);
+    var(--virtu-glass-saturate);
   border: var(--virtu-glass-border);
   box-shadow: var(--virtu-glass-shadow);
+}
+
+/* Top-edge light streak — simulates light hitting the top of the glass */
+.glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 30%,
+    rgba(255, 255, 255, 0.25) 70%,
+    transparent 100%
+  );
+  border-radius: var(--virtu-radius-lg) var(--virtu-radius-lg) 0 0;
+  pointer-events: none;
 }
 
 .solid {

@@ -13,6 +13,7 @@
 
   /* Stacking above page content */
   z-index: 100;
+  position: relative;
 }
 
 /* Sticky variant */
@@ -23,12 +24,33 @@
 
 /* Glass variant */
 .glass {
-  background: rgba(26, 26, 26, 0.25);
-  backdrop-filter: blur(var(--virtu-glass-blur)) var(--virtu-glass-saturate)
-    var(--virtu-glass-contrast);
+  background: var(--virtu-glass-bg);
+  backdrop-filter: blur(var(--virtu-glass-blur)) var(--virtu-glass-saturate);
   -webkit-backdrop-filter: blur(var(--virtu-glass-blur))
-    var(--virtu-glass-saturate) var(--virtu-glass-contrast);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    var(--virtu-glass-saturate);
+  border-bottom: var(--virtu-glass-border);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Top-edge light streak for glass header */
+.glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.2) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
 /* Transparent variant */

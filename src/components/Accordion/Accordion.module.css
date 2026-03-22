@@ -43,12 +43,15 @@
 /* ─── Variantes visuais ───────────────────────────────────────────────────── */
 
 .root.default {
-  background: var(--virtu-glass-gradient);
-  backdrop-filter: blur(var(--virtu-glass-blur));
-  -webkit-backdrop-filter: blur(var(--virtu-glass-blur));
+  background: var(--virtu-glass-bg);
+  backdrop-filter: blur(var(--virtu-glass-blur)) var(--virtu-glass-saturate);
+  -webkit-backdrop-filter: blur(var(--virtu-glass-blur))
+    var(--virtu-glass-saturate);
   border: var(--virtu-glass-border);
   border-radius: var(--virtu-radius-lg);
+  box-shadow: var(--virtu-glass-shadow);
   overflow: hidden;
+  position: relative;
 }
 
 .root.flush {

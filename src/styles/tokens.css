@@ -32,17 +32,36 @@
   --virtu-color-warning-soft: rgba(245, 166, 35, 0.2);
 
   /* ─── Glass effect ─────────────────────────────────────────────────────────── */
-  --virtu-glass-gradient: linear-gradient(
-    135deg,
-    rgba(172, 172, 172, 0.12) 0%,
-    rgba(70, 70, 70, 0.12) 100%
-  );
-  --virtu-glass-blur: 24px;
+  /*
+   * Glass background: white-based with low opacity.
+   * This is the key difference — white tint lets light through and
+   * creates the luminous frosted look, unlike a dark gradient which
+   * absorbs light and looks opaque.
+   */
+  --virtu-glass-bg: rgba(255, 255, 255, 0.08);
+
+  /* Blur radius — how much the background content is diffused */
+  --virtu-glass-blur: 20px;
+
+  /* Saturate — makes colors behind the glass more vibrant (iOS-style) */
   --virtu-glass-saturate: saturate(180%);
-  /* O contraste leve ajuda a separar o vidro do fundo escuro */
-  --virtu-glass-contrast: contrast(90%);
-  --virtu-glass-border: 1px solid rgba(255, 255, 255, 0.1);
-  --virtu-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  /* Border — visible enough to define the glass edge against dark bg */
+  --virtu-glass-border: 1px solid rgba(255, 255, 255, 0.18);
+
+  /*
+   * Shadow — combines outer depth shadow with inset glow.
+   * The inset shadows create the "refraction" / inner light that
+   * makes glass look physical and luminous:
+   *   1. Outer shadow for depth/elevation
+   *   2. Top-edge inset highlight (light hitting the top of the glass)
+   *   3. Bottom-edge subtle inset (softer reflection)
+   *   4. Inner ambient glow (the "frosted" luminosity)
+   */
+  --virtu-glass-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05);
 
   /* ─── Spacing ──────────────────────────────────────────────────────────────── */
   --virtu-spacing-xs: 4px;

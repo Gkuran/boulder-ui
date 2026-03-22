@@ -69,9 +69,10 @@
 /* ─── Body row ───────────────────────────────────────────────────────────── */
 
 .row {
-  background: var(--virtu-glass-gradient);
-  backdrop-filter: blur(var(--virtu-glass-blur));
-  -webkit-backdrop-filter: blur(var(--virtu-glass-blur));
+  background: var(--virtu-glass-bg);
+  backdrop-filter: blur(var(--virtu-glass-blur)) var(--virtu-glass-saturate);
+  -webkit-backdrop-filter: blur(var(--virtu-glass-blur))
+    var(--virtu-glass-saturate);
 
   transition: background var(--virtu-transition-fast);
 }
