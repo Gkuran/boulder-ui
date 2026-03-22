@@ -1,10 +1,4 @@
-import {
-  createContext,
-  forwardRef,
-  useContext,
-  useId,
-  useState,
-} from "react";
+import { createContext, forwardRef, useContext, useId, useState } from "react";
 import type {
   AccordionContentProps,
   AccordionItemProps,
@@ -41,7 +35,10 @@ function useAccordionItem(componentName: string): AccordionItemContextValue {
 // ─── AccordionRoot ────────────────────────────────────────────────────────────
 
 export const Accordion = forwardRef<HTMLDivElement, AccordionProps>(
-  ({ variant = "default", width = "full", className, children, ...props }, ref) => {
+  (
+    { variant = "default", width = "full", className, children, ...props },
+    ref,
+  ) => {
     return (
       <div
         ref={ref}
