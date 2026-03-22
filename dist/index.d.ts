@@ -232,6 +232,29 @@ export declare interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputE
 
 export declare type SwitchSize = "sm" | "md" | "lg";
 
+export declare const Tag: ForwardRefExoticComponent<TagProps & RefAttributes<HTMLSpanElement>>;
+
+export declare interface TagProps extends HTMLAttributes<HTMLSpanElement> {
+    /** The label displayed inside the tag. */
+    label: string;
+    /**
+     * Callback fired when the remove button (×) is clicked.
+     * When provided, the remove button is rendered.
+     * When omitted, the tag is display-only (no remove button).
+     */
+    onRemove?: () => void;
+    /**
+     * Accessible label for the remove button.
+     * @default `"Remove ${label}"`
+     */
+    removeLabel?: string;
+    /**
+     * Whether the tag is in a selected/active state.
+     * @default false
+     */
+    active?: boolean;
+}
+
 export declare const Textarea: ForwardRefExoticComponent<TextareaProps & RefAttributes<HTMLTextAreaElement>>;
 
 export declare interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {

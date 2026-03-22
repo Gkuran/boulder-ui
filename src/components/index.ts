@@ -9,4 +9,5 @@ export * from "./Input";
 export * from "./Label";
 export * from "./SideBar";
 export * from "./Switch";
+export * from "./Tag";
 export * from "./Textarea";

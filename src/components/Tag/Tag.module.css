@@ -1,0 +1,75 @@
+/* ─── Tag ─────────────────────────────────────────────────────────────────── */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--virtu-spacing-xs);
+
+  padding: var(--virtu-spacing-xs) var(--virtu-spacing-sm);
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--virtu-radius-md);
+
+  color: var(--virtu-color-text);
+  font-family: var(--virtu-font-family);
+  font-size: var(--virtu-font-size-sm);
+  font-weight: var(--virtu-font-weight-medium);
+  line-height: var(--virtu-line-height-sm);
+
+  white-space: nowrap;
+  user-select: none;
+
+  transition:
+    background var(--virtu-transition-fast),
+    border-color var(--virtu-transition-fast);
+}
+
+/* ─── Active / selected state ─────────────────────────────────────────────── */
+
+.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+/* ─── Remove button ───────────────────────────────────────────────────────── */
+
+.remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+
+  color: var(--virtu-color-muted);
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  transition:
+    color var(--virtu-transition-fast),
+    background var(--virtu-transition-fast);
+}
+
+.remove:hover {
+  color: var(--virtu-color-text);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.remove:focus-visible {
+  outline: 2px solid var(--virtu-color-primary);
+  outline-offset: 1px;
+}
+
+.remove > svg {
+  width: 10px;
+  height: 10px;
+  stroke: currentColor;
+}
