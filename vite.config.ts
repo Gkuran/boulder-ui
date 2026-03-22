@@ -17,23 +17,33 @@ const dirname =
     : path.dirname(fileURLToPath(import.meta.url));
 
 /**
- * Custom Vite plugin to prepend tokens.css and global.css to the
- * generated CSS bundle. Vite library mode only includes CSS that is
- * imported by JS/TS files in the dependency graph (i.e. CSS Modules).
- * Our design tokens and global styles live in standalone CSS files
- * that are not imported by any component, so they get excluded.
+ * Virtu UI CSS Bundle Plugin
  *
- * This plugin reads them after the bundle is written and prepends
- * their content to the generated CSS file.
+ * Two responsibilities:
+ *
+ * 1. prependGlobalCSS (closeBundle):
+ *    Prepends tokens.css + global.css to the generated virtu-ui.css file.
+ *    Vite library mode only collects CSS Modules in the bundle; standalone
+ *    CSS files that are not imported by any JS/TS file are excluded.
+ *
+ * 2. injectCSSImport (closeBundle):
+ *    Appends a self-executing snippet to dist/index.js and dist/index.cjs
+ *    that injects the bundled CSS into the document <head> at runtime.
+ *    This makes the CSS load automatically when the consumer imports
+ *    "virtu-ui" — no manual import required.
  */
-function prependGlobalCSS(): import("vite").Plugin {
+function virtuCSSPlugin(): import("vite").Plugin {
   return {
-    name: "virtu-prepend-global-css",
+    name: "virtu-css-plugin",
     apply: "build",
     closeBundle() {
       const cssPath = path.resolve(dirname, "dist/virtu-ui.css");
-      if (!fs.existsSync(cssPath)) return;
+      if (!fs.existsSync(cssPath)) {
+        console.warn("[virtu-css-plugin] dist/virtu-ui.css not found, skipping.");
+        return;
+      }
 
+      // ── Step 1: prepend tokens + global to the CSS bundle ──────────────────
       const tokensCSS = fs.readFileSync(
         path.resolve(dirname, "src/styles/tokens.css"),
         "utf-8"
@@ -44,13 +54,61 @@ function prependGlobalCSS(): import("vite").Plugin {
       );
       const componentCSS = fs.readFileSync(cssPath, "utf-8");
 
-      // Prepend tokens + global before component CSS modules
-      fs.writeFileSync(
-        cssPath,
-        `/* === Virtu UI Design Tokens === */\n${tokensCSS}\n/* === Virtu UI Global Styles === */\n${globalCSS}\n/* === Virtu UI Component Styles === */\n${componentCSS}`
-      );
+      const fullCSS =
+        `/* === Virtu UI Design Tokens === */\n${tokensCSS}\n` +
+        `/* === Virtu UI Global Styles === */\n${globalCSS}\n` +
+        `/* === Virtu UI Component Styles === */\n${componentCSS}`;
 
-      console.log("[virtu-prepend-global-css] Tokens and global styles prepended to dist/virtu-ui.css");
+      fs.writeFileSync(cssPath, fullCSS);
+      console.log("[virtu-css-plugin] Tokens and global styles prepended to dist/virtu-ui.css");
+
+      // ── Step 2: inject CSS auto-loader into index.js and index.cjs ─────────
+      // Escape the CSS content so it can be embedded as a JS string literal.
+      const escapedCSS = fullCSS
+        .replace(/\\/g, "\\\\")
+        .replace(/`/g, "\\`")
+        .replace(/\$/g, "\\$");
+
+      const injectorESM = `
+// Auto-inject Virtu UI styles
+(function(){
+  if (typeof document === 'undefined') return;
+  var id = '__virtu-ui-styles__';
+  if (document.getElementById(id)) return;
+  var style = document.createElement('style');
+  style.id = id;
+  style.textContent = \`${escapedCSS}\`;
+  document.head.appendChild(style);
+})();
+`;
+
+      const injectorCJS = `
+// Auto-inject Virtu UI styles
+(function(){
+  if (typeof document === 'undefined') return;
+  var id = '__virtu-ui-styles__';
+  if (document.getElementById(id)) return;
+  var style = document.createElement('style');
+  style.id = id;
+  style.textContent = ${JSON.stringify(fullCSS)};
+  document.head.appendChild(style);
+})();
+`;
+
+      const esmPath = path.resolve(dirname, "dist/index.js");
+      const cjsPath = path.resolve(dirname, "dist/index.cjs");
+
+      if (fs.existsSync(esmPath)) {
+        const existing = fs.readFileSync(esmPath, "utf-8");
+        fs.writeFileSync(esmPath, injectorESM + "\n" + existing);
+        console.log("[virtu-css-plugin] CSS auto-injector prepended to dist/index.js");
+      }
+
+      if (fs.existsSync(cjsPath)) {
+        const existing = fs.readFileSync(cjsPath, "utf-8");
+        fs.writeFileSync(cjsPath, injectorCJS + "\n" + existing);
+        console.log("[virtu-css-plugin] CSS auto-injector prepended to dist/index.cjs");
+      }
     },
   };
 }
@@ -67,7 +125,7 @@ export default defineConfig({
       insertTypesEntry: true,
     }),
 
-    prependGlobalCSS(),
+    virtuCSSPlugin(),
   ],
 
   resolve: {
