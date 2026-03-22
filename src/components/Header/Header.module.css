@@ -23,7 +23,7 @@
 
 /* Glass variant */
 .glass {
-  background: rgba(26, 26, 26, 0.65);
+  background: rgba(26, 26, 26, 0.25);
   backdrop-filter: blur(var(--virtu-glass-blur));
   -webkit-backdrop-filter: blur(var(--virtu-glass-blur));
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);

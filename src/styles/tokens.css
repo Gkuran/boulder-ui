@@ -34,8 +34,8 @@
   /* ─── Glass effect ─────────────────────────────────────────────────────────── */
   --virtu-glass-gradient: linear-gradient(
     135deg,
-    rgba(172, 172, 172, 0.19) 0%,
-    rgba(70, 70, 70, 0.19) 100%
+    rgba(172, 172, 172, 0.12) 0%,
+    rgba(70, 70, 70, 0.12) 100%
   );
   --virtu-glass-blur: 24px;
   --virtu-glass-border: 1px solid rgba(255, 255, 255, 0.08);
