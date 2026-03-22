@@ -15,17 +15,12 @@
   border-radius: var(--virtu-radius-lg);
 
   /*
-   * Full-height strategy:
-   * 1. align-self: stretch — fills the cross-axis of the flex parent
-   *    (works when the parent is display:flex with row direction)
-   * 2. position: sticky + top: 0 — keeps the sidebar visible while
-   *    the content area scrolls, and forces the browser to give it
-   *    at least the viewport height
-   * 3. min-height: 100vh — absolute fallback for non-flex contexts
+   * Full-height: respects the parent container's padding.
+   * height: 100% fills the parent's content box (inside its padding).
+   * min-height: 100vh is a fallback for when the parent has no explicit height.
+   * The consumer is responsible for setting height/min-height on the parent.
    */
-  align-self: stretch;
-  position: sticky;
-  top: 0;
+  height: 100%;
   min-height: 100vh;
 
   box-sizing: border-box;
@@ -62,7 +57,6 @@
   gap: var(--virtu-spacing-lg);
   width: 100%;
   flex: 1;
-  /* Allow items to flow naturally with larger gap */
   min-height: 0;
   padding-top: var(--virtu-spacing-md);
 }
