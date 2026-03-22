@@ -15,13 +15,22 @@
   border-radius: var(--virtu-radius-lg);
 
   /*
-   * Full-height: respects the parent container's padding.
-   * height: 100% fills the parent's content box (inside its padding).
-   * min-height: 100vh is a fallback for when the parent has no explicit height.
-   * The consumer is responsible for setting height/min-height on the parent.
+   * height: 100% fills whatever height the consumer gives the wrapper.
+   * Recommended wrapper pattern (in the consuming app):
+   *
+   *   <div style={{
+   *     position: 'sticky',
+   *     top: '16px',
+   *     height: 'calc(100vh - 32px)',
+   *     flexShrink: 0,
+   *   }}>
+   *     <SideBar>...</SideBar>
+   *   </div>
+   *
+   * This keeps the sidebar anchored to the viewport with padding while
+   * the page content scrolls freely beside it.
    */
   height: 100%;
-  min-height: 100vh;
 
   box-sizing: border-box;
 }
