@@ -123,6 +123,11 @@ export declare interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElem
     variant?: "primary" | "secondary" | "danger";
     size?: "sm" | "md" | "lg";
     isLoading?: boolean;
+    /**
+     * Optional icon rendered to the left of the button label.
+     * Accepts any ReactNode (SVG, img, icon component).
+     */
+    icon?: ReactNode;
 }
 
 export declare const Checkbox: ForwardRefExoticComponent<CheckboxProps & RefAttributes<HTMLInputElement>>;

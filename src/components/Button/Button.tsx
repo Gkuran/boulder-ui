@@ -10,6 +10,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size = "md",
       children,
       isLoading = false,
+      icon,
       className,
       disabled,
       ...props
@@ -25,6 +26,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading && <span className={styles.spinner} aria-hidden="true" />}
+        {!isLoading && icon && (
+          <span className={styles.icon} aria-hidden="true">
+            {icon}
+          </span>
+        )}
         {children}
       </button>
     );
