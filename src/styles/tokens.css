@@ -38,8 +38,11 @@
     rgba(70, 70, 70, 0.12) 100%
   );
   --virtu-glass-blur: 24px;
-  --virtu-glass-border: 1px solid rgba(255, 255, 255, 0.08);
-  --virtu-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  --virtu-glass-saturate: saturate(180%);
+  /* O contraste leve ajuda a separar o vidro do fundo escuro */
+  --virtu-glass-contrast: contrast(90%);
+  --virtu-glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --virtu-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 
   /* ─── Spacing ──────────────────────────────────────────────────────────────── */
   --virtu-spacing-xs: 4px;

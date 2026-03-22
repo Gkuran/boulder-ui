@@ -10,8 +10,10 @@
 
 .glass {
   background: var(--virtu-glass-gradient);
-  backdrop-filter: blur(var(--virtu-glass-blur));
-  -webkit-backdrop-filter: blur(var(--virtu-glass-blur));
+  backdrop-filter: blur(var(--virtu-glass-blur)) var(--virtu-glass-saturate)
+    var(--virtu-glass-contrast);
+  -webkit-backdrop-filter: blur(var(--virtu-glass-blur))
+    var(--virtu-glass-saturate) var(--virtu-glass-contrast);
   border: var(--virtu-glass-border);
   box-shadow: var(--virtu-glass-shadow);
 }

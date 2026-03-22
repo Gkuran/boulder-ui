@@ -6,16 +6,15 @@ const preview: Preview = {
     layout: "centered",
 
     backgrounds: {
-      default: "dark",
+      default: "virtu-mesh",
       values: [
+        {
+          name: "virtu-mesh",
+          value: "radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%), radial-gradient(at 0% 50%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 50% 50%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 100% 50%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 0% 100%, hsla(339,49%,30%,1) 0, transparent 50%), radial-gradient(at 50% 100%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 100%, hsla(253,16%,7%,1) 0, transparent 50%)",
+        },
         {
           name: "dark",
           value: "#1a1a1a",
-        },
-        {
-          name: "dark-gradient",
-          value:
-            "linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #222222 100%)",
         },
         {
           name: "light",
@@ -32,9 +31,6 @@ const preview: Preview = {
     },
 
     a11y: {
-      // 'todo' - show a11y violations in the test UI only
-      // 'error' - fail CI on a11y violations
-      // 'off' - skip a11y checks entirely
       test: "todo",
     },
   },
