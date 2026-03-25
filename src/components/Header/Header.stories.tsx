@@ -111,9 +111,9 @@ When \`compact\` is \`true\`, the header uses a reduced height (\`44px\` instead
     <img src="/logo.svg" alt="GeoTracker" height={24} />
   </HeaderBrand>
   <HeaderActions>
-    <button aria-label="Toggle layers">🗺️</button>
-    <button aria-label="My location">📍</button>
-    <button aria-label="Search">🔍</button>
+    <button aria-label="Toggle layers"></button>
+    <button aria-label="My location"></button>
+    <button aria-label="Search"></button>
   </HeaderActions>
 </Header>
 \`\`\`
@@ -280,7 +280,7 @@ export const Default: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <MapPinIcon /> GeoTracker
+        <MapPinIcon /> Terra
       </HeaderBrand>
       <HeaderNav>
         <a href="#" style={navLinkStyle}>
@@ -327,7 +327,7 @@ export const FloatingMapOverlay: Story = {
     >
       <Header {...args}>
         <HeaderBrand>
-          <CompassIcon /> Navigator
+          <CompassIcon /> Terra
         </HeaderBrand>
         <HeaderActions>
           <button style={iconBtnStyle} aria-label="Toggle layers">
@@ -365,7 +365,7 @@ export const FloatingMapOverlay: Story = {
     docs: {
       description: {
         story:
-          "A floating header overlaying a map canvas. Uses `variant=\"floating\"` and `compact` mode to minimize vertical space usage. In a real map application, you might use `position=\"absolute\"` to overlay it on the canvas.",
+          'A floating header overlaying a map canvas. Uses `variant="floating"` and `compact` mode to minimize vertical space usage. In a real map application, you might use `position="absolute"` to overlay it on the canvas.',
       },
     },
   },
@@ -388,7 +388,7 @@ export const TransparentOverlay: Story = {
     >
       <Header {...args} style={{ color: "var(--boulder-color-text-inverse)" }}>
         <HeaderBrand>
-          <MapPinIcon /> RouteMap
+          <MapPinIcon /> Terra
         </HeaderBrand>
         <HeaderNav aria-label="Map navigation">
           <a
@@ -399,7 +399,7 @@ export const TransparentOverlay: Story = {
               opacity: 0.8,
             }}
           >
-            Satellite
+            Fauna
           </a>
           <a
             href="#"
@@ -409,7 +409,7 @@ export const TransparentOverlay: Story = {
               opacity: 0.8,
             }}
           >
-            Terrain
+            Flora
           </a>
           <a
             href="#"
@@ -419,12 +419,12 @@ export const TransparentOverlay: Story = {
               opacity: 0.8,
             }}
           >
-            Traffic
+            Solo
           </a>
         </HeaderNav>
         <HeaderActions>
           <Button variant="primary" size="sm">
-            Start Route
+            Export
           </Button>
         </HeaderActions>
       </Header>
@@ -452,7 +452,7 @@ export const TransparentOverlay: Story = {
     docs: {
       description: {
         story:
-          "A transparent header that blends into a dark map background. Navigation items act as map view mode selectors (Satellite, Terrain, Traffic). In a real map application, you might use `position=\"absolute\"` to overlay it on the canvas.",
+          'A transparent header that blends into a dark map background. Navigation items act as map view mode selectors (Satellite, Terrain, Traffic). In a real map application, you might use `position="absolute"` to overlay it on the canvas.',
       },
     },
   },
@@ -463,7 +463,7 @@ export const Compact: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <CompassIcon /> GeoApp
+        <CompassIcon /> Terra
       </HeaderBrand>
       <HeaderActions>
         <button style={iconBtnStyle} aria-label="Toggle layers">
@@ -498,7 +498,7 @@ export const BrandOnly: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <MapPinIcon /> GeoTracker
+        <MapPinIcon /> Terra
       </HeaderBrand>
     </Header>
   ),
@@ -522,7 +522,7 @@ export const WithFeatureIcons: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <CompassIcon /> FieldOps
+        <CompassIcon /> Terra
       </HeaderBrand>
       <HeaderNav aria-label="Map features">
         <button style={iconBtnStyle} aria-label="Layers">
