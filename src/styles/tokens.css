@@ -79,4 +79,8 @@
   /* ─── Checkbox ────────────────────────────────────────────────────────────── */
   --boulder-checkbox-size: 16px;
   --boulder-checkbox-checkmark-size: 10px;
+
+  /* ─── Map Simulation (Stories only) ───────────────────────────────────────── */
+  --boulder-gradient-map-light: linear-gradient(135deg, #a8d5ba 0%, #6db3a0 50%, #3a8c7a 100%);
+  --boulder-gradient-map-dark: linear-gradient(180deg, #2c3e50 0%, #4ca1af 100%);
 }

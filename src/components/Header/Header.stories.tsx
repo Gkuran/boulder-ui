@@ -173,7 +173,7 @@ const LayersIcon = () => (
   >
     <polygon points="12 2 2 7 12 12 22 7 12 2" />
     <polyline points="2 17 12 22 22 17" />
-    <polyline points="2 12 12 17 22 12" />
+    <polyline points="2 12 17 22 12" />
   </svg>
 );
 
@@ -280,7 +280,7 @@ export const Default: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <MapPinIcon /> Terra
+        <MapPinIcon /> GeoTracker
       </HeaderBrand>
       <HeaderNav>
         <a href="#" style={navLinkStyle}>
@@ -318,8 +318,7 @@ export const FloatingMapOverlay: Story = {
         position: "relative",
         width: "100%",
         height: 300,
-        background:
-          "linear-gradient(135deg, #a8d5ba 0%, #6db3a0 50%, #3a8c7a 100%)",
+        background: "var(--boulder-gradient-map-light)",
         borderRadius: "var(--boulder-radius-md)",
         overflow: "hidden",
         display: "flex",
@@ -348,8 +347,9 @@ export const FloatingMapOverlay: Story = {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "rgba(0,0,0,0.2)",
-          fontWeight: "bold",
+          color: "var(--boulder-color-text-secondary)",
+          opacity: 0.4,
+          fontWeight: "var(--boulder-font-weight-bold)",
         }}
       >
         MAP CANVAS SIMULATION
@@ -365,7 +365,7 @@ export const FloatingMapOverlay: Story = {
     docs: {
       description: {
         story:
-          'A floating header overlaying a map canvas. Uses `variant="floating"` and `compact` mode to minimize vertical space usage. In a real map application, you might use `position="absolute"` to overlay it on the canvas.',
+          "A floating header overlaying a map canvas. Uses `variant=\"floating\"` and `compact` mode to minimize vertical space usage. In a real map application, you might use `position=\"absolute\"` to overlay it on the canvas.",
       },
     },
   },
@@ -379,33 +379,45 @@ export const TransparentOverlay: Story = {
         position: "relative",
         width: "100%",
         height: 300,
-        background: "linear-gradient(180deg, #2c3e50 0%, #4ca1af 100%)",
+        background: "var(--boulder-gradient-map-dark)",
         borderRadius: "var(--boulder-radius-md)",
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
       }}
     >
-      <Header {...args} style={{ color: "#fff" }}>
+      <Header {...args} style={{ color: "var(--boulder-color-text-inverse)" }}>
         <HeaderBrand>
           <MapPinIcon /> RouteMap
         </HeaderBrand>
         <HeaderNav aria-label="Map navigation">
           <a
             href="#"
-            style={{ ...navLinkStyle, color: "rgba(255,255,255,0.8)" }}
+            style={{
+              ...navLinkStyle,
+              color: "var(--boulder-color-text-inverse)",
+              opacity: 0.8,
+            }}
           >
             Satellite
           </a>
           <a
             href="#"
-            style={{ ...navLinkStyle, color: "rgba(255,255,255,0.8)" }}
+            style={{
+              ...navLinkStyle,
+              color: "var(--boulder-color-text-inverse)",
+              opacity: 0.8,
+            }}
           >
             Terrain
           </a>
           <a
             href="#"
-            style={{ ...navLinkStyle, color: "rgba(255,255,255,0.8)" }}
+            style={{
+              ...navLinkStyle,
+              color: "var(--boulder-color-text-inverse)",
+              opacity: 0.8,
+            }}
           >
             Traffic
           </a>
@@ -422,8 +434,9 @@ export const TransparentOverlay: Story = {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "rgba(255,255,255,0.2)",
-          fontWeight: "bold",
+          color: "var(--boulder-color-text-inverse)",
+          opacity: 0.2,
+          fontWeight: "var(--boulder-font-weight-bold)",
         }}
       >
         SATELLITE MAP SIMULATION
@@ -439,7 +452,7 @@ export const TransparentOverlay: Story = {
     docs: {
       description: {
         story:
-          'A transparent header that blends into a dark map background. Navigation items act as map view mode selectors (Satellite, Terrain, Traffic). In a real map application, you might use `position="absolute"` to overlay it on the canvas.',
+          "A transparent header that blends into a dark map background. Navigation items act as map view mode selectors (Satellite, Terrain, Traffic). In a real map application, you might use `position=\"absolute\"` to overlay it on the canvas.",
       },
     },
   },
@@ -450,7 +463,7 @@ export const Compact: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <CompassIcon /> Terra
+        <CompassIcon /> GeoApp
       </HeaderBrand>
       <HeaderActions>
         <button style={iconBtnStyle} aria-label="Toggle layers">
@@ -485,7 +498,7 @@ export const BrandOnly: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <MapPinIcon /> Terra
+        <MapPinIcon /> GeoTracker
       </HeaderBrand>
     </Header>
   ),
@@ -509,7 +522,7 @@ export const WithFeatureIcons: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <CompassIcon /> Terra
+        <CompassIcon /> FieldOps
       </HeaderBrand>
       <HeaderNav aria-label="Map features">
         <button style={iconBtnStyle} aria-label="Layers">
