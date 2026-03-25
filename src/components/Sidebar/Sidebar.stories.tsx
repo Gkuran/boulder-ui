@@ -216,7 +216,6 @@ export const FloatingLayerControl: Story = {
       <Sidebar
         {...args}
         aria-label="Map layer controls"
-        style={{ height: "100vh" }}
       >
         <SidebarHeader>
           <div>
@@ -330,7 +329,6 @@ export const DefaultOccurrenceFilter: Story = {
       <Sidebar
         {...args}
         aria-label="Occurrence filters"
-        style={{ height: "100vh" }}
       >
         <SidebarHeader>
           <p
@@ -455,7 +453,6 @@ export const RightSideInspector: Story = {
       <Sidebar
         {...args}
         aria-label="Selected record details"
-        style={{ height: "100vh" }}
       >
         <SidebarHeader>
           <div>

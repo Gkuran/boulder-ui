@@ -8,10 +8,6 @@
   font-size: var(--boulder-font-size-md);
   color: var(--boulder-color-text);
 
-  /* Height: fill the visible viewport so the sidebar always occupies the full
-     screen height regardless of page scroll. */
-  height: 100vh;
-
   /* z-index: sit above page content and map canvases */
   z-index: 20;
 }
@@ -20,19 +16,27 @@
 
 .root.default {
   background-color: var(--boulder-color-surface);
+  height: 100vh;
 }
 
 .root.floating {
+  --_sidebar-margin: var(--boulder-spacing-md);
+
   background-color: var(--boulder-color-surface);
   border-radius: var(--boulder-radius-md);
   border: 1px solid var(--boulder-color-border);
   box-shadow:
     0 2px 8px rgba(0, 0, 0, 0.08),
     0 8px 24px rgba(0, 0, 0, 0.12);
-  /* Outer margin detaches the sidebar from the screen edge */
-  margin: var(--boulder-spacing-md);
-  /* Compensate height for top and bottom margins */
-  height: calc(100vh - var(--boulder-spacing-md) * 2);
+
+  /* Uniform margin on all four sides */
+  margin-top: var(--_sidebar-margin);
+  margin-bottom: var(--_sidebar-margin);
+  margin-left: var(--_sidebar-margin);
+  margin-right: var(--_sidebar-margin);
+
+  /* Compensate height for top + bottom margins */
+  height: calc(100vh - var(--_sidebar-margin) * 2);
 }
 
 /* ─── Side: border on the inner edge (default variant only) ──────────────── */
@@ -74,7 +78,8 @@
   right: 0;
 }
 
-/* Floating variant: account for margin when using fixed/absolute */
+/* Floating variant with fixed/absolute: offset from edges by the margin value
+   (margin has no effect on fixed/absolute elements, so we use top/left/right) */
 .position-fixed.floating,
 .position-absolute.floating {
   top: var(--boulder-spacing-md);
