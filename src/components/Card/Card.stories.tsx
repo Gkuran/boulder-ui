@@ -20,7 +20,7 @@ const meta: Meta<typeof Card> = {
     docs: {
       description: {
         component: `
-The **Card** component is a flexible, composable container for grouping related information. It is designed to serve as a surface for displaying structured content such as place details, map layer controls, search results, or any data panel in geolocation-based interfaces.
+The **Card** component is a flexible, composable container for grouping related information. It is designed to serve as a surface for displaying structured content such as species records, soil sample data, shapefile metadata, or any scientific data panel in geospatial field research interfaces.
 
 ## Overview
 
@@ -79,8 +79,8 @@ All sub-components accept their respective native HTML attributes and forward \`
 
 | Variant | Description | Use case |
 |---|---|---|
-| \`default\` | Surface background with a subtle border | Standard data panels and result cards |
-| \`elevated\` | Adds a drop shadow for depth | Floating widgets over map canvases |
+| \`default\` | Surface background with a subtle border | Standard data panels and record cards |
+| \`elevated\` | Adds a drop shadow for depth | Floating info panels over map canvases |
 | \`outlined\` | Transparent background with a border | Subtle containers on light backgrounds |
 | \`transparent\` | No background, border, or shadow | Embedding in rich or colored backgrounds |
 
@@ -108,7 +108,7 @@ type Story = StoryObj<typeof Card>;
 
 // ─── Shared icon helpers ──────────────────────────────────────────────────────
 
-const MapPinIcon = () => (
+const LeafIcon = () => (
   <svg
     width="16"
     height="16"
@@ -120,15 +120,15 @@ const MapPinIcon = () => (
     strokeLinejoin="round"
     aria-hidden="true"
   >
-    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-    <circle cx="12" cy="10" r="3" />
+    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" />
+    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
   </svg>
 );
 
-const ClockIcon = () => (
+const FlaskIcon = () => (
   <svg
-    width="14"
-    height="14"
+    width="16"
+    height="16"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -137,8 +137,8 @@ const ClockIcon = () => (
     strokeLinejoin="round"
     aria-hidden="true"
   >
-    <circle cx="12" cy="12" r="10" />
-    <polyline points="12 6 12 12 16 14" />
+    <path d="M9 3h6l1 9H8L9 3z" />
+    <path d="M6.5 14c-1.5 2-2.5 3.5-2.5 5a5 5 0 0 0 10 0c0-1.5-1-3-2.5-5" />
   </svg>
 );
 
@@ -160,7 +160,7 @@ const LayersIcon = () => (
   </svg>
 );
 
-const NavigationIcon = () => (
+const CalendarIcon = () => (
   <svg
     width="14"
     height="14"
@@ -172,7 +172,30 @@ const NavigationIcon = () => (
     strokeLinejoin="round"
     aria-hidden="true"
   >
-    <polygon points="3 11 22 2 13 21 11 13 3 11" />
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+    <line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" />
+    <line x1="3" y1="10" x2="21" y2="10" />
+  </svg>
+);
+
+const CoordIcon = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4" />
+    <line x1="1.05" y1="12" x2="7" y2="12" />
+    <line x1="17.01" y1="12" x2="22.96" y2="12" />
+    <line x1="12" y1="1.05" x2="12" y2="7" />
+    <line x1="12" y1="17.01" x2="12" y2="22.96" />
   </svg>
 );
 
@@ -192,28 +215,34 @@ const dividerStyle: React.CSSProperties = {
   margin: "0",
 };
 
+const dataRowStyle: React.CSSProperties = {
+  display: "flex",
+  justifyContent: "space-between",
+  fontSize: "var(--boulder-font-size-md)",
+};
+
 // ─── Stories ─────────────────────────────────────────────────────────────────
 
 export const Default: Story = {
-  name: "Default",
+  name: "Default — Flora Record",
   render: (args) => (
     <div style={{ maxWidth: 360 }}>
       <Card {...args}>
         <CardHeader>
           <div>
-            <CardTitle>Central Park</CardTitle>
-            <CardDescription>New York, NY — 843 acres</CardDescription>
+            <CardTitle>Araucaria angustifolia</CardTitle>
+            <CardDescription>Pinheiro-do-Paraná · Araucariaceae</CardDescription>
           </div>
-          <Badge variant="success">Open</Badge>
+          <Badge variant="danger">Endangered</Badge>
         </CardHeader>
         <CardContent>
           <p style={{ margin: 0, fontSize: "var(--boulder-font-size-md)", lineHeight: "var(--boulder-line-height-md)" }}>
-            A large public urban park in the center of Manhattan, offering walking trails, lakes, and recreational areas.
+            Coniferous tree endemic to the Atlantic Forest biome. Recorded at 1,240 m elevation in the Serra Gaúcha region. Specimen confirmed by morphological analysis.
           </p>
         </CardContent>
         <CardFooter>
-          <Button variant="secondary" size="sm">Save Place</Button>
-          <Button variant="primary" size="sm">Get Directions</Button>
+          <Button variant="secondary" size="sm">View on Map</Button>
+          <Button variant="primary" size="sm">Open Record</Button>
         </CardFooter>
       </Card>
     </div>
@@ -221,10 +250,18 @@ export const Default: Story = {
   args: {
     variant: "default",
   },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A flora occurrence record card displaying a species name, family classification, conservation status, and a brief field observation note.",
+      },
+    },
+  },
 };
 
 export const Elevated: Story = {
-  name: "Elevated — Map Widget",
+  name: "Elevated — Map Info Panel",
   render: (args) => (
     <div
       style={{
@@ -240,19 +277,24 @@ export const Elevated: Story = {
         boxSizing: "border-box",
       }}
     >
-      <div style={{ width: 260 }}>
+      <div style={{ width: 280 }}>
         <Card {...args}>
           <CardHeader>
             <div style={{ display: "flex", alignItems: "center", gap: "var(--boulder-spacing-xs)" }}>
               <LayersIcon />
-              <CardTitle as="h4">Map Layers</CardTitle>
+              <CardTitle as="h4">Active Layers</CardTitle>
             </div>
           </CardHeader>
           <CardContent padding="sm">
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-sm)" }}>
-              {["Satellite View", "Traffic", "Transit", "Terrain"].map((layer) => (
+              {[
+                { label: "Flora occurrences", checked: true },
+                { label: "Fauna occurrences", checked: true },
+                { label: "Soil sampling points", checked: false },
+                { label: "Protected areas (SNUC)", checked: true },
+              ].map(({ label, checked }) => (
                 <label
-                  key={layer}
+                  key={label}
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -261,8 +303,8 @@ export const Elevated: Story = {
                     cursor: "pointer",
                   }}
                 >
-                  <input type="checkbox" defaultChecked={layer === "Satellite View"} />
-                  {layer}
+                  <input type="checkbox" defaultChecked={checked} />
+                  {label}
                 </label>
               ))}
             </div>
@@ -278,47 +320,53 @@ export const Elevated: Story = {
     docs: {
       description: {
         story:
-          "An elevated card used as a floating map layer control widget. The `elevated` variant adds a drop shadow to create depth over the map canvas.",
+          "An elevated card used as a floating layer control panel over a field map. Allows toggling visibility of scientific data layers such as species occurrences, soil sampling points, and protected area boundaries.",
       },
     },
   },
 };
 
-export const PlaceDetails: Story = {
-  name: "Place Details Panel",
+export const SoilSampleDetails: Story = {
+  name: "Soil Sample Details",
   render: (args) => (
     <div style={{ maxWidth: 380 }}>
       <Card {...args}>
         <CardHeader>
           <div>
-            <CardTitle as="h2">Eiffel Tower</CardTitle>
-            <CardDescription>Champ de Mars, Paris, France</CardDescription>
+            <CardTitle as="h2">Sample SS-047</CardTitle>
+            <CardDescription>Collected 2024-09-12 · Cerrado biome</CardDescription>
           </div>
-          <Badge variant="default">Landmark</Badge>
+          <Badge variant="default">Analyzed</Badge>
         </CardHeader>
         <CardContent>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-sm)" }}>
             <div style={metaRowStyle}>
-              <MapPinIcon />
-              <span>48.8584° N, 2.2945° E</span>
+              <CoordIcon />
+              <span>15°32′14″ S, 47°45′08″ W</span>
             </div>
             <div style={metaRowStyle}>
-              <ClockIcon />
-              <span>Open · Closes at 11:45 PM</span>
+              <CalendarIcon />
+              <span>Depth: 0–20 cm · Horizon A</span>
             </div>
             <div style={dividerStyle} />
-            <p style={{ margin: 0, fontSize: "var(--boulder-font-size-md)", lineHeight: "var(--boulder-line-height-md)", color: "var(--boulder-color-text-secondary)" }}>
-              Wrought-iron lattice tower on the Champ de Mars, built as the centerpiece of the 1889 World's Fair.
-            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-xs)" }}>
+              {[
+                { label: "pH (H₂O)", value: "5.8" },
+                { label: "Organic Carbon", value: "2.4 g/kg" },
+                { label: "Clay content", value: "38%" },
+                { label: "CEC", value: "12.3 cmolc/kg" },
+              ].map(({ label, value }) => (
+                <div key={label} style={dataRowStyle}>
+                  <span style={{ color: "var(--boulder-color-text-secondary)" }}>{label}</span>
+                  <span style={{ fontWeight: "var(--boulder-font-weight-medium)" }}>{value}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </CardContent>
         <CardFooter>
-          <Button variant="secondary" size="sm">Share</Button>
-          <Button variant="primary" size="sm">
-            <span style={{ display: "flex", alignItems: "center", gap: "var(--boulder-spacing-xs)" }}>
-              <NavigationIcon /> Navigate
-            </span>
-          </Button>
+          <Button variant="secondary" size="sm">Export CSV</Button>
+          <Button variant="primary" size="sm">Full Report</Button>
         </CardFooter>
       </Card>
     </div>
@@ -330,35 +378,33 @@ export const PlaceDetails: Story = {
     docs: {
       description: {
         story:
-          "A detailed place information panel with coordinates, status, and description. Demonstrates combining `CardHeader`, `CardContent`, and `CardFooter` to build a rich data surface.",
+          "A soil sample record card displaying collection metadata (coordinates, date, depth, horizon) alongside key physicochemical analysis results such as pH, organic carbon, clay content, and cation exchange capacity (CEC).",
       },
     },
   },
 };
 
 export const Outlined: Story = {
-  name: "Outlined",
+  name: "Outlined — Shapefile Metadata",
   render: (args) => (
     <div style={{ maxWidth: 360 }}>
       <Card {...args}>
         <CardHeader>
-          <CardTitle as="h4">Route Summary</CardTitle>
+          <div style={{ display: "flex", alignItems: "center", gap: "var(--boulder-spacing-xs)" }}>
+            <LayersIcon />
+            <CardTitle as="h4">atlantic_forest_remnants.shp</CardTitle>
+          </div>
         </CardHeader>
         <CardContent>
-          <div style={{ display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-sm)" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-xs)" }}>
             {[
-              { label: "Distance", value: "12.4 km" },
-              { label: "Duration", value: "18 min" },
-              { label: "Via", value: "A-1 Highway" },
+              { label: "Geometry", value: "Polygon" },
+              { label: "CRS", value: "SIRGAS 2000 / UTM 23S" },
+              { label: "Features", value: "14,382" },
+              { label: "Source", value: "MapBiomas 2023" },
+              { label: "Area", value: "1,290,692 ha" },
             ].map(({ label, value }) => (
-              <div
-                key={label}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  fontSize: "var(--boulder-font-size-md)",
-                }}
-              >
+              <div key={label} style={dataRowStyle}>
                 <span style={{ color: "var(--boulder-color-text-secondary)" }}>{label}</span>
                 <span style={{ fontWeight: "var(--boulder-font-weight-medium)" }}>{value}</span>
               </div>
@@ -366,7 +412,8 @@ export const Outlined: Story = {
           </div>
         </CardContent>
         <CardFooter>
-          <Button variant="primary" size="sm">Start Navigation</Button>
+          <Button variant="secondary" size="sm">Preview</Button>
+          <Button variant="primary" size="sm">Load Layer</Button>
         </CardFooter>
       </Card>
     </div>
@@ -378,7 +425,7 @@ export const Outlined: Story = {
     docs: {
       description: {
         story:
-          "An outlined card used to display a route summary. The transparent background with a border makes it suitable for use on light or subtle backgrounds.",
+          "An outlined card displaying shapefile metadata: geometry type, coordinate reference system (CRS), feature count, data source, and total area. Suitable for a file browser or layer import panel.",
       },
     },
   },
@@ -411,35 +458,39 @@ export const ContentOnly: Story = {
   },
 };
 
-export const SearchResult: Story = {
-  name: "Search Result List",
+export const OccurrenceList: Story = {
+  name: "Occurrence Record List",
   render: (args) => {
-    const results = [
-      { name: "Louvre Museum", address: "Rue de Rivoli, Paris", distance: "0.8 km", open: true },
-      { name: "Notre-Dame Cathedral", address: "Île de la Cité, Paris", distance: "1.2 km", open: false },
-      { name: "Musée d'Orsay", address: "Rue de la Légion d'Honneur", distance: "1.9 km", open: true },
+    const records = [
+      { name: "Panthera onca", common: "Jaguar", type: "Fauna", date: "2024-11-03", status: "Vulnerable" },
+      { name: "Cattleya labiata", common: "Laelia orchid", type: "Flora", date: "2024-10-18", status: "Least Concern" },
+      { name: "Tapirus terrestris", common: "Lowland tapir", type: "Fauna", date: "2024-09-27", status: "Vulnerable" },
     ];
 
+    const statusVariant = (status: string): "danger" | "success" | "default" => {
+      if (status === "Vulnerable") return "danger";
+      if (status === "Least Concern") return "success";
+      return "default";
+    };
+
     return (
-      <div style={{ maxWidth: 400, display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-sm)" }}>
-        {results.map((place) => (
-          <Card key={place.name} {...args}>
+      <div style={{ maxWidth: 420, display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-sm)" }}>
+        {records.map((rec) => (
+          <Card key={rec.name} {...args}>
             <CardContent padding="sm">
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--boulder-spacing-sm)" }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <p style={{ margin: 0, fontWeight: "var(--boulder-font-weight-semibold)", fontSize: "var(--boulder-font-size-md)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                    {place.name}
+                  <p style={{ margin: 0, fontWeight: "var(--boulder-font-weight-semibold)", fontSize: "var(--boulder-font-size-md)", fontStyle: "italic", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                    {rec.name}
                   </p>
                   <p style={{ margin: "var(--boulder-spacing-xs) 0 0", fontSize: "var(--boulder-font-size-sm)", color: "var(--boulder-color-text-secondary)" }}>
-                    {place.address}
+                    {rec.common} · {rec.type}
                   </p>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "var(--boulder-spacing-xs)", flexShrink: 0 }}>
-                  <Badge variant={place.open ? "success" : "danger"}>
-                    {place.open ? "Open" : "Closed"}
-                  </Badge>
+                  <Badge variant={statusVariant(rec.status)}>{rec.status}</Badge>
                   <span style={{ fontSize: "var(--boulder-font-size-xs)", color: "var(--boulder-color-text-secondary)" }}>
-                    {place.distance}
+                    {rec.date}
                   </span>
                 </div>
               </div>
@@ -456,7 +507,73 @@ export const SearchResult: Story = {
     docs: {
       description: {
         story:
-          "Cards used as search result items in a list. Each card uses only `CardContent` with `padding=\"sm\"` for a compact layout. Demonstrates composing the `Badge` component inside a `Card`.",
+          "Cards used as occurrence record items in a list. Each card displays the scientific name (italicized), common name, type (Fauna/Flora), collection date, and IUCN conservation status. Demonstrates composing the `Badge` component inside a `Card` for status indication.",
+      },
+    },
+  },
+};
+
+export const FaunaRecord: Story = {
+  name: "Fauna Record Detail",
+  render: (args) => (
+    <div style={{ maxWidth: 380 }}>
+      <Card {...args}>
+        <CardHeader>
+          <div>
+            <CardTitle as="h2">Panthera onca</CardTitle>
+            <CardDescription>Jaguar · Felidae · Order Carnivora</CardDescription>
+          </div>
+          <Badge variant="danger">Vulnerable</Badge>
+        </CardHeader>
+        <CardContent>
+          <div style={{ display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-sm)" }}>
+            <div style={metaRowStyle}>
+              <CoordIcon />
+              <span>3°42′11″ S, 60°01′34″ W</span>
+            </div>
+            <div style={metaRowStyle}>
+              <CalendarIcon />
+              <span>Recorded: 2024-11-03 · Camera trap</span>
+            </div>
+            <div style={metaRowStyle}>
+              <LeafIcon />
+              <span>Biome: Amazon · Habitat: Dense forest</span>
+            </div>
+            <div style={dividerStyle} />
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-xs)" }}>
+              {[
+                { label: "Observer", value: "Dr. A. Ferreira" },
+                { label: "Institution", value: "INPA" },
+                { label: "Voucher", value: "INPA-Z 00412" },
+                { label: "Data source", value: "GBIF · SpeciesLink" },
+              ].map(({ label, value }) => (
+                <div key={label} style={dataRowStyle}>
+                  <span style={{ color: "var(--boulder-color-text-secondary)" }}>{label}</span>
+                  <span style={{ fontWeight: "var(--boulder-font-weight-medium)" }}>{value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Button variant="secondary" size="sm">
+            <span style={{ display: "flex", alignItems: "center", gap: "var(--boulder-spacing-xs)" }}>
+              <FlaskIcon /> Lab Data
+            </span>
+          </Button>
+          <Button variant="primary" size="sm">Open Record</Button>
+        </CardFooter>
+      </Card>
+    </div>
+  ),
+  args: {
+    variant: "default",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A detailed fauna occurrence record card. Displays the scientific name, taxonomy, IUCN status, geolocation, collection method, biome, observer information, institutional voucher, and public data sources (GBIF, SpeciesLink).",
       },
     },
   },
