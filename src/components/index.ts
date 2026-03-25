@@ -1,4 +1,5 @@
 export * from "./Accordion";
+export * from "./Card";
 export * from "./Header";
 export * from "./Badge";
 export * from "./Button";

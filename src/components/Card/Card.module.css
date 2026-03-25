@@ -1,0 +1,134 @@
+/* ─── Tokens locais ───────────────────────────────────────────────────────── */
+
+.root {
+  --_card-border-radius: var(--boulder-radius-md);
+  --_card-border-color: var(--boulder-color-border);
+  --_card-background: var(--boulder-color-surface);
+  --_card-gap: 0px;
+}
+
+/* ─── Root ────────────────────────────────────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--_card-border-radius);
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: var(--boulder-font-family);
+  font-size: var(--boulder-font-size-md);
+  color: var(--boulder-color-text);
+  width: 100%;
+}
+
+/* ─── Variants ───────────────────────────────────────────────────────────── */
+
+.root.default {
+  background-color: var(--_card-background);
+  border: 1px solid var(--_card-border-color);
+}
+
+.root.elevated {
+  background-color: var(--_card-background);
+  border: 1px solid var(--_card-border-color);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.10);
+}
+
+.root.outlined {
+  background-color: transparent;
+  border: 1px solid var(--_card-border-color);
+}
+
+.root.transparent {
+  background-color: transparent;
+  border: none;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--boulder-spacing-sm);
+  padding: var(--boulder-spacing-md);
+  border-bottom: 1px solid var(--_card-border-color);
+}
+
+/* Remove the bottom border when header is the only child or when there is no content/footer after it */
+.header:last-child {
+  border-bottom: none;
+}
+
+/* ─── Header text group ──────────────────────────────────────────────────── */
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--boulder-spacing-xs);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ─── Title ──────────────────────────────────────────────────────────────── */
+
+.title {
+  margin: 0;
+  font-size: var(--boulder-font-size-lg);
+  font-weight: var(--boulder-font-weight-semibold);
+  line-height: var(--boulder-line-height-sm);
+  color: var(--boulder-color-text);
+  /* Prevent overflow on long place names */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── Description ────────────────────────────────────────────────────────── */
+
+.description {
+  margin: 0;
+  font-size: var(--boulder-font-size-sm);
+  line-height: var(--boulder-line-height-md);
+  color: var(--boulder-color-text-secondary);
+}
+
+/* ─── Content ────────────────────────────────────────────────────────────── */
+
+.content {
+  flex: 1;
+}
+
+.content.padding-none {
+  padding: 0;
+}
+
+.content.padding-sm {
+  padding: var(--boulder-spacing-sm);
+}
+
+.content.padding-md {
+  padding: var(--boulder-spacing-md);
+}
+
+.content.padding-lg {
+  padding: var(--boulder-spacing-lg);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--boulder-spacing-sm);
+  padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
+  border-top: 1px solid var(--_card-border-color);
+}
+
+/* Remove the top border when footer is the first child (no header/content above) */
+.footer:first-child {
+  border-top: none;
+}
