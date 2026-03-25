@@ -322,6 +322,8 @@ export const FloatingMapOverlay: Story = {
           "linear-gradient(135deg, #a8d5ba 0%, #6db3a0 50%, #3a8c7a 100%)",
         borderRadius: "var(--boulder-radius-md)",
         overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <Header {...args}>
@@ -340,18 +342,21 @@ export const FloatingMapOverlay: Story = {
           </button>
         </HeaderActions>
       </Header>
+      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(0,0,0,0.2)", fontWeight: "bold" }}>
+        MAP CANVAS SIMULATION
+      </div>
     </div>
   ),
   args: {
     variant: "floating",
-    position: "absolute",
+    position: "static",
     compact: true,
   },
   parameters: {
     docs: {
       description: {
         story:
-          "A floating header overlaying a map canvas. Uses `variant=\"floating\"`, `position=\"absolute\"`, and `compact` mode to minimize vertical space usage. Feature icons (layers, locate, search) are placed in the actions slot.",
+          "A floating header overlaying a map canvas. Uses `variant=\"floating\"` and `compact` mode to minimize vertical space usage. In a real map application, you might use `position=\"absolute\"` to overlay it on the canvas.",
       },
     },
   },
@@ -369,6 +374,8 @@ export const TransparentOverlay: Story = {
           "linear-gradient(180deg, #2c3e50 0%, #4ca1af 100%)",
         borderRadius: "var(--boulder-radius-md)",
         overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <Header {...args} style={{ color: "#fff" }}>
@@ -392,18 +399,21 @@ export const TransparentOverlay: Story = {
           </Button>
         </HeaderActions>
       </Header>
+      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,0.2)", fontWeight: "bold" }}>
+        SATELLITE MAP SIMULATION
+      </div>
     </div>
   ),
   args: {
     variant: "transparent",
-    position: "absolute",
+    position: "static",
     compact: false,
   },
   parameters: {
     docs: {
       description: {
         story:
-          "A transparent header that blends into a dark map background. Navigation items act as map view mode selectors (Satellite, Terrain, Traffic).",
+          "A transparent header that blends into a dark map background. Navigation items act as map view mode selectors (Satellite, Terrain, Traffic). In a real map application, you might use `position=\"absolute\"` to overlay it on the canvas.",
       },
     },
   },
