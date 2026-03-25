@@ -1,5 +1,6 @@
 export * from "./Accordion";
 export * from "./Card";
+export * from "./DataAttribute";
 export * from "./Header";
 export * from "./Sidebar";
 export * from "./Badge";

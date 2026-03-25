@@ -1,0 +1,69 @@
+/* ─── Root ────────────────────────────────────────────────────────────────── */
+
+.root {
+  display: flex;
+  box-sizing: border-box;
+  font-family: var(--boulder-font-family);
+  font-size: var(--boulder-font-size-md);
+  line-height: var(--boulder-line-height-md);
+  width: 100%;
+}
+
+/* ─── Orientation: horizontal ────────────────────────────────────────────── */
+
+.root.horizontal {
+  flex-direction: row;
+  align-items: baseline;
+  gap: var(--boulder-spacing-sm);
+}
+
+.root.horizontal.align-between {
+  justify-content: space-between;
+}
+
+.root.horizontal.align-left {
+  justify-content: flex-start;
+}
+
+/* ─── Orientation: vertical ──────────────────────────────────────────────── */
+
+.root.vertical {
+  flex-direction: column;
+  gap: var(--boulder-spacing-xs);
+}
+
+/* ─── Label ──────────────────────────────────────────────────────────────── */
+
+.label {
+  color: var(--boulder-color-text-secondary);
+  font-size: var(--boulder-font-size-sm);
+  font-weight: var(--boulder-font-weight-regular);
+  flex-shrink: 0;
+}
+
+/* ─── Value ──────────────────────────────────────────────────────────────── */
+
+.value {
+  color: var(--boulder-color-text);
+  font-weight: var(--boulder-font-weight-medium);
+}
+
+.value.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+/* When horizontal + between, value aligns text to the right */
+.root.horizontal.align-between .value {
+  text-align: right;
+}
+
+/* ─── Fallback ───────────────────────────────────────────────────────────── */
+
+.fallback {
+  color: var(--boulder-color-text-secondary);
+  font-weight: var(--boulder-font-weight-regular);
+  font-style: italic;
+}
