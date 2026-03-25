@@ -1,0 +1,136 @@
+/* ─── Root ────────────────────────────────────────────────────────────────── */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: var(--boulder-font-family);
+  font-size: var(--boulder-font-size-md);
+  color: var(--boulder-color-text);
+
+  /* Height: fill the visible viewport so the sidebar always occupies the full
+     screen height regardless of page scroll. */
+  height: 100vh;
+
+  /* z-index: sit above page content and map canvases */
+  z-index: 20;
+}
+
+/* ─── Variants ───────────────────────────────────────────────────────────── */
+
+.root.default {
+  background-color: var(--boulder-color-surface);
+}
+
+.root.floating {
+  background-color: var(--boulder-color-surface);
+  border-radius: var(--boulder-radius-md);
+  border: 1px solid var(--boulder-color-border);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+  /* Outer margin detaches the sidebar from the screen edge */
+  margin: var(--boulder-spacing-md);
+  /* Compensate height for top and bottom margins */
+  height: calc(100vh - var(--boulder-spacing-md) * 2);
+}
+
+/* ─── Side: border on the inner edge (default variant only) ──────────────── */
+
+.root.default.side-left {
+  border-right: 1px solid var(--boulder-color-border);
+}
+
+.root.default.side-right {
+  border-left: 1px solid var(--boulder-color-border);
+}
+
+/* ─── Position ───────────────────────────────────────────────────────────── */
+
+.position-sticky {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+}
+
+.position-fixed {
+  position: fixed;
+  top: 0;
+}
+
+.position-absolute {
+  position: absolute;
+  top: 0;
+}
+
+/* Side-aware anchoring for fixed and absolute */
+.position-fixed.side-left,
+.position-absolute.side-left {
+  left: 0;
+}
+
+.position-fixed.side-right,
+.position-absolute.side-right {
+  right: 0;
+}
+
+/* Floating variant: account for margin when using fixed/absolute */
+.position-fixed.floating,
+.position-absolute.floating {
+  top: var(--boulder-spacing-md);
+}
+
+.position-fixed.floating.side-left,
+.position-absolute.floating.side-left {
+  left: var(--boulder-spacing-md);
+}
+
+.position-fixed.floating.side-right,
+.position-absolute.floating.side-right {
+  right: var(--boulder-spacing-md);
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--boulder-spacing-sm);
+  padding: var(--boulder-spacing-md);
+  border-bottom: 1px solid var(--boulder-color-border);
+  flex-shrink: 0;
+}
+
+/* ─── Content ────────────────────────────────────────────────────────────── */
+
+.content {
+  flex: 1;
+}
+
+.content.padding-none {
+  padding: 0;
+}
+
+.content.padding-sm {
+  padding: var(--boulder-spacing-sm);
+}
+
+.content.padding-md {
+  padding: var(--boulder-spacing-md);
+}
+
+.content.padding-lg {
+  padding: var(--boulder-spacing-lg);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--boulder-spacing-sm);
+  padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
+  border-top: 1px solid var(--boulder-color-border);
+  flex-shrink: 0;
+}

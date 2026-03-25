@@ -1,6 +1,7 @@
 export * from "./Accordion";
 export * from "./Card";
 export * from "./Header";
+export * from "./Sidebar";
 export * from "./Badge";
 export * from "./Button";
 export * from "./Checkbox";
