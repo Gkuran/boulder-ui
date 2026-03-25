@@ -280,7 +280,7 @@ export const Default: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <MapPinIcon /> GeoTracker
+        <MapPinIcon /> Terra
       </HeaderBrand>
       <HeaderNav>
         <a href="#" style={navLinkStyle}>
@@ -351,7 +351,7 @@ export const FloatingMapOverlay: Story = {
     docs: {
       description: {
         story:
-          "A floating header overlaying a map canvas. Uses `variant=\"floating\"`, `position=\"absolute\"`, and `compact` mode to minimize vertical space usage. Feature icons (layers, locate, search) are placed in the actions slot.",
+          'A floating header overlaying a map canvas. Uses `variant="floating"`, `position="absolute"`, and `compact` mode to minimize vertical space usage. Feature icons (layers, locate, search) are placed in the actions slot.',
       },
     },
   },
@@ -365,8 +365,7 @@ export const TransparentOverlay: Story = {
         position: "relative",
         width: "100%",
         height: 300,
-        background:
-          "linear-gradient(180deg, #2c3e50 0%, #4ca1af 100%)",
+        background: "linear-gradient(180deg, #2c3e50 0%, #4ca1af 100%)",
         borderRadius: "var(--boulder-radius-md)",
         overflow: "hidden",
       }}
@@ -376,13 +375,22 @@ export const TransparentOverlay: Story = {
           <MapPinIcon /> RouteMap
         </HeaderBrand>
         <HeaderNav aria-label="Map navigation">
-          <a href="#" style={{ ...navLinkStyle, color: "rgba(255,255,255,0.8)" }}>
+          <a
+            href="#"
+            style={{ ...navLinkStyle, color: "rgba(255,255,255,0.8)" }}
+          >
             Satellite
           </a>
-          <a href="#" style={{ ...navLinkStyle, color: "rgba(255,255,255,0.8)" }}>
+          <a
+            href="#"
+            style={{ ...navLinkStyle, color: "rgba(255,255,255,0.8)" }}
+          >
             Terrain
           </a>
-          <a href="#" style={{ ...navLinkStyle, color: "rgba(255,255,255,0.8)" }}>
+          <a
+            href="#"
+            style={{ ...navLinkStyle, color: "rgba(255,255,255,0.8)" }}
+          >
             Traffic
           </a>
         </HeaderNav>
@@ -414,7 +422,7 @@ export const Compact: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <CompassIcon /> GeoApp
+        <CompassIcon /> Terra
       </HeaderBrand>
       <HeaderActions>
         <button style={iconBtnStyle} aria-label="Toggle layers">
@@ -449,7 +457,7 @@ export const BrandOnly: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <MapPinIcon /> GeoTracker
+        <MapPinIcon /> Terra
       </HeaderBrand>
     </Header>
   ),
@@ -473,7 +481,7 @@ export const WithFeatureIcons: Story = {
   render: (args) => (
     <Header {...args}>
       <HeaderBrand>
-        <CompassIcon /> FieldOps
+        <CompassIcon /> Terra
       </HeaderBrand>
       <HeaderNav aria-label="Map features">
         <button style={iconBtnStyle} aria-label="Layers">
