@@ -1,0 +1,111 @@
+/* ─── Tokens locais ───────────────────────────────────────────────────────── */
+
+.root {
+  --_header-height: 56px;
+  --_header-height-compact: 44px;
+  --_header-padding-x: var(--boulder-spacing-lg);
+  --_header-padding-x-compact: var(--boulder-spacing-md);
+  --_header-gap: var(--boulder-spacing-md);
+}
+
+/* ─── Root ────────────────────────────────────────────────────────────────── */
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: var(--_header-height);
+  padding: 0 var(--_header-padding-x);
+  gap: var(--_header-gap);
+  box-sizing: border-box;
+  font-family: var(--boulder-font-family);
+  font-size: var(--boulder-font-size-md);
+  color: var(--boulder-color-text);
+  z-index: 10;
+}
+
+/* ─── Compact ────────────────────────────────────────────────────────────── */
+
+.root.compact {
+  min-height: var(--_header-height-compact);
+  padding: 0 var(--_header-padding-x-compact);
+  font-size: var(--boulder-font-size-sm);
+}
+
+/* ─── Variants ───────────────────────────────────────────────────────────── */
+
+.root.default {
+  background-color: var(--boulder-color-background);
+  border-bottom: 1px solid var(--boulder-color-border);
+}
+
+.root.floating {
+  background-color: var(--boulder-color-background);
+  border-radius: var(--boulder-radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--boulder-color-border);
+  margin: var(--boulder-spacing-sm);
+  width: calc(100% - var(--boulder-spacing-sm) * 2);
+}
+
+.root.transparent {
+  background-color: transparent;
+  border: none;
+}
+
+/* ─── Position ───────────────────────────────────────────────────────────── */
+
+.position-static {
+  position: static;
+}
+
+.position-sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.position-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.position-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* ─── Brand ──────────────────────────────────────────────────────────────── */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--boulder-spacing-sm);
+  flex-shrink: 0;
+  font-weight: var(--boulder-font-weight-semibold);
+  font-size: var(--boulder-font-size-lg);
+  line-height: var(--boulder-line-height-sm);
+  color: var(--boulder-color-text);
+}
+
+/* ─── Nav ────────────────────────────────────────────────────────────────── */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--boulder-spacing-sm);
+  flex: 1;
+  justify-content: center;
+}
+
+/* ─── Actions ────────────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--boulder-spacing-sm);
+  flex-shrink: 0;
+}
