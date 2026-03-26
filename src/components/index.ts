@@ -12,3 +12,4 @@ export * from "./Input";
 export * from "./Label";
 export * from "./Switch";
 export * from "./Textarea";
+export * from "./Toast";

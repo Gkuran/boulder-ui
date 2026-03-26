@@ -27,6 +27,15 @@
   --boulder-color-danger: #e5484d;
   --boulder-color-danger-hover: #d13438;
 
+  --boulder-color-success: #30a46c;
+  --boulder-color-success-hover: #298e5d;
+
+  --boulder-color-warning: #f5d90a;
+  --boulder-color-warning-hover: #e7c408;
+
+  --boulder-color-info: #0091ff;
+  --boulder-color-info-hover: #0081e6;
+
   /* ─── Espaçamento ─────────────────────────────────────────────────────────── */
   --boulder-spacing-xs: 4px;
   --boulder-spacing-sm: 8px;
