@@ -1,0 +1,89 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--boulder-spacing-xs);
+  padding: var(--boulder-spacing-xs) var(--boulder-spacing-sm);
+  border-radius: 9999px;
+  font-size: var(--boulder-font-size-sm);
+  font-weight: var(--boulder-font-weight-medium);
+  font-family: var(--boulder-font-family);
+  line-height: var(--boulder-line-height-sm);
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* ─── Conteúdo de texto ───────────────────────────────────────────────────── */
+
+.content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── Botão de remover ────────────────────────────────────────────────────── */
+
+.removeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+  margin-left: 2px;
+}
+
+.removeButton:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.removeButton:focus-visible {
+  outline: 2px solid var(--boulder-color-primary);
+  outline-offset: 1px;
+  opacity: 1;
+}
+
+.removeButton:active {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.18);
+}
+
+/* ─── Variantes ───────────────────────────────────────────────────────────── */
+
+.default {
+  background: var(--boulder-color-surface);
+  color: var(--boulder-color-text);
+  border: 1px solid var(--boulder-color-border);
+}
+
+.primary {
+  background: var(--boulder-color-primary-soft);
+  color: var(--boulder-color-primary);
+  border: 1px solid var(--boulder-color-primary-soft);
+}
+
+.success {
+  background: var(--boulder-color-success-subtle);
+  color: var(--boulder-color-success-text);
+  border: 1px solid var(--boulder-color-success-subtle);
+}
+
+.warning {
+  background: var(--boulder-color-warning-subtle);
+  color: var(--boulder-color-warning-text);
+  border: 1px solid var(--boulder-color-warning-subtle);
+}
+
+.danger {
+  background: var(--boulder-color-danger-subtle);
+  color: var(--boulder-color-danger-text);
+  border: 1px solid var(--boulder-color-danger-subtle);
+}

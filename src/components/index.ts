@@ -4,6 +4,7 @@ export * from "./DataAttribute";
 export * from "./Header";
 export * from "./Sidebar";
 export * from "./Badge";
+export * from "./Tag";
 export * from "./Button";
 export * from "./Checkbox";
 export * from "./ErrorMessage";

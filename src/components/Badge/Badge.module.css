@@ -17,16 +17,16 @@
 }
 
 .success {
-  background: #d1fae5;
-  color: #065f46;
+  background: var(--boulder-color-success-subtle);
+  color: var(--boulder-color-success-text);
 }
 
 .warning {
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--boulder-color-warning-subtle);
+  color: var(--boulder-color-warning-text);
 }
 
 .danger {
-  background: var(--boulder-color-danger);
-  color: var(--boulder-color-text-inverse);
+  background: var(--boulder-color-danger-subtle);
+  color: var(--boulder-color-danger-text);
 }
