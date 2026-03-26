@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
 import { Toast } from "./";
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -33,6 +34,34 @@ const WarningIcon = () => (
   </svg>
 );
 
+// ─── Story container ──────────────────────────────────────────────────────────
+// The Toast uses `position: fixed` in production. Inside Storybook's iframe,
+// `fixed` anchors to the iframe viewport, which causes clipping and inversion.
+// We wrap each story in a `position: relative` container with fixed dimensions
+// so the toast positions itself correctly within the preview area.
+
+const ToastStage = ({
+  children,
+  height = 280,
+}: {
+  children: React.ReactNode;
+  height?: number;
+}) => (
+  <div
+    style={{
+      position: "relative",
+      width: "100%",
+      height,
+      background: "var(--boulder-color-background-subtle)",
+      borderRadius: "var(--boulder-radius-md)",
+      border: "1px dashed var(--boulder-color-border)",
+      overflow: "hidden",
+    }}
+  >
+    {children}
+  </div>
+);
+
 // ─── Meta ─────────────────────────────────────────────────────────────────────
 
 const meta: Meta<typeof Toast> = {
@@ -40,17 +69,17 @@ const meta: Meta<typeof Toast> = {
   component: Toast,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "padded",
     docs: {
       description: {
         component: `
-The **Toast** component provides non-obtrusive, temporary notifications about the outcome of an action. In a scientific context, it's used for alerts like "Shapefile imported successfully" or "Error saving soil sample".
+The **Toast** component provides non-obtrusive, temporary notifications about the outcome of an action. In a scientific context, it's used for feedback like "Shapefile imported successfully" or "Error saving soil sample".
 
 ## Features
 
-- **Positioning**: Supports 6 screen positions (top/bottom x left/right/center).
-- **Variants**: Neutral (default) and state-based (success, danger, warning, info).
-- **Time Control**: Automatic dismissal with a visual progress bar.
+- **Positioning**: Supports 6 screen positions (top/bottom × left/right/center).
+- **Variants**: Neutral (\`default\`) and state-based (\`success\`, \`danger\`, \`warning\`, \`info\`).
+- **Time Control**: Automatic dismissal with a visual progress bar animated via CSS.
 - **Persistence**: Can be "pinned" to the screen, requiring manual dismissal.
 - **Rich Content**: Supports titles, descriptions, and custom icons.
 
@@ -59,13 +88,15 @@ The **Toast** component provides non-obtrusive, temporary notifications about th
 \`\`\`tsx
 import { Toast } from "boulder-ui";
 
-<Toast 
-  variant="success" 
-  title="Record Saved" 
-  description="The fauna occurrence has been added to the database." 
-  onClose={() => console.log('closed')}
+<Toast
+  variant="success"
+  title="Record Saved"
+  description="The fauna occurrence has been added to the database."
+  onClose={() => setVisible(false)}
 />
 \`\`\`
+
+> **Note on positioning**: The \`position\` prop uses CSS \`position: fixed\` to anchor the toast to the browser viewport. In the Storybook previews below, the toast is rendered inside a bounded container to illustrate the positioning behaviour correctly.
 `,
       },
     },
@@ -93,92 +124,237 @@ type Story = StoryObj<typeof Toast>;
 // ─── Stories ─────────────────────────────────────────────────────────────────
 
 export const Default: Story = {
+  name: "Default",
+  render: (args) => {
+    const [visible, setVisible] = useState(true);
+    return (
+      <ToastStage>
+        {visible && (
+          <Toast
+            {...args}
+            style={{ position: "absolute" }}
+            onClose={() => setVisible(false)}
+          />
+        )}
+        {!visible && (
+          <button
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              padding: "var(--boulder-spacing-sm) var(--boulder-spacing-md)",
+              background: "var(--boulder-color-primary)",
+              color: "var(--boulder-color-text-inverse)",
+              border: "none",
+              borderRadius: "var(--boulder-radius-sm)",
+              cursor: "pointer",
+              fontFamily: "var(--boulder-font-family)",
+              fontSize: "var(--boulder-font-size-md)",
+            }}
+            onClick={() => setVisible(true)}
+          >
+            Show Toast Again
+          </button>
+        )}
+      </ToastStage>
+    );
+  },
   args: {
     title: "Notification Title",
     description: "This is a neutral notification message.",
     variant: "default",
     position: "bottom-right",
-    onClose: () => alert("Closed!"),
-  },
-};
-
-export const Success: Story = {
-  name: "Success — Data Imported",
-  args: {
-    variant: "success",
-    title: "Shapefile Imported",
-    description: "Atlantic Forest remnants (2023) successfully processed.",
-    icon: <SuccessIcon />,
-    onClose: () => {},
-  },
-};
-
-export const Danger: Story = {
-  name: "Danger — Save Error",
-  args: {
-    variant: "danger",
-    title: "Failed to Save Sample",
-    description: "Database connection lost. Please check your network.",
-    icon: <ErrorIcon />,
-    onClose: () => {},
-  },
-};
-
-export const Warning: Story = {
-  name: "Warning — GPS Accuracy",
-  args: {
-    variant: "warning",
-    title: "Low GPS Accuracy",
-    description: "Current precision is > 15m. Coordinates may be inaccurate.",
-    icon: <WarningIcon />,
-    onClose: () => {},
-  },
-};
-
-export const Info: Story = {
-  name: "Info — Background Task",
-  args: {
-    variant: "info",
-    title: "Exporting Data",
-    description: "Generating CSV for 1,432 fauna records...",
-    icon: <InfoIcon />,
-    onClose: () => {},
-  },
-};
-
-export const Persistent: Story = {
-  name: "Persistent — Manual Close Required",
-  args: {
-    variant: "default",
-    title: "System Update Available",
-    description: "New species taxonomy database is ready to download.",
-    persistent: true,
-    onClose: () => {},
+    duration: 5000,
+    showProgress: true,
   },
   parameters: {
     docs: {
       description: {
-        story: "A persistent toast (pinned) does not disappear automatically and hides the progress bar. It requires the user to click the close button.",
+        story: "Default neutral toast with a progress bar. When the timer expires or the close button is clicked, the toast disappears. Click 'Show Toast Again' to replay.",
       },
     },
   },
 };
 
-export const NoProgressBar: Story = {
-  name: "No Progress Bar",
+export const Success: Story = {
+  name: "Success — Shapefile Imported",
+  render: (args) => {
+    const [visible, setVisible] = useState(true);
+    return (
+      <ToastStage>
+        {visible && (
+          <Toast
+            {...args}
+            style={{ position: "absolute" }}
+            onClose={() => setVisible(false)}
+          />
+        )}
+      </ToastStage>
+    );
+  },
   args: {
-    title: "Simple Notification",
-    showProgress: false,
-    onClose: () => {},
+    variant: "success",
+    position: "bottom-right",
+    title: "Shapefile Imported",
+    description: "Atlantic Forest remnants (2023) successfully processed.",
+    icon: <SuccessIcon />,
+    persistent: true,
   },
 };
 
-export const TopCenter: Story = {
-  name: "Position — Top Center",
+export const Danger: Story = {
+  name: "Danger — Save Error",
+  render: (args) => {
+    const [visible, setVisible] = useState(true);
+    return (
+      <ToastStage>
+        {visible && (
+          <Toast
+            {...args}
+            style={{ position: "absolute" }}
+            onClose={() => setVisible(false)}
+          />
+        )}
+      </ToastStage>
+    );
+  },
   args: {
-    title: "Centered Alert",
-    position: "top-center",
+    variant: "danger",
+    position: "bottom-right",
+    title: "Failed to Save Sample",
+    description: "Database connection lost. Please check your network.",
+    icon: <ErrorIcon />,
+    persistent: true,
+  },
+};
+
+export const Warning: Story = {
+  name: "Warning — GPS Accuracy",
+  render: (args) => {
+    const [visible, setVisible] = useState(true);
+    return (
+      <ToastStage>
+        {visible && (
+          <Toast
+            {...args}
+            style={{ position: "absolute" }}
+            onClose={() => setVisible(false)}
+          />
+        )}
+      </ToastStage>
+    );
+  },
+  args: {
+    variant: "warning",
+    position: "bottom-right",
+    title: "Low GPS Accuracy",
+    description: "Current precision is > 15m. Coordinates may be inaccurate.",
+    icon: <WarningIcon />,
+    persistent: true,
+  },
+};
+
+export const Info: Story = {
+  name: "Info — Background Task",
+  render: (args) => {
+    const [visible, setVisible] = useState(true);
+    return (
+      <ToastStage>
+        {visible && (
+          <Toast
+            {...args}
+            style={{ position: "absolute" }}
+            onClose={() => setVisible(false)}
+          />
+        )}
+      </ToastStage>
+    );
+  },
+  args: {
     variant: "info",
-    onClose: () => {},
+    position: "bottom-right",
+    title: "Exporting Data",
+    description: "Generating CSV for 1,432 fauna records...",
+    icon: <InfoIcon />,
+    persistent: true,
+  },
+};
+
+export const Persistent: Story = {
+  name: "Persistent — Manual Close Required",
+  render: (args) => {
+    const [visible, setVisible] = useState(true);
+    return (
+      <ToastStage>
+        {visible && (
+          <Toast
+            {...args}
+            style={{ position: "absolute" }}
+            onClose={() => setVisible(false)}
+          />
+        )}
+        {!visible && (
+          <button
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              padding: "var(--boulder-spacing-sm) var(--boulder-spacing-md)",
+              background: "var(--boulder-color-primary)",
+              color: "var(--boulder-color-text-inverse)",
+              border: "none",
+              borderRadius: "var(--boulder-radius-sm)",
+              cursor: "pointer",
+              fontFamily: "var(--boulder-font-family)",
+              fontSize: "var(--boulder-font-size-md)",
+            }}
+            onClick={() => setVisible(true)}
+          >
+            Show Toast Again
+          </button>
+        )}
+      </ToastStage>
+    );
+  },
+  args: {
+    variant: "default",
+    position: "bottom-right",
+    title: "System Update Available",
+    description: "New species taxonomy database is ready to download.",
+    persistent: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "A persistent (pinned) toast does not disappear automatically and hides the progress bar. It requires the user to explicitly click the close button.",
+      },
+    },
+  },
+};
+
+export const AllPositions: Story = {
+  name: "All Positions",
+  render: () => (
+    <ToastStage height={400}>
+      {(["top-left", "top-center", "top-right", "bottom-left", "bottom-center", "bottom-right"] as const).map((pos) => (
+        <Toast
+          key={pos}
+          title={pos}
+          variant="default"
+          position={pos}
+          persistent
+          style={{ position: "absolute", minWidth: 160, maxWidth: 200 }}
+        />
+      ))}
+    </ToastStage>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: "All 6 available positions rendered simultaneously inside a bounded container for comparison.",
+      },
+    },
   },
 };
