@@ -1,57 +1,418 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { Meta, Canvas, Story, Source, Unstyled } from "@storybook/addon-docs/blocks";
+import * as ButtonStories from "../components/Button/Button.stories";
+import * as CardStories from "../components/Card/Card.stories";
+import * as BadgeStories from "../components/Badge/Badge.stories";
+import * as SpinnerStories from "../components/Spinner/Spinner.stories";
 
 <Meta title="Overview" />
 
-<div style={{ background: "#d3ba9b", padding: "40px", borderRadius: "8px" }}>
-    <div style={{ textAlign: "center" }}>
+<Unstyled>
 
-<img src="/boulder-logo.png" width="360" />
+<div style={{
+  fontFamily: "var(--boulder-font-family, system-ui, sans-serif)",
+  color: "var(--boulder-color-text)",
+  maxWidth: 900,
+  margin: "0 auto",
+  padding: "48px 24px",
+}}>
 
-<br />
+{/* ── Hero ─────────────────────────────────────────────────────────────── */}
 
-<div style={{ display: "flex", justifyContent: "center", gap: "8px" }}>
-  <img src="https://img.shields.io/npm/v/boulder-ui" />
-  <img src="https://img.shields.io/badge/tree--shakable-yes-green" />
+<div style={{
+  background: "var(--boulder-color-primary-soft)",
+  border: "1px solid var(--boulder-color-border)",
+  borderRadius: "var(--boulder-radius-md)",
+  padding: "48px 40px",
+  textAlign: "center",
+  marginBottom: 48,
+}}>
+  <img src="/boulder-logo.png" width="320" alt="Boulder UI" style={{ marginBottom: 24 }} />
+
+  <p style={{
+    fontSize: "var(--boulder-font-size-lg)",
+    color: "var(--boulder-color-text-secondary)",
+    maxWidth: 560,
+    margin: "0 auto 24px",
+    lineHeight: "var(--boulder-line-height-md)",
+  }}>
+    A lightweight, accessible and composable React component library built for scientific and geospatial interfaces.
+  </p>
+
+  <div style={{ display: "flex", justifyContent: "center", gap: 8, flexWrap: "wrap" }}>
+    <img src="https://img.shields.io/npm/v/boulder-ui?style=flat-square&color=8a7650" alt="npm version" />
+    <img src="https://img.shields.io/badge/tree--shakeable-yes-8e977d?style=flat-square" alt="tree-shakeable" />
+    <img src="https://img.shields.io/badge/TypeScript-strict-3178c6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript strict" />
+    <img src="https://img.shields.io/badge/accessibility-WAI--ARIA-4a90d9?style=flat-square" alt="accessibility" />
+  </div>
+</div>
+
+{/* ── Pillars ───────────────────────────────────────────────────────────── */}
+
+<div style={{
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+  gap: 16,
+  marginBottom: 56,
+}}>
+  {[
+    {
+      icon: "🧩",
+      title: "Composable",
+      desc: "Built with the Compound Component pattern. Assemble complex interfaces from small, predictable building blocks.",
+    },
+    {
+      icon: "♿",
+      title: "Accessible",
+      desc: "WAI-ARIA attributes, keyboard navigation, focus management and semantic HTML are built-in by default.",
+    },
+    {
+      icon: "🎨",
+      title: "Token-driven",
+      desc: "All styles come from CSS custom properties. Override any token once in :root to retheme the entire system.",
+    },
+    {
+      icon: "🔤",
+      title: "Font-agnostic",
+      desc: "Boulder UI does not bundle any typeface. Bring your own font by overriding --boulder-font-family.",
+    },
+    {
+      icon: "📦",
+      title: "Tree-shakeable",
+      desc: "Named exports only. Import what you use — nothing else ends up in your bundle.",
+    },
+    {
+      icon: "🔒",
+      title: "Strictly typed",
+      desc: "Full TypeScript support with strict mode. All props are typed, predictable and documented.",
+    },
+  ].map(({ icon, title, desc }) => (
+    <div key={title} style={{
+      background: "var(--boulder-color-background)",
+      border: "1px solid var(--boulder-color-border)",
+      borderRadius: "var(--boulder-radius-md)",
+      padding: "20px",
+    }}>
+      <div style={{ fontSize: 24, marginBottom: 8 }}>{icon}</div>
+      <div style={{
+        fontWeight: "var(--boulder-font-weight-semibold)",
+        fontSize: "var(--boulder-font-size-md)",
+        marginBottom: 6,
+        color: "var(--boulder-color-text)",
+      }}>{title}</div>
+      <div style={{
+        fontSize: "var(--boulder-font-size-sm)",
+        color: "var(--boulder-color-text-secondary)",
+        lineHeight: "var(--boulder-line-height-md)",
+      }}>{desc}</div>
+    </div>
+  ))}
+</div>
+
+{/* ── Quick Start ───────────────────────────────────────────────────────── */}
+
+<div style={{ marginBottom: 56 }}>
+  <h2 style={{
+    fontSize: "var(--boulder-font-size-lg)",
+    fontWeight: "var(--boulder-font-weight-bold)",
+    color: "var(--boulder-color-text)",
+    marginBottom: 16,
+    paddingBottom: 8,
+    borderBottom: "1px solid var(--boulder-color-border)",
+  }}>Quick Start</h2>
+
+  <p style={{
+    fontSize: "var(--boulder-font-size-md)",
+    color: "var(--boulder-color-text-secondary)",
+    marginBottom: 16,
+    lineHeight: "var(--boulder-line-height-md)",
+  }}>
+    Install the package and import the global stylesheet to activate the design token system.
+  </p>
+
+  <Source
+    dark
+    code={`npm install boulder-ui`}
+    language="bash"
+  />
+
+  <div style={{ marginTop: 12 }}>
+    <Source
+      dark
+      code={`// 1. Import the design tokens (once, at the root of your app)
+import "boulder-ui/dist/boulder-ui.css";
+
+// 2. Import components by name — only what you use
+import { Button, Card, CardHeader, CardTitle, CardContent } from "boulder-ui";
+
+// 3. Compose
+export function SpeciesCard() {
+  return (
+    <Card variant="elevated">
+      <CardHeader>
+        <CardTitle>Panthera onca</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p>Jaguar — Critically endangered in the Atlantic Forest biome.</p>
+      </CardContent>
+    </Card>
+  );
+}`}
+      language="tsx"
+    />
+  </div>
+</div>
+
+{/* ── Live Demo ─────────────────────────────────────────────────────────── */}
+
+<div style={{ marginBottom: 56 }}>
+  <h2 style={{
+    fontSize: "var(--boulder-font-size-lg)",
+    fontWeight: "var(--boulder-font-weight-bold)",
+    color: "var(--boulder-color-text)",
+    marginBottom: 8,
+    paddingBottom: 8,
+    borderBottom: "1px solid var(--boulder-color-border)",
+  }}>Live Demo</h2>
+
+  <p style={{
+    fontSize: "var(--boulder-font-size-md)",
+    color: "var(--boulder-color-text-secondary)",
+    marginBottom: 20,
+    lineHeight: "var(--boulder-line-height-md)",
+  }}>
+    Every component in Boulder UI is interactive. Use the controls panel below to change props in real time and inspect the generated source code.
+  </p>
+
+  <Canvas of={CardStories.Default} />
+</div>
+
+{/* ── Component Catalog ─────────────────────────────────────────────────── */}
+
+<div style={{ marginBottom: 56 }}>
+  <h2 style={{
+    fontSize: "var(--boulder-font-size-lg)",
+    fontWeight: "var(--boulder-font-weight-bold)",
+    color: "var(--boulder-color-text)",
+    marginBottom: 8,
+    paddingBottom: 8,
+    borderBottom: "1px solid var(--boulder-color-border)",
+  }}>Component Catalog</h2>
+
+  <p style={{
+    fontSize: "var(--boulder-font-size-md)",
+    color: "var(--boulder-color-text-secondary)",
+    marginBottom: 24,
+    lineHeight: "var(--boulder-line-height-md)",
+  }}>
+    Components are organized into semantic groups. Click any component name to navigate directly to its documentation and interactive stories.
+  </p>
+
+  <div style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: 16,
+  }}>
+    {[
+      {
+        category: "🎛️ Controls",
+        color: "#8a7650",
+        components: [
+          { name: "Button", desc: "Primary, secondary and danger actions" },
+        ],
+      },
+      {
+        category: "📝 Forms",
+        color: "#4a90d9",
+        components: [
+          { name: "Input", desc: "Text input with states and variants" },
+          { name: "Select", desc: "Native select with custom styling" },
+          { name: "Textarea", desc: "Multi-line text input" },
+          { name: "Checkbox", desc: "Boolean toggle with label" },
+          { name: "Switch", desc: "On/off toggle control" },
+          { name: "Label", desc: "Accessible form label" },
+          { name: "FormField", desc: "Composable field with label and error" },
+          { name: "ErrorMessage", desc: "Inline validation feedback" },
+        ],
+      },
+      {
+        category: "📊 Data Display",
+        color: "#8e977d",
+        components: [
+          { name: "Card", desc: "Flexible container for structured content" },
+          { name: "Accordion", desc: "Collapsible content sections" },
+          { name: "Badge", desc: "Status and classification labels" },
+          { name: "DataAttribute", desc: "Key-value pair for metadata display" },
+        ],
+      },
+      {
+        category: "📢 Feedback",
+        color: "#e5484d",
+        components: [
+          { name: "Toast", desc: "Temporary notification with progress" },
+          { name: "Spinner", desc: "Loading indicator with variants" },
+        ],
+      },
+      {
+        category: "🗺️ Layout & Navigation",
+        color: "#3a8c7a",
+        components: [
+          { name: "Header", desc: "App header with brand, nav and actions" },
+          { name: "Sidebar", desc: "Floating sticky side panel" },
+        ],
+      },
+      {
+        category: "🔲 Overlay",
+        color: "#6b5b95",
+        components: [
+          { name: "Modal", desc: "Dialog with portal, focus trap and scroll lock" },
+        ],
+      },
+    ].map(({ category, color, components }) => (
+      <div key={category} style={{
+        background: "var(--boulder-color-background)",
+        border: "1px solid var(--boulder-color-border)",
+        borderRadius: "var(--boulder-radius-md)",
+        overflow: "hidden",
+      }}>
+        <div style={{
+          background: color,
+          padding: "10px 16px",
+          fontWeight: "var(--boulder-font-weight-semibold)",
+          fontSize: "var(--boulder-font-size-sm)",
+          color: "#fff",
+          letterSpacing: "0.01em",
+        }}>{category}</div>
+        <div style={{ padding: "8px 0" }}>
+          {components.map(({ name, desc }) => (
+            <div key={name} style={{
+              padding: "8px 16px",
+              borderBottom: "1px solid var(--boulder-color-border)",
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+            }}>
+              <span style={{
+                fontWeight: "var(--boulder-font-weight-medium)",
+                fontSize: "var(--boulder-font-size-md)",
+                color: "var(--boulder-color-text)",
+              }}>{name}</span>
+              <span style={{
+                fontSize: "var(--boulder-font-size-sm)",
+                color: "var(--boulder-color-text-secondary)",
+              }}>{desc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+{/* ── More Previews ─────────────────────────────────────────────────────── */}
+
+<div style={{ marginBottom: 56 }}>
+  <h2 style={{
+    fontSize: "var(--boulder-font-size-lg)",
+    fontWeight: "var(--boulder-font-weight-bold)",
+    color: "var(--boulder-color-text)",
+    marginBottom: 8,
+    paddingBottom: 8,
+    borderBottom: "1px solid var(--boulder-color-border)",
+  }}>More Previews</h2>
+
+  <p style={{
+    fontSize: "var(--boulder-font-size-md)",
+    color: "var(--boulder-color-text-secondary)",
+    marginBottom: 24,
+    lineHeight: "var(--boulder-line-height-md)",
+  }}>
+    A quick look at a few more components in action.
+  </p>
+
+  <div style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: 24,
+  }}>
+    <div>
+      <p style={{
+        fontWeight: "var(--boulder-font-weight-semibold)",
+        fontSize: "var(--boulder-font-size-sm)",
+        color: "var(--boulder-color-text-secondary)",
+        textTransform: "uppercase",
+        letterSpacing: "0.06em",
+        marginBottom: 12,
+      }}>Button</p>
+      <Canvas of={ButtonStories.Primary} />
+    </div>
+    <div>
+      <p style={{
+        fontWeight: "var(--boulder-font-weight-semibold)",
+        fontSize: "var(--boulder-font-size-sm)",
+        color: "var(--boulder-color-text-secondary)",
+        textTransform: "uppercase",
+        letterSpacing: "0.06em",
+        marginBottom: 12,
+      }}>Badge</p>
+      <Canvas of={BadgeStories.Default} />
+    </div>
+    <div>
+      <p style={{
+        fontWeight: "var(--boulder-font-weight-semibold)",
+        fontSize: "var(--boulder-font-size-sm)",
+        color: "var(--boulder-color-text-secondary)",
+        textTransform: "uppercase",
+        letterSpacing: "0.06em",
+        marginBottom: 12,
+      }}>Spinner</p>
+      <Canvas of={SpinnerStories.Default} />
+    </div>
+  </div>
+</div>
+
+{/* ── Foundation ────────────────────────────────────────────────────────── */}
+
+<div style={{
+  background: "var(--boulder-color-primary-soft)",
+  border: "1px solid var(--boulder-color-border)",
+  borderRadius: "var(--boulder-radius-md)",
+  padding: "28px 32px",
+}}>
+  <h2 style={{
+    fontSize: "var(--boulder-font-size-lg)",
+    fontWeight: "var(--boulder-font-weight-bold)",
+    color: "var(--boulder-color-text)",
+    marginBottom: 8,
+    marginTop: 0,
+  }}>Explore the Foundation</h2>
+  <p style={{
+    fontSize: "var(--boulder-font-size-md)",
+    color: "var(--boulder-color-text-secondary)",
+    lineHeight: "var(--boulder-line-height-md)",
+    marginBottom: 16,
+    marginTop: 0,
+  }}>
+    Boulder UI's visual language is entirely defined through CSS custom properties. Explore the Foundation section to understand the token system, customize the palette, and adapt the library to your brand.
+  </p>
+  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+    {[
+      { label: "🎨 Colors", path: "Foundation/Colors" },
+      { label: "🔤 Typography", path: "Foundation/Typography" },
+      { label: "📐 Spacing", path: "Foundation/Spacing" },
+    ].map(({ label, path }) => (
+      <div key={path} style={{
+        background: "var(--boulder-color-background)",
+        border: "1px solid var(--boulder-color-border)",
+        borderRadius: "var(--boulder-radius-sm)",
+        padding: "8px 16px",
+        fontSize: "var(--boulder-font-size-sm)",
+        fontWeight: "var(--boulder-font-weight-medium)",
+        color: "var(--boulder-color-text)",
+      }}>{label}</div>
+    ))}
+  </div>
 </div>
 
 </div>
 
-<br />
-
-    A **lightweight React component library** designed to build **consistent, accessible and composable interfaces**.
-
-    ---
-
-    ### Simplicity
-
-    Components are **minimal and composable**, allowing developers to build complex interfaces with simple building blocks.
-
-    ### Accessibility
-
-    All components follow **accessibility best practices** and include proper semantic structure and ARIA attributes when necessary.
-
-    ### Consistency
-
-    A set of **design tokens** ensures consistent styling across applications and components.
-
-    ---
-
-    ## Available Components
-    - Button
-    - Input
-    - Textarea
-    - Checkbox
-    - Switch
-    - Label
-    - FormField
-    - ErrorMessage
-
-    ---
-
-    ## Quick Start
-
-    ```bash
-    npm install boulder-ui
-    ```
-
-</div>
+</Unstyled>
