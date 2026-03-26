@@ -3,18 +3,17 @@ import type { HTMLAttributes, MouseEvent } from "react";
 export type TagVariant = "default" | "primary" | "success" | "warning" | "danger";
 
 export interface TagProps extends HTMLAttributes<HTMLSpanElement> {
-  /** Variante visual da tag. Controla a cor de fundo e do texto. */
+  /** Visual variant of the tag. Controls background and text color. */
   variant?: TagVariant;
   /**
-   * Função chamada quando o botão de remover (X) é clicado.
-   * Se não for fornecida, a tag é renderizada em modo somente-leitura,
-   * sem o botão de remover.
+   * Callback fired when the remove button (X) is clicked.
+   * When not provided, the tag renders in read-only mode with no remove button.
    */
   onRemove?: (e: MouseEvent<HTMLButtonElement>) => void;
   /**
-   * Rótulo acessível para o botão de remover.
-   * Deve descrever o que será removido para leitores de tela.
-   * @default "Remover tag"
+   * Accessible label for the remove button.
+   * Should describe what will be removed for screen reader users.
+   * @default "Remove tag"
    */
   removeAriaLabel?: string;
 }

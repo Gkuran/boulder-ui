@@ -8,7 +8,7 @@ const meta: Meta<typeof Tag> = {
   tags: ["autodocs"],
   args: {
     variant: "default",
-    children: "Bioma: Cerrado",
+    children: "Biome: Cerrado",
   },
   argTypes: {
     variant: {
@@ -23,7 +23,7 @@ const meta: Meta<typeof Tag> = {
         component: `
 ## Overview
 
-\`Tag\` é um elemento visual interativo em formato *pill* utilizado para representar **filtros ativos**, seleções múltiplas e categorizações dinâmicas. Diferente do \`Badge\` (estático), a \`Tag\` suporta remoção via botão "X" embutido.
+\`Tag\` is an interactive pill-shaped element used to represent **active filters**, multi-select values, and dynamic categorizations. Unlike \`Badge\` (which is static), \`Tag\` supports removal via an embedded X button.
 
 ## Import
 
@@ -33,15 +33,15 @@ import { Tag } from 'boulder-ui';
 
 ## Props
 
-| Prop | Tipo | Default | Descrição |
-|------|------|---------|-----------|
-| \`variant\` | \`'default' \\| 'primary' \\| 'success' \\| 'warning' \\| 'danger'\` | \`'default'\` | Variante visual |
-| \`onRemove\` | \`(e: MouseEvent) => void\` | — | Callback ao clicar no X. Se ausente, a tag é somente-leitura |
-| \`removeAriaLabel\` | \`string\` | \`'Remover tag'\` | Rótulo acessível para o botão de remover |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| \`variant\` | \`'default' \\| 'primary' \\| 'success' \\| 'warning' \\| 'danger'\` | \`'default'\` | Visual variant |
+| \`onRemove\` | \`(e: MouseEvent) => void\` | — | Fired when the X button is clicked. When absent, the tag renders as read-only |
+| \`removeAriaLabel\` | \`string\` | \`'Remove tag'\` | Accessible label for the remove button |
 
-## Acessibilidade
+## Accessibility
 
-O botão de remover é um \`<button>\` nativo, garantindo navegação por teclado (\`Tab\`, \`Enter\`, \`Space\`). O ícone X possui \`aria-hidden="true"\` e o botão carrega um \`aria-label\` descritivo.
+The remove button is a native \`<button>\`, ensuring full keyboard support (\`Tab\`, \`Enter\`, \`Space\`). The X icon carries \`aria-hidden="true"\` and the button exposes a descriptive \`aria-label\`.
         `,
       },
     },
@@ -52,89 +52,89 @@ export default meta;
 
 type Story = StoryObj<typeof Tag>;
 
-// ─── Stories base ──────────────────────────────────────────────────────────
+// ─── Base stories ──────────────────────────────────────────────────────────
 
 export const Default: Story = {
   args: {
     variant: "default",
-    children: "Bioma: Cerrado",
+    children: "Biome: Cerrado",
   },
 };
 
 export const Primary: Story = {
   args: {
     variant: "primary",
-    children: "Camada: Bacias Hidrográficas",
+    children: "Layer: Watersheds",
   },
 };
 
 export const Success: Story = {
   args: {
     variant: "success",
-    children: "Status: Coletado",
+    children: "Status: Collected",
   },
 };
 
 export const Warning: Story = {
   args: {
     variant: "warning",
-    children: "IUCN: Vulnerável (VU)",
+    children: "IUCN: Vulnerable (VU)",
   },
 };
 
 export const Danger: Story = {
   args: {
     variant: "danger",
-    children: "IUCN: Criticamente em Perigo (CR)",
+    children: "IUCN: Critically Endangered (CR)",
   },
 };
 
-// ─── Com botão de remover ──────────────────────────────────────────────────
+// ─── With remove button ────────────────────────────────────────────────────
 
 export const Removable: Story = {
   args: {
     variant: "primary",
-    children: "Tipo: Fauna",
-    removeAriaLabel: "Remover filtro Tipo: Fauna",
+    children: "Type: Fauna",
+    removeAriaLabel: "Remove filter Type: Fauna",
   },
   parameters: {
     docs: {
       description: {
         story:
-          "Quando `onRemove` é fornecido, a tag exibe um botão X acessível. O `removeAriaLabel` deve descrever o que será removido para leitores de tela.",
+          "When `onRemove` is provided, the tag renders an accessible X button. Use `removeAriaLabel` to describe what will be removed for screen reader users.",
       },
     },
   },
 };
 
-// ─── Somente leitura (sem onRemove) ───────────────────────────────────────
+// ─── Read-only (no onRemove) ───────────────────────────────────────────────
 
 export const ReadOnly: Story = {
   args: {
     variant: "default",
-    children: "Amostra de Solo #402",
+    children: "Soil Sample #402",
     onRemove: undefined,
   },
   parameters: {
     docs: {
       description: {
         story:
-          "Sem `onRemove`, a tag é renderizada em modo somente-leitura — sem botão de remover. Útil para exibir categorias ou identificadores fixos.",
+          "Without `onRemove`, the tag renders in read-only mode — no remove button is shown. Useful for displaying fixed categories or identifiers.",
       },
     },
   },
 };
 
-// ─── Grupo de tags: barra de filtros ativos ────────────────────────────────
+// ─── Active filters bar ────────────────────────────────────────────────────
 
 export const ActiveFiltersBar: Story = {
   render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [filters, setFilters] = useState([
-      { id: 1, label: "Bioma: Cerrado", variant: "default" as const },
-      { id: 2, label: "Tipo: Fauna", variant: "primary" as const },
-      { id: 3, label: "Status: Coletado", variant: "success" as const },
-      { id: 4, label: "IUCN: Vulnerável (VU)", variant: "warning" as const },
+      { id: 1, label: "Biome: Cerrado", variant: "default" as const },
+      { id: 2, label: "Type: Fauna", variant: "primary" as const },
+      { id: 3, label: "Status: Collected", variant: "success" as const },
+      { id: 4, label: "IUCN: Vulnerable (VU)", variant: "warning" as const },
       { id: 5, label: "CRS: SIRGAS 2000", variant: "primary" as const },
     ]);
 
@@ -150,7 +150,7 @@ export const ActiveFiltersBar: Story = {
             color: "var(--boulder-color-text-secondary)",
           }}
         >
-          Nenhum filtro ativo.
+          No active filters.
         </p>
       );
     }
@@ -162,7 +162,7 @@ export const ActiveFiltersBar: Story = {
             key={f.id}
             variant={f.variant}
             onRemove={() => remove(f.id)}
-            removeAriaLabel={`Remover filtro ${f.label}`}
+            removeAriaLabel={`Remove filter ${f.label}`}
           >
             {f.label}
           </Tag>
@@ -174,22 +174,22 @@ export const ActiveFiltersBar: Story = {
     docs: {
       description: {
         story:
-          "Exemplo interativo de uma barra de filtros ativos acima de uma tabela de ocorrências. Clique no X para remover cada filtro individualmente.",
+          "Interactive active-filters bar above an occurrence table. Click the X on each tag to remove that filter individually.",
       },
     },
   },
 };
 
-// ─── Grupo de tags: camadas de shapefile ──────────────────────────────────
+// ─── Shapefile layers ──────────────────────────────────────────────────────
 
 export const ShapefileLayers: Story = {
   render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [layers, setLayers] = useState([
-      { id: 1, label: "Unidades de Conservação" },
-      { id: 2, label: "Bacias Hidrográficas" },
-      { id: 3, label: "Áreas de Preservação Permanente" },
-      { id: 4, label: "Zonas de Amortecimento" },
+      { id: 1, label: "Conservation Units" },
+      { id: 2, label: "Watersheds" },
+      { id: 3, label: "Permanent Preservation Areas" },
+      { id: 4, label: "Buffer Zones" },
     ]);
 
     const remove = (id: number) =>
@@ -206,7 +206,7 @@ export const ShapefileLayers: Story = {
             marginTop: 0,
           }}
         >
-          Camadas ativas no mapa
+          Active map layers
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
           {layers.map((l) => (
@@ -214,7 +214,7 @@ export const ShapefileLayers: Story = {
               key={l.id}
               variant="primary"
               onRemove={() => remove(l.id)}
-              removeAriaLabel={`Remover camada ${l.label}`}
+              removeAriaLabel={`Remove layer ${l.label}`}
             >
               {l.label}
             </Tag>
@@ -227,29 +227,29 @@ export const ShapefileLayers: Story = {
     docs: {
       description: {
         story:
-          "Tags representando camadas de shapefiles ativas em um visualizador de mapas. Cada tag pode ser removida individualmente para desativar a camada correspondente.",
+          "Tags representing active shapefile layers in a map viewer. Each tag can be removed individually to toggle the corresponding layer off.",
       },
     },
   },
 };
 
-// ─── Todas as variantes ────────────────────────────────────────────────────
+// ─── All variants ──────────────────────────────────────────────────────────
 
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-      <Tag variant="default">Método: Armadilha Fotográfica</Tag>
-      <Tag variant="primary">Camada: Hidrografia</Tag>
-      <Tag variant="success">Status: Validado</Tag>
-      <Tag variant="warning">IUCN: Vulnerável (VU)</Tag>
-      <Tag variant="danger">IUCN: Em Perigo (EN)</Tag>
+      <Tag variant="default">Method: Camera Trap</Tag>
+      <Tag variant="primary">Layer: Hydrography</Tag>
+      <Tag variant="success">Status: Validated</Tag>
+      <Tag variant="warning">IUCN: Vulnerable (VU)</Tag>
+      <Tag variant="danger">IUCN: Endangered (EN)</Tag>
     </div>
   ),
   parameters: {
     docs: {
       description: {
         story:
-          "Todas as variantes disponíveis em modo somente-leitura (sem `onRemove`). Útil para exibir metadados de amostras ou ocorrências.",
+          "All available variants in read-only mode (no `onRemove`). Useful for displaying sample or occurrence metadata.",
       },
     },
   },

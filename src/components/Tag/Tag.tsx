@@ -27,7 +27,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
     {
       variant = "default",
       onRemove,
-      removeAriaLabel = "Remover tag",
+      removeAriaLabel = "Remove tag",
       className,
       children,
       ...props
