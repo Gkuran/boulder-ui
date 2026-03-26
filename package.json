@@ -33,7 +33,6 @@
     "react": ">=18",
     "react-dom": ">=18"
   },
-  "dependencies": {},
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",
     "@eslint/js": "^9.39.1",
