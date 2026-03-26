@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "../Card";
 // ─── Meta ─────────────────────────────────────────────────────────────────────
 
 const meta: Meta<typeof DataAttribute> = {
-  title: "Components/DataAttribute",
+  title: "Data Display/DataAttribute",
   component: DataAttribute,
   tags: ["autodocs"],
   parameters: {

@@ -13,7 +13,7 @@ import { Badge } from "../Badge";
 // ─── Meta ─────────────────────────────────────────────────────────────────────
 
 const meta: Meta<typeof Card> = {
-  title: "Components/Card",
+  title: "Data Display/Card",
   component: Card,
   tags: ["autodocs"],
   parameters: {

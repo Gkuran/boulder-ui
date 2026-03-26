@@ -5,7 +5,7 @@ import { Button } from "../Button";
 // ─── Meta ─────────────────────────────────────────────────────────────────────
 
 const meta: Meta<typeof Header> = {
-  title: "Components/Header",
+  title: "Layout & Navigation/Header",
   component: Header,
   tags: ["autodocs"],
   parameters: {

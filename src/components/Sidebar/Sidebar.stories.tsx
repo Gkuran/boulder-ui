@@ -7,7 +7,7 @@ import { Badge } from "../Badge";
 // ─── Meta ─────────────────────────────────────────────────────────────────────
 
 const meta: Meta<typeof Sidebar> = {
-  title: "Components/Sidebar",
+  title: "Layout & Navigation/Sidebar",
   component: Sidebar,
   tags: ["autodocs"],
   parameters: {

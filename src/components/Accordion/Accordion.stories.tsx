@@ -11,7 +11,7 @@ import {
 // ─── Meta ─────────────────────────────────────────────────────────────────────
 
 const meta: Meta<typeof Accordion> = {
-  title: "Components/Accordion",
+  title: "Data Display/Accordion",
   component: Accordion,
   tags: ["autodocs"],
   parameters: {
