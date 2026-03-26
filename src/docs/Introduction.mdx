@@ -19,7 +19,7 @@ import * as SpinnerStories from "../components/Spinner/Spinner.stories";
 {/* ── Hero ─────────────────────────────────────────────────────────────── */}
 
 <div style={{
-  background: "var(--boulder-color-primary-soft)",
+  background: "#dbcea5",
   border: "1px solid var(--boulder-color-border)",
   borderRadius: "var(--boulder-radius-md)",
   padding: "48px 40px",
@@ -56,43 +56,36 @@ import * as SpinnerStories from "../components/Spinner/Spinner.stories";
 }}>
   {[
     {
-      icon: "🧩",
       title: "Composable",
       desc: "Built with the Compound Component pattern. Assemble complex interfaces from small, predictable building blocks.",
     },
     {
-      icon: "♿",
       title: "Accessible",
       desc: "WAI-ARIA attributes, keyboard navigation, focus management and semantic HTML are built-in by default.",
     },
     {
-      icon: "🎨",
       title: "Token-driven",
       desc: "All styles come from CSS custom properties. Override any token once in :root to retheme the entire system.",
     },
     {
-      icon: "🔤",
       title: "Font-agnostic",
       desc: "Boulder UI does not bundle any typeface. Bring your own font by overriding --boulder-font-family.",
     },
     {
-      icon: "📦",
       title: "Tree-shakeable",
       desc: "Named exports only. Import what you use — nothing else ends up in your bundle.",
     },
     {
-      icon: "🔒",
       title: "Strictly typed",
       desc: "Full TypeScript support with strict mode. All props are typed, predictable and documented.",
     },
-  ].map(({ icon, title, desc }) => (
+  ].map(({ title, desc }) => (
     <div key={title} style={{
       background: "var(--boulder-color-background)",
       border: "1px solid var(--boulder-color-border)",
       borderRadius: "var(--boulder-radius-md)",
       padding: "20px",
     }}>
-      <div style={{ fontSize: 24, marginBottom: 8 }}>{icon}</div>
       <div style={{
         fontWeight: "var(--boulder-font-weight-semibold)",
         fontSize: "var(--boulder-font-size-md)",
@@ -214,14 +207,14 @@ export function SpeciesCard() {
   }}>
     {[
       {
-        category: "🎛️ Controls",
+        category: "Controls",
         color: "#8a7650",
         components: [
           { name: "Button", desc: "Primary, secondary and danger actions" },
         ],
       },
       {
-        category: "📝 Forms",
+        category: "Forms",
         color: "#4a90d9",
         components: [
           { name: "Input", desc: "Text input with states and variants" },
@@ -235,7 +228,7 @@ export function SpeciesCard() {
         ],
       },
       {
-        category: "📊 Data Display",
+        category: "Data Display",
         color: "#8e977d",
         components: [
           { name: "Card", desc: "Flexible container for structured content" },
@@ -245,7 +238,7 @@ export function SpeciesCard() {
         ],
       },
       {
-        category: "📢 Feedback",
+        category: "Feedback",
         color: "#e5484d",
         components: [
           { name: "Toast", desc: "Temporary notification with progress" },
@@ -253,7 +246,7 @@ export function SpeciesCard() {
         ],
       },
       {
-        category: "🗺️ Layout & Navigation",
+        category: "Layout & Navigation",
         color: "#3a8c7a",
         components: [
           { name: "Header", desc: "App header with brand, nav and actions" },
@@ -261,7 +254,7 @@ export function SpeciesCard() {
         ],
       },
       {
-        category: "🔲 Overlay",
+        category: "Overlay",
         color: "#6b5b95",
         components: [
           { name: "Modal", desc: "Dialog with portal, focus trap and scroll lock" },
@@ -396,11 +389,11 @@ export function SpeciesCard() {
   </p>
   <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
     {[
-      { label: "🎨 Colors", path: "Foundation/Colors" },
-      { label: "🔤 Typography", path: "Foundation/Typography" },
-      { label: "📐 Spacing", path: "Foundation/Spacing" },
+      { label: "Colors", path: "/docs/foundation-colors--docs" },
+      { label: "Typography", path: "/docs/foundation-typography--docs" },
+      { label: "Spacing", path: "/docs/foundation-spacing--docs" },
     ].map(({ label, path }) => (
-      <div key={path} style={{
+      <a key={path} href={path} style={{
         background: "var(--boulder-color-background)",
         border: "1px solid var(--boulder-color-border)",
         borderRadius: "var(--boulder-radius-sm)",
@@ -408,7 +401,9 @@ export function SpeciesCard() {
         fontSize: "var(--boulder-font-size-sm)",
         fontWeight: "var(--boulder-font-weight-medium)",
         color: "var(--boulder-color-text)",
-      }}>{label}</div>
+        textDecoration: "none",
+        cursor: "pointer",
+      }}>{label}</a>
     ))}
   </div>
 </div>
