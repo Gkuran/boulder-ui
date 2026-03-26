@@ -26,15 +26,23 @@
   /* ─── Cores de estado ─────────────────────────────────────────────────────── */
   --boulder-color-danger: #e5484d;
   --boulder-color-danger-hover: #d13438;
+  --boulder-color-danger-subtle: #ffe4e6;
+  --boulder-color-danger-text: #9f1239;
 
   --boulder-color-success: #30a46c;
   --boulder-color-success-hover: #298e5d;
+  --boulder-color-success-subtle: #dcfce7;
+  --boulder-color-success-text: #14532d;
 
   --boulder-color-warning: #f5d90a;
   --boulder-color-warning-hover: #e7c408;
+  --boulder-color-warning-subtle: #fef9c3;
+  --boulder-color-warning-text: #713f12;
 
   --boulder-color-info: #0091ff;
   --boulder-color-info-hover: #0081e6;
+  --boulder-color-info-subtle: #dbeafe;
+  --boulder-color-info-text: #1e3a8a;
 
   /* ─── Espaçamento ─────────────────────────────────────────────────────────── */
   --boulder-spacing-xs: 4px;
