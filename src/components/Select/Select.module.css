@@ -1,0 +1,108 @@
+/* ─── Wrapper ────────────────────────────────────────────────────────────── */
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+}
+
+/* ─── Select (base) ──────────────────────────────────────────────────────── */
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  font-family: var(--boulder-font-family);
+  color: var(--boulder-color-text);
+  border-radius: var(--boulder-radius-md);
+  cursor: pointer;
+  /* leave room for the icon on the right */
+  padding-right: calc(var(--boulder-spacing-lg) + var(--boulder-spacing-md));
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+/* ─── Variantes ──────────────────────────────────────────────────────────── */
+
+.outline {
+  border: 1px solid var(--boulder-color-border);
+  background: var(--boulder-color-background);
+}
+
+.outline:focus {
+  outline: none;
+  border-color: var(--boulder-color-primary);
+  box-shadow: 0 0 0 2px var(--boulder-color-primary-soft);
+}
+
+.filled {
+  border: 1px solid transparent;
+  background: var(--boulder-color-background-subtle);
+}
+
+.filled:focus {
+  outline: none;
+  border-color: var(--boulder-color-primary);
+}
+
+/* ─── Tamanhos ───────────────────────────────────────────────────────────── */
+
+.sm {
+  padding-top: var(--boulder-spacing-xs);
+  padding-bottom: var(--boulder-spacing-xs);
+  padding-left: var(--boulder-spacing-sm);
+  font-size: var(--boulder-font-size-sm);
+}
+
+.md {
+  padding-top: var(--boulder-spacing-sm);
+  padding-bottom: var(--boulder-spacing-sm);
+  padding-left: var(--boulder-spacing-md);
+  font-size: var(--boulder-font-size-md);
+}
+
+.lg {
+  padding-top: var(--boulder-spacing-md);
+  padding-bottom: var(--boulder-spacing-md);
+  padding-left: var(--boulder-spacing-lg);
+  font-size: var(--boulder-font-size-lg);
+}
+
+/* ─── Estado de erro ─────────────────────────────────────────────────────── */
+
+.error {
+  border-color: var(--boulder-color-danger);
+}
+
+.error:focus {
+  outline: none;
+  border-color: var(--boulder-color-danger);
+  box-shadow: 0 0 0 2px rgba(229, 72, 77, 0.2);
+}
+
+/* ─── Estado desabilitado ────────────────────────────────────────────────── */
+
+.select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ─── Ícone (chevron) ────────────────────────────────────────────────────── */
+
+.iconWrapper {
+  position: absolute;
+  right: var(--boulder-spacing-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: var(--boulder-color-text-secondary);
+}
+
+.select:disabled ~ .iconWrapper {
+  opacity: 0.6;
+}
