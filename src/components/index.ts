@@ -12,6 +12,7 @@ export * from "./Input";
 export * from "./Label";
 export * from "./Modal";
 export * from "./Select";
+export * from "./Spinner";
 export * from "./Switch";
 export * from "./Textarea";
 export * from "./Toast";
