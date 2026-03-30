@@ -1,11 +1,12 @@
 import { forwardRef } from "react";
+import type { ReactElement } from "react";
 import type { AlertProps, AlertVariant } from "./Alert.types";
 import styles from "./Alert.module.css";
 import { cx } from "@/utils";
 
 // ─── Default icons per variant ────────────────────────────────────────────────
 const DefaultIcon = ({ variant }: { variant: AlertVariant }) => {
-  const icons: Record<AlertVariant, JSX.Element> = {
+  const icons: Record<AlertVariant, ReactElement> = {
     info: (
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
         <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" />
@@ -47,7 +48,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
   (
     {
       variant = "info",
-      title,
+      heading,
       icon,
       onClose,
       closeAriaLabel = "Dismiss alert",
@@ -71,7 +72,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         )}
 
         <div className={styles.body}>
-          {title && <div className={styles.title}>{title}</div>}
+          {heading && <div className={styles.title}>{heading}</div>}
           {children && <div className={styles.description}>{children}</div>}
         </div>
 
