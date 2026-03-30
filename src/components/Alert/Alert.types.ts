@@ -9,9 +9,9 @@ export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
    */
   variant?: AlertVariant;
   /**
-   * Optional bold title displayed above the description.
+   * Optional bold heading displayed above the description.
    */
-  title?: ReactNode;
+  heading?: ReactNode;
   /**
    * Optional icon displayed to the left of the content.
    * When not provided, a default icon for the variant is rendered.

@@ -7,7 +7,7 @@ const meta: Meta<typeof Alert> = {
   tags: ["autodocs"],
   args: {
     variant: "info",
-    title: "Alert title",
+    heading: "Alert heading",
     children: "This is an informational message providing additional context.",
   },
   argTypes: {
@@ -32,7 +32,7 @@ import { Alert } from 'boulder-ui';
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | \`variant\` | \`'info' \\| 'success' \\| 'warning' \\| 'danger'\` | \`'info'\` | Visual style |
-| \`title\` | \`ReactNode\` | — | Optional bold title |
+| \`heading\` | \`ReactNode\` | — | Optional bold heading |
 | \`icon\` | \`ReactNode\` | default icon | Override the default icon |
 | \`onClose\` | \`() => void\` | — | Renders a dismiss button |
 | \`closeAriaLabel\` | \`string\` | \`'Dismiss alert'\` | Accessible label for close button |
@@ -54,7 +54,7 @@ export const Info: Story = {
 export const Success: Story = {
   args: {
     variant: "success",
-    title: "Changes saved",
+    heading: "Changes saved",
     children: "Your changes have been saved successfully.",
   },
 };
@@ -62,7 +62,7 @@ export const Success: Story = {
 export const Warning: Story = {
   args: {
     variant: "warning",
-    title: "Low disk space",
+    heading: "Low disk space",
     children: "You are running low on storage. Consider removing unused files.",
   },
 };
@@ -70,7 +70,7 @@ export const Warning: Story = {
 export const Danger: Story = {
   args: {
     variant: "danger",
-    title: "Authentication failed",
+    heading: "Authentication failed",
     children: "Invalid credentials. Please check your email and password.",
   },
 };
@@ -78,16 +78,16 @@ export const Danger: Story = {
 export const Dismissible: Story = {
   args: {
     variant: "info",
-    title: "New feature available",
+    heading: "New feature available",
     children: "Check out the new dashboard layout in your settings.",
     onClose: () => {},
   },
 };
 
-export const TitleOnly: Story = {
+export const HeadingOnly: Story = {
   args: {
     variant: "success",
-    title: "Profile updated successfully.",
+    heading: "Profile updated successfully.",
     children: undefined,
   },
 };
@@ -95,7 +95,7 @@ export const TitleOnly: Story = {
 export const NoIcon: Story = {
   args: {
     variant: "warning",
-    title: "Maintenance scheduled",
+    heading: "Maintenance scheduled",
     children: "The system will be unavailable on Saturday from 2–4 AM.",
     icon: null,
   },
@@ -104,10 +104,10 @@ export const NoIcon: Story = {
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "12px", width: "480px" }}>
-      <Alert variant="info" title="Info">This is an informational alert.</Alert>
-      <Alert variant="success" title="Success">Operation completed successfully.</Alert>
-      <Alert variant="warning" title="Warning">Please review before proceeding.</Alert>
-      <Alert variant="danger" title="Error">Something went wrong. Please try again.</Alert>
+      <Alert variant="info" heading="Info">This is an informational alert.</Alert>
+      <Alert variant="success" heading="Success">Operation completed successfully.</Alert>
+      <Alert variant="warning" heading="Warning">Please review before proceeding.</Alert>
+      <Alert variant="danger" heading="Error">Something went wrong. Please try again.</Alert>
     </div>
   ),
 };
