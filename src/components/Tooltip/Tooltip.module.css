@@ -1,0 +1,85 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ─── Tooltip bubble ──────────────────────────────────────────────────────── */
+.tooltip {
+  position: absolute;
+  z-index: 1000;
+  padding: var(--boulder-spacing-xs) var(--boulder-spacing-sm);
+  background: var(--boulder-color-text);
+  color: var(--boulder-color-bg);
+  font-family: var(--boulder-font-family);
+  font-size: var(--boulder-font-size-sm);
+  line-height: var(--boulder-line-height-sm);
+  border-radius: var(--boulder-radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.tooltip.visible {
+  opacity: 1;
+}
+
+/* ─── Positions ───────────────────────────────────────────────────────────── */
+.top {
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottom {
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.left {
+  right: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.right {
+  left: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ─── Arrow ───────────────────────────────────────────────────────────────── */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  border: 4px solid transparent;
+}
+
+.top::after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: var(--boulder-color-text);
+}
+
+.bottom::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: var(--boulder-color-text);
+}
+
+.left::after {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: var(--boulder-color-text);
+}
+
+.right::after {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right-color: var(--boulder-color-text);
+}

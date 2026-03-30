@@ -1,0 +1,36 @@
+.skeleton {
+  display: inline-block;
+  background: var(--boulder-color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Formas ──────────────────────────────────────────────────────────────── */
+.text        { border-radius: var(--boulder-radius-sm); }
+.circular    { border-radius: 50%; }
+.rectangular { border-radius: var(--boulder-radius-md); }
+
+/* ─── Animação ────────────────────────────────────────────────────────────── */
+.animate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.6s infinite;
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate::after {
+    animation: none;
+  }
+}

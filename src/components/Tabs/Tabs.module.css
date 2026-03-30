@@ -1,0 +1,70 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--boulder-font-family);
+}
+
+/* ─── Tab list ────────────────────────────────────────────────────────────── */
+.list {
+  display: flex;
+  border-bottom: 1px solid var(--boulder-color-border);
+  gap: 0;
+}
+
+/* ─── Tab trigger ─────────────────────────────────────────────────────────── */
+.trigger {
+  position: relative;
+  padding: var(--boulder-spacing-sm) var(--boulder-spacing-md);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--boulder-font-family);
+  font-size: var(--boulder-font-size-md);
+  font-weight: var(--boulder-font-weight-medium);
+  color: var(--boulder-color-text-secondary);
+  line-height: var(--boulder-line-height-md);
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+
+.trigger::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 0.15s ease;
+}
+
+.trigger:hover:not(:disabled) {
+  color: var(--boulder-color-text);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--boulder-color-primary);
+  outline-offset: -2px;
+  border-radius: var(--boulder-radius-sm);
+}
+
+.trigger:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.trigger.active {
+  color: var(--boulder-color-primary);
+}
+
+.trigger.active::after {
+  background: var(--boulder-color-primary);
+}
+
+/* ─── Tab content ─────────────────────────────────────────────────────────── */
+.content {
+  padding-top: var(--boulder-spacing-md);
+  color: var(--boulder-color-text);
+  font-size: var(--boulder-font-size-md);
+  line-height: var(--boulder-line-height-md);
+}

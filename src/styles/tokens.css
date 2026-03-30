@@ -15,6 +15,10 @@
   --boulder-color-background: var(--boulder-color-5);
   --boulder-color-background-subtle: var(--boulder-color-4);
 
+  /* Aliases curtos usados pelos componentes */
+  --boulder-color-bg: var(--boulder-color-background);
+  --boulder-color-surface-hover: var(--boulder-color-3);
+
   --boulder-color-border: var(--boulder-color-3);
   --boulder-color-muted: var(--boulder-color-2);
 
@@ -53,6 +57,11 @@
   /* ─── Raios de borda ──────────────────────────────────────────────────────── */
   --boulder-radius-sm: 4px;
   --boulder-radius-md: 8px;
+
+  /* ─── Sombras ────────────────────────────────────────────────────────────── */
+  --boulder-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --boulder-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --boulder-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
 
   /* ─── Tipografia ──────────────────────────────────────────────────────────── */
   --boulder-font-family: system-ui, sans-serif;

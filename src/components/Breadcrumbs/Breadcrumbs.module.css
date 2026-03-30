@@ -1,0 +1,54 @@
+.nav {
+  font-family: var(--boulder-font-family);
+  font-size: var(--boulder-font-size-sm);
+  line-height: var(--boulder-line-height-sm);
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Link ────────────────────────────────────────────────────────────────── */
+.link {
+  color: var(--boulder-color-text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--boulder-color-text);
+  text-decoration: underline;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--boulder-color-primary);
+  outline-offset: 2px;
+  border-radius: var(--boulder-radius-sm);
+}
+
+/* ─── Current page ────────────────────────────────────────────────────────── */
+.current {
+  color: var(--boulder-color-text);
+  font-weight: var(--boulder-font-weight-medium);
+}
+
+/* ─── Separator ───────────────────────────────────────────────────────────── */
+.separator {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--boulder-spacing-xs);
+  color: var(--boulder-color-text-secondary);
+  user-select: none;
+  aria-hidden: true;
+}

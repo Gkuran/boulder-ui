@@ -1,0 +1,72 @@
+.root {
+  display: flex;
+  font-family: var(--boulder-font-family);
+}
+
+.vertical   { flex-direction: column; gap: var(--boulder-spacing-sm); }
+.horizontal { flex-direction: row; flex-wrap: wrap; gap: var(--boulder-spacing-md); }
+
+/* ─── Item ────────────────────────────────────────────────────────────────── */
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--boulder-spacing-xs);
+  cursor: pointer;
+}
+
+.item.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ─── Input ───────────────────────────────────────────────────────────────── */
+.input {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--boulder-color-border);
+  border-radius: 50%;
+  background: var(--boulder-color-bg);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  position: relative;
+}
+
+.input::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--boulder-color-primary);
+  transition: transform 0.15s ease;
+}
+
+.input:checked {
+  border-color: var(--boulder-color-primary);
+}
+
+.input:checked::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--boulder-color-primary);
+  outline-offset: 2px;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+/* ─── Label ───────────────────────────────────────────────────────────────── */
+.label {
+  font-size: var(--boulder-font-size-md);
+  line-height: var(--boulder-line-height-md);
+  color: var(--boulder-color-text);
+  cursor: pointer;
+}

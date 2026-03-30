@@ -1,0 +1,34 @@
+.divider {
+  border: none;
+  background: var(--boulder-color-border);
+  flex-shrink: 0;
+}
+
+/* ─── Orientação ──────────────────────────────────────────────────────────── */
+.horizontal {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 0;
+}
+
+.vertical {
+  display: inline-block;
+  width: 1px;
+  height: 100%;
+  align-self: stretch;
+  margin: 0;
+}
+
+/* ─── Variante dashed ─────────────────────────────────────────────────────── */
+.dashed {
+  background: none;
+}
+
+.dashed.horizontal {
+  border-top: 1px dashed var(--boulder-color-border);
+}
+
+.dashed.vertical {
+  border-left: 1px dashed var(--boulder-color-border);
+}

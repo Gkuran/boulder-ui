@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--boulder-spacing-xs);
+  font-family: var(--boulder-font-family);
+  width: 100%;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--boulder-font-size-sm);
+  font-weight: var(--boulder-font-weight-medium);
+  color: var(--boulder-color-text-secondary);
+}
+
+/* ─── Track ───────────────────────────────────────────────────────────────── */
+.track {
+  width: 100%;
+  background: var(--boulder-color-border);
+  border-radius: var(--boulder-radius-sm);
+  overflow: hidden;
+}
+
+.sm { height: 4px; }
+.md { height: 8px; }
+.lg { height: 12px; }
+
+/* ─── Fill ────────────────────────────────────────────────────────────────── */
+.fill {
+  height: 100%;
+  border-radius: var(--boulder-radius-sm);
+  transition: width 0.3s ease;
+}
+
+.primary { background: var(--boulder-color-primary); }
+.success { background: var(--boulder-color-success); }
+.warning { background: var(--boulder-color-warning); }
+.danger  { background: var(--boulder-color-danger); }
