@@ -4,7 +4,7 @@
 [![tree-shakeable](https://img.shields.io/badge/tree--shakeable-yes-green)]()
 [![license](https://img.shields.io/npm/l/boulder-ui)]()
 
-A **lightweight React component library** designed to build **consistent, accessible and composable interfaces**.
+A **geology-inspired UI kit for React**. From the **granular flexibility of sand** to the **solid reliability of boulders**, build accessible and consistent interfaces with nature-toned primitives.
 
 ---
 
