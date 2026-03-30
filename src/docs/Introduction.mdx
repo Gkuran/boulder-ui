@@ -236,14 +236,17 @@ language="tsx"
     {[
       {
         category: "Controls",
-        color: "#8a7650",
+        color: "#8e977d",
         components: [
           { name: "Button", desc: "Primary, secondary and danger actions" },
+          { name: "Link", desc: "Styled anchor element that" },
+          { name: "RadioGroup", desc: "Allows selecting a single option from a list. It is the natural pair to checkbox" },
+          { name: "Slider", desc: "Range input for selecting a numeric value within a defined interval." },
         ],
       },
       {
         category: "Forms",
-        color: "#4a90d9",
+        color: "#8e977d",
         components: [
           { name: "Input", desc: "Text input with states and variants" },
           { name: "Select", desc: "Native select with custom styling" },
@@ -263,29 +266,39 @@ language="tsx"
           { name: "Accordion", desc: "Collapsible content sections" },
           { name: "Badge", desc: "Status and classification labels" },
           { name: "DataAttribute", desc: "Key-value pair for metadata display" },
+          { name: "Tag", desc: " interactive pill-shaped element used to represent active filters." },
         ],
       },
       {
         category: "Feedback",
-        color: "#e5484d",
+        color: "#8e977d",
         components: [
           { name: "Toast", desc: "Temporary notification with progress" },
           { name: "Spinner", desc: "Loading indicator with variants" },
+          { name: "Alert", desc: "Displays a prominent, inline message about the current page or a specific area of the UI" },
+          { name: "ProgressBarpinner", desc: "Displays the progress of a determinate operation" },
+          { name: "Skeleton", desc: "A placeholder that mimics the shape of content while it loads." },
         ],
       },
       {
         category: "Layout & Navigation",
-        color: "#3a8c7a",
+        color: "#8e977d",
         components: [
           { name: "Header", desc: "App header with brand, nav and actions" },
           { name: "Sidebar", desc: "Floating sticky side panel" },
+          { name: "Breadcrumbs", desc: "Shows the user's location within the application hierarchy." },
+          { name: "Divider", desc: "A visual separator between content sections." },
+          { name: "Tabs", desc: "Organizes content into multiple panels, showing one at a time." },
         ],
       },
       {
         category: "Overlay",
-        color: "#6b5b95",
+        color: "#8e977d",
         components: [
           { name: "Modal", desc: "Dialog with portal, focus trap and scroll lock" },
+          { name: "DropdownMenu", desc: "A contextual action menu anchored to a trigger. " },
+          { name: "Popover", desc: "A floating container anchored to a trigger element." },
+          { name: "Tooltip", desc: "Displays contextual text on hover or focus of a trigger element. " },
         ],
       },
     ].map(({ category, color, components }) => (
