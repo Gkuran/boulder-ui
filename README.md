@@ -43,21 +43,6 @@ import { Button, Input, FormField } from "boulder-ui";
 
 ---
 
-## Components
-
-| Component | Description |
-|---|---|
-| `Button` | Action button with variants (primary, secondary, danger) and loading state |
-| `Input` | Text input with outline/filled variants and error state |
-| `Textarea` | Multi-line text input with outline/filled variants |
-| `Checkbox` | Accessible checkbox with custom visual control |
-| `Switch` | Toggle switch built on a native checkbox |
-| `Label` | Accessible label for form controls |
-| `FormField` | Composable wrapper combining Label, input, description and ErrorMessage |
-| `ErrorMessage` | Accessible error message with `role="alert"` |
-
----
-
 ## Usage Examples
 
 ### Button
@@ -82,22 +67,6 @@ import { FormField, Input } from "boulder-ui";
 <FormField label="Username" error="Username is already taken">
   <Input />
 </FormField>
-```
-
-### Checkbox
-
-```tsx
-import { Checkbox } from "boulder-ui";
-
-<Checkbox label="Accept terms and conditions" />
-```
-
-### Switch
-
-```tsx
-import { Switch } from "boulder-ui";
-
-<Switch id="notifications" label="Enable notifications" size="md" />
 ```
 
 ---
