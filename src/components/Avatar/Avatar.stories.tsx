@@ -66,7 +66,7 @@ export const Sizes: Story = {
     <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
       <Avatar src="https://i.pravatar.cc/150?u=sm" alt="Small" size="sm" />
       <Avatar src="https://i.pravatar.cc/150?u=md" alt="Medium" size="md" />
-      <Avatar src="https://i.pravatar.cc/150?u=lg" alt="Large" size="lg" />
+      <Avatar src="/wesley-rosa.png" alt="Wesley Rosa" size="lg" />
     </div>
   ),
 };
