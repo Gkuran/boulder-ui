@@ -3,6 +3,18 @@
   display: inline-flex;
 }
 
+/* ─── Trigger wrapper ──────────────────────────────────────────────────────── */
+.trigger {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--boulder-color-primary);
+  outline-offset: 2px;
+  border-radius: var(--boulder-radius-sm);
+}
+
 /* ─── Content panel ───────────────────────────────────────────────────────── */
 .content {
   position: absolute;

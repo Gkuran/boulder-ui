@@ -21,13 +21,6 @@ export interface PopoverRootProps {
 
 export interface PopoverTriggerProps {
   children: ReactNode;
-  /**
-   * @internal Used by PopoverRoot to inject open/toggle handlers.
-   */
-  _open?: boolean;
-  _onToggle?: () => void;
-  _triggerId?: string;
-  _contentId?: string;
 }
 
 export interface PopoverContentProps extends HTMLAttributes<HTMLDivElement> {
@@ -37,10 +30,4 @@ export interface PopoverContentProps extends HTMLAttributes<HTMLDivElement> {
    */
   position?: PopoverPosition;
   children: ReactNode;
-  /**
-   * @internal Used by PopoverRoot to inject visibility state.
-   */
-  _open?: boolean;
-  _triggerId?: string;
-  _contentId?: string;
 }

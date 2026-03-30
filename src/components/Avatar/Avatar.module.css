@@ -1,0 +1,50 @@
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--boulder-color-primary-soft);
+  color: var(--boulder-color-primary);
+  font-family: var(--boulder-font-family);
+  font-weight: var(--boulder-font-weight-medium);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* ─── Sizes ──────────────────────────────────────────────────────────────── */
+
+.sm {
+  width: 28px;
+  height: 28px;
+  font-size: var(--boulder-font-size-xs);
+}
+
+.md {
+  width: 40px;
+  height: 40px;
+  font-size: var(--boulder-font-size-sm);
+}
+
+.lg {
+  width: 56px;
+  height: 56px;
+  font-size: var(--boulder-font-size-md);
+}
+
+/* ─── Image ──────────────────────────────────────────────────────────────── */
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── Fallback icon ──────────────────────────────────────────────────────── */
+
+.fallbackIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--boulder-color-primary);
+}

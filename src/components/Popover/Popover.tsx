@@ -1,8 +1,7 @@
 import {
-  Children,
-  cloneElement,
-  isValidElement,
+  createContext,
   useCallback,
+  useContext,
   useEffect,
   useId,
   useRef,
@@ -16,7 +15,30 @@ import type {
 import styles from "./Popover.module.css";
 import { cx } from "@/utils";
 
+// ─── Context ──────────────────────────────────────────────────────────────────
+
+interface PopoverContextValue {
+  isOpen: boolean;
+  toggle: () => void;
+  close: () => void;
+  triggerId: string;
+  contentId: string;
+}
+
+const PopoverContext = createContext<PopoverContextValue | null>(null);
+
+const usePopover = () => {
+  const ctx = useContext(PopoverContext);
+  if (!ctx) {
+    throw new Error(
+      "Popover compound components must be used inside <Popover.Root>",
+    );
+  }
+  return ctx;
+};
+
 // ─── PopoverRoot ──────────────────────────────────────────────────────────────
+
 export const PopoverRoot = ({
   open: controlledOpen,
   onOpenChange,
@@ -36,95 +58,104 @@ export const PopoverRoot = ({
     onOpenChange?.(next);
   }, [isOpen, isControlled, onOpenChange]);
 
+  const close = useCallback(() => {
+    if (!isControlled) setInternalOpen(false);
+    onOpenChange?.(false);
+  }, [isControlled, onOpenChange]);
+
   // Close on click outside
   useEffect(() => {
     if (!isOpen) return;
-    const handleClick = (e: MouseEvent) => {
+    const handleMouseDown = (e: MouseEvent) => {
       if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
-        if (!isControlled) setInternalOpen(false);
-        onOpenChange?.(false);
+        close();
       }
     };
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [isOpen, isControlled, onOpenChange]);
+    document.addEventListener("mousedown", handleMouseDown);
+    return () => document.removeEventListener("mousedown", handleMouseDown);
+  }, [isOpen, close]);
 
   // Close on Escape
   useEffect(() => {
     if (!isOpen) return;
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        if (!isControlled) setInternalOpen(false);
-        onOpenChange?.(false);
-      }
+      if (e.key === "Escape") close();
     };
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
-  }, [isOpen, isControlled, onOpenChange]);
+  }, [isOpen, close]);
 
   return (
-    <div ref={rootRef} className={styles.root}>
-      {Children.map(children, (child) => {
-        if (!isValidElement(child)) return child;
-        return cloneElement(child as React.ReactElement<Record<string, unknown>>, {
-          _open: isOpen,
-          _onToggle: toggle,
-          _triggerId: triggerId,
-          _contentId: contentId,
-        });
-      })}
-    </div>
+    <PopoverContext.Provider
+      value={{ isOpen, toggle, close, triggerId, contentId }}
+    >
+      <div ref={rootRef} className={styles.root}>
+        {children}
+      </div>
+    </PopoverContext.Provider>
   );
 };
 PopoverRoot.displayName = "PopoverRoot";
 
 // ─── PopoverTrigger ───────────────────────────────────────────────────────────
-export const PopoverTrigger = ({
-  children,
-  _open,
-  _onToggle,
-  _triggerId,
-  _contentId,
-}: PopoverTriggerProps) => {
-  if (!isValidElement(children)) return <>{children}</>;
-  return cloneElement(children as React.ReactElement<Record<string, unknown>>, {
-    id: _triggerId,
-    "aria-expanded": _open,
-    "aria-controls": _contentId,
-    "aria-haspopup": "true",
-    onClick: _onToggle,
-  });
+
+export const PopoverTrigger = ({ children }: PopoverTriggerProps) => {
+  const { isOpen, toggle, triggerId, contentId } = usePopover();
+
+  return (
+    <div
+      id={triggerId}
+      role="button"
+      tabIndex={0}
+      aria-expanded={isOpen}
+      aria-controls={contentId}
+      aria-haspopup="dialog"
+      className={styles.trigger}
+      onClick={toggle}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggle();
+        }
+      }}
+    >
+      {children}
+    </div>
+  );
 };
 PopoverTrigger.displayName = "PopoverTrigger";
 
 // ─── PopoverContent ───────────────────────────────────────────────────────────
+
 export const PopoverContent = ({
   position = "bottom",
   children,
   className,
-  _open,
-  _triggerId,
-  _contentId,
   ...props
-}: PopoverContentProps) => (
-  <div
-    id={_contentId}
-    role="dialog"
-    aria-labelledby={_triggerId}
-    className={cx(
-      styles.content,
-      styles[position],
-      _open && styles.open,
-      className,
-    )}
-    {...props}
-  >
-    {children}
-  </div>
-);
+}: PopoverContentProps) => {
+  const { isOpen, triggerId, contentId } = usePopover();
+
+  return (
+    <div
+      id={contentId}
+      role="dialog"
+      aria-labelledby={triggerId}
+      className={cx(
+        styles.content,
+        styles[position],
+        isOpen && styles.open,
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
 PopoverContent.displayName = "PopoverContent";
 
 // ─── Namespace export ─────────────────────────────────────────────────────────
+
 export const Popover = {
   Root: PopoverRoot,
   Trigger: PopoverTrigger,

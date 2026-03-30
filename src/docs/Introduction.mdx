@@ -237,17 +237,15 @@ language="tsx"
     {[
       {
         category: "Controls",
-        color: "#8e977d",
         components: [
           { name: "Button", desc: "Primary, secondary and danger actions" },
-          { name: "Link", desc: "Styled anchor element that" },
-          { name: "RadioGroup", desc: "Allows selecting a single option from a list. It is the natural pair to checkbox" },
-          { name: "Slider", desc: "Range input for selecting a numeric value within a defined interval." },
+          { name: "Link", desc: "Styled anchor element for navigation" },
+          { name: "RadioGroup", desc: "Single option selection from a list" },
+          { name: "Slider", desc: "Range input for numeric value selection" },
         ],
       },
       {
         category: "Forms",
-        color: "#8e977d",
         components: [
           { name: "Input", desc: "Text input with states and variants" },
           { name: "Select", desc: "Native select with custom styling" },
@@ -261,48 +259,45 @@ language="tsx"
       },
       {
         category: "Data Display",
-        color: "#8e977d",
         components: [
           { name: "Card", desc: "Flexible container for structured content" },
           { name: "Accordion", desc: "Collapsible content sections" },
+          { name: "Avatar", desc: "User profile image, initials or fallback icon" },
           { name: "Badge", desc: "Status and classification labels" },
           { name: "DataAttribute", desc: "Key-value pair for metadata display" },
-          { name: "Tag", desc: " Interactive pill-shaped element used to represent active filters." },
+          { name: "Tag", desc: "Interactive pill-shaped element for active filters" },
         ],
       },
       {
         category: "Feedback",
-        color: "#8e977d",
         components: [
           { name: "Toast", desc: "Temporary notification with progress" },
           { name: "Spinner", desc: "Loading indicator with variants" },
-          { name: "Alert", desc: "Displays a prominent, inline message about the current page or a specific area of the UI" },
-          { name: "ProgressBarpinner", desc: "Displays the progress of a determinate operation" },
-          { name: "Skeleton", desc: "A placeholder that mimics the shape of content while it loads." },
+          { name: "Alert", desc: "Prominent inline message for the current page" },
+          { name: "ProgressBar", desc: "Displays the progress of a determinate operation" },
+          { name: "Skeleton", desc: "Placeholder that mimics content shape while loading" },
         ],
       },
       {
         category: "Layout & Navigation",
-        color: "#8e977d",
         components: [
           { name: "Header", desc: "App header with brand, nav and actions" },
           { name: "Sidebar", desc: "Floating sticky side panel" },
-          { name: "Breadcrumbs", desc: "Shows the user's location within the application hierarchy." },
-          { name: "Divider", desc: "A visual separator between content sections." },
-          { name: "Tabs", desc: "Organizes content into multiple panels, showing one at a time." },
+          { name: "Breadcrumbs", desc: "Shows location within the application hierarchy" },
+          { name: "Divider", desc: "Visual separator between content sections" },
+          { name: "Tabs", desc: "Organizes content into switchable panels" },
         ],
       },
       {
         category: "Overlay",
-        color: "#8e977d",
         components: [
           { name: "Modal", desc: "Dialog with portal, focus trap and scroll lock" },
-          { name: "DropdownMenu", desc: "A contextual action menu anchored to a trigger. " },
-          { name: "Popover", desc: "A floating container anchored to a trigger element." },
-          { name: "Tooltip", desc: "Displays contextual text on hover or focus of a trigger element. " },
+          { name: "DropdownMenu", desc: "Contextual action menu anchored to a trigger" },
+          { name: "Popover", desc: "Floating container anchored to a trigger element" },
+          { name: "Tooltip", desc: "Contextual text on hover or focus" },
         ],
       },
-    ].map(({ category, color, components }) => (
+    ].map(({ category, components }) => (
       <div key={category} style={{
         background: "var(--boulder-color-background)",
         border: "1px solid var(--boulder-color-border)",
@@ -310,7 +305,7 @@ language="tsx"
         overflow: "hidden",
       }}>
         <div style={{
-          background: color,
+          background: "var(--boulder-color-primary)",
           padding: "10px 16px",
           fontWeight: "var(--boulder-font-weight-semibold)",
           fontSize: "var(--boulder-font-size-sm)",
