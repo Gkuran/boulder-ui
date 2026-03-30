@@ -1,8 +1,37 @@
-node_modules
-dist
-storybook-static
+# ─── Dependencies ─────────────────────────────────────────────────────────────
+node_modules/
+
+# ─── Build outputs ────────────────────────────────────────────────────────────
+dist/
+storybook-static/
+
+# ─── npm / pnpm artifacts ─────────────────────────────────────────────────────
 *.tgz
-.DS_Store
+pnpm-lock.yaml
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+build-storybook.log
+
+# ─── Environment ──────────────────────────────────────────────────────────────
 .env
 .env.local
-coverage
+.env.*.local
+
+# ─── Test & Coverage ──────────────────────────────────────────────────────────
+coverage/
+
+# ─── OS artifacts ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Editor / IDE ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ─── Temporary / planning files ───────────────────────────────────────────────
+*_PLAN.md
