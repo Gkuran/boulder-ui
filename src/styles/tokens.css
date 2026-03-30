@@ -1,74 +1,52 @@
 :root {
-  /* ─── Paleta base — Earth & Sand ──────────────────────────────────────────── */
-  /* Escala Olive (verde-oliva para ações primárias)                             */
-  --boulder-color-olive-1:  #fcfdfc;
-  --boulder-color-olive-2:  #f4f9f4;
-  --boulder-color-olive-3:  #e4ecd9;
-  --boulder-color-olive-4:  #d2e0c4;
-  --boulder-color-olive-5:  #bfd1ae;
-  --boulder-color-olive-6:  #a8be95;
-  --boulder-color-olive-7:  #8aaa72;
-  --boulder-color-olive-8:  #6b9050;
-  --boulder-color-olive-9:  #4d6b3a;  /* sólido — cor de ação principal */
-  --boulder-color-olive-10: #3f592f;  /* hover */
-  --boulder-color-olive-11: #2e4221;  /* texto sobre fundo claro */
-  --boulder-color-olive-12: #1a2712;  /* texto de alto contraste */
-
-  /* Escala Sand (neutros quentes para superfícies e bordas)                    */
-  --boulder-color-sand-1:  #fdfdfc;
-  --boulder-color-sand-2:  #f9f8f4;
-  --boulder-color-sand-3:  #f2f0e8;
-  --boulder-color-sand-4:  #eae7dc;
-  --boulder-color-sand-5:  --boulder-color-sand-4; /* alias — ver abaixo */
-  --boulder-color-sand-6:  #e1dfd5;  /* borda padrão */
-  --boulder-color-sand-7:  #cbc8bc;
-  --boulder-color-sand-8:  #b3b09f;
-  --boulder-color-sand-9:  #8c8977;
-  --boulder-color-sand-10: #7a7764;
-  --boulder-color-sand-11: #6b6961;  /* texto secundário */
-  --boulder-color-sand-12: #2b2a26;  /* texto principal */
+  /* ─── Paleta base ─────────────────────────────────────────────────────────── */
+  --boulder-color-1: #8a7650;
+  --boulder-color-2: #8e977d;
+  --boulder-color-3: #ece7d1;
+  --boulder-color-4: #dbcea5;
+  --boulder-color-5: #ffffff;
 
   /* ─── Cores semânticas ────────────────────────────────────────────────────── */
-  --boulder-color-primary:          var(--boulder-color-olive-9);
-  --boulder-color-primary-hover:    var(--boulder-color-olive-10);
-  --boulder-color-primary-soft:     var(--boulder-color-olive-3);
+  --boulder-color-primary: var(--boulder-color-1);
+  --boulder-color-primary-hover: var(--boulder-color-2);
+  --boulder-color-primary-soft: var(--boulder-color-4);
 
-  --boulder-color-surface:          var(--boulder-color-sand-3);
-  --boulder-color-surface-hover:    var(--boulder-color-sand-4);
-  --boulder-color-background:       var(--boulder-color-sand-1);
-  --boulder-color-background-subtle: var(--boulder-color-sand-2);
+  --boulder-color-surface: var(--boulder-color-4);
+  --boulder-color-background: var(--boulder-color-5);
+  --boulder-color-background-subtle: var(--boulder-color-4);
 
   /* Aliases curtos usados pelos componentes */
-  --boulder-color-bg:               var(--boulder-color-background);
+  --boulder-color-bg: var(--boulder-color-background);
+  --boulder-color-surface-hover: var(--boulder-color-3);
 
-  --boulder-color-border:           var(--boulder-color-sand-6);
-  --boulder-color-muted:            var(--boulder-color-sand-9);
+  --boulder-color-border: var(--boulder-color-3);
+  --boulder-color-muted: var(--boulder-color-2);
 
   /* ─── Cores de texto ──────────────────────────────────────────────────────── */
-  --boulder-color-text:             var(--boulder-color-sand-12);
-  --boulder-color-text-secondary:   var(--boulder-color-sand-11);
-  --boulder-color-text-inverse:     #ffffff;
+  --boulder-color-text: #1a1a1a;
+  --boulder-color-text-secondary: #666666;
+  --boulder-color-text-inverse: #ffffff;
 
   /* ─── Cores de estado ─────────────────────────────────────────────────────── */
-  --boulder-color-danger:           #e5484d;
-  --boulder-color-danger-hover:     #d13438;
-  --boulder-color-danger-subtle:    #ffe4e6;
-  --boulder-color-danger-text:      #9f1239;
+  --boulder-color-danger: #e5484d;
+  --boulder-color-danger-hover: #d13438;
+  --boulder-color-danger-subtle: #ffe4e6;
+  --boulder-color-danger-text: #9f1239;
 
-  --boulder-color-success:          #30a46c;
-  --boulder-color-success-hover:    #298e5d;
-  --boulder-color-success-subtle:   #dcfce7;
-  --boulder-color-success-text:     #14532d;
+  --boulder-color-success: #30a46c;
+  --boulder-color-success-hover: #298e5d;
+  --boulder-color-success-subtle: #dcfce7;
+  --boulder-color-success-text: #14532d;
 
-  --boulder-color-warning:          #f5d90a;
-  --boulder-color-warning-hover:    #e7c408;
-  --boulder-color-warning-subtle:   #fef9c3;
-  --boulder-color-warning-text:     #713f12;
+  --boulder-color-warning: #f5d90a;
+  --boulder-color-warning-hover: #e7c408;
+  --boulder-color-warning-subtle: #fef9c3;
+  --boulder-color-warning-text: #713f12;
 
-  --boulder-color-info:             #0091ff;
-  --boulder-color-info-hover:       #0081e6;
-  --boulder-color-info-subtle:      #dbeafe;
-  --boulder-color-info-text:        #1e3a8a;
+  --boulder-color-info: #0091ff;
+  --boulder-color-info-hover: #0081e6;
+  --boulder-color-info-subtle: #dbeafe;
+  --boulder-color-info-text: #1e3a8a;
 
   /* ─── Espaçamento ─────────────────────────────────────────────────────────── */
   --boulder-spacing-xs: 4px;
@@ -96,10 +74,10 @@
   --boulder-line-height-sm: 1.4;
   --boulder-line-height-md: 1.5;
 
-  --boulder-font-weight-regular:  400;
-  --boulder-font-weight-medium:   500;
+  --boulder-font-weight-regular: 400;
+  --boulder-font-weight-medium: 500;
   --boulder-font-weight-semibold: 600;
-  --boulder-font-weight-bold:     700;
+  --boulder-font-weight-bold: 700;
 
   /* ─── Spinner ─────────────────────────────────────────────────────────────── */
   --boulder-spinner-size: 14px;
@@ -107,28 +85,28 @@
   --boulder-spinner-color-track: rgba(255, 255, 255, 0.4);
 
   /* ─── Switch ──────────────────────────────────────────────────────────────── */
-  --boulder-switch-track-width-sm:  32px;
+  --boulder-switch-track-width-sm: 32px;
   --boulder-switch-track-height-sm: 18px;
-  --boulder-switch-thumb-size-sm:   14px;
-  --boulder-switch-translate-sm:    14px;
+  --boulder-switch-thumb-size-sm: 14px;
+  --boulder-switch-translate-sm: 14px;
 
-  --boulder-switch-track-width-md:  40px;
+  --boulder-switch-track-width-md: 40px;
   --boulder-switch-track-height-md: 22px;
-  --boulder-switch-thumb-size-md:   18px;
-  --boulder-switch-translate-md:    18px;
+  --boulder-switch-thumb-size-md: 18px;
+  --boulder-switch-translate-md: 18px;
 
-  --boulder-switch-track-width-lg:  48px;
+  --boulder-switch-track-width-lg: 48px;
   --boulder-switch-track-height-lg: 26px;
-  --boulder-switch-thumb-size-lg:   22px;
-  --boulder-switch-translate-lg:    22px;
+  --boulder-switch-thumb-size-lg: 22px;
+  --boulder-switch-translate-lg: 22px;
 
   --boulder-switch-thumb-offset: 2px;
 
   /* ─── Checkbox ────────────────────────────────────────────────────────────── */
-  --boulder-checkbox-size:           16px;
+  --boulder-checkbox-size: 16px;
   --boulder-checkbox-checkmark-size: 10px;
 
   /* ─── Map Simulation (Stories only) ───────────────────────────────────────── */
   --boulder-gradient-map-light: linear-gradient(135deg, #a8d5ba 0%, #6db3a0 50%, #3a8c7a 100%);
-  --boulder-gradient-map-dark:  linear-gradient(180deg, #2c3e50 0%, #4ca1af 100%);
+  --boulder-gradient-map-dark: linear-gradient(180deg, #2c3e50 0%, #4ca1af 100%);
 }

@@ -25,7 +25,7 @@ import * as SpinnerStories from "../components/Spinner/Spinner.stories";
 {/* ── Hero ─────────────────────────────────────────────────────────────── */}
 
 <div style={{
-  background: "var(--boulder-color-primary-soft)",
+  background: "#d2bb9b",
   border: "1px solid var(--boulder-color-border)",
   borderRadius: "var(--boulder-radius-md)",
   padding: "48px 40px",
@@ -48,8 +48,8 @@ import * as SpinnerStories from "../components/Spinner/Spinner.stories";
 </p>
 
   <div style={{ display: "flex", justifyContent: "center", gap: 8, flexWrap: "wrap" }}>
-    <img src="https://img.shields.io/npm/v/boulder-ui?style=flat-square&color=4d6b3a" alt="npm version" />
-    <img src="https://img.shields.io/badge/tree--shakeable-yes-4d6b3a?style=flat-square" alt="tree-shakeable" />
+    <img src="https://img.shields.io/npm/v/boulder-ui?style=flat-square&color=8a7650" alt="npm version" />
+    <img src="https://img.shields.io/badge/tree--shakeable-yes-8e977d?style=flat-square" alt="tree-shakeable" />
     <img src="https://img.shields.io/badge/TypeScript-strict-3178c6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript strict" />
     <img src="https://img.shields.io/badge/accessibility-WAI--ARIA-4a90d9?style=flat-square" alt="accessibility" />
   </div>
@@ -236,66 +236,59 @@ language="tsx"
     {[
       {
         category: "Controls",
+        color: "#8a7650",
         components: [
-          { name: "Button",     desc: "Primary, secondary and danger actions" },
-          { name: "RadioGroup", desc: "Single-choice selection from a set of options" },
-          { name: "Link",       desc: "Semantic navigation with external link support" },
-          { name: "Slider",     desc: "Continuous value selection with track fill" },
+          { name: "Button", desc: "Primary, secondary and danger actions" },
         ],
       },
       {
         category: "Forms",
+        color: "#4a90d9",
         components: [
-          { name: "Input",        desc: "Text input with states and variants" },
-          { name: "Select",       desc: "Native select with custom styling" },
-          { name: "Textarea",     desc: "Multi-line text input" },
-          { name: "Checkbox",     desc: "Boolean toggle with label" },
-          { name: "Switch",       desc: "On/off toggle control" },
-          { name: "Label",        desc: "Accessible form label" },
-          { name: "FormField",    desc: "Composable field with label and error" },
+          { name: "Input", desc: "Text input with states and variants" },
+          { name: "Select", desc: "Native select with custom styling" },
+          { name: "Textarea", desc: "Multi-line text input" },
+          { name: "Checkbox", desc: "Boolean toggle with label" },
+          { name: "Switch", desc: "On/off toggle control" },
+          { name: "Label", desc: "Accessible form label" },
+          { name: "FormField", desc: "Composable field with label and error" },
           { name: "ErrorMessage", desc: "Inline validation feedback" },
         ],
       },
       {
         category: "Data Display",
+        color: "#8e977d",
         components: [
-          { name: "Card",          desc: "Flexible container for structured content" },
-          { name: "Accordion",     desc: "Collapsible content sections" },
-          { name: "Badge",         desc: "Status and classification labels" },
-          { name: "Tag",           desc: "Compact label with optional dismiss" },
+          { name: "Card", desc: "Flexible container for structured content" },
+          { name: "Accordion", desc: "Collapsible content sections" },
+          { name: "Badge", desc: "Status and classification labels" },
           { name: "DataAttribute", desc: "Key-value pair for metadata display" },
         ],
       },
       {
         category: "Feedback",
+        color: "#e5484d",
         components: [
-          { name: "Alert",       desc: "Inline contextual message with variants" },
-          { name: "ProgressBar", desc: "Quantitative progress with label" },
-          { name: "Skeleton",    desc: "Loading placeholder with shimmer animation" },
-          { name: "Toast",       desc: "Temporary notification with progress" },
-          { name: "Spinner",     desc: "Indeterminate loading indicator" },
+          { name: "Toast", desc: "Temporary notification with progress" },
+          { name: "Spinner", desc: "Loading indicator with variants" },
         ],
       },
       {
         category: "Layout & Navigation",
+        color: "#3a8c7a",
         components: [
-          { name: "Tabs",        desc: "Tabbed content panels with keyboard navigation" },
-          { name: "Breadcrumbs", desc: "Hierarchical navigation trail" },
-          { name: "Divider",     desc: "Horizontal or vertical content separator" },
-          { name: "Header",      desc: "App header with brand, nav and actions" },
-          { name: "Sidebar",     desc: "Floating sticky side panel" },
+          { name: "Header", desc: "App header with brand, nav and actions" },
+          { name: "Sidebar", desc: "Floating sticky side panel" },
         ],
       },
       {
         category: "Overlay",
+        color: "#6b5b95",
         components: [
-          { name: "Tooltip",      desc: "Contextual hint on hover or focus" },
-          { name: "Popover",      desc: "Rich floating content panel" },
-          { name: "DropdownMenu", desc: "Contextual action menu with keyboard support" },
-          { name: "Modal",        desc: "Dialog with portal, focus trap and scroll lock" },
+          { name: "Modal", desc: "Dialog with portal, focus trap and scroll lock" },
         ],
       },
-    ].map(({ category, components }) => (
+    ].map(({ category, color, components }) => (
       <div key={category} style={{
         background: "var(--boulder-color-background)",
         border: "1px solid var(--boulder-color-border)",
@@ -303,7 +296,7 @@ language="tsx"
         overflow: "hidden",
       }}>
         <div style={{
-          background: "var(--boulder-color-primary)",
+          background: color,
           padding: "10px 16px",
           fontWeight: "var(--boulder-font-weight-semibold)",
           fontSize: "var(--boulder-font-size-sm)",
