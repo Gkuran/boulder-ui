@@ -58,7 +58,7 @@
 }
 
 .secondary:hover {
-  background: var(--boulder-color-3);
+  background: var(--boulder-color-surface-hover);
 }
 
 /* DANGER */

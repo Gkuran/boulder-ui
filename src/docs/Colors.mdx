@@ -12,48 +12,86 @@ All color tokens are prefixed with `--boulder-color-`.
 
 ## Base Palette
 
-These are the raw, foundational colors from which all semantic roles are derived. They are intentionally neutral and earthy, reflecting the Boulder identity.
+The base palette is organized into two scales: **Olive** and **Sand**. These are the raw, foundational colors from which all semantic roles are derived. They are intentionally earthy and warm, reflecting the Boulder identity. Semantic tokens always reference a base scale variable — never a raw hex value — which means a single override at the scale level propagates correctly through the entire system.
+
+### Olive Scale
+
+The Olive scale provides the green-earthy tones used for interactive elements, actions, and brand identity.
 
 <ColorPalette>
-  <ColorItem title="Color 1" subtitle="--boulder-color-1" colors={{ "Warm Brown": "#8a7650" }} />
-  <ColorItem title="Color 2" subtitle="--boulder-color-2" colors={{ "Sage Green": "#8e977d" }} />
-  <ColorItem title="Color 3" subtitle="--boulder-color-3" colors={{ "Pale Sand": "#ece7d1" }} />
-  <ColorItem title="Color 4" subtitle="--boulder-color-4" colors={{ "Warm Sand": "#dbcea5" }} />
-  <ColorItem title="Color 5" subtitle="--boulder-color-5" colors={{ "White": "#ffffff" }} />
+  <ColorItem title="Olive 1"  subtitle="--boulder-color-olive-1"  colors={{ "Lightest":       "#fcfdfc" }} />
+  <ColorItem title="Olive 2"  subtitle="--boulder-color-olive-2"  colors={{ "App background":  "#f4f9f4" }} />
+  <ColorItem title="Olive 3"  subtitle="--boulder-color-olive-3"  colors={{ "Subtle fill":     "#e4ecd9" }} />
+  <ColorItem title="Olive 4"  subtitle="--boulder-color-olive-4"  colors={{ "Element hover":   "#d2e0c4" }} />
+  <ColorItem title="Olive 5"  subtitle="--boulder-color-olive-5"  colors={{ "Active element":  "#bfd1ae" }} />
+  <ColorItem title="Olive 6"  subtitle="--boulder-color-olive-6"  colors={{ "Border":          "#a8be95" }} />
+  <ColorItem title="Olive 7"  subtitle="--boulder-color-olive-7"  colors={{ "Hover border":    "#8aaa72" }} />
+  <ColorItem title="Olive 8"  subtitle="--boulder-color-olive-8"  colors={{ "Solid bg light":  "#6b9050" }} />
+  <ColorItem title="Olive 9"  subtitle="--boulder-color-olive-9"  colors={{ "Primary action":  "#4d6b3a" }} />
+  <ColorItem title="Olive 10" subtitle="--boulder-color-olive-10" colors={{ "Primary hover":   "#3f592f" }} />
+  <ColorItem title="Olive 11" subtitle="--boulder-color-olive-11" colors={{ "Accessible text": "#2e4221" }} />
+  <ColorItem title="Olive 12" subtitle="--boulder-color-olive-12" colors={{ "High contrast":   "#1a2712" }} />
+</ColorPalette>
+
+### Sand Scale
+
+The Sand scale provides the warm neutral tones used for surfaces, backgrounds, borders, and secondary text.
+
+<ColorPalette>
+  <ColorItem title="Sand 1"  subtitle="--boulder-color-sand-1"  colors={{ "Page background": "#fdfdfc" }} />
+  <ColorItem title="Sand 2"  subtitle="--boulder-color-sand-2"  colors={{ "Subtle bg":       "#f9f8f4" }} />
+  <ColorItem title="Sand 3"  subtitle="--boulder-color-sand-3"  colors={{ "Surface":         "#f2f0e8" }} />
+  <ColorItem title="Sand 4"  subtitle="--boulder-color-sand-4"  colors={{ "Surface hover":   "#eae7dc" }} />
+  <ColorItem title="Sand 6"  subtitle="--boulder-color-sand-6"  colors={{ "Border":          "#e1dfd5" }} />
+  <ColorItem title="Sand 7"  subtitle="--boulder-color-sand-7"  colors={{ "Hover border":    "#cbc8bc" }} />
+  <ColorItem title="Sand 8"  subtitle="--boulder-color-sand-8"  colors={{ "Placeholder":     "#b3b09f" }} />
+  <ColorItem title="Sand 9"  subtitle="--boulder-color-sand-9"  colors={{ "Muted":           "#8c8977" }} />
+  <ColorItem title="Sand 10" subtitle="--boulder-color-sand-10" colors={{ "Muted hover":     "#7a7764" }} />
+  <ColorItem title="Sand 11" subtitle="--boulder-color-sand-11" colors={{ "Secondary text":  "#6b6961" }} />
+  <ColorItem title="Sand 12" subtitle="--boulder-color-sand-12" colors={{ "Primary text":    "#2b2a26" }} />
 </ColorPalette>
 
 ---
 
 ## Semantic Colors
 
-Semantic colors map the base palette to specific roles in the UI. Always prefer semantic tokens over raw base tokens in component styles — this ensures that a single override in the consumer's `:root` propagates correctly through the entire system.
+Semantic colors map the base scales to specific roles in the UI. Always prefer semantic tokens over raw base tokens in component styles — this ensures that a single override in the consumer's `:root` propagates correctly through the entire system.
 
 ### Brand & Surface
 
 <ColorPalette>
-  <ColorItem title="Primary"            subtitle="--boulder-color-primary"            colors={{ "Action / CTA":        "#8a7650" }} />
-  <ColorItem title="Primary Hover"      subtitle="--boulder-color-primary-hover"      colors={{ "Hover state":          "#8e977d" }} />
-  <ColorItem title="Primary Soft"       subtitle="--boulder-color-primary-soft"       colors={{ "Tinted background":    "#dbcea5" }} />
-  <ColorItem title="Surface"            subtitle="--boulder-color-surface"            colors={{ "Component background": "#dbcea5" }} />
-  <ColorItem title="Background"         subtitle="--boulder-color-background"         colors={{ "Page background":      "#ffffff" }} />
-  <ColorItem title="Background Subtle"  subtitle="--boulder-color-background-subtle"  colors={{ "Subtle fill":          "#dbcea5" }} />
-  <ColorItem title="Border"             subtitle="--boulder-color-border"             colors={{ "Dividers / outlines":  "#ece7d1" }} />
-  <ColorItem title="Muted"              subtitle="--boulder-color-muted"              colors={{ "Disabled / secondary": "#8e977d" }} />
+  <ColorItem title="Primary"             subtitle="--boulder-color-primary"             colors={{ "Action / CTA":         "#4d6b3a" }} />
+  <ColorItem title="Primary Hover"       subtitle="--boulder-color-primary-hover"       colors={{ "Hover state":           "#3f592f" }} />
+  <ColorItem title="Primary Soft"        subtitle="--boulder-color-primary-soft"        colors={{ "Tinted background":     "#e4ecd9" }} />
+  <ColorItem title="Surface"             subtitle="--boulder-color-surface"             colors={{ "Component background":  "#f2f0e8" }} />
+  <ColorItem title="Surface Hover"       subtitle="--boulder-color-surface-hover"       colors={{ "Hovered surface":       "#eae7dc" }} />
+  <ColorItem title="Background"          subtitle="--boulder-color-background"          colors={{ "Page background":       "#fdfdfc" }} />
+  <ColorItem title="Background Subtle"   subtitle="--boulder-color-background-subtle"   colors={{ "Subtle fill":           "#f9f8f4" }} />
+  <ColorItem title="Border"              subtitle="--boulder-color-border"              colors={{ "Dividers / outlines":   "#e1dfd5" }} />
+  <ColorItem title="Muted"               subtitle="--boulder-color-muted"               colors={{ "Disabled / secondary":  "#8c8977" }} />
 </ColorPalette>
 
 ### Text
 
 <ColorPalette>
-  <ColorItem title="Text"          subtitle="--boulder-color-text"          colors={{ "Primary text":       "#1a1a1a" }} />
-  <ColorItem title="Text Secondary" subtitle="--boulder-color-text-secondary" colors={{ "Captions / hints":  "#666666" }} />
-  <ColorItem title="Text Inverse"  subtitle="--boulder-color-text-inverse"  colors={{ "On dark backgrounds": "#ffffff" }} />
+  <ColorItem title="Text"           subtitle="--boulder-color-text"           colors={{ "Primary text":        "#2b2a26" }} />
+  <ColorItem title="Text Secondary" subtitle="--boulder-color-text-secondary" colors={{ "Captions / hints":    "#6b6961" }} />
+  <ColorItem title="Text Inverse"   subtitle="--boulder-color-text-inverse"   colors={{ "On dark backgrounds": "#ffffff" }} />
 </ColorPalette>
 
 ### State
 
 <ColorPalette>
-  <ColorItem title="Danger"       subtitle="--boulder-color-danger"       colors={{ "Errors / destructive": "#e5484d" }} />
-  <ColorItem title="Danger Hover" subtitle="--boulder-color-danger-hover" colors={{ "Danger hover state":   "#d13438" }} />
+  <ColorItem title="Danger"         subtitle="--boulder-color-danger"         colors={{ "Errors / destructive":  "#e5484d" }} />
+  <ColorItem title="Danger Hover"   subtitle="--boulder-color-danger-hover"   colors={{ "Danger hover state":    "#d13438" }} />
+  <ColorItem title="Danger Subtle"  subtitle="--boulder-color-danger-subtle"  colors={{ "Danger background":     "#ffe4e6" }} />
+  <ColorItem title="Danger Text"    subtitle="--boulder-color-danger-text"    colors={{ "Danger accessible text":"#9f1239" }} />
+  <ColorItem title="Success"        subtitle="--boulder-color-success"        colors={{ "Confirmations":          "#30a46c" }} />
+  <ColorItem title="Success Subtle" subtitle="--boulder-color-success-subtle" colors={{ "Success background":    "#dcfce7" }} />
+  <ColorItem title="Warning"        subtitle="--boulder-color-warning"        colors={{ "Caution":               "#f5d90a" }} />
+  <ColorItem title="Warning Subtle" subtitle="--boulder-color-warning-subtle" colors={{ "Warning background":    "#fef9c3" }} />
+  <ColorItem title="Info"           subtitle="--boulder-color-info"           colors={{ "Informational":         "#0091ff" }} />
+  <ColorItem title="Info Subtle"    subtitle="--boulder-color-info-subtle"    colors={{ "Info background":       "#dbeafe" }} />
 </ColorPalette>
 
 ---

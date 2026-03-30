@@ -25,7 +25,7 @@ The spacing scale follows a base-4 progression, providing a predictable rhythm f
       <code style={{ fontSize: "12px", color: "#555" }}>{token}</code>
       <span style={{ fontSize: "12px", color: "#999", fontVariantNumeric: "tabular-nums" }}>{value}</span>
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        <div style={{ width: `${px * 4}px`, height: "20px", background: "#8a7650", borderRadius: "3px", flexShrink: 0 }} />
+        <div style={{ width: `${px * 4}px`, height: "20px", background: "var(--boulder-color-primary)", borderRadius: "3px", flexShrink: 0 }} />
         <span style={{ fontSize: "11px", color: "#aaa" }}>{px * 4}px visual bar (4×)</span>
       </div>
     </div>
@@ -47,8 +47,8 @@ Border-radius tokens define the rounding applied to interactive elements such as
       <code style={{ fontSize: "12px", color: "#555" }}>{token}</code>
       <span style={{ fontSize: "12px", color: "#999", fontVariantNumeric: "tabular-nums" }}>{value}</span>
       <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-        <div style={{ width: "80px", height: "32px", background: "#8a7650", borderRadius: radius }} />
-        <div style={{ width: "32px", height: "32px", background: "#dbcea5", border: "2px solid #8a7650", borderRadius: radius }} />
+        <div style={{ width: "80px", height: "32px", background: "var(--boulder-color-primary)", borderRadius: radius }} />
+        <div style={{ width: "32px", height: "32px", background: "var(--boulder-color-primary-soft)", border: "2px solid var(--boulder-color-primary)", borderRadius: radius }} />
       </div>
     </div>
   ))}
