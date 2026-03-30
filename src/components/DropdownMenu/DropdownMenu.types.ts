@@ -15,24 +15,10 @@ export interface DropdownMenuRootProps {
 
 export interface DropdownMenuTriggerProps {
   children: ReactNode;
-  /** @internal */
-  _open?: boolean;
-  /** @internal */
-  _onToggle?: () => void;
-  /** @internal */
-  _triggerId?: string;
-  /** @internal */
-  _contentId?: string;
 }
 
 export interface DropdownMenuContentProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  /** @internal */
-  _open?: boolean;
-  /** @internal */
-  _triggerId?: string;
-  /** @internal */
-  _contentId?: string;
 }
 
 export interface DropdownMenuItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
