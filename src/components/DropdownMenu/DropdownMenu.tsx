@@ -1,9 +1,8 @@
 import {
-  Children,
-  cloneElement,
+  createContext,
   forwardRef,
-  isValidElement,
   useCallback,
+  useContext,
   useEffect,
   useId,
   useRef,
@@ -19,7 +18,30 @@ import type {
 import styles from "./DropdownMenu.module.css";
 import { cx } from "@/utils";
 
+// ─── Context ──────────────────────────────────────────────────────────────────
+
+interface DropdownMenuContextValue {
+  isOpen: boolean;
+  toggle: () => void;
+  close: () => void;
+  triggerId: string;
+  contentId: string;
+}
+
+const DropdownMenuContext = createContext<DropdownMenuContextValue | null>(null);
+
+const useDropdownMenu = () => {
+  const ctx = useContext(DropdownMenuContext);
+  if (!ctx) {
+    throw new Error(
+      "DropdownMenu compound components must be used inside <DropdownMenu.Root>",
+    );
+  }
+  return ctx;
+};
+
 // ─── Root ─────────────────────────────────────────────────────────────────────
+
 export const DropdownMenuRoot = ({
   open: controlledOpen,
   onOpenChange,
@@ -39,103 +61,125 @@ export const DropdownMenuRoot = ({
     onOpenChange?.(next);
   }, [isOpen, isControlled, onOpenChange]);
 
+  const close = useCallback(() => {
+    if (!isControlled) setInternalOpen(false);
+    onOpenChange?.(false);
+  }, [isControlled, onOpenChange]);
+
+  // Close on outside click
   useEffect(() => {
     if (!isOpen) return;
-    const handleClick = (e: MouseEvent) => {
+    const handleMouseDown = (e: MouseEvent) => {
       if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
-        if (!isControlled) setInternalOpen(false);
-        onOpenChange?.(false);
+        close();
       }
     };
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [isOpen, isControlled, onOpenChange]);
+    document.addEventListener("mousedown", handleMouseDown);
+    return () => document.removeEventListener("mousedown", handleMouseDown);
+  }, [isOpen, close]);
 
+  // Close on Escape
   useEffect(() => {
     if (!isOpen) return;
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        if (!isControlled) setInternalOpen(false);
-        onOpenChange?.(false);
-      }
+      if (e.key === "Escape") close();
     };
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
-  }, [isOpen, isControlled, onOpenChange]);
+  }, [isOpen, close]);
 
   return (
-    <div ref={rootRef} className={styles.root}>
-      {Children.map(children, (child) => {
-        if (!isValidElement(child)) return child;
-        return cloneElement(child as React.ReactElement<Record<string, unknown>>, {
-          _open: isOpen,
-          _onToggle: toggle,
-          _triggerId: triggerId,
-          _contentId: contentId,
-        });
-      })}
-    </div>
+    <DropdownMenuContext.Provider
+      value={{ isOpen, toggle, close, triggerId, contentId }}
+    >
+      <div ref={rootRef} className={styles.root}>
+        {children}
+      </div>
+    </DropdownMenuContext.Provider>
   );
 };
 DropdownMenuRoot.displayName = "DropdownMenuRoot";
 
 // ─── Trigger ──────────────────────────────────────────────────────────────────
-export const DropdownMenuTrigger = ({
-  children,
-  _open,
-  _onToggle,
-  _triggerId,
-  _contentId,
-}: DropdownMenuTriggerProps) => {
-  if (!isValidElement(children)) return <>{children}</>;
-  return cloneElement(children as React.ReactElement<Record<string, unknown>>, {
-    id: _triggerId,
-    "aria-expanded": _open,
-    "aria-controls": _contentId,
-    "aria-haspopup": "menu",
-    onClick: _onToggle,
-  });
+
+export const DropdownMenuTrigger = ({ children }: DropdownMenuTriggerProps) => {
+  const { isOpen, toggle, triggerId, contentId } = useDropdownMenu();
+
+  return (
+    <div
+      id={triggerId}
+      role="button"
+      tabIndex={0}
+      aria-expanded={isOpen}
+      aria-controls={contentId}
+      aria-haspopup="menu"
+      className={styles.trigger}
+      onClick={toggle}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggle();
+        }
+      }}
+    >
+      {children}
+    </div>
+  );
 };
 DropdownMenuTrigger.displayName = "DropdownMenuTrigger";
 
 // ─── Content ──────────────────────────────────────────────────────────────────
+
 export const DropdownMenuContent = ({
   children,
   className,
-  _open,
-  _triggerId,
-  _contentId,
   ...props
-}: DropdownMenuContentProps) => (
-  <div
-    id={_contentId}
-    role="menu"
-    aria-labelledby={_triggerId}
-    className={cx(styles.content, _open && styles.open, className)}
-    {...props}
-  >
-    {children}
-  </div>
-);
-DropdownMenuContent.displayName = "DropdownMenuContent";
+}: DropdownMenuContentProps) => {
+  const { isOpen, triggerId, contentId } = useDropdownMenu();
 
-// ─── Item ─────────────────────────────────────────────────────────────────────
-export const DropdownMenuItem = forwardRef<HTMLButtonElement, DropdownMenuItemProps>(
-  ({ destructive = false, children, className, ...props }, ref) => (
-    <button
-      ref={ref}
-      role="menuitem"
-      type="button"
-      className={cx(styles.item, destructive && styles.destructive, className)}
+  return (
+    <div
+      id={contentId}
+      role="menu"
+      aria-labelledby={triggerId}
+      className={cx(styles.content, isOpen && styles.open, className)}
       {...props}
     >
       {children}
-    </button>
-  ),
+    </div>
+  );
+};
+DropdownMenuContent.displayName = "DropdownMenuContent";
+
+// ─── Item ─────────────────────────────────────────────────────────────────────
+
+export const DropdownMenuItem = forwardRef<HTMLButtonElement, DropdownMenuItemProps>(
+  ({ destructive = false, children, className, onClick, ...props }, ref) => {
+    const { close } = useDropdownMenu();
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      onClick?.(e);
+      close();
+    };
+
+    return (
+      <button
+        ref={ref}
+        role="menuitem"
+        type="button"
+        className={cx(styles.item, destructive && styles.destructive, className)}
+        onClick={handleClick}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  },
 );
 DropdownMenuItem.displayName = "DropdownMenuItem";
 
 // ─── Separator ────────────────────────────────────────────────────────────────
+
 export const DropdownMenuSeparator = forwardRef<HTMLHRElement, DropdownMenuSeparatorProps>(
   ({ className, ...props }, ref) => (
     <hr ref={ref} className={cx(styles.separator, className)} {...props} />
@@ -144,6 +188,7 @@ export const DropdownMenuSeparator = forwardRef<HTMLHRElement, DropdownMenuSepar
 DropdownMenuSeparator.displayName = "DropdownMenuSeparator";
 
 // ─── Namespace export ─────────────────────────────────────────────────────────
+
 export const DropdownMenu = {
   Root: DropdownMenuRoot,
   Trigger: DropdownMenuTrigger,
