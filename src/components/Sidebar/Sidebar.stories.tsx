@@ -168,7 +168,11 @@ const MapPageBackground = ({
     <div style={{ flexShrink: 0, width: sidebarWidth }}>{children}</div>
 
     {/* Scrollable page content behind the sidebar */}
+    {/* tabIndex={0} + aria-label make this scrollable region keyboard-accessible,
+        satisfying the WCAG "scrollable-region-focusable" rule (axe: SC 2.1.1). */}
     <div
+      tabIndex={0}
+      aria-label="Map content area"
       style={{
         flex: 1,
         overflowY: "auto",
