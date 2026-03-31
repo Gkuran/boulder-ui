@@ -32,18 +32,14 @@ const preview: Preview = {
 
       // axe's options parameter
       // See https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter
-      options: {
-        runOnly: {
-          type: "tag",
-          values: [
-            "wcag2a",
-            "wcag2aa",
-            "wcag21a",
-            "wcag21aa",
-            "best-practice",
-          ],
-        },
-      },
+      //
+      // Note: We intentionally do NOT specify `runOnly` here.
+      // Storybook's a11y addon already defaults to running WCAG 2.0/2.1 Level A & AA
+      // plus Best Practices rules. Specifying `runOnly` explicitly would override
+      // the rule configuration set in `config.rules` above (e.g. the disabled `region`
+      // rule), because `axe.run(options)` takes precedence over `axe.configure(config)`
+      // when determining which rules to execute.
+      options: {},
     },
   },
 };
