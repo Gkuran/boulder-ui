@@ -16,10 +16,11 @@
 /* ─── Variantes ───────────────────────────────────────────────────────────── */
 .default {
   color: var(--boulder-color-primary);
+  text-decoration: underline;
 }
 
 .default:hover {
-  text-decoration: underline;
+  opacity: 0.8;
 }
 
 .subtle {

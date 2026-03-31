@@ -76,7 +76,7 @@ export const InlineText: Story = {
     <p style={{ fontSize: "16px", lineHeight: "1.6", maxWidth: "400px" }}>
       Boulder UI is a minimal design system. Learn more in the{" "}
       <Link href="#" variant="default">documentation</Link> or explore{" "}
-      <Link href="#" variant="underline">component examples</Link>.
+      <Link href="#" variant="default">component examples</Link>.
     </p>
   ),
 };
