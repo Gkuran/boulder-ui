@@ -145,17 +145,17 @@ export const Sizes: Story = {
   name: "Sizes — sm / md / lg",
   render: () => (
     <div style={wrapperStyle}>
-      <Select size="sm">
+      <Select size="sm" aria-label="Collection Method (small)">
         <option>sm — Collection Method</option>
         <option value="trap">Camera Trap</option>
         <option value="transect">Line Transect</option>
       </Select>
-      <Select size="md">
+      <Select size="md" aria-label="Collection Method (medium)">
         <option>md — Collection Method</option>
         <option value="trap">Camera Trap</option>
         <option value="transect">Line Transect</option>
       </Select>
-      <Select size="lg">
+      <Select size="lg" aria-label="Collection Method (large)">
         <option>lg — Collection Method</option>
         <option value="trap">Camera Trap</option>
         <option value="transect">Line Transect</option>

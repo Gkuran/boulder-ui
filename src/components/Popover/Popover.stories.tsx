@@ -64,8 +64,8 @@ export const WithForm: Story = {
         </Popover.Trigger>
         <Popover.Content style={{ minWidth: "260px" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            <label style={{ fontSize: "13px", fontWeight: 600 }}>Status</label>
-            <select style={{ padding: "6px", borderRadius: "4px", border: "1px solid #ccc" }}>
+            <label htmlFor="popover-status-select" style={{ fontSize: "13px", fontWeight: 600 }}>Status</label>
+            <select id="popover-status-select" style={{ padding: "6px", borderRadius: "4px", border: "1px solid #ccc" }}>
               <option>All</option>
               <option>Active</option>
               <option>Inactive</option>
