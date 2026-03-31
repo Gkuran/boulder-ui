@@ -1,7 +1,7 @@
 :root {
   /* ─── Paleta base ─────────────────────────────────────────────────────────── */
-  --boulder-color-1: #8a7650;
-  --boulder-color-2: #8e977d;
+  --boulder-color-1: #665637;  /* was #8a7650 — darkened for WCAG AA contrast */
+  --boulder-color-2: #525b41;  /* was #8e977d — darkened for WCAG AA contrast */
   --boulder-color-3: #ece7d1;
   --boulder-color-4: #dbcea5;
   --boulder-color-5: #ffffff;
@@ -24,12 +24,12 @@
 
   /* ─── Cores de texto ──────────────────────────────────────────────────────── */
   --boulder-color-text: #1a1a1a;
-  --boulder-color-text-secondary: #5c5549;
+  --boulder-color-text-secondary: #5c5549;  /* was #666666 — darkened for WCAG AA contrast */
   --boulder-color-text-inverse: #ffffff;
 
   /* ─── Cores de estado ─────────────────────────────────────────────────────── */
-  --boulder-color-danger: #e5484d;
-  --boulder-color-danger-hover: #d13438;
+  --boulder-color-danger: #aa2020;  /* was #e5484d — darkened for WCAG AA contrast */
+  --boulder-color-danger-hover: #8f1a1a;  /* was #d13438 — adjusted proportionally */
   --boulder-color-danger-subtle: #ffe4e6;
   --boulder-color-danger-text: #9f1239;
 
