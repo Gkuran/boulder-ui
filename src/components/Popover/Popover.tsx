@@ -1,5 +1,8 @@
 import {
+  Children,
+  cloneElement,
   createContext,
+  isValidElement,
   useCallback,
   useContext,
   useEffect,
@@ -7,6 +10,7 @@ import {
   useRef,
   useState,
 } from "react";
+import type { ReactElement } from "react";
 import type {
   PopoverContentProps,
   PopoverRootProps,
@@ -98,30 +102,51 @@ export const PopoverRoot = ({
 PopoverRoot.displayName = "PopoverRoot";
 
 // ─── PopoverTrigger ───────────────────────────────────────────────────────────
+//
+// Uses the "asChild" pattern: instead of wrapping children in a new interactive
+// element (which would create nested interactive controls), we clone the single
+// child element and inject the required ARIA attributes and event handlers
+// directly onto it. This keeps a single focusable element in the DOM and
+// satisfies the WCAG "nested-interactive" rule.
 
 export const PopoverTrigger = ({ children }: PopoverTriggerProps) => {
   const { isOpen, toggle, triggerId, contentId } = usePopover();
 
-  return (
-    <div
-      id={triggerId}
-      role="button"
-      tabIndex={0}
-      aria-expanded={isOpen}
-      aria-controls={contentId}
-      aria-haspopup="dialog"
-      className={styles.trigger}
-      onClick={toggle}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggle();
-        }
-      }}
-    >
-      {children}
-    </div>
-  );
+  const child = Children.only(children) as ReactElement<
+    React.HTMLAttributes<HTMLElement>
+  >;
+
+  if (!isValidElement(child)) {
+    throw new Error(
+      "<Popover.Trigger> requires a single valid React element as its child.",
+    );
+  }
+
+  return cloneElement(child, {
+    id: triggerId,
+    "aria-expanded": isOpen,
+    "aria-controls": contentId,
+    "aria-haspopup": "dialog",
+    className: cx(
+      styles.trigger,
+      (child.props as React.HTMLAttributes<HTMLElement>).className,
+    ),
+    onClick: (e: React.MouseEvent<HTMLElement>) => {
+      (child.props as React.HTMLAttributes<HTMLElement>).onClick?.(
+        e as React.MouseEvent<HTMLElement>,
+      );
+      toggle();
+    },
+    onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => {
+      (child.props as React.HTMLAttributes<HTMLElement>).onKeyDown?.(
+        e as React.KeyboardEvent<HTMLElement>,
+      );
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+      }
+    },
+  } as React.HTMLAttributes<HTMLElement>);
 };
 PopoverTrigger.displayName = "PopoverTrigger";
 
