@@ -15,7 +15,10 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./styles": "./dist/boulder-ui.css"
+    "./styles": {
+      "types": "./dist/styles.d.ts",
+      "default": "./dist/boulder-ui.css"
+    }
   },
   "files": [
     "dist",
