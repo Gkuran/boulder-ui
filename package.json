@@ -1,6 +1,6 @@
 {
   "name": "boulder-ui",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A geology-inspired UI kit for React. From the granular flexibility of sand to the solid reliability of boulders, build accessible and consistent interfaces with nature-toned primitives.",
   "type": "module",
   "sideEffects": false,
