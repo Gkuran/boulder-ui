@@ -17,21 +17,62 @@
 
 /* ─── Content panel ───────────────────────────────────────────────────────── */
 .content {
+  --_dropdown-background: var(--boulder-color-surface);
+  --_dropdown-border-color: var(--boulder-color-border);
+  --_dropdown-shadow: var(--boulder-shadow-md);
+  --_dropdown-backdrop-filter: none;
+  --_dropdown-highlight: none;
+  --_dropdown-highlight-opacity: 0;
+  --_dropdown-item-hover: var(--boulder-color-surface-hover);
+
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
   z-index: 1000;
   min-width: 180px;
-  background: var(--boulder-color-surface);
-  border: 1px solid var(--boulder-color-border);
+  background: var(--_dropdown-background);
+  border: 1px solid var(--_dropdown-border-color);
   border-radius: var(--boulder-radius-md);
-  box-shadow: var(--boulder-shadow-md);
+  box-shadow: var(--_dropdown-shadow);
   padding: var(--boulder-spacing-xs) 0;
   font-family: var(--boulder-font-family);
   opacity: 0;
   pointer-events: none;
   transform: translateY(-4px);
   transition: opacity 0.15s ease, transform 0.15s ease;
+  isolation: isolate;
+}
+
+.content.glass {
+  --_dropdown-background: var(--boulder-color-surface-glass);
+  --_dropdown-border-color: var(--boulder-color-border-glass);
+  --_dropdown-shadow: var(--boulder-shadow-glass);
+  --_dropdown-backdrop-filter: var(--boulder-glass-blur-md);
+  --_dropdown-highlight: var(--boulder-overlay-glass-highlight);
+  --_dropdown-highlight-opacity: 0.4;
+  --_dropdown-item-hover: var(--boulder-color-background-glass-subtle);
+}
+
+.content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--_dropdown-highlight);
+  opacity: var(--_dropdown-highlight-opacity);
+  z-index: 0;
+}
+
+.content > * {
+  position: relative;
+  z-index: 1;
+}
+
+@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))) {
+  .content {
+    -webkit-backdrop-filter: var(--_dropdown-backdrop-filter);
+    backdrop-filter: var(--_dropdown-backdrop-filter);
+  }
 }
 
 .content.open {
@@ -58,7 +99,7 @@
 }
 
 .item:hover:not(:disabled) {
-  background: var(--boulder-color-surface-hover);
+  background: var(--_dropdown-item-hover);
 }
 
 .item:focus-visible {

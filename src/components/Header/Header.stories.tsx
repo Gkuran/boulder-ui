@@ -46,7 +46,7 @@ import {
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| \`variant\` | \`"default" \\| "floating" \\| "transparent"\` | \`"default"\` | Visual style of the header |
+| \`variant\` | \`"default" \\| "floating" \\| "glass" \\| "transparent"\` | \`"default"\` | Visual style of the header |
 | \`position\` | \`"static" \\| "sticky" \\| "fixed" \\| "absolute"\` | \`"static"\` | CSS position behavior |
 | \`compact\` | \`boolean\` | \`false\` | Reduces height and padding for space-constrained layouts |
 | \`className\` | \`string\` | — | Additional CSS class |
@@ -69,6 +69,7 @@ Accepts all native \`<div>\` attributes. Requires \`children\`.
 |---|---|---|
 | \`default\` | Solid background with a bottom border | Standard application headers |
 | \`floating\` | Elevated surface with shadow and rounded corners | Overlaying on maps or rich backgrounds |
+| \`glass\` | Warm translucent surface with blur and a soft highlight | Lightweight overlays on maps and textured backgrounds |
 | \`transparent\` | No background, border, or shadow | Blending into map canvases or hero sections |
 
 ## Position
@@ -135,7 +136,7 @@ When \`compact\` is \`true\`, the header uses a reduced height (\`44px\` instead
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "floating", "transparent"],
+      options: ["default", "floating", "glass", "transparent"],
       description: "Visual style of the header.",
       table: { defaultValue: { summary: "default" } },
     },
@@ -366,6 +367,76 @@ export const FloatingMapOverlay: Story = {
       description: {
         story:
           'A floating header overlaying a map canvas. Uses `variant="floating"` and `compact` mode to minimize vertical space usage. In a real map application, you might use `position="absolute"` to overlay it on the canvas.',
+      },
+    },
+  },
+};
+
+export const GlassMapOverlay: Story = {
+  name: "Glass Overlay",
+  render: (args) => (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        height: 300,
+        borderRadius: "var(--boulder-radius-md)",
+        overflow: "hidden",
+        background:
+          "linear-gradient(135deg, #5f7f6b 0%, #89a882 35%, #d6c58a 68%, #f4efe0 100%)",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Header {...args}>
+        <HeaderBrand>
+          <CompassIcon /> Terra
+        </HeaderBrand>
+        <HeaderNav aria-label="Map modes">
+          <a href="#" style={navLinkStyle}>
+            Terrain
+          </a>
+          <a href="#" style={navLinkStyle}>
+            Mosaic
+          </a>
+          <a href="#" style={navLinkStyle}>
+            Boundaries
+          </a>
+        </HeaderNav>
+        <HeaderActions>
+          <button style={iconBtnStyle} aria-label="Toggle layers">
+            <LayersIcon />
+          </button>
+          <button style={iconBtnStyle} aria-label="Search">
+            <SearchIcon />
+          </button>
+        </HeaderActions>
+      </Header>
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "rgba(26, 26, 26, 0.46)",
+          fontWeight: "var(--boulder-font-weight-bold)",
+          letterSpacing: "0.08em",
+        }}
+      >
+        TEXTURED MAP BACKGROUND
+      </div>
+    </div>
+  ),
+  args: {
+    variant: "glass",
+    position: "static",
+    compact: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A glass header variant using Boulder-derived translucent tokens, subtle blur, and a restrained highlight. Intended for map and media overlays where the header should stay legible without feeling heavy.",
       },
     },
   },

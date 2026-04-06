@@ -1,5 +1,7 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
+export type DropdownMenuVariant = "default" | "glass";
+
 export interface DropdownMenuRootProps {
   /**
    * Controls the open state externally.
@@ -18,6 +20,11 @@ export interface DropdownMenuTriggerProps {
 }
 
 export interface DropdownMenuContentProps extends HTMLAttributes<HTMLDivElement> {
+  /**
+   * Visual style of the dropdown surface.
+   * @default "default"
+   */
+  variant?: DropdownMenuVariant;
   children: ReactNode;
 }
 

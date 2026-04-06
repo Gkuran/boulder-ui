@@ -8,7 +8,7 @@ import type { HTMLAttributes, ReactNode, CSSProperties } from "react";
  * - `floating` — Elevated surface with outer margin, rounded corners, and a drop shadow.
  *                Designed to float over map canvases or page content.
  */
-export type SidebarVariant = "default" | "floating";
+export type SidebarVariant = "default" | "floating" | "glass";
 
 /**
  * CSS `position` value applied to the Sidebar root.

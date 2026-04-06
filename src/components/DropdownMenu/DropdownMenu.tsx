@@ -156,6 +156,7 @@ DropdownMenuTrigger.displayName = "DropdownMenuTrigger";
 // ─── Content ──────────────────────────────────────────────────────────────────
 
 export const DropdownMenuContent = ({
+  variant = "default",
   children,
   className,
   ...props
@@ -167,7 +168,7 @@ export const DropdownMenuContent = ({
       id={contentId}
       role="menu"
       aria-labelledby={triggerId}
-      className={cx(styles.content, isOpen && styles.open, className)}
+      className={cx(styles.content, styles[variant], isOpen && styles.open, className)}
       {...props}
     >
       {children}

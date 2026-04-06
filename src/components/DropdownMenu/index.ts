@@ -12,4 +12,5 @@ export type {
   DropdownMenuContentProps,
   DropdownMenuItemProps,
   DropdownMenuSeparatorProps,
+  DropdownMenuVariant,
 } from "./DropdownMenu.types";

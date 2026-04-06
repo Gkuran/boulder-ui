@@ -27,6 +27,8 @@ import { Popover } from 'boulder-ui';
   </Popover.Content>
 </Popover.Root>
 \`\`\`
+
+\`Popover.Content\` also supports \`variant="glass"\` for lightweight overlays on maps and textured surfaces.
         `,
       },
     },
@@ -73,6 +75,48 @@ export const WithForm: Story = {
             <button style={{ padding: "6px 12px", borderRadius: "4px", background: "#333", color: "#fff", border: "none", cursor: "pointer" }}>
               Apply
             </button>
+          </div>
+        </Popover.Content>
+      </Popover.Root>
+    </div>
+  ),
+};
+
+export const GlassOverlay: Story = {
+  render: () => (
+    <div
+      style={{
+        padding: "100px",
+        borderRadius: "var(--boulder-radius-md)",
+        background:
+          "linear-gradient(135deg, #61806c 0%, #95b184 36%, #d9c98e 72%, #f7f3e5 100%)",
+      }}
+    >
+      <Popover.Root>
+        <Popover.Trigger>
+          <button style={{ padding: "8px 16px", borderRadius: "6px", border: "1px solid #ccc", cursor: "pointer" }}>
+            Open glass popover
+          </button>
+        </Popover.Trigger>
+        <Popover.Content
+          variant="glass"
+          style={{ minWidth: "280px" }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            <strong style={{ fontSize: "14px" }}>Habitat Summary</strong>
+            <p style={{ margin: 0, fontSize: "14px", lineHeight: 1.5 }}>
+              Subtle translucency works well here because the content is short, contextual, and visually tied to the map region underneath.
+            </p>
+            <div
+              style={{
+                padding: "8px 10px",
+                borderRadius: "var(--boulder-radius-sm)",
+                background: "var(--boulder-color-background-glass-subtle)",
+                fontSize: "13px",
+              }}
+            >
+              Canopy: 74% · Soil moisture: moderate
+            </div>
           </div>
         </Popover.Content>
       </Popover.Root>

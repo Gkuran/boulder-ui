@@ -24,6 +24,7 @@ The **Modal** component is an overlay dialog that interrupts the current user fl
 - **Escape Key**: Pressing \`Escape\` triggers \`onClose\`.
 - **Overlay Click**: Clicking the dark backdrop triggers \`onClose\` by default.
 - **Sizes**: \`sm\`, \`md\`, \`lg\`, and \`full\`.
+- **Variants**: \`default\` and \`glass\`.
 
 ## Usage
 
@@ -226,6 +227,83 @@ export const FormModal: Story = {
     docs: {
       description: {
         story: "A medium-sized modal containing a form for registering a new soil sample, demonstrating the composability of ModalContent with form elements.",
+      },
+    },
+  },
+};
+
+export const GlassOverlay: Story = {
+  name: "Glass Overlay",
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const inputStyle: React.CSSProperties = {
+      width: "100%",
+      padding: "var(--boulder-spacing-sm)",
+      border: "1px solid var(--boulder-color-border-glass)",
+      borderRadius: "var(--boulder-radius-sm)",
+      fontFamily: "var(--boulder-font-family)",
+      fontSize: "var(--boulder-font-size-md)",
+      color: "var(--boulder-color-text)",
+      background: "var(--boulder-color-background-glass-subtle)",
+      boxSizing: "border-box",
+    };
+
+    return (
+      <div
+        style={{
+          width: 520,
+          height: 280,
+          borderRadius: "var(--boulder-radius-md)",
+          overflow: "hidden",
+          background:
+            "radial-gradient(circle at 18% 22%, rgba(255,255,255,0.24), transparent 22%), linear-gradient(135deg, #5f7f6b 0%, #8eaa83 32%, #d8c88f 70%, #f5f1e2 100%)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <button style={triggerButtonStyle} onClick={() => setIsOpen(true)}>
+          Open Glass Modal
+        </button>
+        <Modal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          size="md"
+          variant="glass"
+        >
+          <ModalHeader>
+            <ModalTitle>Sampling Session Notes</ModalTitle>
+          </ModalHeader>
+          <ModalContent>
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-md)" }}>
+              <p style={{ margin: 0 }}>
+                Use the glass surface when the dialog should float over maps or textured imagery without losing the Boulder palette warmth.
+              </p>
+              <input style={inputStyle} type="text" placeholder="Observer initials" />
+              <textarea
+                style={{ ...inputStyle, minHeight: 96, resize: "vertical" }}
+                placeholder="Describe recent changes in canopy density, soil moisture, and visibility."
+              />
+            </div>
+          </ModalContent>
+          <ModalFooter>
+            <button style={secondaryButtonStyle} onClick={() => setIsOpen(false)}>
+              Cancel
+            </button>
+            <button style={triggerButtonStyle} onClick={() => setIsOpen(false)}>
+              Save
+            </button>
+          </ModalFooter>
+        </Modal>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A glass modal rendered over a textured map-like background. The dialog uses Boulder-derived translucent tokens while preserving readable form controls and section boundaries.",
       },
     },
   },

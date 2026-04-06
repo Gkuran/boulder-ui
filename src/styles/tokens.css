@@ -14,6 +14,11 @@
   --boulder-color-surface: var(--boulder-color-4);
   --boulder-color-background: var(--boulder-color-5);
   --boulder-color-background-subtle: var(--boulder-color-4);
+  --boulder-color-surface-glass: rgba(219, 206, 165, 0.84);
+  --boulder-color-background-glass: rgba(255, 255, 255, 0.88);
+  --boulder-color-background-glass-subtle: rgba(236, 231, 209, 0.86);
+  --boulder-color-border-glass: rgba(219, 206, 165, 0.72);
+  --boulder-color-primary-soft-glass: rgba(219, 206, 165, 0.78);
 
   /* Aliases curtos usados pelos componentes */
   --boulder-color-bg: var(--boulder-color-background);
@@ -62,6 +67,14 @@
   --boulder-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
   --boulder-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
   --boulder-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+  --boulder-shadow-glass: 0 14px 36px rgba(82, 91, 65, 0.16);
+  --boulder-glass-blur-sm: blur(8px);
+  --boulder-glass-blur-md: blur(10px);
+  --boulder-overlay-glass-highlight: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0.04)
+  );
 
   /* ─── Tipografia ──────────────────────────────────────────────────────────── */
   --boulder-font-family: system-ui, sans-serif;

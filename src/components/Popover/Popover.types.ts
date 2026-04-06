@@ -1,6 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
 export type PopoverPosition = "top" | "right" | "bottom" | "left";
+export type PopoverVariant = "default" | "glass";
 
 export interface PopoverRootProps {
   /**
@@ -29,5 +30,10 @@ export interface PopoverContentProps extends HTMLAttributes<HTMLDivElement> {
    * @default "bottom"
    */
   position?: PopoverPosition;
+  /**
+   * Visual style of the popover surface.
+   * @default "default"
+   */
+  variant?: PopoverVariant;
   children: ReactNode;
 }

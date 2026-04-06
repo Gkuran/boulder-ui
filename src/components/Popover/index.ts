@@ -4,4 +4,5 @@ export type {
   PopoverTriggerProps,
   PopoverContentProps,
   PopoverPosition,
+  PopoverVariant,
 } from "./Popover.types";

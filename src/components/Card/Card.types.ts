@@ -9,7 +9,7 @@ import type { HTMLAttributes, ReactNode } from "react";
  * - `outlined`    — Transparent background with a prominent border.
  * - `transparent` — No background, border, or shadow. Useful for embedding in rich backgrounds.
  */
-export type CardVariant = "default" | "elevated" | "outlined" | "transparent";
+export type CardVariant = "default" | "elevated" | "glass" | "outlined" | "transparent";
 
 /**
  * Padding scale applied to `CardContent`.

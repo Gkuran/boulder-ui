@@ -154,6 +154,7 @@ PopoverTrigger.displayName = "PopoverTrigger";
 
 export const PopoverContent = ({
   position = "bottom",
+  variant = "default",
   children,
   className,
   ...props
@@ -167,6 +168,7 @@ export const PopoverContent = ({
       aria-labelledby={triggerId}
       className={cx(
         styles.content,
+        styles[variant],
         styles[position],
         isOpen && styles.open,
         className,

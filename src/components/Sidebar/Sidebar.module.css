@@ -1,12 +1,23 @@
 /* ─── Root ────────────────────────────────────────────────────────────────── */
 
 .root {
+  --_sidebar-background: transparent;
+  --_sidebar-border-color: transparent;
+  --_sidebar-border-width: 0;
+  --_sidebar-shadow: none;
+  --_sidebar-backdrop-filter: none;
+  --_sidebar-highlight: none;
+  --_sidebar-highlight-opacity: 0;
+  --_sidebar-margin: 0;
+
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   font-family: var(--boulder-font-family);
   font-size: var(--boulder-font-size-md);
   color: var(--boulder-color-text);
+  position: relative;
+  isolation: isolate;
 
   /* z-index: sit above page content and map canvases */
   z-index: 20;
@@ -15,28 +26,76 @@
 /* ─── Variants ───────────────────────────────────────────────────────────── */
 
 .root.default {
-  background-color: var(--boulder-color-surface);
+  --_sidebar-background: var(--boulder-color-surface);
   height: 100vh;
 }
 
 .root.floating {
   --_sidebar-margin: var(--boulder-spacing-md);
-
-  background-color: var(--boulder-color-surface);
-  border-radius: var(--boulder-radius-md);
-  border: 1px solid var(--boulder-color-border);
-  box-shadow:
+  --_sidebar-background: var(--boulder-color-surface);
+  --_sidebar-border-color: var(--boulder-color-border);
+  --_sidebar-border-width: 1px;
+  --_sidebar-shadow:
     0 2px 8px rgba(0, 0, 0, 0.08),
     0 8px 24px rgba(0, 0, 0, 0.12);
 
-  /* Uniform margin on all four sides */
+  border-radius: var(--boulder-radius-md);
+}
+
+.root.glass {
+  --_sidebar-margin: var(--boulder-spacing-md);
+  --_sidebar-background: var(--boulder-color-surface-glass);
+  --_sidebar-border-color: var(--boulder-color-border-glass);
+  --_sidebar-border-width: 1px;
+  --_sidebar-shadow: var(--boulder-shadow-glass);
+  --_sidebar-backdrop-filter: var(--boulder-glass-blur-md);
+  --_sidebar-highlight: var(--boulder-overlay-glass-highlight);
+  --_sidebar-highlight-opacity: 0.4;
+
+  border-radius: var(--boulder-radius-md);
+}
+
+.root.floating,
+.root.glass {
   margin-top: var(--_sidebar-margin);
   margin-bottom: var(--_sidebar-margin);
   margin-left: var(--_sidebar-margin);
   margin-right: var(--_sidebar-margin);
-
-  /* Compensate height for top + bottom margins */
   height: calc(100vh - var(--_sidebar-margin) * 2);
+}
+
+.root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--_sidebar-highlight);
+  opacity: var(--_sidebar-highlight-opacity);
+  z-index: 0;
+}
+
+.root > * {
+  position: relative;
+  z-index: 1;
+}
+
+@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))) {
+  .root {
+    -webkit-backdrop-filter: var(--_sidebar-backdrop-filter);
+    backdrop-filter: var(--_sidebar-backdrop-filter);
+  }
+}
+
+.root.default,
+.root.floating,
+.root.glass {
+  background-color: var(--_sidebar-background);
+  box-shadow: var(--_sidebar-shadow);
+}
+
+.root.floating,
+.root.glass {
+  border: var(--_sidebar-border-width) solid var(--_sidebar-border-color);
 }
 
 /* ─── Side: border on the inner edge (default variant only) ──────────────── */
@@ -81,17 +140,23 @@
 /* Floating variant with fixed/absolute: offset from edges by the margin value
    (margin has no effect on fixed/absolute elements, so we use top/left/right) */
 .position-fixed.floating,
-.position-absolute.floating {
+.position-fixed.glass,
+.position-absolute.floating,
+.position-absolute.glass {
   top: var(--boulder-spacing-md);
 }
 
 .position-fixed.floating.side-left,
-.position-absolute.floating.side-left {
+.position-fixed.glass.side-left,
+.position-absolute.floating.side-left,
+.position-absolute.glass.side-left {
   left: var(--boulder-spacing-md);
 }
 
 .position-fixed.floating.side-right,
-.position-absolute.floating.side-right {
+.position-fixed.glass.side-right,
+.position-absolute.floating.side-right,
+.position-absolute.glass.side-right {
   right: var(--boulder-spacing-md);
 }
 

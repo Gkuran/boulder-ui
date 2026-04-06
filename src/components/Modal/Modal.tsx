@@ -42,6 +42,7 @@ export const Modal = ({
   onClose,
   children,
   size = "md",
+  variant = "default",
   closeOnOverlayClick = true,
   hideCloseButton = false,
 }: ModalProps) => {
@@ -136,7 +137,7 @@ export const Modal = ({
     >
       <div
         ref={dialogRef}
-        className={cx(styles.dialog, styles[`size-${size}`])}
+        className={cx(styles.dialog, styles[variant], styles[`size-${size}`])}
       >
         {!hideCloseButton && (
           <button
@@ -144,7 +145,6 @@ export const Modal = ({
             className={styles.closeButton}
             onClick={onClose}
             aria-label="Close modal"
-            style={{ position: "absolute", top: "var(--boulder-spacing-md)", right: "var(--boulder-spacing-md)" }}
           >
             <CloseIcon />
           </button>

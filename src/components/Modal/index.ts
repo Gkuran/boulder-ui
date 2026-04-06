@@ -7,4 +7,5 @@ export type {
   ModalFooterProps,
   ModalSize,
   ModalPadding,
+  ModalVariant,
 } from "./Modal.types";

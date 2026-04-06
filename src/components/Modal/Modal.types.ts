@@ -9,6 +9,8 @@ import type { HTMLAttributes, ReactNode } from "react";
  */
 export type ModalSize = "sm" | "md" | "lg" | "full";
 
+export type ModalVariant = "default" | "glass";
+
 /**
  * Padding scale applied to `ModalContent`.
  */
@@ -39,6 +41,12 @@ export interface ModalProps {
    * @default "md"
    */
   size?: ModalSize;
+
+  /**
+   * Visual style of the modal surface.
+   * @default "default"
+   */
+  variant?: ModalVariant;
 
   /**
    * If true, clicking the dark overlay behind the modal will trigger onClose.

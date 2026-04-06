@@ -58,7 +58,7 @@ import {
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| \`variant\` | \`"default" \\| "elevated" \\| "outlined" \\| "transparent"\` | \`"default"\` | Visual style of the card |
+| \`variant\` | \`"default" \\| "elevated" \\| "glass" \\| "outlined" \\| "transparent"\` | \`"default"\` | Visual style of the card |
 | \`className\` | \`string\` | — | Additional CSS class |
 
 ### CardTitle
@@ -81,6 +81,7 @@ All sub-components accept their respective native HTML attributes and forward \`
 |---|---|---|
 | \`default\` | Surface background with a subtle border | Standard data panels and record cards |
 | \`elevated\` | Adds a drop shadow for depth | Floating info panels over map canvases |
+| \`glass\` | Warm translucent surface with blur and a soft highlight | Lightweight overlays on maps, imagery, and textured backgrounds |
 | \`outlined\` | Transparent background with a border | Subtle containers on light backgrounds |
 | \`transparent\` | No background, border, or shadow | Embedding in rich or colored backgrounds |
 
@@ -96,7 +97,7 @@ All sub-components accept their respective native HTML attributes and forward \`
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "elevated", "outlined", "transparent"],
+      options: ["default", "elevated", "glass", "outlined", "transparent"],
       description: "Visual style of the card.",
       table: { defaultValue: { summary: "default" } },
     },
@@ -321,6 +322,72 @@ export const Elevated: Story = {
       description: {
         story:
           "An elevated card used as a floating layer control panel over a field map. Allows toggling visibility of scientific data layers such as species occurrences, soil sampling points, and protected area boundaries.",
+      },
+    },
+  },
+};
+
+export const GlassOverlay: Story = {
+  name: "Glass Overlay",
+  render: (args) => (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        height: 320,
+        borderRadius: "var(--boulder-radius-md)",
+        overflow: "hidden",
+        background:
+          "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.24), transparent 28%), linear-gradient(135deg, #6f8f7b 0%, #9ab78e 38%, #d8c88f 72%, #ece7d1 100%)",
+        display: "flex",
+        alignItems: "flex-end",
+        justifyContent: "flex-start",
+        padding: "var(--boulder-spacing-lg)",
+        boxSizing: "border-box",
+      }}
+    >
+      <div style={{ width: 320 }}>
+        <Card {...args}>
+          <CardHeader>
+            <div>
+              <CardTitle as="h4">Sampling Window</CardTitle>
+              <CardDescription>Wet season mosaic over textured terrain</CardDescription>
+            </div>
+            <Badge variant="default">Live</Badge>
+          </CardHeader>
+          <CardContent>
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-sm)" }}>
+              <div style={metaRowStyle}>
+                <CoordIcon />
+                <span>Tile 18S · Serra do Cipó</span>
+              </div>
+              <div style={metaRowStyle}>
+                <CalendarIcon />
+                <span>Cloud cover 12% · Updated 08:42</span>
+              </div>
+              <div
+                style={{
+                  padding: "var(--boulder-spacing-sm)",
+                  borderRadius: "var(--boulder-radius-sm)",
+                  background: "var(--boulder-color-background-glass-subtle)",
+                }}
+              >
+                Warm-tinted translucency keeps the original Boulder surface identity while softening contrast over imagery.
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  ),
+  args: {
+    variant: "glass",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A subtle glass card overlay rendered over a textured map-like background. The surface keeps Boulder warm tones, adds restrained blur, and uses a light highlight instead of a cold frosted treatment.",
       },
     },
   },

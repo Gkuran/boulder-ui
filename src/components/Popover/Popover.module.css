@@ -17,12 +17,19 @@
 
 /* ─── Content panel ───────────────────────────────────────────────────────── */
 .content {
+  --_popover-background: var(--boulder-color-surface);
+  --_popover-border-color: var(--boulder-color-border);
+  --_popover-shadow: var(--boulder-shadow-md);
+  --_popover-backdrop-filter: none;
+  --_popover-highlight: none;
+  --_popover-highlight-opacity: 0;
+
   position: absolute;
   z-index: 1000;
-  background: var(--boulder-color-surface);
-  border: 1px solid var(--boulder-color-border);
+  background: var(--_popover-background);
+  border: 1px solid var(--_popover-border-color);
   border-radius: var(--boulder-radius-md);
-  box-shadow: var(--boulder-shadow-md);
+  box-shadow: var(--_popover-shadow);
   padding: var(--boulder-spacing-md);
   min-width: 200px;
   font-family: var(--boulder-font-family);
@@ -31,6 +38,38 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.15s ease, transform 0.15s ease;
+  isolation: isolate;
+}
+
+.content.glass {
+  --_popover-background: var(--boulder-color-surface-glass);
+  --_popover-border-color: var(--boulder-color-border-glass);
+  --_popover-shadow: var(--boulder-shadow-glass);
+  --_popover-backdrop-filter: var(--boulder-glass-blur-md);
+  --_popover-highlight: var(--boulder-overlay-glass-highlight);
+  --_popover-highlight-opacity: 0.4;
+}
+
+.content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--_popover-highlight);
+  opacity: var(--_popover-highlight-opacity);
+  z-index: 0;
+}
+
+.content > * {
+  position: relative;
+  z-index: 1;
+}
+
+@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))) {
+  .content {
+    -webkit-backdrop-filter: var(--_popover-backdrop-filter);
+    backdrop-filter: var(--_popover-backdrop-filter);
+  }
 }
 
 .content.open {

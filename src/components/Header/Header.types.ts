@@ -8,7 +8,7 @@ import type { HTMLAttributes, ReactNode } from "react";
  * - `floating`    — Elevated surface with shadow and rounded corners. Ideal for overlaying on maps.
  * - `transparent` — No background, border, or shadow. Blends into the underlying content.
  */
-export type HeaderVariant = "default" | "floating" | "transparent";
+export type HeaderVariant = "default" | "floating" | "glass" | "transparent";
 
 /**
  * CSS `position` value applied to the Header root.

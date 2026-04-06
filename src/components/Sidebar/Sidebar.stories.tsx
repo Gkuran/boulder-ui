@@ -50,7 +50,7 @@ import {
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| \`variant\` | \`"default" \\| "floating"\` | \`"floating"\` | Visual style of the sidebar |
+| \`variant\` | \`"default" \\| "floating" \\| "glass"\` | \`"floating"\` | Visual style of the sidebar |
 | \`position\` | \`"sticky" \\| "fixed" \\| "absolute"\` | \`"sticky"\` | CSS position behavior |
 | \`side\` | \`"left" \\| "right"\` | \`"left"\` | Side of the screen to anchor to |
 | \`width\` | \`CSSProperties["width"]\` | \`"280px"\` | Width of the sidebar |
@@ -69,6 +69,7 @@ All sub-components accept their respective native HTML attributes and forward \`
 |---|---|---|
 | \`default\` | Flush to the screen edge, no border-radius | Traditional dashboard layouts |
 | \`floating\` | Detached from the edge with margin, rounded corners, and shadow | Overlaying map canvases or rich backgrounds |
+| \`glass\` | Warm translucent surface with blur and a soft highlight | Lightweight inspector and control overlays on maps |
 
 ## Positioning
 
@@ -90,7 +91,7 @@ All sub-components accept their respective native HTML attributes and forward \`
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "floating"],
+      options: ["default", "floating", "glass"],
       description: "Visual style of the sidebar.",
       table: { defaultValue: { summary: "floating" } },
     },
@@ -544,6 +545,104 @@ export const RightSideInspector: Story = {
       description: {
         story:
           "A floating sidebar anchored to the right side of the screen. Used as a record inspector panel that appears when the user selects an occurrence point on the map. Displays full metadata for a fauna record including coordinates, collection method, institutional voucher, and public data sources.",
+      },
+    },
+  },
+};
+
+export const GlassInspector: Story = {
+  name: "Glass Right - Habitat Inspector",
+  render: (args) => (
+    <MapPageBackground
+      side="right"
+      sidebarWidth={String(args.width ?? "320px")}
+    >
+      <Sidebar
+        {...args}
+        aria-label="Habitat inspector"
+      >
+        <SidebarHeader>
+          <div>
+            <p
+              style={{
+                margin: 0,
+                fontWeight: "var(--boulder-font-weight-semibold)",
+                fontSize: "var(--boulder-font-size-lg)",
+              }}
+            >
+              Habitat Inspector
+            </p>
+            <p
+              style={{
+                margin: 0,
+                fontSize: "var(--boulder-font-size-sm)",
+                color: "var(--boulder-color-text-secondary)",
+              }}
+            >
+              Serra do Mar mosaic
+            </p>
+          </div>
+          <Badge variant="success">Stable</Badge>
+        </SidebarHeader>
+
+        <SidebarContent padding="md">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "var(--boulder-spacing-md)",
+            }}
+          >
+            <div
+              style={{
+                padding: "var(--boulder-spacing-sm)",
+                borderRadius: "var(--boulder-radius-sm)",
+                background: "var(--boulder-color-background-glass-subtle)",
+              }}
+            >
+              Warm translucent surfaces help the panel sit over dense cartography without flattening the Boulder palette into cool gray glass.
+            </div>
+
+            <div>
+              <SectionLabel>Vegetation</SectionLabel>
+              <div style={{ display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-sm)" }}>
+                <Checkbox label="Montane forest" defaultChecked />
+                <Checkbox label="Riparian corridor" defaultChecked />
+                <Checkbox label="Rock outcrops" />
+              </div>
+            </div>
+
+            <Divider />
+
+            <div>
+              <SectionLabel>Overlay Density</SectionLabel>
+              <div style={{ display: "flex", flexDirection: "column", gap: "var(--boulder-spacing-xs)" }}>
+                <span>Canopy: 74%</span>
+                <span>Humidity: 68%</span>
+                <span>Visibility: Moderate</span>
+              </div>
+            </div>
+          </div>
+        </SidebarContent>
+
+        <SidebarFooter>
+          <Button variant="primary">Focus Area</Button>
+          <Button variant="secondary">Dismiss</Button>
+        </SidebarFooter>
+      </Sidebar>
+    </MapPageBackground>
+  ),
+  args: {
+    variant: "glass",
+    position: "sticky",
+    side: "right",
+    width: "320px",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A right-side glass sidebar for map inspection workflows. It keeps the palette warm, reduces visual weight versus the floating variant, and remains legible over dense geographic backgrounds.",
       },
     },
   },
