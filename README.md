@@ -9,6 +9,8 @@ A **geology-inspired UI kit for React**. From the **granular flexibility of sand
 ---
 
 ## Storybook
+
+<img src="./public/boulder-ui-gif.gif" alt="storybook boulder ui preview" />
 - https://main--69c67eb2c82c38c85d7a3a11.chromatic.com/
 
 ## Playground
