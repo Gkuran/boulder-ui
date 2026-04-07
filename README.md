@@ -9,16 +9,18 @@ A **geology-inspired UI kit for React**. From the **granular flexibility of sand
 ---
 
 ## Storybook
+Explore the component library in <a href="https://main--69c67eb2c82c38c85d7a3a11.chromatic.com/" style="text-decoration: underline;">Storybook</a>, where you can find detailed documentation and interactive examples.
 
-<img src="./public/boulder-ui-gif.gif" alt="storybook boulder ui preview" />
-- https://main--69c67eb2c82c38c85d7a3a11.chromatic.com/
+<p align="center">
+  <img src="./public/boulder-ui-gif.gif" alt="storybook boulder ui preview" />
+</p>
 
 ## Playground
-The playground is only for testing and visually validating boulder-ui components and it's not intended to be a production application.
+The <a href="https://github.com/Gkuran/boulder-playground.git" style="text-decoration: underline;">playground</a> is only for testing and visually validating boulder-ui components and it's not intended to be a production application.
 
-<img src="./public/terra-playground-gif.gif" alt="playground preview" />
-- https://github.com/Gkuran/boulder-playground.git
-
+<p align="center">
+  <img src="./public/terra-playground-gif.gif" alt="playground preview" />
+</p>
 
 ## Features
 
