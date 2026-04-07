@@ -8,6 +8,9 @@ A **geology-inspired UI kit for React**. From the **granular flexibility of sand
 
 ---
 
+## Playground
+- https://github.com/Gkuran/boulder-playground.git
+
 ## Features
 
 - Minimal and composable components
